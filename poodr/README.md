@@ -1,4 +1,4 @@
-[&lt;&lt; Back to project home](../README.md)
+[&lt; Back to project home](../README.md)
 
 # Practical Object-Oriented Design in Ruby (POODR)
 
