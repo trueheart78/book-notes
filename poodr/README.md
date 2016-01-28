@@ -12,6 +12,8 @@ doing it.
 Notes:
 
 - [Chapter 1. Object-Oriented Design](ch1-oo-design.md)
+- [Chapter 2. Designing Classes with a Single Responsibility](ch2-designing-for-single-responsibility.md)
+- [Chapter 3. Managing Dependencies](ch3-managing-dependencies.md)
 
 Additional notes can be found in the [Ruby Rogues ep 87 notes](rr-ep87-notes.md)
 
