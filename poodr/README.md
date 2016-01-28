@@ -9,6 +9,10 @@ Good design can be good enough so that others making changes don't go right
 to the wrong options. It takes intention, but is worth it vs the cost of not
 doing it.
 
+Notes:
+
+- [Chapter 1. Object-Oriented Design](ch1-oo-design.md)
+
 Additional notes can be found in the [Ruby Rogues ep 87 notes](rr-ep87-notes.md)
 
 ![poodr the book](poodr-book.jpg)
