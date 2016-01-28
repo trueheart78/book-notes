@@ -19,4 +19,4 @@ Notes:
 
 Additional notes can be found in the [Ruby Rogues ep 87 notes](rr-ep87-notes.md)
 
-![poodr the book](poodr-book.jpg)
+![poodr the book](poodr-book-small.jpg)
