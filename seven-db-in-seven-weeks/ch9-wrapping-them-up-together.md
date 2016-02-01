@@ -7,7 +7,7 @@
 ### Relational
 
 Most common classic db pattern. Set-theory-based systems as 2D tables with rows
-+ columns. Strictly enforced type with some added features, as in PostgresSQL's
+and columns. Strictly enforced type with some added features, as in PostgresSQL's
 array, jub, and JSON support.
 
 #### Good For
@@ -46,4 +46,4 @@ simple-to-manage clusters.
 
 ### Columnar
 
-**stopped on page 805**
+*stopped on page 805*
