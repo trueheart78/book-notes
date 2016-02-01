@@ -11,4 +11,4 @@ Notes:
 - [Chapter 8. Redis](ch8-redis.md)
 - [Chapter 9. Wrapping Up (and making them work together)](ch9-wrapping-them-up-together.md)
 
-![seven db book](seven-db-book.png)
+![seven db book](seven-db-book.jpg)
