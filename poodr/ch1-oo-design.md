@@ -105,7 +105,7 @@ Other principles:
 + *Law of Demeter*
 
 The principles of good design represent measurable truths and following them
-improve your code.
+to improve your code.
 
 ### Design Patterns
 
@@ -148,7 +148,7 @@ application. *Relentless design* has them applying principles and patterns
 inappropriately. Castles of code that hem them in by stone walls.
 **Look for: "It wasn't designed to do that."** 
 
-OO software fails whenthe act of design is separated from the act of programming.
+OO software fails when the act of design is separated from the act of programming.
 Design is a process of progressive discovery that relies on a feedback loop.
 This feedback loop should be timely and incremental. Agile FTW. When design is
 dictated from afar none of the necessary adjustments can occur and early
@@ -187,5 +187,7 @@ with arranging what code you have so that it will be easy to change.
 
 Agile process guarantee change, otherwise you'll be rewriting your code during
 every iteration. Agile thus requires design.
+
+### Judging Design
 
 
