@@ -190,4 +190,63 @@ every iteration. Agile thus requires design.
 
 ### Judging Design
 
+Remember when lines of code were a thing? That was a metric that wasn't helpful to
+anyone, especially developers.
 
+Now, you can even find Ruby gems that will assess how well your code follows OOD
+principles. You can run these tools to gain insight into your app, but even well-
+designed apps can have many violations.
+
+*Always take these metrics with a grain of salt* They provide unbiased numbers for
+you to infer something about software, but they aren't indicators of quality.
+
+*The ultimate software metric would be cost per feature over the time interval
+that matters*.
+
+Technical debt can happen when you are designing and that takes time, which costs
+monies. *When the act of design prevents software from being delivered on time,
+you have lost.*
+
+Good design that continues to pay off is worth a lot, paying back continually.
+Daily compunding interest adds up over time.
+
+The break-even point for design depends on the programmer. 
+
+## A Brief Intro to Object-Oriented Programming
+
+Made up of objects that the messages that pass between them.
+
+### Procedural Languages
+
+Non-OO is procedural. There is a chasm between data and behavior. Data is one thing,
+behavior is something completely different. Data gets packaged up into variables and
+then passed around to behavior, which can do anything it wants to the data.
+
+Data is like a child that behavior sends off to school every morning; there is no
+way of knowing what actually happens while it is out of sight. The influences on data
+can be unpredictable and largely untraceable.
+
+### Object-Oriented Languages
+
+Objects have behavior and may contain data, data to which they alone control access.
+Objects invoke one another's behavior by sending each other messages.
+
+Think about strings in Ruby. It's an object, not a datatype. it needs to only provide
+a way for objects to send messages. If the String object understands the `concat`
+message, Ruby doesn't have to contain syntax to concatenate strings, it just has to
+provide a way for one object to send `concat` to another.
+
+Class-based OO langies allow you to define a class that provides a blueprint for
+the construction of similar objects. It defines **methods** (behavior definitions)
+and **attributes** (variable definitions). Methods get invoked in response to
+messages. And the same method name can be fined by many different objects; it is
+up to Ruby to find and invoke the right method of the correct object for any sent
+message.
+
+OO Langies are thus open-ended. No set limit to a small set of built-in types and
+prefined operations; You can invent brand new types of your own. Each OO app
+gradually becomes a unique programming language that is specifically tailor to your
+domain.
+
+Whether this langie ultimately brings you pleasure or pain is a matter of design
+and the concern of this book.
