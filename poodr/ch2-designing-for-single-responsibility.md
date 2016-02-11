@@ -99,4 +99,102 @@ Bonus is that coding in these styles will improve your code today, at no extra c
 
 ### Depend on Behavior, Not Data
 
+Behavior is captured in methods and invoked by sending messages.  DRY code
+tolerates change because any change in behavior can be made by chaning code in
+just once place.
 
+Objects also often contain data, held in an instance variable. Always access the
+data using accessor methods.
+
+#### Hide Instance Variables
+
+Hide the variables, even from the class that defines them, by wrapping them in
+methods. `attr_reader`, `attr_accessor` help.
+
+Implementing a wrapper method changes it from data (referenced all over) to
+behavior (defined once). Now if the var is referred to 10 times and it needs to
+change, you change the method once.
+
+Dealing with data as if it's an object that understands messages introduces
+two new issues: visibility and the line between data and behavior disappearing.
+
+You should always err on the side of hiding data from yourself, as it protects
+the code from being affected by unexpected changes.
+
+#### Hide Data Structures
+
+If it depends on the data's structure (think an array with items at certain
+positions), if that structure changes, then that code must also change. An array
+with references to its structure will create leaky references, where the structure
+is accessed all over.
+
+Not DRY :-1:
+
+Imagine if this was an array of hashes...
+
+**Direct references into complicated structures are confusing, because they
+obscure what the data really is, and they are a maintenance nightmare, as every
+reference will need to be changed if the array structure changes.**
+
+Consider using the `Struct` class to help in these instances. *"[a struct] is
+a convenient way to bundle a number of attributes together, using accessor methods,
+without having to write an explicit class."* 
+
+If you can control the input, pass in a useful object, but if you are compelled
+to take a messy structure, hide the mess even from yourself.
+
+### Enforce Single Responsibility Everywhere
+
+#### Extract Extra Responsibilities from Methods
+
+Methods, like classes, should have a single responsibility. All the same reasons
+apply; having just one responsibility makes them easy to change and easy to reuse.
+All the same design techniques work; **ask them questions about what they do and try
+ti describe their respobilities in a single sentence.**
+
+Separating interation from the action that's being performed on each element is a
+common case of multiple responsibility that is easy to recognize.
+
+**You do not have to know where you're going to use good design practices to get
+there.**
+
+**Good practices reveal design.**
+
+Methods that have a single responsibility confer the following benefits:
+
++ Expose previously hidden qualities
++ Avoid the need for comments. A comment is a sign that an extraction should happen.
++ Encourage reuse.
++ Are easy to move to another class.
+
+#### Isolate Extra Responsibilities in Classes
+
+Once every method has a single responsibility, the scope of your class will be 
+more apparent.
+
+Your goal is to preserve single responsibility in your class while making the
+fewest design commitments possible. Postpone decisions until you are forced to
+make them. Don't decide; preserve your ability to make a decision *later*.
+
+You can embed structs inside of classes.
+
+```ruby
+class Gear
+
+  def initialize
+  end
+
+  Wheel = Struct.new(:rim, :tire) do
+    def diameter
+    end
+  end
+end
+```
+
+This helps keep the idea that a wheel only exist in the context of Gear.
+
+If you have a muddled class with too many responsibilites, separate them into
+different classes. Concentrate on the primary class. Decide what it should do
+and enforce your decision fiercely. hen isolate extra responsibilities that
+you can't remove yet. **Do not allow extraneous responsibilities to leak into
+your class.**
