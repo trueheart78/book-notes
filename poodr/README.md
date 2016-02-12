@@ -16,7 +16,7 @@ Notes:
 - [Chapter 1. Object-Oriented Design](ch1-oo-design.md)
 - [Chapter 2. Designing Classes with a Single Responsibility](ch2-designing-for-single-responsibility.md)
 - [Chapter 3. Managing Dependencies](ch3-managing-dependencies.md)
-- [Chapter 4. Creating Fkexibke Interfaces](ch4-creating-flexy-interfaces.md)
+- [Chapter 4. Creating Flexible Interfaces](ch4-creating-flexy-interfaces.md)
 - [Chapter 5. Reducing Costs with Duck Typing](ch5-duck-typing-ftw.md)
 - [Chapter 6. Acquiring Behavior Through Inheritance](ch6-behavior-thru-inheritance.md)
 - [Chapter 7. Sharing Role Behavior with Modules](ch7-behavior-thru-modules.md)
