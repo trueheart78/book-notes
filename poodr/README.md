@@ -21,7 +21,7 @@ Notes:
 - [Chapter 6. Acquiring Behavior Through Inheritance](ch6-behavior-thru-inheritance.md)
 - [Chapter 7. Sharing Role Behavior with Modules](ch7-behavior-thru-modules.md)
 - [Chapter 8. Combining Objects with Composition](ch8-object-composition.md)
-- [Chapter 9. Desiging Cost-Effective Tests](ch9-cost-effective-tests.md)
+- [Chapter 9. Designing Cost-Effective Tests](ch9-cost-effective-tests.md)
 
 Additional notes can be found in the [Ruby Rogues ep 87 notes](rr-ep87-notes.md)
 
