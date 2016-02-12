@@ -16,6 +16,12 @@ Notes:
 - [Chapter 1. Object-Oriented Design](ch1-oo-design.md)
 - [Chapter 2. Designing Classes with a Single Responsibility](ch2-designing-for-single-responsibility.md)
 - [Chapter 3. Managing Dependencies](ch3-managing-dependencies.md)
+- [Chapter 4. Creating Fkexibke Interfaces](ch4-creating-flexy-interfaces.md)
+- [Chapter 5. Reducing Costs with Duck Typing](ch5-duck-typing-ftw.md)
+- [Chapter 6. Acquiring Behavior Through Inheritance](ch6-behavior-thru-inheritance.md)
+- [Chapter 7. Sharing Role Behavior with Modules](ch7-behavior-thru-modules.md)
+- [Chapter 8. Combining Objects with Composition](ch8-object-composition.md)
+- [Chapter 9. Desiging Cost-Effective Tests](ch9-cost-effective-tests.md)
 
 Additional notes can be found in the [Ruby Rogues ep 87 notes](rr-ep87-notes.md)
 
