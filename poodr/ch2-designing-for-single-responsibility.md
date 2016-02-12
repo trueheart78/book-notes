@@ -27,7 +27,7 @@ You cannot get it right at the beginning.
 Design is more the art of preserving changeability than it is the act of achieving
 perfection.
 
-### Organizing Code to ALlow for Easy Changes
+### Organizing Code to Allow for Easy Changes
 
 Asserting that code should be easy to change is akin to stating should be polite;
 the statement is impossible to disagree with yet it in no way helps a parent raise
