@@ -194,4 +194,9 @@ dependency management.
 
 ## Summary
 
-They key to managing dependencies is to control their direction.
+Isolating dependencies allows objects to quickly adapt to unexpected changes.
+Depending on abstractions decreases the likelihood of facing these changes.
+
+The key to managing dependencies is to control their direction. The road to
+maintenance nirvana is paved with classes that depend on things that change
+less often than they do.
