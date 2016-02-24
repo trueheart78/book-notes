@@ -102,3 +102,42 @@ perspective. *"I need to send this message, who should respond to it?"* trumps
 
 You don't send messages because you have objects, you have objects because you
 send messages.
+
+### Asking for "What" Instead of Telling How
+
+There is a distinction between a message that asks for what the sender wants and
+a message that tells the receiver how to behave. Understanding this difference
+is a key part of creating reusable classes with well-defined public interfaces.
+
+### Seeking Context Independence
+
+An object can have a single responsibility but expects a context. If you are not
+careful, this can breed coupling.
+
+**The context that an object expects has a direct effect on how difficult it is to
+reuse.**
+
+Objects that have a simple context are easy to use and easy to test; they expect
+few things from their surroundings.
+
+The best possible situation is for an object to be completely independent of its
+context. An object that could collaborate with others without knowing who they
+are or what they do could be reused in novel and unanticipated ways.
+
+**What** an object wants from another should help guide you to see that **how**
+it wants it doesn't matter, and should be part of a separate object. Think
+dependency injection.
+
+### Trusting Other Objects
+
+An object should be able to say **"I know what I want and I trust you to do your
+part."** It should not know how it is done, or what the other object does. It
+only matters that it responds to the message that needs to be sent.
+
+Blind trust is a keystone of OOD. It allows objects to collaborate without
+binding themselves to context is necessary in any app that expects to grow and
+change.
+
+### Using Messages to Discover Objects
+
+
