@@ -140,4 +140,132 @@ change.
 
 ### Using Messages to Discover Objects
 
+Often times, you will find yourself needing an as yet undefined object, and
+this can happen via many routes. Using sequence diagrams makes this more likely
+to happen when it is cheapest; earliest in the design.
 
+### Creating a Message-Based Application
+
+Sequence diagrams can be helpful, but there are other methods. By switching
+your attention from objects to messages allows you to concentrate on designing
+an app built up public interfaces.
+
+## Writing Code That Puts Its Best (Inter)Face Forward
+
+The clarity of your interfaces reveals your design skills and reflects your
+self-discipline. However, it is difficult to create perfect interfaces.
+
+You should still try, though.
+
+**Think** about interfaces. Create them intentionally. They will define your
+app and determine its future, more than all of your tests and any of your code.
+
+### Create Explicit Interfaces
+
+Every time you create a class, declare its interfaces. Methods in the **public**
+interface should
+
++ Be explicitly defined as such
++ Be more about **what** than **how**.
++ Have names that, insofar as you can anticipate, will not change.
++ Uses named parameters.
+
+**Be just as intentional about the private interface; make it inescapably
+obvious**. Tests should support this endeavor.
+
+Know the different use-cases for `public`, `protected`, and `private`.
+
+1. They indicate which methods are stable and which are unstabe.
+2. They control how visible a method is to other parts of your app.
+
+Private: Only callable from inside the object. Unstable.
+
+Protected: Like private, but for sub-classes too? Kinda unstable.
+
+Public: Everyone has access. Stable.
+
+Consider using a leading underscore for private methods, a la Rails.
+
+Choose to convey the method visibility, regardless of exactly how.
+
+### Honor the Public Interfaces of Others
+
+Do your best to interact with other classes using only their public interfaces.
+
+If your design forces the use of a private method in another class, rethink
+your design.
+
+A dependenvy on a private method of an external framework is a form of technical
+debt. Avoid these dependencies.
+
+### Exercise Caution When Depending on Private Interfaces
+
+Despite your best efforts, you may find that you **must** depend on a private
+interface. *This is very dangerous*. If you must, be sure to isolate this
+dependency.
+
+### Minimize Context
+
+Construct public interfaces with an eye toward minimizing the context they
+require from others. Keep the **what** versus **how** distinction in mind; create
+public methods that allow senders to get what they want without knowing how
+your class implements its behavior.
+
+Do not succumb to a class that has an ill-defined or absent public interface.
+*Even if the original author did not define a public interface it is not too
+late to create one for yourself.*
+
+Do what best suits your needs, but create some kind of defined public interface
+and use it.
+
+## The Law of Demeter
+
+A set of coding rules that results in loosely coupled objects.
+
+### Defining Demeter
+
+Avoid sending messages to a thid object via a second object of a different type.
+**"Only talk to your immediate neighbor"** or **"use only one dot."**
+
+`customer.bicycle.wheel.tire`
+`hash.keys.sort.join(', ')`
+
+These are called *trainwrecks*, as they mimic a train car and the dots are the
+connections between them.
+
+### Consequences of Violations
+
+A "law" because a human being decided so; don't be fooled by its grandiose name.
+It's more like "floss your teeth every day" than it is like gravity.
+
+TRUE: transparent, reasonable, usable, and exemplary
+
+Due to type-checking, the line `hash.keys.sort.join(', ')` is a minor violation
+that has more payoffs than if you were to break it apart, where it would cost
+a more overall.
+
+The Law of Demeter exists *in service of* your overall goals.
+
+### Avoiding Violations
+
+Delegations are an option, either via Rails keywords or a wrapper method in Ruby.
+
+Careful, however, because using delegation can result in code that obeys the
+letter of the law while ignoring its spirit. Hiding tight coupling is not the
+same as decoupling the code.
+
+### Listening to Demeter
+
+Demeter is trying to tell you something and it isn't "use more delegation."
+
+The train wrecks of Demeter violations are clues that there are objects whose
+public interfaces are lacking. Listening to Demeter means paying attention to
+your point of view. The messages you find will become public interfaces in the
+objects they lead you to discover.
+
+## Summary
+
+Focusing on messages reveals objects that might otherwise be verlooked. When
+messages are trusting and ask for what the sender wants instead of how to
+behave, objects naturally evolve public inerfaces that are flexible and reusable
+in novel and unexpected ways.
