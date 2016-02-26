@@ -23,4 +23,49 @@ types and construct their public interfaces intelligently and dilligently.
 
 ### Overlooking the Duck
 
+### Compounding the Problem
+
+If your design imagination is constrained by class and you find yourself
+dealing with objects that don't understand the message you are sending, your
+tendency is to go hunt for messages these new objects **do** understand.
+
+If you send messages they understand that are not common, you are now checking
+classes and sending specific arguments to each. A case statement for class
+checking solves the problem of sending the correct messages but bloats the
+dependencies by a landslide.
+
+This code then introduces this pattern, causing the application design to suffer
+for the rest of eternity.
+
+### Finding the Duck
+
+Every argument is here for the same reason and that reason is unrelated to the
+argument's underlying class.
+
+Avoid getting sidetracked by your knowledge of what each argument's class already
+does; think instead about what the current method needs.
+
+Finding the common role becomes important, as each class needs to understand the
+correct message.
+
+## Conseqeunces of Duck Typing
+
+Getting to duck typing can take you through the quagmires of adversity.
+
+Concrete code is easy to understand but costly to extend.
+
+Abstract code may initially seem more obscure but, once understood, is far easier
+to change.
+
+The ability to tolerate ambiquity about the class of an object is the hallmark
+of a confident designer. Once you begin to treat your objects as if they are
+defined by their behavior rather than by their class, you enter into a new realm
+of expressive flexible design.
+
+**Polymorphism** in OOP refers to the ability of many different objects to respond
+to the same message. They agree to be interchangeable *from the sender's point of
+view*.
+
+## Writing Code That Relies on Ducks
+
 
