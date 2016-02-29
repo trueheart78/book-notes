@@ -68,4 +68,19 @@ view*.
 
 ## Writing Code That Relies on Ducks
 
+Recognize places where your application would benefit from across-class interfaces.
+
+Easy to implement, generally, but can be tricky to notice you need once and to
+abstract its interface.
+
+### Recognizing Hidden Ducks
+
+Look for
+
+- Case statements that switch on class
+- `kind_of?` and `is_a?`
+- `responds_to?`
+
+### Placing Trust in Your Ducks
+
 
