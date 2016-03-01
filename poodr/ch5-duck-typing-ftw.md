@@ -83,4 +83,66 @@ Look for
 
 ### Placing Trust in Your Ducks
 
+`kind_of?`, `is_a?`, `responds_to?` and `case` statements that switch on your
+classes indeicate the presence of an unidentified duck. In each case the code
+is effectively saying, "I know who you are and because of that **I know what
+you do.**" 
 
+The style of code is an indication that you are missing an object, one whose
+public interface you have not yet discovered.
+
+Flexible apps are built on objects that operate on trust; it is your job to
+make your objects trustworthy. Use the offending code's expectation to find
+the duck type, then define the interface, and trust those implementers to
+behave correctly.
+
+### Documenting Duck Types
+
+The simplest kind of duck type is one that exists merely as an agreement about
+its public interface.
+
+**When you create duck types you must both document and test their public
+interfaces.** Fortunately, good tests are the best documentation.
+
+### Sharing Code Between Ducks
+
+Once you start using duck types, you'll find that classes that implement them
+often need to share some behavior. Sharing code comes as part of
+[Chapter 7 on Modules](ch7-behavior-thru-modules.md).
+
+### Choosing Your Ducks Wisely
+
+Creating a new duck type relies on judgement. The purpose of design is to lower
+costs; bring this measuring stick to every situation. If creating a duck type
+would reduce unstable dependencies, do so. But some situations that use Ruby
+standard library checks are ok, because they depend on very stable things.
+
+**Avoid monkey patching to make duck typing a thing.**
+
+## Conquering a Fear of Duck Typing
+
+*skimmed, as per the book's suggestion*
+
+Programmers who fear dynamic typing tend to check the classes of objects in
+their code; these very checks subvert the power of dynamic typing, making it
+impossible to use duck types.
+
+More class checks = less flexible code.
+
+Duck typing provides a way out of this trap. It removes the dependencies on
+class and thus avoids the subsequent type failures. It reveals stable abstractions
+on which your code can safely depend.
+
+### Static vs Dynamic Typing
+
+*skimmed*
+
+### Embracing Dynamic Typing
+
+When a dynamically typed application cannot be tuned to run quickly enough,
+static typing is the alternative. **If you must, you must.**
+
+Metaprogramming is a scalpel; though dangerous in the wrong hands, it's a tool
+no good programmer should willingly be without.
+
+**The code is only as good as your tests; runtime failures can still occur.**
