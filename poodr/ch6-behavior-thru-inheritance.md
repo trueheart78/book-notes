@@ -69,3 +69,7 @@ You can use **UML class diagrams** to illustrate class relationships.
 The hollow triangle means that the class inherits from said class.
 
 ![UML class diagram](poodr-6-4.png)
+
+## Misapplying Inheritance
+
+
