@@ -181,7 +181,7 @@ and useful error messages for those that cannot.
 
 You might even consider changing the above `raise` to
 
-```
+```ruby
 raise NotImplementedError, "This #{self.class} cannot respond to:"
 ```
 
@@ -195,4 +195,51 @@ by implementing matching methods that raise useful errors.**
 
 ## Managing Coupling Between Superclasses and Subclasses
 
+### Understanding Coupling
 
+Just because something works doesn't guarantee that it's good enough.
+
+**Forcing a subclass to know how to interact with its abstract superclass causes
+many problems.** It pushes knowldge of the algorithm down into the subclasses,
+forcing each to explicitly send `super` to participate.
+
+### Decoupling Subclasses Using Hook Messages
+
+Instead of using `super`, which up until now has seemed fine, but has actually
+placed booby traps, hook messages change where the knowledge dependencies lay.
+
+**Note: How do I do a hook message using named parameters?**
+
+Answer from [Ruby 2.0 keyword arguments and hook message](https://medium.com/@heidar/ruby-2-0-keyword-arguments-and-hook-messages-3f006f5c8f65#.cxm9r46s1)
+
+Use the **double splat operator**, introduced along with keyword arguments.
+
+```ruby
+class Bird
+  def initialize(species:, **args)
+    @species = species
+    
+    post_initialize(args)
+  end
+end
+
+class Duck < Bird
+  def post_initialize(quack_frequency:)
+    @quack_frequency = quack_frequency
+  end
+end
+```
+
+Putting control of the timing in the superclass means the algorithm can change
+without forcing changes upon the subclasses.
+
+The hooks give control back to the superclass.
+
+When the hierarchy is correct, anyone can successfully create a new subclass.
+
+Hook methods allow inheritors to contribute specializations without knowing the
+abstract algorithm. They remove the need for subclasses to send `super` and
+therefore reduce the coupling between layers of the hierachy and increase
+its tolerance for change.
+
+Ease of extension is inheritance's greatest strength.
