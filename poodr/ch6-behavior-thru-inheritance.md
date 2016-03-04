@@ -72,4 +72,15 @@ The hollow triangle means that the class inherits from said class.
 
 ## Misapplying Inheritance
 
+*skimmable*
+
+You can call `super` in a method that you are overriding when performing inheritance,
+and call the original method. You can pass details, depend on class attributes, and
+handle the return values.
+
+Subclasses are **specializations** of their superclasses. A `MountainBike` should
+be everything that a `Bicycle` is, plus more. Any object that expects a `Bicycle`
+should be able to interact with a `MountainBike` in blissful ignorance of its
+actual class.
+
 
