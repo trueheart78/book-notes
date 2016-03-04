@@ -74,6 +74,8 @@ The hollow triangle means that the class inherits from said class.
 
 *skimmable*
 
+## Finding the Abstraction
+
 You can call `super` in a method that you are overriding when performing inheritance,
 and call the original method. You can pass details, depend on class attributes, and
 handle the return values.
@@ -82,5 +84,115 @@ Subclasses are **specializations** of their superclasses. A `MountainBike` shoul
 be everything that a `Bicycle` is, plus more. Any object that expects a `Bicycle`
 should be able to interact with a `MountainBike` in blissful ignorance of its
 actual class.
+
+### Creating an Abstract Superclass
+
+The superclass should contain the common behavior, and the subclasses will add
+specializations.
+
+The superclass will represent an **abstract** class, one that is defined as being
+disassociated from any specific instance.
+
+Only good sense prevents other programmers from creating instances of the superclass;
+in real life, this works remarkably well.
+
+A superclass is an abstract class.
+
+Abstract classes exist to be subclassed. This is their sole purpose.
+
+It almost never makes sense to create an abstract superclass with only one subclass.
+
+**Until you have a specific requirement that forces you to deal with other bikes,
+the current class is good enough.**
+
+Even when you have a requirement for two kinds of the same object, it **still**
+may not be the right moment to commit to inheritance. There are costs involved;
+the best way to minimize these costs is to maximize your chance of getting the
+abstraction correct before allowing subclasses to depend on it. If 2 items provide
+a lot of details, 3 provides even more.
+
+A decision to proceed with the hierarchy for 2 objects accepts the risk that you
+may not yet have enough info to identify the correct abstraction.
+
+When creating an abstract class, rename the class being abstracted to be a subclass,
+and create the abstraction against a new class.
+
+Code is easier to promote up to a superclass than to demote it down to a subclass.
+
+### Promoting Abstract Behavior
+
+Don't completely re-implement `initialize` when you can simply add args and call
+`super`.
+
+You might be tempted to skip the middlemanand just leave the code in the superclass
+to begin with, but this *push-everything-down-and-then-pull-some-things-up* strategy
+is an important part of this refactoring. **Many of the difficulties of inheritance
+are caused by a failure to rigorously separate the concrete from the abstract.**
+
+Whan deciding between refactoring strategies, or between design strategies in
+general, it is useful to ask the question: "What will happen if I am wrong?"
+
+**Promotion failures thus have low consequences.**
+
+The hierarchy can become untrustworthy if you use demotion-based superclassing.
+
+**The consequences of a demotion failure can be widespread and severe.**
+
+The general rule for refactoring into a new inheritance hierarchy is to arrange
+code so that you can promote abstractions rather than demote concretions.
+
+"What will happen *when* I'm wrong?" Every decision you make includes two costs:
+one to implement it and another to change it when you discover that you were
+wrong.
+
+### Separating Abstract from Concrete
+
+Sometimes, a concrete method will need to be broken up to make the abstract
+parts available in the superclass while the specific implementations need to
+stay in a subclass.
+
+### Using the Template Method Pattern
+
+Defining a basic structure in the superclass and sending messages to acquire
+subclass-specific contributions is known as the **template method** pattern.
+
+You might not need one for each attribute, just the attributes that need to be
+overridden by subclasses.
+
+A superclass can provide structure for its subclasses, where it permits them to
+influence the algorithm, it sends messages. Subclasses contribute to the
+algorithm by implementing matching methods.
+
+### Implementing Every Template Method
+
+Any class that uses the template method pattern must supply an implementation
+for every message it sends, even if that implementation looks like this:
+
+```ruby
+class Bicycle
+  def default_tire_size
+    raise NotImplementedError
+  end
+end
+```
+
+This provides useful documentation for those who can be relied upon to read it,
+and useful error messages for those that cannot.
+
+You might even consider changing the above `raise` to
+
+```
+raise NotImplementedError, "This #{self.class} cannot respond to:"
+```
+
+This will make error messaages unambiquous and easily correctable.
+
+Creating code that fails with reasonable error messages takes minor effor in
+the present but provides value forever. Each error message is a small thing,
+but small things accumulate to produce big effects and it is this attention to
+detail that marks you as a serious programmer. **Always document template errors
+by implementing matching methods that raise useful errors.**
+
+## Managing Coupling Between Superclasses and Subclasses
 
 
