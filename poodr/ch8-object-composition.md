@@ -179,4 +179,149 @@ risk.
 
 ### Accepting the Consequences of Inheritance
 
+#### Benefits of Inheritance
 
+Remeber the **T**ransparent, **Reasonable**, **Usable**, and **Exemplary** goals
+of code. Inheritance can excel at except the first of those.
+
+Correctly modeled hiarachies are extremely reasonable; big changes in behavior
+can be achieved via small changes in code.
+
+Hierarchies are thus usable; you can easily create new subclasses to accommodate
+new variants.
+
+Hierarchies are therefore exemplary; by their nature they provide guidance for
+writing the code to extend them.
+
+#### Costs of Inheritance
+
+You might be fooled into choosing inheritance to solve the wrong kind of problem.
+Because the model is incorrect, the behavior you may need to add won't fit; in
+this case you'll be forced to duplicate or restructure code.
+
+You could also be writing code that will be used by others for purposes you did
+not anticipate. They may want the behavior you have created but may not want
+the dependencies that inheritance demands.
+
+If you apply inheritance to a problem for which it is not suited, you get the
+opposite of the **reasonable**, **usable** and **exemplary** coins.
+
+Small changes could break everything, making it **unreasonable**.
+
+You may not be able to reuse existing behavior without changing it, making it
+**unusable**.
+
+Inadequate hierarchies should not be extended, they need to be refactored, but
+you may not have the skill to do so. You may be forced to duplicate existing
+code or to add dependencies on class names, both of which serve to exacerbate
+existing design problems.
+
+**Inheritance by definition comes with a deeply embedded set of dependencies.**
+
+"What will happen if I am wrong?" assumes special importance. Classical inheritance
+is both strong and weak; subclasses are bound, irrevocably and by design, to the
+classes above them in the hierarchy. 
+
+Your audience also matters here. It might be wise if you  are writing code for
+an in-house application with which you are intimately familiar. However, if you
+write code for a wider audience, anticipating the needs becomes harder and the
+suitability of requiring inheritance as part of the interface goes down.
+
+Avoid writing frameworks that require users of your code to subclass your objects
+in order to gain your behavior. Their application's objects may already be
+arranged in a hierarchy; inheriting from your framework may not be possible.
+
+### Accepting the Consequences of Composition
+
+Composed objects do not depend on the structure of the class hierarchy, and they
+delegate their own messages.
+
+#### Benefits of Composition
+
+Small objects that have a single responsibility are **transparent**; easy to
+understand the code and it's clear what will happen if it changes.
+
+From the point of view of the composed object, adding a new variant of an
+existing part is **reasonable** and requires no changes to its code.
+
+Well-composed objects are therefore easily **usable** in new and unexpected
+contexts.
+
+At best, composition results in applications built of simple, pluggable objects
+that are easy to extend and have a high tolerance for change.
+
+#### Costs of Composition
+
+While every individual part may indeed be transparent, the whole may not be.
+
+Identical delegation code may be needed by many different objects; composition
+has no way to share this code.
+
+Composition is excellent as prescribing rules for assembling an object made of
+parts but doesn't provide as much help for the problem of arranging code for a
+collection of parts that are very nearly identical.
+
+### Choosing Relationships
+
+The trick to lowering your application costs is to apply each technique to the
+right problem. 
+
+- "Inhertiance is specialization."
+- "Inheritance is best suited to adding functionality to existing classes when
+   you will use most of the old code and add relatively small amounts of new
+   code."
+- "Use composition when the behavior is more than the sum of its parts."
+
+#### Use Inheritance for is-a Relationships
+
+Small sets of real-world objects that fall naturally into static, transparently
+obvious specialization hierarchies are candidates to be modeled using classical
+inheritance.
+
+If you have  six different shocks, almost all identical, you can see that each
+is-a shock.
+
+If modeling a bevy of new shocks requires dramatically expanding the hierarchy,
+or if the new shocks don't conveniently fit into the existing code, reconsider
+alternatives **at that time.**
+
+#### Use Duck Types for behaves-like-a Relationships
+
+For problems that require many different objects to play a common role, duck
+types are the likely candidate. For *scheduable, preparable, printable, etc*.
+
+A bicycle **behaves-like-a** scheduable but it **is-a bicycle**. Also, the need
+is widespread; many otherwise unrelated objects share a desire to play the same
+role.
+
+Think about roles from the outside. The holder of a *schedulable* expects it to
+implement `Schedulable`'s interface and to honor `Schedulable`'s contract. All
+*schedulabless* are alike in that they must meet these expectations.
+
+You need to recognize that a role exists, define the interface of its duck type
+and provide an implementation of that interface for every possible player. Some
+roles consist only of their interface, others share common behavior. Define the
+common behavior in a Ruby module to allow objects to play the role without
+duplicating the code.
+
+#### Use Composition for has-a Relationships
+
+Many objects contain numerous parts but are more than the sum of those parts.
+`Bicycles` **have-a** `Parts`, but the bike itself is something more. Given
+the current requirements of the bicycle example, the most cost-effective way to
+model the `Bicycle` object is via composition.
+
+This **is-a** versus **has-a** distinction is at the core of deciding between
+inheritance and composition. The more parts an object has, the more likely it
+should be modeled with composition. For every problem, assess the costs and
+benefits of alternative design techniques and use your judgement and experience
+to make the best choice.
+
+## Summary
+
+Learning to use these techniques properly is a matter of experience and judgement,
+and one of the best ways to gain experience is to learn from your own mistakes.
+
+The key to improving your design skills is to attempt these techniques, accept
+your errors cheerfully, remain detached from past design decisions, and refactor
+mercilessly.
