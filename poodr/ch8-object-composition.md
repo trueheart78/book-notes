@@ -112,4 +112,71 @@ array and includes `Enumerable` to get common traversal and searching methods.
 
 ## Manufacturing Parts
 
+Everything would be easier if you could describe the different bikes and then use
+your descriptions to magically manufacture the correct `Parts` object for any
+bike.
+
+It is easy to describe the combination of parts that make up a specific bike.
+
+The manner in which it makes sense to you is a good sense that maybe using a
+factory could help make life even easier, and the code, more expressive.
+
+### Creating the PartsFactory
+
+An object that manufactures other objects is a factory, per chapter 3. 
+
+The word **factory** does not mean difficult or contrived or overly complicated;
+it's merely the word OO designers use to concisely communicate the idea of an
+object that creates other objects. **Ruby factories are simple and there is no
+reason to avoid this intention revealing word.**
+
+Putting knowledge of the configuration structure in a factory has two consequences.
+First, the config can be expressed very tersley. Second, once you commit to
+keeping the config structure in an array, you should **always** use the factory
+to generate new items.
+
+### Leveraging the PartsFactory
+
+Once a factory is up and running, it might take a lot of the burden off from
+the object it generates. In the instance of the `Part` class, it can actually
+be reduced to an `OpenStruct` instead of a class.
+
+`OpenStruct` is a lot like the `Struct` class, as it provides a convenient way
+to bundle a number of attributes into an object. `Struct` differs because it
+takes position order initialization while `OpenStruct` takes a hash and then
+derives attributes appropriately.
+
+Remember that the `Part` is a role, and removing the class and using an
+`OpenStruct` shouldn't bother you. You can actually have the `OpenStruct` be
+part of the code that the message uses, instead of being a standalone class.
+
+## The Composed Bicycle
+
+`Bicycle` **has-a** `Parts`, which in turn **has-a** collection of `Part`
+objects. `Parts` and `Part` may exists as classes, but the objects in which
+they are contained think of them as roles. `Parts` is a class that plays the
+`Parts` role; it implements `spares`. The role of `Part` is played by an
+`OpenStruct`, which implements `name`, `description`, and `needs_spare`.
+
+**Aggregation is exactly like composition except that the contained object has
+an independent life.**
+
+## Deciding Between Inheritance and Composition
+
+For the cost of arranging objects in a hierarchy, you get message delegation
+for free.
+
+Composition allows objects to have structural independence, but at the cost of
+explicit message delegation.
+
+The general rule is that, faced with a problem that composition can solve,
+you should be biased towards doing so. If you cannot explicitly defend inheritance
+as a better solution, use composition. It contains far fewer built-in dependencies
+than inheritance; it is very often the best choice.
+
+Inheritance *is* a better solution when its use provides high reward for low
+risk.
+
+### Accepting the Consequences of Inheritance
+
 
