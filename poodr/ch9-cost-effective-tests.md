@@ -129,4 +129,51 @@ number of times, and with what arguments, the message is sent.
 messages should be tested to ensure they get sent. Outgoing query messages
 should not be tested.**
 
+As long as your application's objects deal with one another strictly via public
+interfaces, your tests need know nothing more. As long as the public interfaces
+remain stable, you can write tests once and they will keep you safe forever.
 
+### Knowing When to Test
+
+You should write tests first, whenever it makes sense to do so. Novice designers
+sare best served by writing test-first code.
+
+Writing tests first is no substitute for and does not guarantee a well-designed
+application. The most complext code is usually written by the least qualified
+person. Novice programmers don't yet have the skills to write simple code.
+
+If you are a novice and in this situation, it's important to sustain faith in
+the value of tests. Because well-designed apps are easy to change, and well-
+designed tests may very well avoid change altogether, these overall design
+improvements pay off dramatically.
+
+Experienced designers garner subtler improvements from testing-first. Tests add
+value in other ways.
+
+"Spiking" a problem, where they just write code, are exploratory and for problems
+whose solution they are uncertain. Once the design is understood, they revert to
+test-first for production code.
+
+The license to use your own judgment is not permission to skip testing. Poorly
+designed code without tests is just legacy code that can't be tested.
+
+### Knowing How to Test
+
+Pick a testing suite; MiniTest and RSpec are both great choices.
+
+Test Drive Development is an inside-out approach, while Behavior Driven Development
+is an outside-in approach. The latter creates objects at the boundary of an app
+and works inward, mocking out as-yet-unwritten objects. TDD usually starts with
+tests of domain objects and then reuses said objects in the test of adjacent
+layers of code.
+
+There is no preference except personal preference.
+
+Tests should know about the **object under tests**. They shouldn't know anything
+else.
+
+It's also better for tests to assume a viewpoint that sights along the edges
+of the object under tests, where they can know only about the messages that
+come and go; they should know nothing internal about the object under test.
+
+## Testing Incoming Messages
