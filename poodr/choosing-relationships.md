@@ -1,6 +1,6 @@
 [&lt;&lt; Back to the README](README.md)
 
-*Pulled from the end of Chater 8, "Combining Objects with Composition"*
+*Pulled from the end of Chapter 8, "Combining Objects with Composition"*
 
 # Choosing Relationships
 
