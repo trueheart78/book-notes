@@ -10,8 +10,15 @@ It's also better for tests to assume a viewpoint that sights along the edges
 of the object under tests, where they can know only about the messages that
 come and go; they should know nothing internal about the object under test.
 
+## Injecting Dependencies Using Classes
 
-## Creating Test Doubles
+**When the code in your test uses the same collaborating objects as the code in
+your application, your tests always break when they should. This can't be
+emphasized enough.**
+
+### Injecting Dependencies as Roles
+
+#### Creating Test Doubles
 
 A fake object is called a *test double*. You can use one to play a role, when
 necessary. It is a stylized instance of a role player that is used exclusively
