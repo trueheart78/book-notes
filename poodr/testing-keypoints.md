@@ -34,7 +34,7 @@ the provided test framework's instance, unless there is an added benefit.
 
 ## Choosing to Test a Private Method
 
-If you create  amess and never fix it your costs will eventually go up, but for
+If you create a mess and never fix it your costs will eventually go up, but for
 the roght problem, having enough confidence to write embarrassing code can save
 money. **When your intention is to defer a design decision, do the simplest
 thing that solves today's problem. Isolate the code behind the best interface
