@@ -25,3 +25,14 @@ For simple test doubles, don't be afraid to use a PORO. You don't need to use
 the provided test framework's instance, unless there is an added benefit.
 
 
+## Choosing to Test a Private Method
+
+If you create  amess and never fix it your costs will eventually go up, but for
+the roght problem, having enough confidence to write embarrassing code can save
+money. **When your intention is to defer a design decision, do the simplest
+thing that solves today's problem. Isolate the code behind the best interface
+you can conceive and hunker down and wait for more info.**
+
+Rules-of-thumb for testing private methods: Never write them, and if you do,
+never ever test them, unless of course it makes sense to do so. Be biased against
+writing these tests but do not fear to do so if this would improve your lot.

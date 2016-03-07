@@ -268,4 +268,37 @@ principles of design.
 
 ## Testing Private Methods
 
+Testing private methods is never necessary. Issues should arise from the testing
+of public methods that already have tests. These tests are redundant.
+
+Private methods are also unstable, so tests are likely to be coupled to code
+that is likely to change.
+
+Testing private methods can mislead others into using them. Your tests should
+hide private methods, not expose them.
+
+### Removing Private Methods from the Class Under Test
+
+You can avoid private methods altogether.
+
+If your object has so many private methods that you dare not leave them untested,
+consider extracting them into a new object.
+
+However, methods don't become magically more reliable just because they got
+moved.
+
+### Choosing to Test a Private Method
+
+If you create  amess and never fix it your costs will eventually go up, but for
+the roght problem, having enough confidence to write embarrassing code can save
+money. **When your intention is to defer a design decision, do the simplest
+thing that solves today's problem. Isolate the code behind the best interface
+you can conceive and hunker down and wait for more info.**
+
+Rules-of-thumb for testing private methods: Never write them, and if you do,
+never ever test them, unless of course it makes sense to do so. Be biased against
+writing these tests but do not fear to do so if this would improve your lot.
+
+## Testing Outgoing Messages
+
 
