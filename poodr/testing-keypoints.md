@@ -31,7 +31,6 @@ canned answer.
 For simple test doubles, don't be afraid to use a PORO. You don't need to use
 the provided test framework's instance, unless there is an added benefit.
 
-
 ## Choosing to Test a Private Method
 
 If you create a mess and never fix it your costs will eventually go up, but for
@@ -43,3 +42,32 @@ you can conceive and hunker down and wait for more info.**
 Rules-of-thumb for testing private methods: Never write them, and if you do,
 never ever test them, unless of course it makes sense to do so. Be biased against
 writing these tests but do not fear to do so if this would improve your lot.
+
+## Testing Outgoing Messages
+
+Two types of outgoing messages: *query* and *command*.
+
+### Ignoring Query Messages
+
+Tests should ignore outgoing query messages. They should be tested as incoming
+messages from the corresponding object's tests.
+
+### Proving Command Messages
+
+In this case, it does matter that a message gets sent; other parts of the app
+depend on something that happens as a result. The object under test is
+responsible for sending the message and your tests must prove it does so.
+
+**The responsibility for testing a message's return value lies with its
+receiver. Doing so anywhere else duplicates tests and raises costs.**
+
+To prove that a message gets sent from the object under test to another
+object, without relying on checking what comes back when it does, you need to
+use a *mock*. **Mocks** are tests of behavior, as opposed to tests of state.
+**Instead of making assertions about what a message returns, mocks define an
+expectation that a message will get sent.**
+
+**Mocks are meant to prove messages get sent, they return results only when
+necessary to get tests to run.**
+
+
