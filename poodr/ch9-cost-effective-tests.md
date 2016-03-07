@@ -177,3 +177,95 @@ of the object under tests, where they can know only about the messages that
 come and go; they should know nothing internal about the object under test.
 
 ## Testing Incoming Messages
+
+Incoming messages need tests because other application objects depend on their
+signatures and on the results they return. 
+
+### Deleting Unused Interfaces
+
+Incoming messages ought to have dependents. Some object *other than the original
+implementer* depends on each of these messages.
+
+If you find yourself with an incoming message that does not have dependents,
+question it. What purpose is served by implementing a message that no one sends?
+It's not really *incoming* at all, it's speculative and reeks about guessing
+the future, anticipating requirements that don't exist.
+
+**Do not test an incoming message that has no dependents; delete it.** Ruthlessly
+eliminate code that is not actively being used. It's a negative cash flow,
+adding tests and maintenance burdens without providing value. Deleting unused
+code saves money right now, if you do not do so must test it.
+
+**Overcome any relucatance that you feel; practicing deleting unused code will
+teach you the value of such pruning.**
+
+Regardless of whether you do it with joy or in pain, delete the code. Unused
+code costs more to keep than to recover.
+
+### Proving the Public Interface
+
+Incoming messages are tested by making assertions about the value, or state,
+that their invocation returns. The first requirement for testing an incoming
+message is to prove that it returns the correct value in every possible
+situation.
+
+Tests run fastest when they execute the least code and the volume of external
+code that test invokes is directly related to your design.
+
+Tests are harbingers of things to come for your application as a whole.
+
+### Isolating the Object Under Test
+
+Freeing your imagination from an attachment to the class of the incoming object
+opens design *and testing* possibilities that are otherwise unavailable. Think
+of an injected object as an instance of its role and you will have more choices
+about what kind of object to inject during your tests.
+
+### Injecting Dependencies Using Classes
+
+**When the code in your test uses the same collaborating objects as the code in
+your application, your tests always break when they should. This can't be
+emphasized enough.**
+
+### Injecting Dependencies as Roles
+
+#### Creating Test Doubles
+
+A fake object is called a *test double*. You can use one to play a role, when
+necessary. It is a stylized instance of a role player that is used exclusively
+for testing. They can be easy to make; nothing hinders you from creating one
+for each situation.
+
+Doubles can *stub* methods, to implement a version of a message that returns a
+canned answer.
+
+For simple test doubles, don't be afraid to use a PORO. You don't need to use
+the provided test framework's instance, unless there is an added benefit.
+
+*Tes doubles* are *not* mocks; those are something completely different and will
+be discussed later on.
+
+#### Living the Dream
+
+You can get false positives if you use test doubles to implement public interfaces,
+but then the public interface changes but the test double and object under test
+do not.
+
+#### Using Tests to Document Roles
+
+When remembering that a role even exists is a challenge, forgetting that test
+doubles play it is inevitable.
+
+Roles need tests of their own.
+
+Injecting doubles can speed tests but leave them vulnerable to constructing a
+fantasy world where tests work but the application fails. And injecting the
+same objects at test time as are used at runtime ensures that tests break
+correctly but may lead to long running tests.
+
+Reducing object coupling is up to you and relies on your understanding of the
+principles of design.
+
+## Testing Private Methods
+
+
