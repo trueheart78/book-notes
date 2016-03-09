@@ -378,5 +378,120 @@ of consequence.
 
 ## Testing Inherited Code
 
+The first goal of testing is to prove that all objects in the hierarchy honor
+their contract. Substypes should be substitutable for their supertypes. The
+easiest way to prove that every object in the hierarchy obeys Liskov is to write
+a shared test for the common contract and include said test in every object.
+
+Any object that passes the interface test can be trusted to act like the object.
+
+### Specifying Subclass Responsibilities
+
+The abstract superclass imposes requirements upon its subclasses.
+
+#### Confirming Subclass Behavior
+
+Because there are many subclasses,they should share a common test to prove that
+each meet the requirements.
+
+```ruby
+module SubclassTest
+  def test_responds_to_post_initialize
+    assert_respond_to(@object, :post_initialize)
+  end
+
+  def test_responds_to_local_spares
+    assert_respond_to(@object, :local_spares)
+  end
+
+  def test_responds_to_default_tire_size
+    assert_respond_to(@object, :default_tire_size)
+  end
+end
+```
+
+The above test codifies the requirements for subclasses. It doesn't force subclasses
+to implement the methods, they can just be inherited. This test just proves that
+a subclass does nothing so crazy that it causes these messages to fail.
+
+A subclass can share the superclass interface test, as well as the subclass test.
+
+These tests give you confidence that subclasses aren't drifting away from the
+standard, and they allow novices to create new subclasses in complete safety.
+
+#### Confirming Superclass Enforcement
+
+When creating abstract superclasses, you will run into times where you need to
+instantiate an object from the superclass during tests, but it is not something
+you would do during your actual application development. This will be covered in
+the **Testing Abstract Superclass Behavior** further down.
+
+### Testing Unique Behavior
+
+#### Testing Concrete Subclass Behavior
+
+It's important to test these specializations without embedding knowledge of the
+superclass into the test. You should be able to ensure that `local_spares` works
+while maintaining ignorance about the existence of the superclass' `spares`
+method. The latter method is already part of the interface test, anyway.
+
+#### Testing Abstract Superclass Behavior
+
+Creating an instance of an abstract superclass is not only hard but the instance
+might not have all the behavior you need to make the test run.
+
+You are equipped to handle this.
+
+Since the abstract superclass used template methods to acquire concrete specializations
+you can stub the behavior that would normally be supplied by subclasses. Even better,
+you can easily manufacture a testable instance of it by creating a new subclass
+for use solely by this test.
+
+```ruby
+class StubbedBike < Bicycle
+  def default_tire_size
+    0
+  end
+  def local_spares
+    {saddle: 'painful'}
+  end
+end
+
+class BicycleTest < MiniTest::Unit::TestCase
+  include BicycleInterfaceTest
+   
+  def setup
+    @bike = @object = Bicycle.new(tire_size: 0)
+    @stubbed_bike = StubbedBike.new
+  end
+
+  def test_forces_subclasses _to_implement_default_tire_size
+    assert_raises(NotImplementedError) { @bike.default_tire_size }
+  end
+
+  def test_includes_local_spares
+    assert_equal @stubbed_bike.spares, { tire_size: 0, chan: '10 speed', saddle: 'painful' }
+  end
+end
+```
+
+The idea of creating a subclass to supply stubs can be helpful in many situations.
+As long as your new subclass does not violate Listkov, you can use this technique
+in any test you like.
+
+If you fear the `StubbedBike` will become obsolete and permit tests to pass when
+they should fail, use a subclass test, like you would with a test double. So you
+would be using a subclass shared test, as well as an interface test.
+
+Carefully written inheritance hierarchies are easy to test. Write a shareable
+test for the overall interface and another for the subclass responsibilities.
+Diligently isolate responsibilities. Be especially careful when testing subclass
+specializations to prevent knowledge of the superclass from leaking down into
+the subclass's test.
+
+## Summary
+
+The best tests are loosely coupled to the underlying code and test everything
+once and in the proper place. They add value without increasing costs.
 
 
