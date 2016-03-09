@@ -334,12 +334,12 @@ elsewhere.
 
 ## Testing Duck Types
 
-Creating tests that role players can share and returning to the original problem
+Create tests that role players can share and returning to the original problem
 and uses shareable tests to prevent test doubles from becoming obsolete.
 
 ### Testing Roles
 
-If you run into code that uses the antipatter of class checking to know which
+If you run into code that uses the antipattern of class checking to know which
 message to send, consider refactoring to a better design before writing tests.
 It's a rare case that this is the recommended course of action, but with the
 code being so fragile, this is the one time.
