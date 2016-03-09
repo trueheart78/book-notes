@@ -367,5 +367,16 @@ module to share the test code.
 
 ### Using Role Tests to Validate Doubles
 
+In the instance where test doubles can cause tests to pass, even though the
+public interface of the real class has changed, you should use a shared role
+test against the test double, guaranteeing that a false positive will happen,
+and raising the chance that your tests will catch breakages.
+
+When you treat test doubles as you would any other role player and test them to
+prove their correctness, you avoid test brittleness and can stub without fear
+of consequence.
+
+## Testing Inherited Code
+
 
 
