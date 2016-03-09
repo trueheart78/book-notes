@@ -332,6 +332,40 @@ expectations on these mocks allows you to prove that the object under test
 fulfills its responsibilities without duplicating assertions that belong
 elsewhere.
 
-## Testing Ducks
+## Testing Duck Types
+
+Creating tests that role players can share and returning to the original problem
+and uses shareable tests to prevent test doubles from becoming obsolete.
+
+### Testing Roles
+
+If you run into code that uses the antipatter of class checking to know which
+message to send, consider refactoring to a better design before writing tests.
+It's a rare case that this is the recommended course of action, but with the
+code being so fragile, this is the one time.
+
+You first need to decide on the proper role's interface and implement that in
+every player of the role.
+
+Your tests should document the existence of the role, prove each of the classes
+that play the role behave correctly, and show that the interaction with them
+appropriately.
+
+Used sharable tests to assert that the class responds to the public interface
+for the role, and include the tests in all the relevant classes.
+
+In MiniTest, you can define the interface test as a module, alllowing you to
+write the test once and then reuse it in every object that plays the role. The
+module serves as a test and as documentation. It raises the visibility of the
+role and makes it easy to prove that any created role player fulfills its
+obligations.
+
+For the classes that need to verify the message is sent to the role, use a mock
+to verify that it is sent properly. If more than a single class depends on
+talking to the role players, then consider moving the mock-based test into a
+module to share the test code.
+
+### Using Role Tests to Validate Doubles
+
 
 
