@@ -2,7 +2,7 @@
 
 # Chapter 1. Introduction
 
-*Ruby is designed to make programmers happy."* - Yukhiro "Matz" Matsumoto
+*"Ruby is designed to make programmers happy."* - Yukhiro "Matz" Matsumoto
 
 **This is a book about Ruby, and about joy.**
 
