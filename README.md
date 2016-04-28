@@ -60,3 +60,17 @@ run `./generate sample-book`, you should see the following:
 ---------------------
 Import 'An Awesome Book' by That One Girl :: 4 chapters? (y/n)
 ```
+
+Entering `y` will generate the proper files, along with this task:
+
+```sh
+**********************************************************************
+
+Please add the following to the root README.md file:
+
+1. [An Awesome Book](an-awesome-book/README.md)
+
+**********************************************************************
+
+Book notes generated successfully.
+```
