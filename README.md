@@ -44,7 +44,7 @@ And follow the prompts.
 After you save the above as `book_data/sample-book.yml`, and
 run `./generate sample-book`, you should see the following:
 
-```sh
+```
 - Directory: an-awesome-book
 - Title: An Awesome Book
 - Purchase: http://buyonline.example.com
@@ -61,7 +61,8 @@ run `./generate sample-book`, you should see the following:
 Import 'An Awesome Book' by That One Girl :: 4 chapters? (y/n)
 ```
 
-Entering `y` will generate the proper files, along with this task:
+Entering `y` will generate the proper files in the note directory,
+download the image (if it is valid), and inform you of this task:
 
 ```
 **********************************************************************
