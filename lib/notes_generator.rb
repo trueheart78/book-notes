@@ -10,13 +10,31 @@ class NotesGenerator
     download_image
     write_readme
     write_chapters
-    puts 'Book notes generated successfully.'
+    inform_user
   end
 
   private
 
   def rollback
     exit 1
+  end
+
+  def inform_user
+    puts [
+      spacer,
+      '',
+      'Please add the following to the root README.md file:',
+      '',
+      "1. [#{book.title}](#{readme_path})",
+      '',
+      spacer,
+      '',
+      'Book notes generated successfully.'
+    ].join "\n"
+  end
+
+  def spacer
+    '*' * 70
   end
 
   def create_directory
