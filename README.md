@@ -63,7 +63,7 @@ Import 'An Awesome Book' by That One Girl :: 4 chapters? (y/n)
 
 Entering `y` will generate the proper files, along with this task:
 
-```sh
+```
 **********************************************************************
 
 Please add the following to the root README.md file:
