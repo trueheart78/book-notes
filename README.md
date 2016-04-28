@@ -61,7 +61,7 @@ run `./generate sample-book`, you should see the following:
 Import 'An Awesome Book' by That One Girl :: 4 chapters? (y/n)
 ```
 
-Entering `y` will generate the proper files in the note directory,
+Entering `y` will generate the proper files in the noted directory,
 download the image (if it is valid), and inform you of this task:
 
 ```
