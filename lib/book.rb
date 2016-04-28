@@ -5,20 +5,52 @@ class Book
     @yaml_file = yaml_file
   end
 
+  def overview
+    [
+      "- Directory: #{directory}",
+      "- Title: #{title}",
+      "- Purchase: #{purchase}",
+      "- Author: #{author}",
+      "- Homepage: #{homepage}",
+      "- Image? #{image?} [#{image_ext}]",
+      "   #{image}",
+      "- Chapters: #{chapters.size}",
+    ].concat(chapter_overview).join "\n"
+  end
+
+  def chapter_overview
+    chapter_list.map(&:to_s).map { |x| "   #{x}" }
+  end
+
   def directory
-    filecase title
+    title.downcase.gsub(/[^0-9a-z.\-]/, '-')
   end
 
   def chapter_list
-    @chapters ||= chapters.map.with_index { |v, i| chapter_hash(v, i+1) }
+    @chapters ||= chapters.map.with_index { |name, num| Chapter.new num, name }
   end
 
   def image?
-    !image.empty?
+    return true if image && !image.empty?
+    false
   end
 
   def image_file
     "#{directory}-cover.#{image_ext}"
+  end
+
+  def to_md
+    [
+      '[&lt;&lt; Back to project home](../README.md)',
+      '',
+      "# #{title}",
+      '',
+      "By the #{adjective} [#{author}](#{homepage})",
+      '',
+      "[Purchase](#{purchase})",
+      '',
+      'Notes:'
+    ].concat(chapter_md).concat(image_md).join "\n"
   end
 
   def to_s
@@ -39,22 +71,13 @@ class Book
 
   private
 
-  def chapter_hash(name, num)
-    num = pad_chapter(num)
-    {
-      num: num,
-      name: name,
-      path: "ch#{num}-#{filecase(name)}.md"
-    }
+  def chapter_md
+    chapter_list.map(&:readme_md).map { |chapter| "- #{chapter}" }
   end
 
-  def pad_chapter(num)
-    return "0#{num}" if num < 10 && chapters.size >= 10
-    num.to_s
-  end
-
-  def filecase(string)
-    string.downcase.gsub(/[^0-9a-z.\-]/, '-')
+  def image_md
+    return [ '', "![book cover](#{image_file})" ] if image?
+    []
   end
 
   def yaml_file
@@ -67,5 +90,9 @@ class Book
 
   def attr_list
     [:title, :purchase, :author, :homepage, :image, :image_ext, :chapters]
+  end
+
+  def adjective
+    %w{fantastic grand marvelous terrific tremendous wondrous howling rattling}.sample
   end
 end
