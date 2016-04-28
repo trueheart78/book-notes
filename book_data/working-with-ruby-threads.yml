@@ -1,0 +1,25 @@
+---
+:title: Working with Ruby Threads
+:purchase: http://www.jstorimer.com/products/working-with-ruby-threads
+:author: Jesse Storimer
+:homepage: http://www.jstorimer.com/
+:image: https://imagery.pragprog.com/products/384/jsthreads.jpg?1379301662
+:image_ext: jpg
+
+:chapters:
+  - Threads of Execution
+  - Lifecycle of a Thread
+  - Concurrent != Parallel
+  - The GIL and MRI
+  - Real Parallel Threading with JRuby and Rubinius
+  - How Many Threads Are Too Many?
+  - Thread Safety
+  - Protecting Data with Mutexes
+  - Signaling Threads with Condition Variables
+  - Thread-Safe Data Structures
+  - Writing Thread-Safe Code
+  - Thread-Safety on Rails
+  - Wrap Your Threads in an Abstraction
+  - How Sidekiq Uses Celluloid
+  - Puma's Thread Pool Implementation
+  - Closing

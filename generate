@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+exit 1 unless ARGV.size > 0
+
+file = ARGV.shift
+file = "#{file}.yml" unless file.downcase[-4..-1] == '.yml'
+yaml_file = "book_data/#{file}"
+exit 1 unless File.exist? yaml_file
+
+require_relative 'lib/book'
+
+book = Book.new(yaml_file)
+
+#p book.chapter_list
+puts "Import #{book}? (Y/N)"
+
+# puts "has image:\n+ #{book.image} [#{book.image_ext}]" if book.image?
+#`wget -O #{book.directory}/#{book.image_file} #{book.image}`
