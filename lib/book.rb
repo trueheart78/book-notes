@@ -19,7 +19,7 @@ class Book
   end
 
   def chapter_overview
-    chapter_list.map(&:to_s).map { |x| "   #{x}" }
+    chapter_list.map { |x| "   #{x}" }
   end
 
   def directory
@@ -49,7 +49,8 @@ class Book
       '',
       "[Purchase](#{purchase})",
       '',
-      'Notes:'
+      'Notes:',
+      ''
     ].concat(chapter_md).concat(image_md).join "\n"
   end
 

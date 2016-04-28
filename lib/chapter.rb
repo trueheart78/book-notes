@@ -20,10 +20,12 @@ class Chapter
   end
 
   def to_md
-    [ '[&lt;&lt; Back to the README](README.md)',
+    [
+      '[&lt;&lt; Back to the README](README.md)',
       '',
       "# #{proper_name}",
-      ''
+      '',
+      '*Notes forthcoming*'
     ].join "\n"
   end
 
