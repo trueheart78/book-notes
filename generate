@@ -12,6 +12,12 @@ require_relative 'lib/book'
 book = Book.new(yaml_file)
 
 #p book.chapter_list
+#
+if File.exist? book.directory
+  puts "Directory already exists! [#{book.directory}/]"
+  exit 1
+end
+
 puts "Import #{book}? (Y/N)"
 
 # puts "has image:\n+ #{book.image} [#{book.image_ext}]" if book.image?
