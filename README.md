@@ -20,3 +20,21 @@ To generate the proper structure for a new book, run:
 ```
 
 And follow the prompts.
+
+## Sample Book YAML
+
+```yaml
+---
+:title: An Awesome Book
+:purchase: http://buyonline.example.com
+:author: That One Girl
+:homepage: http://www.thatonegirl.com/
+:image: https://image.example.com/an-awesome-book/
+:image_ext: jpg
+
+:chapters:
+  - The First Chapter
+  - The Second Chapter
+  - The Third Chapter
+  - In Closing
+```
