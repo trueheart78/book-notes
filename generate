@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+require_relative 'lib/import_controller'
+require_relative 'lib/book'
+require_relative 'lib/chapter'
+require_relative 'lib/notes_generator'
+
+ImportController.new(ARGV).run
