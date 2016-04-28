@@ -8,3 +8,15 @@ Books :books:
 1. [Confident Ruby](confident-ruby/README.md)
 1. [Practical Object-Oriented Design in Ruby](poodr/README.md) :heart:
 1. [Seven Databases in Seven Weeks](seven-db-in-seven-weeks/README.md)
+
+## Adding a Book
+
+Books can be added by creating a `book-name.yml` file in the `book_data/` directory. 
+
+To generate the proper structure for a new book, run:
+
+```sh
+./generate book-name
+```
+
+And follow the prompts.
