@@ -66,7 +66,7 @@ The GIL is generally misunderstood.
 
 **This is not true.**
 
-### Mything: The GIL prevents concurreny.
+### Myth: The GIL prevents concurreny.
 
 This is a misunderstanding of terms.
 
