@@ -176,3 +176,29 @@ Collecting payment...
 ```
 
 ## Mutexes and Memory Visibility
+
+Should the same shared mutex be used when a thread tries to read the order
+status?
+
+**If you are setting a variable while holding a mutex, and other threads want to
+see the most current value of that variable, they should also perform the read
+while holding the mutex.**
+
+A **memory barrier** is the solution. Mutexes are implemented with memory barriers,
+so that when they are locked, a memory barrier provides the proper memory
+visibility semantics.
+
+```rb
+# this could be stale
+status = order.status
+
+# this line is guaranteed to be consistent with other threads
+status = mutex.synchronize { order.status }
+```
+
+Ruby doesn't have a memory model specification. However, **mutexes carry an
+implicit memory barrier**.
+
+## Mutex Performance
+
+*Left off on Page 91.*
