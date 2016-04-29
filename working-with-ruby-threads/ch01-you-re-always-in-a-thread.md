@@ -13,6 +13,9 @@ process**. Only the main thread does this.
 `Thread.current` always refers to the current thread. Seems obvious, but since
 it can be called from any thread, it always returns the correct thread asking.
 
+If you check the current thread from a new thread, it will not be the main
+thread.
+
 ```rb
 Thread.new { Thread.current == Thread.main }.value
 #=> false
