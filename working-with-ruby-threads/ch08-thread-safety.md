@@ -96,7 +96,8 @@ are not thread-safe by default.
 
 ```rb
 shared_array = Array.new
-  10.times.map do Thread.new do
+10.times.map do
+  Thread.new do
     1000.times do
       shared_array << nil
     end
