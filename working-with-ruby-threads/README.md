@@ -6,6 +6,8 @@ By the howling [Jesse Storimer](http://www.jstorimer.com/)
 
 [Purchase](http://www.jstorimer.com/products/working-with-ruby-threads)
 
+> Atomic means it can't be interrupted. `||=` is not atomic.
+
 Notes:
 
 - [Chapter 1. You're Always in a Thread](ch01-you-re-always-in-a-thread.md)
