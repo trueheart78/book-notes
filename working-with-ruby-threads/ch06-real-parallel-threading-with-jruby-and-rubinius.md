@@ -1,5 +1,5 @@
 [&lt;&lt; Back to the README](README.md)
 
-# Chapter 1. Threads of Execution
+# Chapter 6. Real Parallel Threading with JRuby and Rubinius
 
 *Notes forthcoming*

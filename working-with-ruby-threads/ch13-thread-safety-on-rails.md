@@ -1,5 +1,5 @@
 [&lt;&lt; Back to the README](README.md)
 
-# Chapter 4. The GIL and MRI
+# Chapter 13. Thread-Safety on Rails
 
 *Notes forthcoming*

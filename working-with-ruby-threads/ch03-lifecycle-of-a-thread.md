@@ -1,5 +1,5 @@
 [&lt;&lt; Back to the README](README.md)
 
-# Chapter 15. Puma's Thread Pool Implementation
+# Chapter 3. Lifecycle of a Thread
 
 *Notes forthcoming*

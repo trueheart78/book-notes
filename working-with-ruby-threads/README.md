@@ -2,27 +2,28 @@
 
 # Working with Ruby Threads
 
-By the grand [Jesse Storimer](http://www.jstorimer.com/)
+By the howling [Jesse Storimer](http://www.jstorimer.com/)
 
 [Purchase](http://www.jstorimer.com/products/working-with-ruby-threads)
 
 Notes:
 
-- [Chapter 1. Threads of Execution](ch01-threads-of-execution.md)
-- [Chapter 2. Lifecycle of a Thread](ch02-lifecycle-of-a-thread.md)
-- [Chapter 3. Concurrent != Parallel](ch03-concurrent-is-not-parallel.md)
-- [Chapter 4. The GIL and MRI](ch04-the-gil-and-mri.md)
-- [Chapter 5. Real Parallel Threading with JRuby and Rubinius](ch05-real-parallel-threading-with-jruby-and-rubinius.md)
-- [Chapter 6. How Many Threads Are Too Many?](ch06-how-many-threads-are-too-many.md)
-- [Chapter 7. Thread Safety](ch07-thread-safety.md)
-- [Chapter 8. Protecting Data with Mutexes](ch08-protecting-data-with-mutexes.md)
-- [Chapter 9. Signaling Threads with Condition Variables](ch09-signaling-threads-with-condition-variables.md)
-- [Chapter 10. Thread-Safe Data Structures](ch10-thread-safe-data-structures.md)
-- [Chapter 11. Writing Thread-Safe Code](ch11-writing-thread-safe-code.md)
-- [Chapter 12. Thread-Safety on Rails](ch12-thread-safety-on-rails.md)
-- [Chapter 13. Wrap Your Threads in an Abstraction](ch13-wrap-your-threads-in-an-abstraction.md)
-- [Chapter 14. How Sidekiq Uses Celluloid](ch14-how-sidekiq-uses-celluloid.md)
-- [Chapter 15. Puma's Thread Pool Implementation](ch15-puma-s-thread-pool-implementation.md)
-- [Chapter 16. Closing](ch16-closing.md)
+- [Chapter 1. You're Always in a Thread](ch01-you-re-always-in-a-thread.md)
+- [Chapter 2. Threads of Execution](ch02-threads-of-execution.md)
+- [Chapter 3. Lifecycle of a Thread](ch03-lifecycle-of-a-thread.md)
+- [Chapter 4. Concurrent != Parallel](ch04-concurrent-is-not-parallel.md)
+- [Chapter 5. The GIL and MRI](ch05-the-gil-and-mri.md)
+- [Chapter 6. Real Parallel Threading with JRuby and Rubinius](ch06-real-parallel-threading-with-jruby-and-rubinius.md)
+- [Chapter 7. How Many Threads Are Too Many?](ch07-how-many-threads-are-too-many.md)
+- [Chapter 8. Thread Safety](ch08-thread-safety.md)
+- [Chapter 9. Protecting Data with Mutexes](ch09-protecting-data-with-mutexes.md)
+- [Chapter 10. Signaling Threads with Condition Variables](ch10-signaling-threads-with-condition-variables.md)
+- [Chapter 11. Thread-Safe Data Structures](ch11-thread-safe-data-structures.md)
+- [Chapter 12. Writing Thread-Safe Code](ch12-writing-thread-safe-code.md)
+- [Chapter 13. Thread-Safety on Rails](ch13-thread-safety-on-rails.md)
+- [Chapter 14. Wrap Your Threads in an Abstraction](ch14-wrap-your-threads-in-an-abstraction.md)
+- [Chapter 15. How Sidekiq Uses Celluloid](ch15-how-sidekiq-uses-celluloid.md)
+- [Chapter 16. Puma's Thread Pool Implementation](ch16-puma-s-thread-pool-implementation.md)
+- [Chapter 17. Closing](ch17-closing.md)
 
 ![book cover](working-with-ruby-threads-cover.jpg)

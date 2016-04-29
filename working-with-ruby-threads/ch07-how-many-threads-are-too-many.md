@@ -1,5 +1,5 @@
 [&lt;&lt; Back to the README](README.md)
 
-# Chapter 13. Wrap Your Threads in an Abstraction
+# Chapter 7. How Many Threads Are Too Many?
 
 *Notes forthcoming*
