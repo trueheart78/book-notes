@@ -8,6 +8,8 @@ By the howling [Jesse Storimer](http://www.jstorimer.com/)
 
 > Atomic means it can't be interrupted. `||=` is not atomic.
 
+> Use mutexes to read and write data that may be shared.
+
 Notes:
 
 - [Chapter 1. You're Always in a Thread](ch01-you-re-always-in-a-thread.md)

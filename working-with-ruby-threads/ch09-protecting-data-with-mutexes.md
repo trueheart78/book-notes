@@ -201,4 +201,42 @@ implicit memory barrier**.
 
 ## Mutex Performance
 
-*Left off on Page 91.*
+Mutexes inhibit parallelism.
+
+Critical sections of code that are protected can only be executed by one thread
+at any given time. This is why the GIL inhibits parallelism. The GIL is just a
+mutex.
+
+Mutexes provide safety where needed, but at the cost of performance. Nothing
+is more important that making sure your data is not corrupted through race
+conditions, but you want to **restrict the critical section to be as small
+as possible, while still preserving the safety of your data.** This allows
+as much code as possible to execute in parallel.
+
+A finer grained mutex around data changes is more correct than around just
+entire blocks of code. It has to do with the data being changed in a critical
+section. Note that using `Queue` instead of `Array` could also keep data
+thread-safe.
+
+**Put as little code in your critical sections as possible, just enough to
+ensure that your data won't be modified by concurrent threads.**
+
+## The Dreaded Deadlock
+
+A deadlock means 'game over' for the system in question.
+
+A deadlock occurs when one thread is blocked waiting for a resource from
+another thread (like blocking on a mutex), while that thread is also blocked
+waiting for a resource. The system comes to a place where no progress can
+happen.
+
+`Mutex#try_lock` can be used to attempt to lock a mutex, and returns `true`
+or `false` accordingly.
+
+You can still end up in a **livelock, where the system is not progressing,
+becayse the threads are stuck in a loop with each other.**
+
+Use a **mutex hierachy**. **Any time two threads need to acquire multiple
+mutex, make sure they do it in the same order.** This will avoid deadlock.
+
+
