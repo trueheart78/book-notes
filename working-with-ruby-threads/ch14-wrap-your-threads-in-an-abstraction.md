@@ -73,7 +73,3 @@ The above is a lot easier to read, at-a-glance.
 ## Actor Model
 
 *page 122*
-```
-
-
-
