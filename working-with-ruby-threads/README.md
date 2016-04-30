@@ -10,6 +10,8 @@ By the howling [Jesse Storimer](http://www.jstorimer.com/)
 
 > Use mutexes to read and write data that may be shared.
 
+Just need some guidance on writing thread-safe code? Check out [Chapter 12. Writing Thread-Safe Code](ch12-writing-thread-safe-code.md)
+
 Notes:
 
 - [Chapter 1. You're Always in a Thread](ch01-you-re-always-in-a-thread.md)
