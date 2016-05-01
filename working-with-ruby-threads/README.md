@@ -12,6 +12,19 @@ By the howling [Jesse Storimer](http://www.jstorimer.com/)
 
 Just need some guidance on writing thread-safe code? Check out [Chapter 12. Writing Thread-Safe Code](ch12-writing-thread-safe-code.md)
 
+An eloquent set of rules can be found on the
+[JRuby wiki](https://github.com/jruby/jruby/wiki/Concurrency-in-jruby#concurrency_basics):
+
+The safest path to concurrency:
+
+1. Don't do it.
+2. If you must do it, don't share data across threads.
+3. If you must chare data across threads, don't share mutable data.
+4. If you must share mutable data across threads, synchronize access to that
+   data.
+
+If you stick to these rules, you'll strike that balance.
+
 Notes:
 
 - [Chapter 1. You're Always in a Thread](ch01-you-re-always-in-a-thread.md)
