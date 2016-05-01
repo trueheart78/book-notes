@@ -6,16 +6,9 @@ By the howling [Jesse Storimer](http://www.jstorimer.com/)
 
 [Purchase](http://www.jstorimer.com/products/working-with-ruby-threads)
 
-> Atomic means it can't be interrupted. `||=` is not atomic.
+## The Safest Path to Concurrency
 
-> Use mutexes to read and write data that may be shared.
-
-Just need some guidance on writing thread-safe code? Check out [Chapter 12. Writing Thread-Safe Code](ch12-writing-thread-safe-code.md)
-
-An eloquent set of rules can be found on the
-[JRuby wiki](https://github.com/jruby/jruby/wiki/Concurrency-in-jruby#concurrency_basics):
-
-The safest path to concurrency:
+*From the [JRuby wiki](https://github.com/jruby/jruby/wiki/Concurrency-in-jruby#concurrency_basics)*
 
 1. Don't do it.
 2. If you must do it, don't share data across threads.
@@ -25,7 +18,15 @@ The safest path to concurrency:
 
 If you stick to these rules, you'll strike that balance.
 
-Notes:
+## General Notes
+
+> Atomic means it can't be interrupted. `||=` is not atomic.
+
+> Use mutexes to read and write data that may be shared.
+
+Just need some guidance on writing thread-safe code? Check out [Chapter 12. Writing Thread-Safe Code](ch12-writing-thread-safe-code.md)
+
+## Chapter Notes:
 
 - [Chapter 1. You're Always in a Thread](ch01-you-re-always-in-a-thread.md)
 - [Chapter 2. Threads of Execution](ch02-threads-of-execution.md)
