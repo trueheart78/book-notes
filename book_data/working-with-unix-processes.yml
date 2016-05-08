@@ -1,0 +1,32 @@
+---
+:title: Working with Unix Processes
+:purchase: http://www.jstorimer.com/products/working-with-unix-processes
+:author: Jesse Storimer
+:homepage: http://www.jstorimer.com/
+:image: https://imagery.pragprog.com/products/310/jsunix.jpg?1337287136
+:image_ext: jpg
+
+:chapters:
+  - Primer
+  - Processes Have IDs
+  - Processes Have Parents
+  - Processes Have File Descriptors
+  - Processes Have Resource Limits
+  - Processes Have an Enviroment
+  - Processes Have Arguments
+  - Processes Have Names
+  - Processes Have Exit Codes
+  - Processes Can Fork
+  - Orphaned Processes
+  - Processes Are Friendly
+  - Processes Can Wait
+  - Zombie Processes
+  - Processes Can Get Signals
+  - Processes Can Communicate
+  - Daemon Processes
+  - Spawning Terminal Processes
+  - Ending
+  - Appendix 1 - How Resque Manages Processes
+  - Appendix 2 - How Unicorn Reaps Worker Processes
+  - Appendix 3 - Preforking Servers
+  - Appendix 4 - Spyglass
