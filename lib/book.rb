@@ -19,7 +19,7 @@ class Book
   end
 
   def chapter_overview
-    chapter_list.map { |x| "   #{x}" }
+    chapter_list.map { |x| left_pad(x) }
   end
 
   def directory
@@ -71,6 +71,10 @@ class Book
   end
 
   private
+
+  def left_pad(string)
+    "   #{string}"
+  end
 
   def chapter_md
     chapter_list.map(&:readme_md).map { |chapter| "- #{chapter}" }
