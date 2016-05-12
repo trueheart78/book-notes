@@ -16,4 +16,6 @@ play nicely with other Unix tools.
 
 ## How to Exit a Process.
 
-### `exit`
+#### `exit`
+
+
