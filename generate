@@ -3,5 +3,15 @@ require_relative 'lib/import_controller'
 require_relative 'lib/book'
 require_relative 'lib/chapter'
 require_relative 'lib/notes_generator'
+require_relative 'lib/option_parser'
 
-ImportController.new(ARGV).run
+options = Options.new
+options.parse!
+
+p options
+exit
+if options.generate?
+  ImportController.new(ARGV).run
+elsif options.create_new?
+  # do some magic to create book_data/#{options.filename}.yml
+end
