@@ -1,27 +1,14 @@
-class ImportController
-  attr_reader :errors, :file
+require_relative 'file_system'
 
-  def initialize(file)
-    @errors = []
-    @file = file
-  end
+class ImportController < FileSystem
 
   def run
-    validate!
-    prompt_user
-    import if user_approved?
+    validate
+    prompt_user if valid?
+    import if valid? && user_approved?
   end
 
   private
-
-  def validate!
-    validate_file
-    display_errors if errors.any?
-  end
-
-  def file_path
-    [directory, file].join '/'
-  end
 
   def prompt_user
     puts book.overview
@@ -43,20 +30,9 @@ class ImportController
     @book ||= Book.new file_path
   end
 
-  def display_errors
-    errors.each do |e|
-      puts "Error: #{e[:message]}"
-    end
-    exit 1
-  end
-
   def validate_file
     @errors << { message: 'No file passed' } if file.empty?
     @errors << { message: "File not found (#{file_path})" } unless File.exist? file_path
     @errors << { message: "Directory exists (#{book.directory}/)" } if File.exist? book.directory
-  end
-
-  def directory
-    'book_data'
   end
 end

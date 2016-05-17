@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
-require_relative 'lib/import_controller'
-require_relative 'lib/options'
-require_relative 'lib/book'
-require_relative 'lib/chapter'
-require_relative 'lib/notes_generator'
+$LOAD_PATH.unshift('lib')
+
+require 'options'
+require 'book'
+require 'chapter'
+require 'notes_generator'
 
 options = Options.new
 options.parse!
@@ -11,8 +12,9 @@ options.parse!
 exit unless options.continue?
 
 if options.generate?
+  require 'import_controller'
   ImportController.new(options.file).run
 elsif options.create_new?
-  # do some magic to create book_data/#{options.filename}.yml
-  puts "todo: create #{options.file}"
+  require 'yaml_generator'
+  YamlGenerator.new(options.file).run
 end
