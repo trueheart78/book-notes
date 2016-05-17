@@ -1,7 +1,11 @@
 require 'optparse'
 
 class Options
-  attr_accessor :create_new, :filename
+  attr_accessor :create_new, :filename, :continue
+
+  def initialize
+    self.continue = true
+  end
 
   def parse!
     self.filename = ARGV.last
@@ -13,11 +17,13 @@ class Options
       end
 
       opts.on('-h','--help','Displays help') do
+        self.continue = false
         puts opts
-        exit
       end
 
-      puts opts if ARGV.count == 0
+      self.continue = false if ARGV.count == 0 || !self.file?
+
+      puts opts unless self.continue?
     end.parse!
   end
 
@@ -26,6 +32,19 @@ class Options
   end
 
   def generate?
-    !create_new && filename
+    !create_new? && file?
+  end
+
+  def file?
+    !self.filename.nil?
+  end
+
+  def file
+    return "#{filename}.yml" unless filename.downcase[-4..-1] == '.yml'
+    filename
+  end
+
+  def continue?
+    self.continue
   end
 end

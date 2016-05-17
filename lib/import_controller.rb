@@ -1,9 +1,9 @@
 class ImportController
-  attr_reader :errors, :args
+  attr_reader :errors, :file
 
-  def initialize(args)
+  def initialize(file)
     @errors = []
-    @args = args
+    @file = file
   end
 
   def run
@@ -17,11 +17,6 @@ class ImportController
   def validate!
     validate_file
     display_errors if errors.any?
-  end
-
-  def file
-    return "#{args.first}.yml" unless args.first.downcase[-4..-1] == '.yml'
-    args.first
   end
 
   def file_path
@@ -56,7 +51,7 @@ class ImportController
   end
 
   def validate_file
-    @errors << { message: 'No file passed' } if args.size == 0
+    @errors << { message: 'No file passed' } if file.empty?
     @errors << { message: "File not found (#{file_path})" } unless File.exist? file_path
     @errors << { message: "Directory exists (#{book.directory}/)" } if File.exist? book.directory
   end
