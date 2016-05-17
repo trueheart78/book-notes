@@ -62,6 +62,6 @@ class OptionsTest < Minitest::Test
   end
 
   def help_text_regex
-    /\nUsage: generate \[flags\] filename/
+    /Usage: generate \[options\] filename/
   end
 end

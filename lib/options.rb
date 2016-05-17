@@ -10,7 +10,7 @@ class Options
   def parse!
     self.filename = ARGV.last
     OptionParser.new do |opts|
-      opts.banner = "\nUsage: generate [flags] filename\n"
+      opts.banner = "Usage: generate [options] filename\n"
 
       opts.on('-c','--create','Creates a new yml file for a book') do
         self.create_new = true
