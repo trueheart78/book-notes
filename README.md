@@ -12,9 +12,19 @@ Books :books:
 
 ## Adding a Book
 
+### Creating YAML for a Book
+
 Books can be added by creating a `book-name.yml` file in the `book_data/` directory. 
 
-To generate the proper structure for a new book, run:
+You can create the YAML file by running:
+
+```sh
+./generate -c book-name
+```
+
+### Importing a Book
+
+To generate the proper note structure for a new book, run:
 
 ```sh
 ./generate book-name
