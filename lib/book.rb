@@ -36,7 +36,7 @@ class Book
   end
 
   def image_file
-    "#{directory}-cover.#{image_ext}"
+    "cover.#{image_ext}"
   end
 
   def to_md
