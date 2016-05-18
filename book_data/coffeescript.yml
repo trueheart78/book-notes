@@ -1,0 +1,16 @@
+---
+:title: Coffeescript
+:purchase: https://pragprog.com/book/tbcoffee2/coffeescript
+:author: Trevor Burnham
+:homepage: http://trevorburnham.com/
+:image: https://imagery.pragprog.com/products/400/tbcoffee2.jpg?1409944829
+:image_ext: jpg
+
+:chapters:
+  - Getting Started
+  - Functions, Scope, and Context
+  - Collections, Iteration, and Destructuring
+  - Classes, Prototypes, and Inheritance
+  - Web Applications with jQuery and Backbone.js
+  - Web Servers with Node and Express
+  - Testing with Intern

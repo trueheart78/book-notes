@@ -4,6 +4,7 @@ Reading a lot, figured this was as good a place as any to make some notes :heart
 
 Books :books:
 
+1. [Coffeescript](coffeescript/README.md)
 1. [Working with Unix Processes](working-with-unix-processes/README.md)
 1. [Working with Ruby Threads](working-with-ruby-threads/README.md) :heart:
 1. [Confident Ruby](confident-ruby/README.md)
