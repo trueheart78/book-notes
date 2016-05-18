@@ -23,7 +23,7 @@ class Book
   end
 
   def directory
-    title.downcase.gsub(/[^0-9a-z.\-]/, '-')
+    ['book-notes', title.downcase.gsub(/[^0-9a-z.\-]/, '-')].join '/'
   end
 
   def chapter_list
@@ -41,7 +41,7 @@ class Book
 
   def to_md
     [
-      '[&lt;&lt; Back to project home](../README.md)',
+      '[&lt;&lt; Back to project home](../../README.md)',
       '',
       "# #{title}",
       '',
