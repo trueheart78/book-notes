@@ -160,3 +160,123 @@ Outputs `1.8`.
 Splats are also useful for constructing and extracting values from arrays.
 
 ## Variable Scope
+
+Scoping:
+
+1. Every function creates its own scope. (standard)
+2. Functions are the *only* constructs that create scope. (okay)
+3. Each variable lives in the outermost scope in which a value is (potentially)
+   assigned to it.
+
+The last one allows CS to do away with `var`. Take care not to use the same var
+name in two different, nested scopes.
+
+### All Functions Are Closures
+
+This means that they have access to all variables in all surrounding scopes -
+regardless of where they are called from:
+
+```coffee
+X = 5
+sumXY = -> X + Y
+Y = 7
+console.log sumXY()
+```
+
+Outputs `12`
+
+Both `X` and `Y` are declared in the scope surrounding `sumXY`, so it has access
+to both vars. It doesn't matter that `Y` isn't mentioned until after the
+declaration. Variable scope is defined at compile time.
+
+```coffee
+showCount = (->
+  count = 0
+  ->
+    count += 1
+    console.log count
+)()
+showCount()
+showCount()
+showCount()
+```
+
+Outputs
+
+```sh
+1
+2
+3
+```
+
+Why?
+
+1. The inner function is defined to increment `count` and display value.
+2. The IIFE declares `count`, set to `0`, and returns the inner function.
+3. Because the inner function is returned by the IIFE, that's what `showCount`
+   becomes.
+
+JS and CS don't featre "private" or "static" variables.
+
+### Capturing Variables
+
+A classic `for` loop will cause trouble:
+
+```coffee
+for i in [1, 2, 3]
+  setTimeout (-> console.log i), 0
+```
+
+Outputs:
+
+```sh
+3
+3
+3
+```
+
+This has to with compile time values. Try the following instead:
+
+```coffee
+for i in [1, 2, 3]
+  do (i) ->
+    setTimeout (-> console.log i), 0
+```
+
+and get
+
+```sh
+1
+2
+3
+```
+
+`do` is a CS keyword designed for this: it calls the given function, passing in
+the vars whose names match those of the args.
+
+You do create 6 functions in the above code, which could prove problematic.
+
+## Execution Context
+
+JS has two special objects created everytime a function is called: `this` and
+`arguments`, the latter we've already coverd.
+
+`this` allowed functions to be used as *methods*, meaning they can be attached
+to an object and know which object they are attached to.
+
+```coffee
+fry = {}
+fry.name = 'Philip J. Fry'
+fry.sayName = -> console.log(this.name)
+fry.sayName()
+```
+
+Outputs `Philip J. Fry`.
+
+Because `this` is so important, CS allows the `@` symbol to be ysed as a synonym
+for it. `@x` is a stand-in for `this.x`, and is preferred (at least by the
+  author).
+
+### Controlling Context
+
+
