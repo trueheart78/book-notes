@@ -10,7 +10,7 @@ class YamlGeneratorTest < Minitest::Test
     output = capture_output { subject.run }
 
     assert File.exist? subject.file_path
-    assert_match /File created: #{subject.file_path}/, output
+    assert_match(/File created: #{subject.file_path}/, output)
   end
 
   def test_error_on_existing_file
@@ -19,7 +19,7 @@ class YamlGeneratorTest < Minitest::Test
     other_yaml_generator = YamlGenerator.new(sample_filename)
     error_string = capture_output{ other_yaml_generator.run }
 
-    assert_match /Error: File exists \(#{sample_file_path}\)/, error_string
+    assert_match(/Error: File exists \(#{sample_file_path}\)/, error_string)
   end
 
   def teardown

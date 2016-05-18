@@ -76,7 +76,7 @@ Import 'An Awesome Book' by That One Girl :: 4 chapters? (y/n)
 Entering `y` will generate the proper files in the noted directory,
 download the image (if it is valid), and inform you of this task:
 
-```
+```sh
 **********************************************************************
 
 Please add the following to the root README.md file:
@@ -87,3 +87,9 @@ Please add the following to the root README.md file:
 
 Book notes generated successfully.
 ```
+
+## Development
+
+Make sure bundler is installed, and then run `bundle install`.
+
+Tests can be run with `bundle exec rake test`. Tests are written using Minitest.
