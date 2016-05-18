@@ -14,4 +14,12 @@ module TestHelper
     $stdout = old_stdout
   end
   alias :suppress_output :capture_output
+
+  def book_path
+    fixture_path('book-valid')
+  end
+
+  def fixture_path(fixture)
+    ['test','fixtures',"#{fixture}.yml"].join '/'
+  end
 end
