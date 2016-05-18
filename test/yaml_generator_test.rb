@@ -14,7 +14,7 @@ class YamlGeneratorTest < Minitest::Test
   end
 
   def test_error_on_existing_file
-    subject.run
+    suppress_output { subject.run }
 
     other_yaml_generator = YamlGenerator.new(sample_filename)
     error_string = capture_output{ other_yaml_generator.run }

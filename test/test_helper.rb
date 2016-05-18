@@ -11,4 +11,5 @@ module TestHelper
   ensure
     $stdout = old_stdout
   end
+  alias :suppress_output :capture_output
 end
