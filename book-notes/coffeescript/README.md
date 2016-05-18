@@ -1,6 +1,6 @@
 [&lt;&lt; Back to project home](../../README.md)
 
-# Coffeescript
+# CoffeeScript
 
 By the fantastic [Trevor Burnham](http://trevorburnham.com/)
 
