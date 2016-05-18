@@ -4,18 +4,18 @@ Reading a lot, figured this was as good a place as any to make some notes :heart
 
 Books :books:
 
-1. [Coffeescript](coffeescript/README.md)
-1. [Working with Unix Processes](working-with-unix-processes/README.md)
-1. [Working with Ruby Threads](working-with-ruby-threads/README.md) :heart:
-1. [Confident Ruby](confident-ruby/README.md)
-1. [Practical Object-Oriented Design in Ruby](poodr/README.md) :heart:
-1. [Seven Databases in Seven Weeks](seven-db-in-seven-weeks/README.md)
+1. [Coffeescript](book-notes/coffeescript/README.md)
+1. [Working with Unix Processes](book-notes/working-with-unix-processes/README.md)
+1. [Working with Ruby Threads](book-notes/working-with-ruby-threads/README.md) :heart:
+1. [Confident Ruby](book-notes/confident-ruby/README.md)
+1. [Practical Object-Oriented Design in Ruby](book-notes/practical-object-oriented-design-in-ruby/README.md) :heart:
+1. [Seven Databases in Seven Weeks](book-notes/seven-db-in-seven-weeks/README.md)
 
 ## Adding a Book
 
 ### Creating YAML for a Book
 
-Books can be added by creating a `book-name.yml` file in the `book_data/` directory. 
+Books can be added by creating a `book-name.yml` file in the `book-yaml/` directory. 
 
 You can create the YAML file by running:
 
@@ -53,7 +53,7 @@ And follow the prompts.
 
 ## Sample Output
 
-After you save the above as `book_data/sample-book.yml`, and
+After you save the above as `book-yaml/sample-book.yml`, and
 run `./generate sample-book`, you should see the following:
 
 ```
@@ -81,7 +81,7 @@ download the image (if it is valid), and inform you of this task:
 
 Please add the following to the root README.md file:
 
-1. [An Awesome Book](an-awesome-book/README.md)
+1. [An Awesome Book](book-notes/an-awesome-book/README.md)
 
 **********************************************************************
 
