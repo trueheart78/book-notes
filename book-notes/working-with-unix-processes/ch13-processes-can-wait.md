@@ -82,4 +82,61 @@ end
 
 ## Waiting for Specific Children
 
-`Process.waitpid` and `Process.waitpid2`, where you pass a
+`Process.waitpid` and `Process.waitpid2`, where you pass a pid for which child
+to wait on.
+
+```ruby
+favorite = fork do
+  exit 77
+end
+
+middle_child = fork do
+  abort "Wait on me"
+end
+
+pit, status = Process.waitpid2 favorite
+puts status.exitstatus
+```
+
+Don't be fooled: `Process.wait` and `Process.waitpid` are actually aliases, and
+accept a pid either way, or a `-1` for them to wait on *any* child process.
+
+## Race Conditions
+
+```ruby
+2.times do
+  fork do
+    abort 'el fin'
+  end
+end
+
+# parent waits for first process then sleeps
+puts Process.wait
+sleep 5
+
+# parent process askes to wait once again, but the
+# second process' exit info has been queued up and
+# returned
+puts Process.wait
+```
+
+No race conditions in this technique. So even if the parent is slow at
+processing each exited child it will always be able to get the info for each
+exited child when it's ready for it.
+
+You will see a `Errno::ECHILD` exception occur when you attempt to call any
+variant of `Process.wait` when there are no child processes.
+
+## In the Real World
+
+The idea of looking in on your child processes is at the core of a common Unix
+programming pattering, sometimes called babysitting processes, master/worker,
+or preforking.
+
+The Unicorn web server employs this pattern, whcih allows for both concurrence
+and reliability.
+
+## System Calls
+
+Ruby's `Process.wait` and cousins map to waitpid(2).
+puts Process.wait
