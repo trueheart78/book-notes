@@ -1,5 +1,4 @@
 require_relative 'test_helper'
-require_relative 'file_system_test_mixin'
 require 'yaml_generator'
 
 class YamlGeneratorTest < Minitest::Test
