@@ -95,4 +95,85 @@ Pipes hold a stream of data.
 
 ## Streams vs. Messages
 
+Stream meaning no concept of beginning and end. When working with an IO stream,
+like pipes or TCP sockets, you write to the stream followed by some protocol-
+specific delimter.
 
+This causes chunking, which is why you read/write one chunk at a time. That's
+why `#puts` and `#gets` were used in the last example.
+
+We can communicate via messages instead of streams, but not with pipes. We'll
+need Unix sockets to do that. Basically, they are a type of socket that can
+only communicate on the same physical machine, and are much faster than TCP
+sockets.
+
+Example:
+
+```ruby
+require 'socket'
+Socket.pair(:UNIX, :DGRAM, 0) #=> [#<Socket:fd 15>, #<Socket:fd 16>]
+```
+
+This creates a pair of UNIX sockets that are already connected to each other.
+They communicate using datagrams instead of sockets. You write a whole message
+to one and read a whole message from the other. No delimiters.
+
+Here's a more complex version:
+
+```ruby
+require 'socket'
+
+child_socket, parent_socket = Socket.pair(:UNIX, :DGRAM, 0)
+maxlen = 1000
+
+fork do
+  parent_socket.close
+  4.times do
+    instruction = child_socket.recv(maxlen)
+    child_socket.send(#{instruction} received!", 0)
+  end
+end
+child_socket.close
+
+2.times do
+  parent_socket.send("Heavy lifting", 0)
+end
+2.times do
+  parent_socket.send("Feather lifting", 0)
+end
+
+4.times do
+  $stdout.puts parent_socket.recv(maxlen)
+end
+```
+
+Outputs:
+
+```sh
+Heavy lifting received!
+Heavy lifting received!
+Feather lifting received!
+Feather lifting received!
+```
+
+So pipes provide a one-direction communication, a socket pair provides two-way
+communication. A radio vs a set of walkie talkies.
+
+## Remote IPC?
+
+IPC implies communication between processes running on the same machine. If you
+want to scale this out, look into TCP sockets, RPC, or ZeroMQ.
+
+## In the Real World
+
+Both pipes and socket pairs are useful for abstractions for process communication.
+Fast and easy, too, and no need for a shared database or a log file.
+
+Choose which you want to use based on your needs.
+
+Look at the Spyglass Master appendix to learn more.
+
+## System Calls
+
+Ruby's `IO.pipe` maps to pipe(2), `Socket.pair` maps to socketpair(2).
+`Socket.recv` maps to recv(2) and `Socket.send` maps to send(2).
