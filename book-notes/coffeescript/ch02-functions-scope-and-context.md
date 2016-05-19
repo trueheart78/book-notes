@@ -279,4 +279,127 @@ for it. `@x` is a stand-in for `this.x`, and is preferred (at least by the
 
 ### Controlling Context
 
+When you call a function by writing `obj.func()`, `func` is called in the context
+of `obj`. If you call a function directly by writing `func()`, then `func` is
+called in the context of the *root object*. In the browser, that is `window`. In
+Node, it's called `global`.
 
+If you want to control the context of a function call, you have access to a few
+different methods: `call` and `apply`. Both take the context as their first arg.
+`call` passes all subsequent arguments along to the function:
+
+```coffee
+tribble = {count: 2}
+multiple = (multiplier) -> @count *= multiplier
+multiply.call(tribble, 16)
+console.log tribble.count
+```
+
+Outputs `32`.
+
+Meanwhile, `apply` takes an array as its second arg and expands that into a list
+of args for the function. `apply` is how splatted calls are implemented.
+
+These are 2 equal functions:
+
+```coffee
+console.log Math.min.apply(Math, numbers)
+console.log Math.min(numbers)
+```
+
+You can always use splats instead of `apply`, *as long as the context you want
+is the same as the object to which the function is attached.*
+
+### Bound Functions
+
+While `this` is super useful, there are times when we want a function we define
+to only use the value of `this` in the surrounding function. Like for callbacks.
+
+CS gives us a dedicated syntax for *bound functions*:
+
+```coffee
+majorTom = {secondsLeft: 4}
+majorTom.countdown = ->
+  setTimeout (=>
+    console.log @secondsLeft
+    @secondsLeft--
+    if @secondsLeft > 0
+      @countDown()
+  ), 1000
+majorTom.countDown()
+```
+
+Outputs:
+
+```sh
+4
+3
+2
+1
+```
+
+Notice the `=>` instead of the `->` when defining the timeout function. It makes
+a copy of the `this` context for use internally in the function, making `=>` a
+very easy way to access it.
+
+## Mini-Project: Checkbook Balancer
+
+Write a simple, old-school computer program to track where we're keeping our
+money across three accounts: checking, savings, and our mattress.
+
+```coffee
+createAccount = (name) ->
+  {
+    name: name
+    balance: 0
+
+    description: ->
+      "#{name}: #{dollarsToString(@balance)}"
+
+    deposit: (amount) ->
+      @balance += amount
+      @
+
+    withdraw: (amount) ->
+      @balance -= amount
+      @
+   }
+```
+
+Returning `@` from each method enables us to perform method chaining.
+
+```coffee
+checking = createAccount('Checking')
+savings  = createAccount('Savings')
+mattress = createAccount('Mattress')
+```
+
+The core of the app is now done. Time for some UI.
+
+The book recommends using an npm library called Inquirer.js.
+
+```sh
+npm install --save inquirer
+```
+
+This also adds it to our project's `package.json`. Keep it in sync with your
+`node_modules`, as well.
+
+And also, the Numeral.js formatting library for currency.
+
+```sh
+npm install --save numeral
+```
+
+```coffee
+numeral = require ('numeral')
+
+dollarsToString = (dollars) ->
+  numeral(dollars).format('$0,0.00')
+
+inputToNumber = (input) ->
+  parseFloat input.replace(/[$,]/g, ''), 10
+```
+
+**Note:** There is more in the book that I did not cover, but it seemed pretty
+straight-forward.
