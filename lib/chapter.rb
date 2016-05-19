@@ -20,7 +20,7 @@ class Chapter
   end
 
   def to_md
-    [
+    @md ||= [
       '[&lt;&lt; Back to the README](README.md)',
       '',
       "# #{proper_name}",

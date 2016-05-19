@@ -3,7 +3,6 @@ $LOAD_PATH.unshift('lib')
 
 require 'options'
 require 'book'
-require 'chapter'
 require 'notes_generator'
 
 options = Options.new

@@ -1,6 +1,5 @@
 require_relative 'test_helper'
 require 'book'
-require 'chapter'
 
 class BookTest < Minitest::Test
   include TestHelper
