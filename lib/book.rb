@@ -18,9 +18,6 @@ class Book
     ].concat(chapter_overview).join "\n"
   end
 
-  def chapter_overview
-    chapter_list.map { |x| left_pad(x) }
-  end
 
   def directory
     ['book-notes', title.downcase.gsub(/[^0-9a-z.\-]/, '-')].join '/'
@@ -40,7 +37,7 @@ class Book
   end
 
   def to_md
-    [
+    @md ||= [
       '[&lt;&lt; Back to project home](../../README.md)',
       '',
       "# #{title}",
@@ -71,6 +68,10 @@ class Book
   end
 
   private
+
+  def chapter_overview
+    chapter_list.map { |x| left_pad(x) }
+  end
 
   def left_pad(string)
     "   #{string}"
