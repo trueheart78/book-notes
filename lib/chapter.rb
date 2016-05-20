@@ -41,6 +41,12 @@ class Chapter
   end
 
   def filename
-    name.gsub(/[?',"]/,'').gsub(/!=/,'is not').downcase.gsub(/[^0-9a-z.\-]/, '-')
+    name.gsub(/[?',":]/,'').
+      gsub(/\-/,' ').
+      gsub(/\s\s\s/,' ').
+      gsub(/\s\s/,' ').
+      gsub(/!=/,'is not').
+      downcase.
+      gsub(/[^0-9a-z.\-]/, '-')
   end
 end
