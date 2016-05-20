@@ -163,4 +163,76 @@ Not used too often by itself, but quite handy for `for` loops.
 
 ### Slicing and Splicing
 
+When you want to tear a chunk of data out of a JS array, you turn to mr `slice`
 
+```coffee
+['a', 'b', 'c', 'd'].slice 0, 3 #=> ['a', 'b', 'c']
+```
+
+Slice takes two indices and copies up until the second index, lice an
+exclusive range.
+
+```coffee
+['a', 'b', 'c', 'd'][0...3] #=> ['a', 'b', 'c']
+```
+
+```coffee
+['a', 'b', 'c', 'd'][0..3] #=> ['a', 'b', 'c', 'd']
+```
+
+The rules here are a lil different, due to `slice`. If the first index comes
+after the second, the result is an empty array, not a reversal:
+
+```coffee
+['a', 'b', 'c', 'd'][3...0] #=> []
+```
+
+Also, negative indices count backward from the end of the array. When calling
+`arr[-1]`, it looks for an index named `-1`. `arr[0...-1]` means "give me a
+slice from the start of the array up to, but not including, its last element."
+It basically means mean the same thing as `arr.length - 1`.
+
+```coffee
+['a', 'b', 'c', 'd']p0...-1] #=> ['a', 'b', 'c']
+```
+
+If you omit the second index, the slice goes all the way to the end, regardless
+of dot count.
+
+```coffee
+['this', 'that', 'the other'][1..]  #=> ['that', 'the other']
+['this', 'that', 'the other'][1...] #=> ['that', 'the other']
+```
+
+CS also provides a shorthand for `splice`, the value-inserting cousin of
+`slice`. It looks like you're making an assignment to the slice:
+
+```coffee
+arr = ['a', 'c']
+arr[1...2] = ['b']
+arr #=> ['a', 'b']
+```
+
+The range defines the part of the array to be replaced. If the range is empty,
+like `1...1`, there is an insertion without a replacement:
+
+```coffee
+arr = ['a', 'c']
+arr[1...1] = ['b']
+arr #=> ['a', 'b', 'c']
+arr[1..1] = ['2'] #=> ['a', 2, 'c']
+```
+
+While negative indices work for slicing, they fail when splicing, except when
+omitting the last index.
+
+Also, string have a `slice` method, which is basically a substring.
+
+```coffee
+'The year is 20XX'[-4..] #=> 20XX
+```
+
+There is no native `splice` for strings, and since JS strings are immutable,
+you cannot add one.
+
+## Iterating over Collection
