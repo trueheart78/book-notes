@@ -5,7 +5,7 @@ Reading a lot, figured this was as good a place as any to make some notes :heart
 Books :books:
 
 1. [CoffeeScript](book-notes/coffeescript/README.md)
-1. [Working with Unix Processes](book-notes/working-with-unix-processes/README.md)
+1. [Working with Unix Processes](book-notes/working-with-unix-processes/README.md) :heart:
 1. [Working with Ruby Threads](book-notes/working-with-ruby-threads/README.md) :heart:
 1. [Confident Ruby](book-notes/confident-ruby/README.md)
 1. [Practical Object-Oriented Design in Ruby](book-notes/practical-object-oriented-design-in-ruby/README.md) :heart:
