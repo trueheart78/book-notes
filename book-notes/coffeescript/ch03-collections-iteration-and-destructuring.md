@@ -235,4 +235,98 @@ Also, string have a `slice` method, which is basically a substring.
 There is no native `splice` for strings, and since JS strings are immutable,
 you cannot add one.
 
-## Iterating over Collection
+## Iterating over Collections
+
+Looping in standard syntax can be a bit of a pain, because the intent isn't
+as clear as it could be. That's why **Underscore.js** is a goto lib, because
+the intent of the loop can be expressed more clearly.
+
+But it's good to know the stuff available to you, as these are fundamental
+building blocks that Underscore relies on.
+
+### Loop Syntaxes
+
+For objects, use `for...of`:
+
+```coffee
+for key, value of object
+  # do things with key + value
+```
+
+For an array, use `for...in`
+
+```coffee
+for value, index in array
+  # do things with the value
+```
+
+If you have extra values for non-numeric keys, using the `for key, value of`
+method can cause havok.
+
+### Conditional Iteration
+
+You can loop conditionally, which is nifty. CS provides a dedicated syntax:
+
+```coffee
+for name, distance of stars when distance < 1e12
+  planTravelToStar(name)
+```
+
+Not that the condition you provide to `when` is the inverse of what you would
+use in an `if`.
+
+Then there is looping over an object's keys that are owned by that object, not
+inherited from its prototype. There is `when object.hasOwnProperty(key)`, but
+CS lets you use a single word instead
+
+```coffee
+for own sword of Kahless
+```
+
+That's shorthand for:
+
+```coffee
+for sword of Kahless
+  continue unless Kahless.hasOwnProperty(sword)
+```
+
+### Array Comprehensions
+
+Array comprehensions are an array of the values of the loop's iterations. Like
+a `.map` in Ruby, for instance.
+
+They are quite handy:
+
+```coffee
+negativeNumbers = for num in [1, 2, 3, 4]
+  -num
+```
+
+Of course, the above would work great with a `.map`. But, you can't do this
+with maps:
+
+```coffee
+primeReciprocals = for num in [1, 2, 3, 4] when isPrimce(num)
+  1 / num
+```
+
+You can also use this method with `while` and `until`:
+
+```coffee
+keysPressed = while(char = handleKeyPress())
+  char
+```
+
+But, you shouldn't use array comprehensions when you *don't* want to generate
+an array. If you don't want to return a value, make sure to add an empty
+`return` at the end of the function (good tip for any function, in genera;):
+
+```coffee
+moveFlyingToasters = (toasters) ->
+  for toaster in toasters
+    toaster.x += 1
+    toaster.y += 1
+    return
+```
+
+**Note:** Skipped the mini-project because time. 
