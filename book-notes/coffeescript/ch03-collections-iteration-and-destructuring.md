@@ -112,4 +112,55 @@ Be warned that destructuring does not check for existence of the object.
 
 ## Arrays
 
+Arrays can be defined using a JSON-style syntax:
+
+```coffee
+mcFlys = ['George', 'Lorraine', 'Marty']
+```
+
+All arrays in JS are dynamic, with no set length.
+
+```coffee
+mcFlys = []
+mcFlys[] = 'George'
+mcFlys[] = 'Lorraine'
+mcFlys[] = 'Marty'
+```
+
+Arrays are objects, hence the brackets. Indices are just object keys, whcih are
+all strings, so `arr[1]`, `arr['1']`, and `arr[{toString: -> '1'}]` are the
+same. The nice thing about using numbers, though, is the `length` property
+becomes useful.
+
+### Ranges
+
+CS adds a Ruby-esque syntax for defining arrays of consecutive integers:
+
+```coffee
+[1..5] #=> [1, 2, 3, 4, 5]
+```
+
+That is an **inclusive range**. However, when we don't want the last item, use
+the **exclusive range**:
+
+```coffee
+[1...5] #=> [1, 2, 3, 4]
+```
+
+Ranges can also go backward.
+
+```coffee
+[5..1] #=> [5, 4, 3, 2, 1]
+```
+
+And yes, the exclusive range as well.
+
+```coffee
+[5...1] #=> [5, 4, 3, 2]
+```
+
+Not used too often by itself, but quite handy for `for` loops.
+
+### Slicing and Splicing
+
 
