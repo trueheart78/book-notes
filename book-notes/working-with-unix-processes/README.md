@@ -28,11 +28,4 @@ Notes:
 - [Chapter 18. Spawning Terminal Processes](ch18-spawning-terminal-processes.md)
 - [Chapter 19. Ending](ch19-ending.md)
 
-```{r echo=FALSE, eval=FALSE}
-- [Chapter 20. Appendix 1 - How Resque Manages Processes](ch20-appendix-1---how-resque-manages-processes.md)
-- [Chapter 21. Appendix 2 - How Unicorn Reaps Worker Processes](ch21-appendix-2---how-unicorn-reaps-worker-processes.md)
-- [Chapter 22. Appendix 3 - Preforking Servers](ch22-appendix-3---preforking-servers.md)
-- [Chapter 23. Appendix 4 - Spyglass](ch23-appendix-4---spyglass.md)
-```
-
-![book cover](working-with-unix-processes-cover.jpg)
+![book cover](book-cover.jpg)
