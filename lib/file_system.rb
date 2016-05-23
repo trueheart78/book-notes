@@ -36,6 +36,6 @@ class FileSystem
   end
 
   def directory
-    'book-yaml'
+    'yaml'
   end
 end

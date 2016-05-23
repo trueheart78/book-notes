@@ -34,6 +34,6 @@ class YamlGeneratorTest < Minitest::Test
   end
 
   def sample_file_path
-    ['book-yaml', sample_filename].join '/'
+    ['yaml', sample_filename].join '/'
   end
 end

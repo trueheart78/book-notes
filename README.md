@@ -15,7 +15,7 @@ Books :books:
 
 ### Creating YAML for a Book
 
-Books can be added by creating a `book-name.yml` file in the `book-yaml/` directory. 
+Books can be added by creating a `book-name.yml` file in the `yaml/` directory. 
 
 You can create the YAML file by running:
 
@@ -53,7 +53,7 @@ And follow the prompts.
 
 ## Sample Output
 
-After you save the above as `book-yaml/sample-book.yml`, and
+After you save the above as `yaml/sample-book.yml`, and
 run `./generate sample-book`, you should see the following:
 
 ```
