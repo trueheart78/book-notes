@@ -182,4 +182,101 @@ So now classes make sense. Watch how inheritance makes you smile, though.
 
 ## Inheritance: Classy Prototype Chains
 
+Classes start to shine when inheritance is introduced. If `C` has prototype of
+`B`, and `B` has its own prototype, `A`, we could write:
 
+```coffee
+c = new C
+console.log c.flurb()
+```
+
+1. Does `c` (an instance of `C`) have property `flurb`?
+2. Does `B` have `flurb`?
+3. Does `A` have `flurb`?
+4. Does the default object prototype (`{}`) have `flurb`?
+
+This can get quite messy. Let's make life easier.
+
+```coffee
+class B extends A
+```
+
+`B`'s prototype will inherit from `A`'s, including shallow copies of `A`'s
+class-level properties.
+
+`super`:
+
+```coffee
+class Pet
+  constructor: -> @isHungry = true
+  eat: -> @isHungry = false
+
+class Dog extends Pet
+  eat: ->
+    console.log '*crunch, crunch*'
+    super()
+  fetch: ->
+    console.log 'Yip yip!'
+    @isHungry = true
+```
+
+If you are familiar with standard class inheritance, this is pretty straight-
+forward, including the constructor overwriting, requireing the call to `super()`
+
+### `super()` vs `super`
+
+If you call `super` without parentheses or arguments, `super` will pass on
+every one of the current function's arguments. It is a greed keyword: if you
+don't tell it which arguments you want to pass along, it'll take 'em all.
+
+### Polymorphism and Switching
+
+**Polymorhpism** means "a thing can be a lot of different things, but just any
+thing."
+
+```coffee
+class Shape
+  constructor: (@width) ->
+  computeArea: -> throw new Error('I am an abstract class')
+
+class Square extends Shape
+  computeArea: -> Math.pow @width, 2
+
+class Circle extends Shape
+  radius: -> @width / 2
+  computeArea: -> Math.PI * Math.pow @radius(), 2
+
+showArea = (shape) ->
+  unless shape instanceof Shape
+    throw new Error('showArea requires a Shape instance')
+  console.log shape.computeArea()
+
+showArea new Square(2)  # 4
+showArea new Circle(2)  # pi
+```
+
+You can see that `showArea` checks for an object type, and since the shapes
+provided do inherit from `Shape`, it allows them to pass through. An alternative
+would be to use duck typing.
+
+You can use the `switch` function, but there are a couple differences between
+CS and JS implementations. First, CS doesn't require an explicit `break` like in
+JS. Second, the result of the switch is returned. Also, `when` is used instead
+of `case, and `else` instead of `default`. Even `when` can have multiple
+matches, separated by commas. And you can use `then` instead of `:`, or just
+indentation.
+
+```coffee
+requisitionStarship = (captain) ->
+  switch captain
+    when 'Kirk', 'Picard', 'Archer'
+      new Enterprise()
+    when 'Janeway'
+      new Voyager()
+    else
+      throw new Error('Who is this imposter?')
+```
+
+## Mini-Project
+
+**Skipped due to time**
