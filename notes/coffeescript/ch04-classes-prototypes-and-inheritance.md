@@ -113,3 +113,73 @@ console.log raven3.hasOwnProperty('quoth')  # true
 ```
 
 If this seems messy, CS's `class` keyword is our rescuer.
+
+## Classes: Giving Prototypes Structure
+
+CS allows you to define a constructor and attach properties to it easily using
+the `class` keyword:
+
+```coffee
+class MyFirstClass
+  sayHello: -> console.log "You are first class!"
+
+myFirstInstance = new MyFirstClass
+myFirstInstance.sayHello()  # "You are first class!"
+```
+
+Seems readable enough, but we can do better, since this version doesn't reap
+much vs prototypes.
+
+```coffee
+class Tribble
+  constructor: ->
+    @isAlive = true
+    Tribble.count += 1
+
+  # Prototype properties
+  breed: -> new Tribble if @isAlive
+  die: ->
+    return unless @isAlive
+    Tribble.count -= 1
+    @isAlive = false
+
+  # Class-level properties
+  @count: 0
+  @makeTrouble: -> console.log ('Trouble!' for i in [1..@count]).join(' ')
+```
+
+When you run `.new`, the `constructor` method runs.
+
+`@` dictates object-level variables when inside a method, while outside of a
+method, they dictate class-level (read: shared) variables. So `Tribble.count`
+increases the classes knowledge of the number of total Tribbles.
+
+In the class body, `@` points to the constructor rather than the prototype, and
+you can define "static" (class-level) properties with the special syntax of
+`@key: value`.
+
+```coffee
+tribble1 = new Tribble
+tribble2 = new Tribble
+Tribble.makeTrouble()   # "Trouble! Trouble!"
+```
+
+So we created two tribbles, and they made trouble. Let's make less trouble:
+
+```coffee
+trible1.die()
+Tribble.makeTrouble()  # "Trouble!"
+```
+
+Tribbles are born pregnant, so it's not hard to breed them up:
+
+```coffee
+tribble2.breed().breed().breed()
+Tribble.makeTrouble()  # "Trouble! Trouble! Trouble! Trouble!"
+```
+
+So now classes make sense. Watch how inheritance makes you smile, though.
+
+## Inheritance: Classy Prototype Chains
+
+
