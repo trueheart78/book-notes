@@ -20,7 +20,7 @@ class BookTest < Minitest::Test
   end
 
   def test_directory
-    assert_equal('book-notes/an-awesome-book', subject.directory)
+    assert_equal('notes/an-awesome-book', subject.directory)
   end
 
   def test_chapter_list

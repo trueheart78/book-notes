@@ -4,12 +4,12 @@ Reading a lot, figured this was as good a place as any to make some notes :heart
 
 Books :books:
 
-1. [CoffeeScript](book-notes/coffeescript/README.md)
-1. [Working with Unix Processes](book-notes/working-with-unix-processes/README.md) :heart:
-1. [Working with Ruby Threads](book-notes/working-with-ruby-threads/README.md) :heart:
-1. [Confident Ruby](book-notes/confident-ruby/README.md)
-1. [Practical Object-Oriented Design in Ruby](book-notes/practical-object-oriented-design-in-ruby/README.md) :heart:
-1. [Seven Databases in Seven Weeks](book-notes/seven-db-in-seven-weeks/README.md)
+1. [CoffeeScript](notes/coffeescript/README.md)
+1. [Working with Unix Processes](notes/working-with-unix-processes/README.md) :heart:
+1. [Working with Ruby Threads](notes/working-with-ruby-threads/README.md) :heart:
+1. [Confident Ruby](notes/confident-ruby/README.md)
+1. [Practical Object-Oriented Design in Ruby](notes/practical-object-oriented-design-in-ruby/README.md) :heart:
+1. [Seven Databases in Seven Weeks](notes/seven-db-in-seven-weeks/README.md)
 
 ## Adding a Book
 
@@ -81,7 +81,7 @@ download the image (if it is valid), and inform you of this task:
 
 Please add the following to the root README.md file:
 
-1. [An Awesome Book](book-notes/an-awesome-book/README.md)
+1. [An Awesome Book](notes/an-awesome-book/README.md)
 
 **********************************************************************
 
