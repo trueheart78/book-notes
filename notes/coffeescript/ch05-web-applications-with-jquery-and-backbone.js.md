@@ -106,3 +106,28 @@ Grunt is a very flexible tool. It could also concat our JS, run tests, and
 even deploy files to staging or production servers. You should also consider
 [Automate with Grunt](https://pragprog.com/book/bhgrunt/automate-with-grunt)
 from The Pragmatic Bookshelf.
+
+## Managing Front-End Dependencies with Bower
+
+Automating JS library installs is made easier thanks to package managers
+inspired by npm; most motably Bower.
+
+Install Bower globally with npm:
+
+```sh
+npm install -g bower
+```
+
+Once installed, Bower can prepare any project for front-end dependency mgmt
+with its own `init`:
+
+```sh
+bower init
+```
+
+You'll end up with a `bower.json` file. Now, install these:
+
+```sh
+bower install --save jquery
+bower install --save backbone
+```
