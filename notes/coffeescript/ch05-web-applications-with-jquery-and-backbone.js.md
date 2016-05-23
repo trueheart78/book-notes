@@ -2,6 +2,8 @@
 
 # Chapter 5. Web Applications with jQuery and Backbone.js
 
+[Coffee Tasks repo](https://github.com/trueheart78/cs-coffee-tasks)
+
 jQuery was launched in 2006, and became a wonderful abstraction of many of the
 different problems each browser might have, and introduced an ingenious CSS-like
 element selection syntax.

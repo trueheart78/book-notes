@@ -13,6 +13,7 @@ Notes:
 - [Chapter 3. Collections, Iteration, and Destructuring](ch03-collections-iteration-and-destructuring.md)
 - [Chapter 4. Classes, Prototypes, and Inheritance](ch04-classes-prototypes-and-inheritance.md)
 - [Chapter 5. Web Applications with jQuery and Backbone.js](ch05-web-applications-with-jquery-and-backbone.js.md)
+  - [Coffee Tasks repository](https://github.com/trueheart78/cs-coffee-tasks)
 - [Chapter 6. Web Servers with Node and Express](ch06-web-servers-with-node-and-express.md)
 - [Chapter 7. Testing with Intern](ch07-testing-with-intern.md)
 
