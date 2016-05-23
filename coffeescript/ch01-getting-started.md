@@ -34,6 +34,8 @@ npm -v
 
 If you have Node but not npm, try a different installation method for Node.
 
+[Installing Node.js via package manager](https://nodejs.org/en/download/package-manager/)
+
 ### Installing the coffee-script Package
 
 ```sh
