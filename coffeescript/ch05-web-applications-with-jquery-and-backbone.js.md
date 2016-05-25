@@ -278,4 +278,175 @@ Now onto BB entity classes.
 
 ## Representing Data in Backbone Models and Collections
 
+A **model**, in the BB sense, is an entity that serves as a key-value store
+where changes can be observed via event listeners. Also, BB models inherit
+methods for syncing their data with a remote server. Simple, but so effective
+that models are the heart of BB. **Being able to "listen" for changes to a set
+if data is incredibly powerful.** They can tell us to re-render a view, display
+a message, or even fetch add'n data. A model layer was not existent in most
+pre-BB JS.
 
+BB also defines **collections**, ordered sets of models that can also be
+observed via even listeners. When data is loaded from the server (or 
+`localStorage`), we're going to load each of the three arrays into a
+corresponding collection: one for boards, and columns, and cards.
+
+*src/card.coffee*
+
+```coffee
+class window.Card extends Backbone.Model
+
+class window.CardCollection extends Backbone.Collection
+  model: Card
+
+cardData = JSON.parse(localStorage.cards)
+window.allCards = new CardCollection(cardData, {parse: true})
+```
+
+Starts out simple, and doesn't really do much that might seem magical, now that
+you know as much as you do. And keep in mind, we're using `localStorage`
+instead of a server (for now). To persist data, we'll override `Backbone.sync`,
+which provides the persistence functionality underlying every model and
+collection's `save` and `fetch` methods.
+
+That's why we have the data being pulled in on line 6 above.
+
+Now, onto the `Column` model, which will be a bit more complicated. We're going
+to implement `parse` and `toJSON` methods, which BB uses to convert raw JSON
+data into the model's attributes and back.
+
+```coffee
+class window.Column extends Backbone.Model
+  defaults:
+    name: 'New Column'
+
+  parse: (data) ->
+    attrs = _.omit data, 'cardIds'
+
+    # convert the raw cardIds array into a collection
+    attrs.cards = @get('cards') ? new window.CardCollection
+    attr.cards.reset(
+      for cardId in data.cardIds or []
+        window.allCards.get(cardId)
+    )
+
+    attrs
+
+  toJSON: ->
+    data = _.omit @attributes, 'cards'
+
+    # convert the cards collection into a cardIds array
+    data.cardIds = @get('cards').pluck 'id'
+
+    data
+```
+
+So, the `parse` method:
+
+First, we're using Underscore's `_.omit` method to make a shallow copy of the
+raw JSON data that exclide `cardIds`. When this copy is returned by `parse`,
+it is going to be used as the model's attributes. We're excluding `cardIds`
+because we don't want that array to become a part of the model; we want the
+cards referenced by that array instead. having both woul cause data duping and
+perhaps inconsistencies.
+
+Second, we're creating a `CardCollection` that contains the models returned by
+a list comprehension. It goes through `cardIds` and, for each unique ID, gets
+the card with that id from `allCards`.
+
+The `toJSON` method simple does the opposite of `parse`, extracting the IDs from
+the column's `CardCollection`. The data we return will be persisted to
+`localStorage`, potentionally being passed into some new column's `parse`
+method.
+
+No work is required for `ColumnCollection`, because when a BB collection is
+instantiated with a bunch of raw data, it automatically creates new models and
+calls the `parse` method on each one.
+
+*more src/column.coffee*
+
+```coffee
+class window.ColumnCollection extends Backbone.Collection
+  model: Column
+
+columnData = JSON.parse(localStorage.columns)
+window.allColumns = new ColumnCollection(columnData, {parse: true})
+```
+
+This setup above allows us to load all the columns from `localStorage`, just
+like we did with `allCards`.
+
+*src/board.coffee*
+
+```coffee
+class window.Board extends Bacbone.Model
+  defaults:
+    name: 'New Board'
+
+  parse: (data) ->
+    attrs = _.omit data, 'columnIds'
+
+    # convert the raw columnIds array into a collection
+    attrs.columns = @get('columns') ? new window.ColumnCollection
+    attrs.columns.reset(
+      for columnId in data.columnIds or []
+        window.allColumns.get(columnId)
+    )
+    
+    attrs
+
+  toJSON: ->
+    data = _.omit @attributes, 'columns'
+
+    # convert the columns collection into a columnIds array
+    data.columnIds = @get('columns').pluck 'id'
+
+    data
+
+class window.BoardCollection extends Backbone.collection
+  model: Board
+
+boardData = JSON.parse(localStorage.boards)
+window.allBoards = new BoardCollection(boardData, {parse: true})
+```
+
+Now we have the requisite modesl and collections in place. Now they just need
+to sync with `localStorage` (which is specific to this app, and not to just BB).
+
+*src/application.coffee*
+
+```coffee
+Backbone.sync = (method, model, options) ->
+  # we only hjave to handle model syncs (not collection syncs)
+  if model instanceof window.Card
+    collection = window.allCards
+    localStorageKey = 'cards'
+  else if model instanceof window.Column
+    collection = window.allColumns
+    localStorageKey = 'columns'
+  else if model instanceof window.Board
+    collection = window.allBoards
+    localStorageKey = 'boards'
+
+  switch method
+    when 'get'  # corresponds to a model.fetch() call
+      model.reset collection.get(model.id), {silent: true)
+    when 'create'  # model.save on a new model
+      model.set 'id', collection.length + 1
+      collection.add(model)
+      localStorageKey[localStorageKey] = JSON.stringify collection.toJSON()
+    when 'update' # model.sve on an old model
+      localStorageKey[localStorageKey] = JSON.stringify collection.toJSON()
+
+  # simulate a successful jqXHR
+  xhr = options.xhr = jQuery.Deferred().resolve(model.toJSON()).promise()
+  options.success(model.toJSON))
+  xhr
+```
+
+Since this is a `localStorage` app, and not a server-saving one, we do have to
+deal with some BB internals (this will disappear in the next chapter).
+
+That's it for the model layer of our app. Now we just need a view layer.
+
+## Presenting Data with Views
