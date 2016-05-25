@@ -1,0 +1,33 @@
+---
+:title: Programming Elixir 1.2
+:purchase: https://pragprog.com/book/elixir12/programming-elixir-1-2
+:author: Dave Thomas
+:homepage: https://pragdave.me/
+:image: https://imagery.pragprog.com/products/491/elixir12.jpg?1451929828
+:image_ext: jpg
+
+:chapters:
+  - Take the Red Pill
+  - Pattern Matching
+  - Immutability
+  - Elixir Basics
+  - Anonymous Functions
+  - Modules and Named Functions
+  - Lists and Recusrion
+  - Maps, Keyword Lists, Sets and Structs
+  - An Aside - What Are Types?
+  - Processing Collections - Enum and Stream
+  - Strings and Binaries
+  - Control Flow
+  - Organizing a Project
+  - Working with Multiple Processes
+  - Nodes - The Key to Distributing Services
+  - OTP - Servers
+  - OTP - Supervisors
+  - OTP - Applications
+  - Tasks and Agents
+  - Macros and Code Evaluation
+  - Linking Modules - Behaviours and Use
+  - Protocols - Polymorphic Functions
+  - More Cool Stuff
+
