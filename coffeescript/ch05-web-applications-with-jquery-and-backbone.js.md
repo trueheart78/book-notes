@@ -228,4 +228,54 @@ Let us mark them up.
   name='due-date' value='<%= @dueDate %>'></label>
 ```
 
+Now, these templates aren't crazy, by any means. They are very ERB-like.
+
+However, do notice the `date` input type (a fairly cutting-edge browser feature)
+that might not be available in a production app (due to the user's browser),
+but we're developers, so we can likely use it without issue.
+
+Using BB we'll now bring this markup monster to life. *Muahahahahhahahah!*
+
+## Structuring Data for Persistence
+
+We're going to persist the data as JSON locally, so we'll look at that before
+we look at how to represent the data in BB.
+
+This will be a relational schema.
+
+```json
+{
+  "boards": [
+    {
+      "id": 1,
+      "name": "Pet Tasks",
+      "columnIds": [1]
+    }
+  ],
+  "columns": [
+    {
+      "id": 1,
+      "name": "Dog Tasks",
+      "cardIds": [1]
+    }
+  ],
+  "cards": [
+    {
+      "id": 1,
+      "description": "Walk the dog",
+      "dueDate": "2016-06-06"
+    }
+  ]
+}
+```
+
+We could use a more nested, non-relational schema, but card data could be
+nested inside of board data, and since columns are never shared across boards,
+a scheme like that may work for this small project. However, it would be quite
+brittle if we decided to add features.
+
+Now onto BB entity classes.
+
+## Representing Data in Backbone Models and Collections
+
 
