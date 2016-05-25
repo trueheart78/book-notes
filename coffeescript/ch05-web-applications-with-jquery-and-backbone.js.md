@@ -219,7 +219,7 @@ Let us mark them up.
 </div>
 ```
 
-*templates/eco*
+*templates/card.eco*
 
 ```eco
 <textarea name='card-description' placeholder='Description'
