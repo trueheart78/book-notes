@@ -450,3 +450,162 @@ deal with some BB internals (this will disappear in the next chapter).
 That's it for the model layer of our app. Now we just need a view layer.
 
 ## Presenting Data with Views
+
+A BB view is a DIY kit for turning a model into HTML. BB doesn't perform
+rendering or respond to input events or interact with its model unless you
+tell it to.
+
+So, first up, a view class for our `Card` model. All it needs to do is render
+the model into markup and save changes in the dsecription and due-date fields
+to the model.
+
+*adding to src/coffee*
+
+```coffee
+class window.CardView extends Backbone.View
+  render: ->
+    html = JST['templates/card']
+      description: @model.get('description')
+      dueDate: @model.get('due-date')
+
+    @$el.html html
+    @
+
+  events:
+    'change [name=card-description]': 'descriptionChangeHandler'
+    'change [name=due-date]': 'dueDateChangeHandler'
+
+  descriptionChangeHandler: (e) ->
+    @model.save 'description', $(e.currentTarget).val()
+    return
+
+  dueDatChangeHandler: (e) ->
+    @model.save 'due-date', $(e.currentTarget).val()
+    return
+```
+
+`render`: when we instantiate the view, we pass in an options hash, and BB 
+automatically sets `model` and `$el` as properties when passed. `@model` is a
+`Card` instance and `@$el` is a jQuery object that is wrapped around the HTML
+element that the view change is in charge of. For `CardView`, that's going to
+be a `div` with the `card` class. After putting the HTML from the template in
+the DOM, the method returns the view to allow chaining, for example: `cardView
+= new CardView(options).render()`.
+
+If this was one-way, we'd be set with `render`, but this isn't, so we aren't.
+So the `events` hash is defined, which BB uses to listen for DOM events and send
+them to handlers. The hash keys are of the form `"<selector><event type>"`, and
+the values are the names of class methods. Using names rather than references to
+the methods themselves may seem strange, but BB has to call the methods in the
+context of the view object. A call to `view[methodName](e)` does that, while
+`method(e)` would only work if `method` were bound to `view`.
+
+The two handlers pull the value from the DOM element and pass it the model's
+`save` mathod. It changes the attribute on the model (like `set`), and also
+syncs the model to the server (for now, `localStorage`).
+
+Next is `ColumnView`.
+
+*adding to src/column.coffee*
+
+```coffee
+class window.BoardView extends Backbone.View
+  initialize: (options) ->
+    @listenTo @model.get('columns'), 'add remove', =>
+      @model.save()
+      @render()
+    super
+
+  render: ->
+    html = JST['templates/board']
+      name: @model.get('name')
+      columns: @model.get('columns').toJSON()
+
+    @$el.html html
+
+    @model.get('columns').forEach (column) =>
+      columnView = new window.ColumnView(model: column)
+      columnView.setElement @$("[data-column-id=#{column.get('id')}]")
+      columnView.render()
+      columnView
+    @
+
+  events:
+    'change [name=board-name]': 'nameChangeHandler'
+    'click [name=add-column]': 'addColumnClickHandler'
+
+  nameChangeHandler: (e) ->
+    @model.save 'name', $(e.currentTarget).val()
+    return
+
+  addColumnClickHandler: (e) ->
+    newColumn = new window.Column({}, {parse: true})
+    newColumn.save()
+    @model.get('columns').add(newColumn)
+    return
+```
+
+BB calls `initialize` whenever a class is instantiated. Here, we're using it
+to declare an initially empty array of card views and to attach an event
+listener to our column's collection of cards, so that we re-render the entire
+column every time a card is added or removed. Sure, it's not efficient, but we
+can optimize later if it is needed.
+
+The default implementation of `initialize` is a no-op and the return value is
+ignored, so ending our implementation with `super` isn't required. But, it does
+give us some leeway when refactoring.
+
+The `render` method here has a couple differences to the `CardView`'s. First,
+some minor data transformation. We're storing the column's cards as a
+`CardCollection` in the `Column` model, and Eco doesn't understand BB
+collections, so instead we need to pass in an array containing the card data,
+which is what a collection's `toJSON` method gives us. Then, after rendering
+the column template we need to create a `CardView` for each card, give it the
+DOM element that we just created for it, and tell it to render.
+
+In addition to a name change handler that works just like the input handlers in
+`CardView`, the column view has a click handler for the New Card button. When
+clicked, it appends a new card with a unique ID to both `allCards` and the
+column's collection, which will re-render the column, thanks to the listener
+we attached in `initialize`.
+
+Finally, there is `BoardView`.
+
+*add to src/board.coffee*
+
+```coffee
+class window.BoardView extends Backbone.View
+  initialize: (options) ->
+    @listenTo @model.get('columns'), 'add remove', =>
+      @model.save()
+      @render()
+    super
+
+  render: ->
+    html = JST['templates/board']
+      name: @model.get('name')
+      columns: @model.get('columns').toJSON()
+
+    @$el.html html
+
+    @model.get('columns').forEach (column) =>
+      columnView = new window.ColumnView(model: column)
+      columnView.setElement @$("[data-column-id=#{column.get('id')}]")
+      columnView.render()
+      columnView
+    @
+
+  events:
+    'change [name=board-name]': 'nameChangeHandler'
+    'click [name=add-column]': 'addColumnClickHandler'
+
+  nameChangeHandler: (e) ->
+    @model.save 'name', $(e.currentTarget).val()
+    return
+
+  addColumnClickHandler: (e) ->
+    newColumn = new window.Column({}, {parse: true})
+    newColumn.save()
+    @model.get('columns').add(newColumn)
+    return
+```
