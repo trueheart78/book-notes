@@ -206,3 +206,26 @@ Let us mark them up.
   <button name='add-column'>Add Column</button>
 </div>
 ```
+
+*templates/column.eco*
+
+```eco
+<input name='column-name' value='<%= @name %>'>
+<div class='card-container'>
+  <% for card in @cards : %>
+    <div class='card' data-card-id='<%= card.id %>'></div>
+  <% end %>
+  <button name='add-card'>Add Card</button>
+</div>
+```
+
+*templates/eco*
+
+```eco
+<textarea name='card-description' placeholder='Description'
+  rows='3'><%= @description %></textarea>
+<label class='due-date-label'><span>Due by:</span><input type='date'
+  name='due-date' value='<%= @dueDate %>'></label>
+```
+
+
