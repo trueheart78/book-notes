@@ -150,3 +150,33 @@ IEx.configure colors: [enabled: false]
 **You can put an Elixir code into `.iex.exs`.**
 
 ## Compile and Run
+
+Once you tire of writing short apps in iex, you'll want to start writing source
+files. They generally end in `.ex` or `.exs`. The prior ones are intended to be
+cimpiled into bytecodes and then run, while that latter are more like scripts in
+programming languages (interpreted at the source level).
+
+Here's you first classic program:
+
+*hello.exs*
+
+```elixir
+IO.puts "Hello, world!"
+```
+
+Run it with `elixir hello.exs`.
+
+We can also compile it inside iex using the `c` helper, `c "hello.exs"`
+
+The `c` helper compiled and executed the source file.
+
+## Participate in the Community
+
+There is the [Elixir mailing list](https://groups.google.com/forum/?fromgroups#!forum/elixir-lang-talk).
+
+## Think Differently
+
+This is a book about thinkig differently; accepting that some of the things 
+people say about programming may not be the full story.
+
+> "Even if it is work, programming should be fun." - Dave Thomas
