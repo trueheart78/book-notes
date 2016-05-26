@@ -64,3 +64,89 @@ The code may not make much sense, but give it time. You'll be writing this kind
 of thing for yourself.
 
 ### Functions Are Data Transformers
+
+Elixir lets us solve the problem in the same way the Unix shell does. But,
+instead of command-line utilities, we have functions, and we can string them
+together as we please. The more focused the functions, the more flexible an
+app we will have.
+
+We can even make these functions run in parallel. Elixir has a simple but
+powerful mechanism for passing messages between them. And these are not the
+standard Unix processes and threads you may be used to, as you can run millions
+of them on a single machine and have hundreds of these machines interoperating.
+
+> "Most programmers treat threads and processes as a necessary eveil; Elixir
+   developers feel they are an important simplification." - Bruce Tate
+
+The idea of transformation is at the heart of functional programming: a function
+transforms it inputs into its output.
+
+But, this power comes at a price. A lot of what you know about programming will
+need to be unlearned, and many of your instincts will be wrong. You must be okay
+with being a n00b again (sometimes, that's part of the fun).
+
+## Installing Elixir
+
+This book assumes you are using Elixir 1.2+. See up-to-date instructions
+available at [http://elixir-lang.org/install.html](http://elixir-lang.org/install.html)
+
+## Running Elixir
+
+### iex - Interactive Elixir
+
+```sh
+iex
+
+Erlang/OTP 18 [erts-7.1] [source] [64-bit] [smp:4:4] [async-threads:10]
+              [hipe] [kernel-poll:false] [dtrace]
+Interactive Elixir (x.y.z) - press Ctrl+C to exit (type h() ENTER for help)
+iex(1)>
+```
+
+You can now enter Elixir code and see the result.
+
+You can exit iex by `ctrl-c` twice, or `ctrl-g` followed by `q` and `return`.
+
+### IEx Helpers
+
+Type `h` in iex to see helpers available.
+
+You will see a list of helper functions, and the number following the slash is
+the number of args the helper expects.
+
+You can even specify the module you want help on, like `h IO` or `h(IO)`, and
+get help specifically on the module.
+
+You can also specify the function you want help on, like `h IO.puts`, since we
+will be using it to output a string to the console.
+
+And, if you are used to using `p` in Ruby, try `i` in Elixir.
+
+iex is a surprisingly powerful tool. You can use it to compile and execute
+entire projects, log in to remote machines, and access running Elixir apps.
+
+### Customizing iex
+
+You can customize iex by setting options, like showing the results of evals
+in a different collor.
+
+```elixir
+h IEx.configure
+```
+
+You can then create a `~/.iex.exs` with the following:
+
+```elixir
+IEx.configure colors: [ eval_result: [ :cyan, :bright ] ] 
+```
+
+If you have oddball stuff appearing in your terminal after this, disable the
+colors:
+
+```elixir
+IEx.configure colors: [enabled: false]
+```
+
+**You can put an Elixir code into `.iex.exs`.**
+
+## Compile and Run
