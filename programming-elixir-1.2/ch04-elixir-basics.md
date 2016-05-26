@@ -110,5 +110,30 @@ created when you spawn a new process.
 The function `make_ref` creates a globally unique reference; no other reference
 will be equal to it. It is not used in this book.
 
-
 ## Collection Types
+
+So far, we've only seen common types (like arrays). Let's get exotic.
+
+### Tuples
+
+A tuple is an ordered collection of values.
+
+You write a tuple between braces, separating the elements with commas.
+
+```elixir
+{1, 2}
+{:ok, 42, "next"}
+{:error, :enoent}
+```
+
+A typical Elixir tuple has two to four elements. For other sizes, consider maps
+or structs.
+
+You can use typles in pattern matching:
+
+```elixir
+{status, count, action} = {:ok, 42, "next"}    #=> {:ok, 42, "next"}
+status                                         #=> :ok
+count                                          #=> 42
+action                                         #=> "next"
+```
