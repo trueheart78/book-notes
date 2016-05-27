@@ -90,7 +90,7 @@ You manipulate regular expressions with the `Regex` module.
 Regex.run ~r{[aeiou]}, "caterpillar"          #=> ["a"]
 Regex.scan ~r{[aeiou]}, "caterpillar"         #=> [["a"], ["e"], ["i"], ["o"], ["u"]]
 Regex.split ~r{[aeiou]}, "caterpillar"        #=> ["c", "t", "rp", "ll", "r"]
-Regex.replace ~{[aeiou]}, "caterpillar", "*"  #=> "c*t*rp*ll*r"
+Regex.replace ~r{[aeiou]}, "caterpillar", "*"  #=> "c*t*rp*ll*r"
 ```
 
 ## System Types
@@ -99,7 +99,7 @@ These reflect resources in the underlying Erlang VM
 
 ### PIDs and Ports
 
-a PID is a reference to a process (local or remote), and a port is a reference
+A PID is a reference to a process (local or remote), and a port is a reference
 to a resource (typically an external one) that you'll be reading or writing.
 
 The PID of the current process is available by calling `self`. A new PID is
