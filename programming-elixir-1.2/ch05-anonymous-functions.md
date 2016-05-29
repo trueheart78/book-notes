@@ -87,3 +87,71 @@ pair_tuple_to_list.({1234, 5678})
 My solutions:
 
 ![ch05-fn-01](ch05-fn-01.png)
+
+## One Function, Multiple Bodies
+
+A single fn def lets you define diff implementations, depending on the type and
+contents of the args passed.
+
+At its simplest, we can use pattern matching to select which clause to run. If
+`File.open` has `:ok` as its first element when successfully opened, we can
+write a fn that displays either the first line of said file or a simple error
+message.
+
+```elixir
+handle_open = fn
+                {:ok, file}  -> "Read data: #{IO.read(file, :line)}"
+                {_,   error} -> "Error: #{:file.format_error(error)}"
+              end
+
+handle_open.(File.open("code/path"))
+```
+
+You'll notice that now, depending on what happens in the `File.open` call, a
+different fn arg set gets matched on, changing the execution of the fn
+altogether.
+
+Also note that `:file.format_error` refers to the underlying Erlang `File`
+module, so we can call its `format_error` fn.
+
+## Working with Larger Code Examples
+
+Remember that you can write out an `.exs` file and then load it into iex, and
+iex will execute it and it's entirety. To do this, you must use the `c` fn, a
+fn that compiles and runs the code in the given file.
+
+```elixir
+c "elixir_file.exs"
+```
+
+We can also run that file directly from the command line.
+
+```sh
+elxiir elixir_file.exs
+```
+
+Remember that `.exs` is used for source and script files, and `.ex` is used for
+files we will want to compile and use later.
+
+## Your Turn
+
+Write a FizzBuzz fn that returns "FizzBuzz" if both args are zero, "Fizz" if
+only the first is, and "Buzz" if only the second is. Return the third arg when
+neither is zero.
+
+Solution:
+
+![ch05-fn-02](ch05-fn-02.png)
+
+The operator `rem(a, b)` returns the remainder after dividing `a` by `b`.
+Write a fn that takes a single integer (`n`), and calls the function from the
+above exercise, passing it `rem(n, 3)`, `rem(n, 5)`, and `n`. Call it seven
+times with arguments `10..16`. Expected output should be "Buzz, 11, Fizz, 13,
+14, FizzBuzz, 16".
+
+*And when you are complete, you will have written a FizzBuzz solution without
+any conditional logic.*
+
+Solution:
+
+![ch05-fn-03](ch05-fn-03.png)
