@@ -316,3 +316,86 @@ Binaries are both important and arcane. Elixir uses them to represent UTF
 strings, and (initially), you are unlikely to use them directly.
 
 ## Names, Source Files, Conventions, Operators, and So On
+
+Source files are UTF-8, but identifiers may only use ASCII, and indentation is
+not tab-based,but two-character spaced.
+
+Comments? Those use the hash sign `#` and run to the end of the line.
+
+There is a styleg guide writtn by the community, available at
+[https://github.com/niftyn8/elixir_style_guide](https://github.com/niftyn8/elixir_style_guide). This may move in the future.
+
+### Truth
+
+Elixir has three special values related to Boolean operations, and they are the
+same as in Ruby: `true`, `false`, and `nil`. All three of these values are
+aliases for atoms of the sam name, so you could use `:true`, `:false`, and
+`nil` to have the same affect. And **truthy** boils down to anything that is
+not `false` or `nil` (both considered **falsey**).
+`:false` and they will
+
+### Operators
+
+#### Comparison Operators
+
+Here's a subset of operators covered in this material:
+
+- `===` is for strict equality
+- `!--` is for string inequality
+- `==` is for value equality
+- `!=` is for value inequality
+- `>`, `>=`, `<`, `<=` are all for normal comparison
+
+If the types are the same or compatible, the comparison uses natural ordering.
+Otherwise, comparison is based on type in this manner.
+
+> number < atom < reference < function < port < pid < tuble < map < list <
+  binary
+
+#### Boolean Operators
+
+These perators expect `true` or `false` as their first argument
+
+```elixir
+a or b   # true if a is true, otherwise b
+a and b  # false if a is fase, otherwise b
+not a    # false if a is true, true otherwise
+```
+
+#### Relaxed Boolean Operators
+
+These take arguments of any type.
+
+```elixir
+a || b  # a if a is truthy, otherwise b
+a && b  # b if a is truthy, otherwise a
+!a      # false if a is truthy, otherwise true
+```
+
+#### Arithmetic Operators
+
+`+`, `-`, `*`, `/`, `div`, and `rem`
+
+Integer division yields a floating point result. Use `div(a,b)` to get an int.
+
+`rem` is the *remainder operator* and is called as a function:
+`(rem(11,3) => 2)`. It differs from modulo operations in that the result will
+have the same sign as the first arg.
+
+#### Join Operators
+
+```elixir
+binary1 <> binary2  # concats two binaries.
+list1 ++ list2      # concats two lists
+list1 -- list2      # returns elements in list1 not in list2
+```
+
+#### The `in` Operator
+
+```elixir
+a in enum  # tests if a is included in enum (perhaps a list or a range)
+```
+
+## Variable Scope
+
+
