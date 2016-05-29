@@ -155,3 +155,77 @@ any conditional logic.*
 Solution:
 
 ![ch05-fn-03](ch05-fn-03.png)
+
+## Functions Can Return Functions
+
+```elixir
+fun1 = fn -> fn -> "Hello" end end
+fun1.()
+fun.().()
+#=> "Hello"
+```
+
+If you spread of the fn def, then it's a bit easier to read.
+
+We may call the outer fn and bind the result to a separate var, We might also
+use parens to make the inner fn more obvious.
+
+### Functions Remember Their Original Environment
+
+Deeper we go:
+
+```elixir
+greeter = fn name -> (fn -> "Hello #{name}" end) end
+dave_greeter = greeter.("Dave")
+dave_greeter.()
+#=> "Hello Dave"
+```
+
+So the `name` parame is available throughout the body of the fn, even in the
+inner fn.
+
+The inner fn uses the outer fn's `name` param. Why does this happen/work?
+Because Elixir fn's automatically carry with them the bindings of vars in the
+scope in which they are defined. The var `name` is bound in the scope of the
+outer fn, and when the inner fn is defined, it inherits this scope and carries
+the binding of `name` with it. This is considered a **closure**; the scope
+encloses the bindings of its vars, packaging them into something th can be
+saved and used later.
+
+### Parameterized Functions
+
+What if both fn's took args?
+
+```elixir
+add_n = fn n -> (fn other -> n + other end) end
+add_two = add_n.(2)
+add_two.(3)
+#=> 5
+add_five = add_n.(5)
+add_five.(7)
+#=> 12
+```
+
+The inner fn adds the value of its param `other` to the value of the outer fn's
+param `n`. Each time we call the outer fn, we give it a value for `n` and it
+returns a fn that adds `n` to its own param.
+
+So `add_two = add_n.(2)` binds a fn that accepts an `other` param.
+
+## Your Turn
+
+Write a fn `prefix` that takes a string. It should return a new fn that takes
+a second string. When the second fn is called, it will return a string that
+contains the first string, a space, and the second string.
+
+```elxir
+mrs = prefix.("Mrs")
+mrs.("Smith")
+#=> "Mrs Smith"
+prefix.("Elixir").("Rocks")
+#=> "Elixir Rocks"
+```
+
+Solution:
+
+![ch05-fn-04](ch05-fn-04.png)
