@@ -6,6 +6,10 @@ By the howling [Dave Thomas](https://pragdave.me/)
 
 [Purchase](https://pragprog.com/book/elixir12/programming-elixir-1-2)
 
+Links:
+
+- [Elixir Style Guide](https://github.com/niftyn8/elixir_style_guide)
+
 Notes:
 
 - [Chapter 1. Take the Red Pill](ch01-take-the-red-pill.md)
