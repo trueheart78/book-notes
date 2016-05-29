@@ -398,4 +398,74 @@ a in enum  # tests if a is included in enum (perhaps a list or a range)
 
 ## Variable Scope
 
+Elixir is lexically scoped. Variables defined in a function are local to that
+function. Modules define a scope for local vars, but are only accessible at the
+top level of that module, and not in functions defined in said module.
 
+Several Elixir structures als define their own scope, like `with` (and later,
+`for`).
+
+### The `with` Expression
+
+The `with` expression serves double duty. It allows you define to a local scope
+for variables.
+
+```elixir
+content = "Now is the time"
+
+lp = with {:ok, file}   = File.open("/etc/passwd",
+          content       = IO.read(file, :all),
+          :ok           = File.close(file),
+          [_, uid, gid] = Regex.run(~r/_lp:*.?:(\d+):(\d+)/, content)
+     do
+       "Group: #{gid}, User: #{uid}"
+     end
+
+IO.puts lp       #=> Group: 26, user: 26
+IO.puts content  #=> Now is the time
+```
+
+The `with` expression lets us work with what are effectively temporary vars
+as we open the file, read the content, close it, and search it. The value of
+`with` is the value of its `do` parameter.
+
+The inner var `content` is local to the `with`, and doesn't affect the content
+defined outside of it.
+
+### `with` and Pattern matching
+
+In the above example, the head of the `with` expresion used `=` for basic
+pattern matches. If any of those failed, a `MatchError` would be raised. So how
+could we handle that in a more elegant way? The `<-` operator comes in. If
+you use `<-` instead of `=` in a `with` expression, it performs a match, but
+fails if it returns the value that couldn't be matched.
+
+```elixir
+with [a|_] <- [1,2,3], do: a  #=> 1
+with [a,_] <- nil,     do: a  #=> nil
+```
+
+We can use this to let the `with` in the code further up to return `nil` if the
+user cannot be found.
+
+```elixir
+result = with {:ok, file}   = File.open("/etc/passwd",
+              content       = IO.read(file, :all),
+              :ok           = File.close(file),
+              [_, uid, gid] <- Regex.run(~r/xxx:*.?:(\d+):(\d+)/, content)
+         do
+           "Group: #{gid}, User: #{uid}"
+         end
+
+IO.puts inspect(result)  #=> nil
+```
+
+When we try to match the user `xxx`, `Regex.run` returns `nil`, causing the
+match to fail, and the `nil` becomes the value of the `with`.
+
+### A Minor Gotcha
+
+`with` is treated by Elixir as if it were a call to a function or a macro, so
+use parentheses or put the first set of args on the same line as the `with`
+keyword. You can also use `do:` instead of `do`...`end`, and put the ``content
+on the same line as the `do:`.
