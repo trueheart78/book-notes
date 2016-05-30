@@ -315,3 +315,101 @@ You can also declare private fns with multiple heads, just like with `def`.
 But they must all be private or public, not a mix thereof.
 
 ## The Amazing Pipe Operator: `|>`
+
+The best for last? You got it.
+
+Code exists like this:
+
+```elixir
+people = DB.find_customers
+orders = Orders.for_customers(people)
+tax    = sales_tax(orders, 2016)
+filing = prepare_filing(tax)
+```
+
+And there is this smelly alternative:
+
+```elixir
+filing = prepare_filing(sales_tax(Orders.for_customers(DB.find_customers), 2013))
+```
+
+And those are the types of code that you use to get kids to eat their veggies.
+
+In Elixir, you can just pipe it:
+
+```elixir
+filing = DB.find_customers
+           |> Orders.for_customers
+           |> sales_tax(2016)
+           |> prepare_filing
+```
+
+The `|>` operator takes the result of the expression to its left and inserts
+it as the first param of the fn to its right.
+
+`val |> f(a, b)` is the same as calling `f(val, a, b)`.
+
+And you can chaing items on the same line. **Always use parentheses around
+fn params in pipelines.**
+
+The key aspect of the pipe operator is that it lets you write code that can
+closely follow your spec's form.
+
+Programming is transforming data, and the `|>` operator makes that
+transformation explicit.
+
+## Modules
+
+Modules provide namespaces for things you define, like named fns. They can
+also contain macros, structs, protocols, etc.
+
+Inside the module, the namespace isn't required to call another fn that the
+same module encloses; this is only required from outside the module.
+
+Nested modules just use more dots, and that's because a nested module isn't
+really a thing, it's an alias for `defmodule ModuleTop.ModuleMiddle do`.
+
+Also, it means that there is no relationship between the modules.
+
+### Directives for Modules
+
+A directive in a module takes effect from the place you wrote it until the end
+of the module.
+
+#### The `import` Directive
+
+The `import` directive brings a modules fns and/or macros into the current
+scope (like in Ruby).
+
+The `import` syntaax is: `import Module [, only:|except: ]`
+
+The second param lets you control which fn or macros are imported, with a list
+of `name: arity` pairs. 
+
+```elixir
+import List, only: [ flatten: 1, duplicate: 2 ]
+import List, only: :functions
+import List, only: :macros
+```
+
+It is good to limit what you import to what you need.
+
+#### The `alias` Directive
+
+`alias` creates an alias for a module, to cut down on typing, etc.
+
+```elixir
+alias My.Other.Module.Parser, as: Parser
+alias My.Other.Module.Runner, as: Runner
+
+# same as above, as the last segment is used as the default 'as:'
+alias My.Other.Module.Parser
+alias My.Other.Module.Runner
+
+# same as above, cuz Elixir
+alias My.Other.Module.{Parser, Runner}
+```
+
+#### The `require` Directive
+
+
