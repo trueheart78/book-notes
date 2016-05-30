@@ -236,9 +236,132 @@ If fns are just values, we should be able to pass them to other fns. We can.
 
 ```elixir
 times_2 = fn n -> n * 2 end
-apply = fn (fun, vlaue) -> fun.(value) end
+apply = fn (fun, value) -> fun.(value) end
 apply.(times_2, 6)
 #=> 12
 ```
 
+In this example, `apply` is a fn that takes a second fn and a val. It returns
+the result of invoking that second fn with the val as an arg.
+
+We use this ability to pass fn around everywhere in Elixir code. The built-in
+`Enum` module has a fn called `map` that takes two args: a collection, and a
+fn. It returns a list that is the result of applying that fn to each element
+of the collection.
+
+```elixir
+list = [1, 3, 5, 7, 9]
+Enum.map list, fn ->elem -> elem * 2 end
+#=> [2, 6, 10, 14, 18]
+Enum.map list, fn elem -> elem > 6 end
+#=> [false, false, false, true, true]
+```
+
+### Pinned Values and Function Parameters
+
+Remember that pin operator (`^`) we talked about, which let us use the current
+val of a var in a pattern? You can use this with fn params, as well.
+
+```elixir
+defmodule Greeter do
+
+  def for(name, greeting) do
+    fn
+      (^name) -> "#{greeting} #{name}"
+      (_)     -> "Who are you?"
+    end
+  end
+
+end
+
+mr_john = Greeter.for("John", "Doe")
+
+IO.puts mr_john.("John")  #=> "Heya John"
+IO.puts mr_john.("Dave")  #=> "Who are you?"
+```
+
+In this example, the `Greeter.for` fn returns a fn with two heads. The first
+matches when the first param is the value of the name passed to `for`.
+
+### The & Notation
+
+Let's make defining fns so easy.
+
+```elixir
+add_one = &(&1 + 1)  # same as add_one = fn (n) -> n + 1 end
+add_one.(44)
+#=> 45
+square = &(&1 * &1)
+square.(8)
+#=> 64
+speak = &(IO.puts(&1))
+speak.("Hello")
+#=> Hello
+:ok
+```
+
+The `&` operator converts the expression that follows into a function. Inside
+that expression, the placeholders `&1`, `&2`, etc, correspond to the params of
+the fn.
+
+Elixir is even more clever. The `speak` line in the previous code would create
+an anon fn, but Elixir noticed that the body was simply a call to a named fn
+(IO fn `puts`) and the params were correct, so it optimized away the anon fn
+and created a direct reference to the fn, `IO.puts/1`.
+
+Keep in mind the args must be in the correct order for Elixir to be able to
+optimize this way.
+
+Because `[]` and `{}` are operators on Elixir, they can also be turned into
+fns.
+
+```elixir
+divrem = &{ div(&1, &2), rem(&1, &2) }
+divrem.(13, 5)
+#=> {2, 3}
+```
+
+There is also a second form of the `&` fn capture operator. You can give it the
+name and arity (num of params) of an existing fn and it will return an anon fn
+that calls it.
+
+```elixir
+l = &length/1
+l.([1, 2, 3, 4])
+#=> 4
+
+len = &Enum.count/1
+len.([1, 2, 3, 4])
+#=> 4
+
+m = &Kernel.min/2  #Erlang fn being aliased
+m.(99, 88)
+#=> 88
+```
+
+We can also do that for named fns we write, as well.
+
+The `&` shortcut gives us a wonderful way to pass fns to other fns.
+
+```elixir
+Enum.map [1, 2, 3, 4], &(&1 + 1)
+#=> [2, 3, 4, 5]
+```
+
+## Your Turn
+
+Use the `&...` notation to rewrite the following:
+
+```elixir
+Enum.map [1, 2, 3, 4], fn x -> x + 2
+
+#solution
+Enum.map [1, 2, 3, 4, &(&1 + 2)
+
+
+Enum.each [1, 2, 3, 4], fn x -> IO.inspect x end
+
+#solution
+Enum.each [1, 2, 3, 4], &IO.inspect/1
+```
 
