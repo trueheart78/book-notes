@@ -229,3 +229,16 @@ prefix.("Elixir").("Rocks")
 Solution:
 
 ![ch05-fn-04](ch05-fn-04.png)
+
+## Passing Functions As Arguments
+
+If fns are just values, we should be able to pass them to other fns. We can.
+
+```elixir
+times_2 = fn n -> n * 2 end
+apply = fn (fun, vlaue) -> fun.(value) end
+apply.(times_2, 6)
+#=> 12
+```
+
+
