@@ -305,3 +305,13 @@ Hints:
 - Patterns can match the low and high parts of a range `(a..b=4.8)`
 
 *Solution forthcoming - tired. You can see [solutions online](https://forums.pragprog.com/forums/322/topics/Exercise:%20ModulesAndFunctions-6)*
+
+## Private Functions
+
+The `defp` macro defines a private function - one that can only be called from
+within the module that declares it.
+
+You can also declare private fns with multiple heads, just like with `def`.
+But they must all be private or public, not a mix thereof.
+
+## The Amazing Pipe Operator: `|>`
