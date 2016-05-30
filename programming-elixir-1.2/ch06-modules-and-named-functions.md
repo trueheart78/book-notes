@@ -412,4 +412,6 @@ alias My.Other.Module.{Parser, Runner}
 
 #### The `require` Directive
 
-
+You `require` a module if you want to use any macros it defines. This ensures
+the definitions are available when your code is compiled. We'll talk more about
+it later.
