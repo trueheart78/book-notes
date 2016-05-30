@@ -126,7 +126,7 @@ The one point worth stressing is the order of the clauses can make a difference
 when you translate them into code. It tries fn from the top down, executing the
 first match.
 
-SO don't do the following:
+So don't do the following:
 
 ```elixir
 defmodule Badfactorial do
@@ -152,3 +152,156 @@ in the source file.
 Solutions:
 
 ![ch06-maf-04-05](ch06-maf-04-05.png)
+
+## Guard Clauses
+
+Guard clauses allow you to distinquish pattern matching based on types, or a
+test involving the param's value.
+
+```elixir
+defmodule Guard do
+  def what_is(x) when is_number(x) do
+    IO.puts "#{x} is a number"
+  end
+  def what_is(x) when is_list(x) do
+    IO.puts "#{inspect(x)} is a list"
+  end
+  def what_is(x) when is_atom(x) do
+    IO.puts "#{x} is an atom"
+  end
+end
+
+Guard.what_is(99)         #=> 99 is a number
+Guard.what_is(:cat)       #=> cat is an atom
+Guard.what_is([1, 2, 3])  #=> [1, 2, 3] is a list
+```
+
+In the factorial example we did previously, if we passed in a negative number,
+it would loop forever. 
+
+```elixir
+defmodule Factorial do
+  def of(0), do: 1
+  def of(n), do: n * of(n-1)
+end
+```
+
+To fix this...
+
+```elixir
+defmodule Factorial do
+  def of(0), do: 1
+  def of(n) when n> 0 do
+    n * of(n-1)
+  end
+end
+```
+
+Pattern matching won't find a fn to match against, and there will be an error
+raised (FunctionClauseError).
+
+### Guard-Clause Limitations
+
+Only a certain subset of Elixir expressions in guard clauses. See the
+[Getting Started Guide](http://elixir-lang.org/getting-started/case-cond-and-if.html#expressions-in-guard-clauses)
+
+## Default Parameters
+
+You define a default param with the `param \\ value` syntax, which changes how
+pattern matching picks up your fn, as the number of required params is diff
+than the number of allowed params. Params are matched left to right.
+
+```elixir
+defmodule Example do
+  def func(p1, p2 \\ 2, p3 \\ 3, p4) do
+    IO.inspect [p1, p2, p3, p4]
+  end
+end
+
+Example.func("a", "b")            #=> ["a", 2, 3, "b"]
+Example.func("a", "b", "c")       #=> ["a", "b", 3, "c"]
+Example.func("a", "b", "c", "d")  #=> ["a", "b", "c", "d"]
+```
+
+Default args can behave surprisingly when Elixir does pattern matching:
+
+```elixir
+defmodule Example do
+  def func(p1, p2 \\ 2, p3 \\ 3, p4) do
+    IO.inspect [p1, p2, p3, p4]
+  end
+
+  def func(p1, p2) do
+    IO.inspect [p1, p2]
+  end
+end
+```
+
+The above will not compile and provided a function conflict statement, as the
+pattern matching would not know which fn to match to.
+
+```elixir
+defmodule DefaultParams1 do
+  def func(p1, p2 \\ 132) do
+    IO.inspect [p1, p2]
+  end
+
+  def func(p1, 99) do
+    IP.puts "you said 99"
+  end
+end
+```
+
+The above will also have an issue compiling, complaing about needing a fn head
+with the defaults.
+
+```elixir
+defmodule Params do
+  def func(p1, p2 \\ 123)
+
+  def func(p1, p2) when is_list(p1) do
+    "You said #{p2} with a list"
+  end
+
+  def func(p1, p2) do
+    "You passed in #{p1} and #{p2}"
+  end
+end
+
+
+IO.puts Params.func(99)           # you passed in 99 and 123
+IO.puts Params.func(99, "cat")    # you passed in 99 and cat
+IO.puts Params.func([99])         # you said 123 with a list
+IO.puts Params.func([99], "dog")  # you said dog with a list
+```
+
+
+## Your Turn
+
+*I'm thinking of a number between 1 and 1000...*
+
+Define a fn that will be `guess(actual, range)` where `range` is an Elixir
+range.
+
+Your ouutput should look similar to this:
+
+```elixir
+Chop.guess(273, 1..1000)
+#=> Is it 500
+#=> Is it 250
+#=> Is it 375
+#=> Is it 312
+#=> Is it 281
+#=> Is it 265
+#=> Is it 273
+#=> 273
+```
+
+Hints:
+
+- Don't be afraid to implement helper fns
+- The `div(a, b)` fn performs integer division
+- Guard clauses are your friends
+- Patterns can match the low and high parts of a range `(a..b=4.8)`
+
+*Solution forthcoming - tired. You can see [solutions online](https://forums.pragprog.com/forums/322/topics/Exercise:%20ModulesAndFunctions-6)*
