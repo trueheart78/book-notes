@@ -365,3 +365,9 @@ Enum.each [1, 2, 3, 4], fn x -> IO.inspect x end
 Enum.each [1, 2, 3, 4], &IO.inspect/1
 ```
 
+## Functions Are the Core
+
+The basis of programming is transforming data, and functions are the little
+engines that perform that transformation.
+
+Up next is working with named functions, not just anon fns bound to vars.
