@@ -415,3 +415,109 @@ alias My.Other.Module.{Parser, Runner}
 You `require` a module if you want to use any macros it defines. This ensures
 the definitions are available when your code is compiled. We'll talk more about
 it later.
+
+## Module Attributes
+
+Elixir modules each have metadata, and those are considerer *attributes* and are
+identified by a name. You can access these attrs by prefixing the name with an
+`@` sign. To set an attr, you use the syntax `@name value`. Also, these only
+work at the top of a module. You can also define attrs inside fns.
+
+```elixir
+defmodule Example do
+  @author "Dave Thomas"
+  def get_author do
+    @author
+  end
+end
+IO.puts "Example was written by #{Example.get_author}"
+```
+
+These are not classic variables that you might be aware of (looking at you,
+Ruby). When an fn calls them, they have the value of whatever was set when the
+fn was defined. So use these for config and metadata only. They are much like
+constants.
+
+```elixir
+defmodule Example do
+  @attr "one"
+  def first, do: @attr
+  @attr "two"
+  def second, do: @attr
+end
+IO.puts "#{Example.first} #{Example.second}"
+#=> one two
+```
+
+## Module Names: Elixir, Erlang, and Atoms
+
+Modules have names such as `String` or `PhotoAlbum`. We call fns in them using
+calls like `String.length("abc")`.
+
+Internally, though? Module names are just atoms. When you write a name starting
+with an uppercase letter, like `IO`, Elixir converts it internally into an atom
+called `Elixir.IO`.
+
+```elixir
+is_atom IO
+#=> true
+to_string IO
+#=> "Elixir.IO"
+:"Elixir.IO" === IO
+#=> true
+```
+
+So a call to an fn in a module is really an atom followed by a dot, and then the
+fn name. So we can actually do this:
+
+```elixir
+IO.puts 123
+#=> 123
+:"Elixir.IO".puts 123
+#=> 123
+```
+
+## Calling a Function in an Erlang Library
+
+Conventions for Erlang names are different. Vars start with an uppercase and
+atoms are simple lowercase names. So the Erlang module `timer` is just called
+`timer`, which, in Elixir, we would write as `:timer`. If you want to refer to
+the `tc` fn in `timer`, you'd write `:timer.tc`.
+
+We can use the Erlang `format` fn in the `io` module to output a floating-point
+number in a three-char-wide field with a single decimal.
+
+```elixir
+:io.format("The number is ~3.1f~n", [5.678])
+#=> The number is 5.7
+#=> :ok
+```
+
+## Finding Libraries
+
+The first place to look is for existing Elixir modules. You can see the docs for
+the built-in ones on the website, and others are listed at
+[hex.pm](http://hex.pm), and in various places on Github.
+
+You can also look for a built-in Erlang lib or search the web. If you find a
+custom Erlang module, you can use it in your app. But remember that Erlang docs
+follow Erlang conventions, and there may be mental hurdles to overcome.
+[There is help](http://elixir-lang.org/crash-course.html).
+
+## Your Turn
+
+Find the library fns to do the following, and then use each in iex.
+[See official solutions](https://forums.pragprog.com/forums/322/topics/Exercise:%20ModulesAndFunctions-7)
+
+1. Convert a float to a string with 2 decimal digits. (Erlang)
+   - `:io.format/2`
+2. Get the value of an os environment var. (Elixir)
+   - `System.get_env/1`
+3. Return the extension of a file name. (Elixir)
+   - `Path.extname/1`
+4. Return the process's current working directory. (Elixir)
+   - `System.cwd/0`
+5. Find a lib to convert a string containing JSON in Elixir data structures.
+   - *?*
+6. Execute a command in your OS shell.
+   - `System.cmd/1`
