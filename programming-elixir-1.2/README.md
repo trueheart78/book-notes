@@ -18,7 +18,7 @@ Notes:
 - [Chapter 4. Elixir Basics](ch04-elixir-basics.md)
 - [Chapter 5. Anonymous Functions](ch05-anonymous-functions.md)
 - [Chapter 6. Modules and Named Functions](ch06-modules-and-named-functions.md)
-- [Chapter 7. Lists and Recusrion](ch07-lists-and-recusrion.md)
+- [Chapter 7. Lists and Recursion](ch07-lists-and-recursion.md)
 - [Chapter 8. Maps, Keyword Lists, Sets and Structs](ch08-maps-keyword-lists-sets-and-structs.md)
 - [Chapter 9. An Aside - What Are Types?](ch09-an-aside-what-are-types.md)
 - [Chapter 10. Processing Collections - Enum and Stream](ch10-processing-collections-enum-and-stream.md)
