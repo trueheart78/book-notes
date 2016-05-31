@@ -1,0 +1,32 @@
+---
+:title: Programming Phoenix
+:purchase: https://pragprog.com/book/phoenix/programming-phoenix
+:author: Chris McCord, Bruce Tate, and Jose Valim
+:homepage: https://elixir-lang.org
+:image: https://imagery.pragprog.com/products/452/phoenix.jpg?1462239984
+:image_ext: jpg
+
+:sections:
+  -
+    :name:
+    :chapters:
+      - Introducing Phoenix
+  -
+    :name: Part I. Building with Functional MVC
+    :chapters:
+      - The Lay of the Land
+      - Controllers, Views, and Templates
+      - Ecto and Changesets
+      - Authenticating Users
+      - Generators and Relationships
+      - Ecto Queries and Constraints
+      - Testing MVC
+  -
+    :name: Part II. Writing Interactive and Maintainable Applications
+    :chapters:
+      - Watching Videos
+      - Using Channels
+      - OTP
+      - Observer and Umbrellas
+      - Testing Channels and OTP
+      - What's Next?
