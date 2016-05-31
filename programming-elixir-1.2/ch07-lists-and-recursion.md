@@ -49,7 +49,7 @@ c
 #=> 3
 ```
 
-Let's use the pipe character and watch what happens.
+Let's use the pipe character and watch what happens when used in a pattern match:
 
 ```elixir
 [head | tail] = [1, 2, 3]
@@ -60,4 +60,10 @@ tail
 #=> [2, 3]
 ```
 
+**Note on iex:** There are "Strings" and there are 'lists' of printable chars,
+notated by the double quote and single quote, respectively. For the latter, iex
+isn't the brightest. If you enter `[99, 97, 116]`, you'll likely get a `cat` val
+output to the screen. So be aware. This will be resolved later with some elbow
+grease.
 
+## Using Head and Tail to Process a List
