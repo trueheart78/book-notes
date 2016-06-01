@@ -67,3 +67,33 @@ output to the screen. So be aware. This will be resolved later with some elbow
 grease.
 
 ## Using Head and Tail to Process a List
+
+WHy would lists come after modules and fns? Because lists and recursive fns go
+together so very well.
+
+- length of an empty list is 0
+- length of a list is 1 + the length of the tail
+
+```elixir
+defmodule MyList do
+  def len([], do: 0
+  def len([head|tail]), do: 1 + len(tail)
+end
+```
+
+The second match will match any non-empty list. When the tail is eventually
+`[]`, then the recursion stops.
+
+The above causes a compile warning, so we could change out `head` with `_`, or
+we could use `_head`, which tells Elixir that the we are aware it may not be
+used and to not warn us.
+
+```elixir
+defmodule MyList do
+  def len([], do: 0
+  def len([_head|tail]), do: 1 + len(tail)
+end
+```
+
+## Using Head and Tail to Build a List
+
