@@ -5,6 +5,7 @@
 By the howling [Dave Thomas](https://pragdave.me/)
 
 ## Links:
+
 - [Purchase](https://pragprog.com/book/elixir12/programming-elixir-1-2)
 - [Elixir Style Guide](https://github.com/niftyn8/elixir_style_guide)
 
