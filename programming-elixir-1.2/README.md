@@ -10,8 +10,9 @@ Links:
 
 - [Elixir Style Guide](https://github.com/niftyn8/elixir_style_guide)
 
-### Chapter Notes:
+## Chapter Notes:
 
+- **Intro**
 - [Chapter 1. Take the Red Pill](ch01-take-the-red-pill.md)
 
 #### Part 1: Conventional Programming
