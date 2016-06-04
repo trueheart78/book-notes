@@ -97,3 +97,59 @@ end
 
 ## Using Head and Tail to Build a List
 
+Now let's get ambitious by writing a fn that takes a list of numbers and
+returns a new list containing the square of each.
+
+```elixir
+defmodule MyList do
+  def square([]),            do: []
+  def sqaure([head | tail]), do: [head*head | square(tail)]
+end
+```
+
+When we match a non-empty list, we return a new list whose head is the square
+of the head to the list passed int, and whose tail is a list of squares of the
+tail. This is the recrusive beauty.
+
+Now let's create a fn that adds 1 to every element in the list
+
+```elixir
+defmodule MyList do
+  def add_1([]),            do: []
+  def add_1([head | tail]), do: [head+1 | add_1(tail)]
+end
+```
+
+## Creating a Map Function
+
+Both the `square` and `add_1` share similar pattern matching, and use recursion
+to call the same fn on the tail, while the head gets special treatment. We can
+generalize this with a fn called `map` that takes a lits and an fn and returns
+a new list with the result of applying that fn to each element.
+
+```elixir
+defmodule MyList do
+  def map([], _func),            do: []
+  def map([head | tail]), func), do: [func.(head) | map(tail, func)]
+end
+```
+
+To call this fn:
+
+```elixir
+MyList.map [1, 2, 3, 4], fn (n) -> n*n end
+#=> [1, 4, 9, 16]
+```
+
+A fn is just a built-in type, defined between `fn` and the `end`.
+
+Now let's do the same, but using the `&` notation:
+
+```elixir
+MyList.map [1, 2, 3, 4], &(&1 + 1)
+#=> [2, 3, 4, 5]
+MyList.map [1, 2, 3, 4], &(&1 > 2)
+#=> [false, false, true, true]
+```
+
+## Keeping Track of Values During Recursion
