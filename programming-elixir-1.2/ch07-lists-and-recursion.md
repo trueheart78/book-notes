@@ -153,3 +153,58 @@ MyList.map [1, 2, 3, 4], &(&1 > 2)
 ```
 
 ## Keeping Track of Values During Recursion
+
+So let's say we want to sum a list, we'll need to track the total accumulative
+value.
+
+```elixir
+defmodule MyList do
+  def sum([], total),               do: total
+  def sum([head | tail], total),    do: sum(tail, head+total)
+end
+```
+
+Our `sum` fn now has two params, the list and the total so far.
+
+The maintained *invariant* (a condition that is true on return from any call,
+nested or otherwise) the sum of the elements in the list param plus the current
+total will be equal to the total of the entire list.
+
+We have to remember to pass the initial total, tho.
+
+```elixir
+MyList.sum([1, 2, 3, 4, 5], 0)
+#=> 15
+MyList.sum([11, 12, 13, 14, 15], 0)
+#=> 65
+```
+
+Now, remembering to pass the first total can be tricky, so we define a single
+public method that calls a private version, automatically providing it.
+
+```elixir
+defmodule MyList do
+  def sum(list), do: _sum(list, 0)
+
+  defp _sum([], total),            do: total
+  defp _sum([head | tail], total), do: _sum(tail, head+total)
+end
+```
+
+Notice that we use `defp` to define a private fn. These are not able to be
+called from outside the module.
+
+## Your Turn
+
+Write the `sum` fn without using an accumulator. 
+
+[Online solution from the author](https://forums.pragprog.com/forums/322/topics/Exercise:%20ListsAndRecursion-0):
+
+```elixir
+defmodule MyList do
+  def sum1([]),              do: 0
+  def sum1([ head | tail ]), do: head + sum1(tail)
+end
+```
+
+### Generalizing Our Sum Function
