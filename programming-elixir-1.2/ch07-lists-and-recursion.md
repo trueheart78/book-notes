@@ -276,3 +276,30 @@ IO.puts MyList.caesar('ryvkve', 13)
 
 ## More Complex List Patterns
 
+The join operator `|` supports more than a single item to the left, which makes
+pattern matching even stronger.
+
+```elixir
+[1, 2, 3 | [4, 5, 6]]
+#=> [1, 2, 3, 4, 5, 6]
+```
+
+```elixir
+defmodule Swapper do
+  def swap([]), do: []
+  def swap([a, b | tail]), do: [b, a | swap(tail)]
+  def swap([_]), do: raise "Can't swap a list with an odd number of elements."
+end
+
+Swapper.swap [1, 2, 3, 4, 5, 6]
+#=> [2, 1, 4, 3, 6, 5]
+Swappet.swap [1, 2, 3]
+#=> ** (RunetimeError) Can't swap a list with an odd number of elements
+```
+
+The 3rd definition of `swap` matches a list with a single element, and this
+match happens at the end of the recursion with a single element, thus causing
+concern and raising an error.
+
+### Lists of Lists
+
