@@ -208,3 +208,71 @@ end
 ```
 
 ### Generalizing Our Sum Function
+
+The sum fn reduces a collection to a single value, and this is not the only fn
+that might need to do so (return the greatest/least, or the product, etc).
+
+Let's generalize it to take a collection, as well as an initial value, and a fn
+to apply.
+
+```elixir
+defmodule MyList do
+  def reduce([], value, _) do
+    value
+  end
+  def reduce([head | tail], value, func) do
+    reduce(tail, func.(head, value), func)
+  end
+end
+
+MyList.reduce([1, 2, 3, 4, 5], 0, &(&1 + &2))
+#=> 15
+MyList.reduce([1, 2, 3, 4, 5], 1, &(&1 * &2))
+#=> 120
+```
+
+## Your Turn
+
+1. Write a `mapsum` fn that takes a list and an fn, and applies the fn to each
+   element of the list and sums the result. [Online Solution](https://forums.pragprog.com/forums/322/topics/Exercise:%20ListsAndRecursion-1)
+2. Write a `max(list)` fn that returns the element with the max value in the
+   list. [Online Solution](https://forums.pragprog.com/forums/322/topics/Exercise:%20ListsAndRecursion-2)
+3. A single-quoted string is actually a list of character codes. Write a
+   `caesar(list, n)` fn that adds `n` to each list element, wrapping if the
+   addition results in a char greater than `z`. [Online Solution](https://forums.pragprog.com/forums/322/topics/Exercise:%20ListsAndRecursion-3)
+
+**Solutions:**
+
+```elixir
+defmodule MyList do
+  def mapsum([], _fun),            do: 0
+  def mapsum([ head | tail ], fun), do: fun.(head) + mapsum(tail, fun)
+end
+```
+
+```elixir
+defmodule MyList do
+  # max([]) is undefined...
+  # max of a single element list is that element
+  def max([x]), do: x
+  # else recurse (Kernel.max/2 is called)
+  def max([ head | tail ]), do: Kernel.max(head, max(tail))
+end
+```
+
+```elixir
+defmodule MyList do
+  def caesar([], _n), do: []
+  def caesar([ head | tail ], n)
+    when head+n <= ?z,
+    do: [ head+n | caesar(tail, n) ]
+  def caesar([ head | tail ], n), 
+    do: [ head+n-26 | caesar(tail, n) ]
+end
+
+IO.puts MyList.caesar('ryvkve', 13)
+#=> elixir
+```
+
+## More Complex List Patterns
+
