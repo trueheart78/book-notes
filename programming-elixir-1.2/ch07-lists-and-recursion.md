@@ -303,3 +303,90 @@ concern and raising an error.
 
 ### Lists of Lists
 
+```elixir
+defmodule WeatherHistory
+  def for_location_27([]), do: []
+  def for_location_27([ [time, 27, temp, rain] | tail) do
+    [ [time, 27, temp, rain] | for_location_27(tail)]
+  end
+  def for_location_27([_ | tail]), do: for_location_27(tail)
+end
+```
+
+This is a standard *recurse intil the list is empty* stanza. However, we are
+also matching on an `head` where the second element of that list is `27`.
+
+The third version also deals with the list when the pattern does not match.
+
+Let's add some data.
+
+```elixir
+defmodule WeatherHistory
+  def test_data do
+    [
+      [1366225622, 26, 15, 0.125],
+      [1366225622, 27, 15, 0.45],
+      [1366225622, 28, 21, 0.25],
+      [1366229222, 26, 19, 0.081],
+      [1366229222, 27, 17, 0.468],
+      [1366229222, 28, 15, 0.60],
+      [1366232822, 26, 22, 0.095],
+      [1366232822, 27, 21, 0.05],
+      [1366232822, 28, 24, 0.03],
+      [1366236422, 26, 17, 0.025]
+    ]
+  end
+end
+```
+
+Now let's see what happens.
+
+```elixir
+import WeatherHistory
+for_location_27(test_data)
+#=> [[1366225622, 27, 15, 0.45], [1366229222, 27, 17, 0.468], [1366232822, 27, 21, 0.05]]
+```
+
+Our fn is specific to a particular location. But with Elixir, we can even match
+patterns within patterns.
+
+```elixir
+defmdule WeatherHistory do
+  def for_location([], target_loc), do: []
+  def for_location([head = [_, target_loc, _, _] | tail], target_loc), do
+    [head | for_location(tail, target_loc)]
+  end
+  def for_location([_ | tail], target_loc), do: for_location(tail, target_loc)
+end
+```
+
+The second definition adds a pattern match for the head itself, and require a
+4-element array to be the head, with the second element being the `target_loc`.
+
+## Your Turn
+
+Write a function `MyList.span(from, to)` that returns a list of the numbers
+from `from` up to `to`. [Online Solution](https://forums.pragprog.com/forums/322/topics/Exercise:%20ListsAndRecursion-4)
+
+```elixir
+defmodule MyList do
+  def span(from, to) when from > to, do: []
+  def span(from, to) do
+    [ from | span(from+1, to) ]
+  end
+end
+```
+
+## The List Module in Action
+
+Some key functions to know:
+
+- `++`
+- `List.flatten/2`
+- `List.foldl/3`
+- `List.foldr/3`
+- `List.replace_at/3`
+- `List.keyfind/3`
+- `List.keyfind/4`
+- `List.keydelete/3`
+- `List.keyreplace/4`
