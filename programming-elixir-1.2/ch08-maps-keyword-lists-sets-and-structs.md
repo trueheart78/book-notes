@@ -9,11 +9,11 @@ How do you choose an appropriate dictionary type for a particular need?
 Questions to ask yourself (in this order):
 
 1. Do I want to pattern-match against the contents?
-   - **Y**: use a map
+   - **Yes**: use a map
 2. Will I want more than one entry with the same key?
-   - **Y**: use the Keyword module
+   - **Yes**: use the Keyword module
 3. Do I need to guarantee the elements are ordered?
-   - **Y**: use the Keyword module
+   - **Yes**: use the Keyword module
 4. Otherwise
    - **Use a map**
 
@@ -127,16 +127,16 @@ You can bind values, but not keys.
 %{2 => state} = {%1 => :ok, 2 => :error}
 
 # not okay
-{item => :ok} = {%1 => :ok, 2 => :error}
+%{item => :ok} = {%1 => :ok, 2 => :error}
 ```
 
 ### Pattern Matching Can Match Variable Keys
 
-The pin operator returns, and can be used to use the value already in a var on
+The pin operator `^` can be used to use the value already in a var on
 the left-hand side of the match. This also works for the keys of a map.
 
 ```elixir
-data = %{name: "Dave", state: "TS", likes: "Elixir}
+data = %{name: "Dave", state: "TS", likes: "Elixir"}
 for key <- [:name, :likes] do
   %{^key => value} = data # the ^ means that the key is the value from the loop
   value
@@ -165,3 +165,72 @@ m1 = %{m | b: "two", c: "three"}
 This only updates a map. To add a new key, you need to use `Map.put_new/3`.
 
 ## Structs
+
+When Elixir sees `%{...}` it knows it is looking at a map, but nothing else. In
+particulare, it doesn't know your intentions, key restrictions, etc.
+
+This is fine for anonymous maps, but what about a typed map? Y'know, a map that
+has a fixed set of fields and default values for said fields, and that you can
+pattern-match by type as well as content?
+
+Enter the `struct`. A struct is a module that wraps a limited form of map. It's
+limited because the keys must be atoms and because these maps don't have `Dict`
+capabilities.
+
+The name of the module becomes the name of the map type. Inside the module, you
+use `defstruct` to define the map's characteristics.
+
+```elixir
+defmodule Subscriber do
+  defstruct name: "", paid: false, over_18: true
+end
+
+s1 = %Subscriber{}
+#=> %Subscriber{name: "", over_18: true, paid: false}
+s2 = %Subscriber{name: "Dave"}
+s3 = %Subscriber{name: "Mary", paid: true}
+```
+
+The syntax for creating a struct is the same as for creating a map. You can
+access the fields in a struct using dot notation or pattern matching:
+
+```elixir
+s3.name
+#=> "Mary"
+%Subscriber{name: a_name} = s3
+#=> %Subscriber{name: "Mary", over_18: true, paid: true}
+a_name
+#=> "Mary"
+
+#updating
+s4 = %Subscriber{s3 | name: "Marie"}
+#=> %Subscriber{name: "Marie", over_18: true, paid: true}
+```
+
+Structs are wrapped in a module because it is likely you want to add
+struct-specific behavior.
+
+```elixir
+defmodule Attendee do
+  defstruct name: "", paid: false, over_18: true
+
+  def may_attend_after_party(attendee = %Attendee{}) do
+    attendee.paid && attendee.over_18
+  end
+
+  def print_vip_badge(%Attendee{name: name}) when name != "" do
+    IO.puts "Very cheap badge for #{name}"
+  end
+
+  def print_vip_badge(%Attendee{}) do
+    raise "missing name for badge"
+  end
+end
+```
+
+Notice how we could call the fn in the `Attendee` module to manipulate the
+associated struct.
+
+Structs also play a large role in polymorphism.
+
+## Nested Dictionary Structures
