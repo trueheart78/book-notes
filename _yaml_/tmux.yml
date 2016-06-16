@@ -1,0 +1,15 @@
+---
+:title: tmux
+:purchase: https://pragprog.com/book/bhtmux/tmux
+:author: Brian P. Hogan
+:homepage: http://bphogan.com/
+:image: https://imagery.pragprog.com/products/291/bhtmux.jpg?1330443523
+:image_ext: jpg
+
+:chapters:
+  - Learning The Basics
+  - Configuring tmux
+  - Scripting Customized tmux Environments
+  - Working With Text and Buffers
+  - Pair Programming with tmux
+  - Workflows

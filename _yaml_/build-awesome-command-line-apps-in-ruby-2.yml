@@ -1,0 +1,22 @@
+---
+:title: Build Awesome Command-Line Applications in Ruby 2
+:purchase: https://pragprog.com/book/dccar2/build-awesome-command-line-applications-in-ruby-2
+:author: David Copeland
+:homepage: http://naildrivin5.com/
+:image: https://imagery.pragprog.com/products/390/dccar2.jpg?1382208887
+:image_ext: jpg
+
+:chapters:
+  - Have a Clear and Concise Purpose
+  - Be Easy to Use
+  - Be Helpful
+  - Play Well with Others
+  - Delight Casual Users
+  - Make Configuration Easy
+  - Distribute Painlessly
+  - Test, Test, Test
+  - Be Easy to Maintain
+  - Adding Color, Formatting, and Interactivity
+
+:appendices:
+  - Common Command-Line Gems and Libraries

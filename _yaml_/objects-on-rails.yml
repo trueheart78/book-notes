@@ -1,0 +1,28 @@
+---
+:title: Objects on Rails
+:purchase: http://objectsonrails.com/
+:author: Avdi Grimm
+:homepage: http://avdi.org/
+:image: http://objectsonrails.com/images/cover-800x600.jpg
+:image_ext: jpg
+
+:chapters:
+  - Introduction
+  - Yet Another Frickin' Blog App
+  - Adding Blog Entries
+  - Submitting Posts
+  - Getting the Tests Running Again
+  - Adding Timestamps
+  - OMG Dependency Injection!
+  - Sorting and Limiting Posts
+  - Adding Validation
+  - Introducing the Exhibit Pattern
+  - Making the Data Stick Around
+  - Concealing ActiveRecord Behind a FigLeaf
+  - Default Content
+  - Exhibits for REST
+  - Adding Tags
+  - Respecting Controller Privay
+  - Jealousy Guarding Collections
+  - Toward Self-Rending Objects
+  - Summary
