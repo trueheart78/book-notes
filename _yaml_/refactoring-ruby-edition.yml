@@ -1,0 +1,22 @@
+---
+:title: Refactoring: Ruby Edition
+:purchase:
+:author: Kent Beck, Martin Fowler, Shane Harvie, Jay Fields
+:homepage:
+:image:
+:image_ext:
+
+:chapters:
+  - Refactoring, a First Example
+  - Principles in Refactoring
+  - Bad Smells in Code
+  - Building Tests
+  - Toward a Catalog of Refactorings
+  - Composing Methods
+  - Moving Features Between Objects
+  - Organizing Data
+  - Simplifying Conditional Expressions
+  - Making Method Calls Simpler
+  - Dealing with Generalization
+  - Big Refactorings
+  - Putting It All Together
