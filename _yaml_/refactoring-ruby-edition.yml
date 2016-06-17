@@ -1,10 +1,10 @@
 ---
 :title: Refactoring: Ruby Edition
-:purchase:
+:purchase: http://www.informit.com/store/refactoring-ruby-edition-9780321603500
 :author: Kent Beck, Martin Fowler, Shane Harvie, Jay Fields
-:homepage:
-:image:
-:image_ext:
+:homepage: http://martinfowler.com/books/refactoringRubyEd.html
+:image: http://martinfowler.com/books/refRuby.jpg
+:image_ext: jpg
 
 :chapters:
   - Refactoring, a First Example
