@@ -1,4 +1,4 @@
-[&lt;&lt; Back to project home](../../README.md)
+[&lt;&lt; Back to project home](../README.md)
 
 # Working with Ruby Threads
 
