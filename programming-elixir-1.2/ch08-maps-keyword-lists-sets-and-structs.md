@@ -234,3 +234,168 @@ associated struct.
 Structs also play a large role in polymorphism.
 
 ## Nested Dictionary Structures
+
+Various dictionary types let us associate keys with values, but the values can
+also be dictionaries. In a bug reporting system, we could have the following:
+
+```elixir
+defmodule Customer do
+  defstruct name: "", company: ""
+end
+
+defmodule BugReport do
+  defstruct owner: %Customer{}, details: "", severity: 1
+end
+
+report = %BugReport{owner: %Customer{name: "Dave", company: "Pragmatic"},
+                    details: "broken", severity: 1}
+```
+
+The `owner` attribute of the report is a Customer struct.
+
+You can access the fields using dot notation, as well
+
+```elixir
+report.owner.company
+```
+
+We can even update the company name.
+
+```elixir
+report = %BugReport{ report | owner: %Customer{report.owner | company: "PragProg"}}
+```
+
+As you can see, this can get ugly fast. It can be verbose, hard to read, and
+error prone. You can use `put_in` to set a value in a nested structure.
+
+```elixir
+put_in(report.owner.company, "PragProg")
+```
+
+This isn't magic, it's simply a macro that generates the code we would have had
+to write.
+
+You can also use `update_in` to apply a fn to a value in a struct.
+
+```elixir
+update_in(report.owner.name, &("Mr. " <> &1))
+```
+
+The other two nested functions are `get_in` and `get_and_update_in`. Both of
+these fn support **nested access**.
+
+### Nested Accessors and Nonstructs
+
+If you are using the nested accessor fns with maps or keyword lists, you can
+supply the keys as atoms:
+
+```elixir
+report = %{owner: %{name: "Dave", company: "Pragmatic"}, severity: 1}
+
+put_in(report[:owner][:company], "PragProg")
+
+update_in(report[:owner][:name], &("Mr. " <> &1))
+```
+
+### Dynamic (Runtime) Nested Accessors
+
+The nested accessors thus far have been macros, and operate at compile time.
+They have certain limitations.
+
+- The number of keys you pass is static.
+- You cannot pass the set of keys as params between fn.
+
+To overcome this, `get_in`, `put_in`, `update_in`, and `get_and_update_in` can
+all take a list of keys as a separate param. This changes them from macros to
+fn calls, so they become dynamic.
+
+| function          | macro         | function            |
+| ----------------- | ------------- | ------------------- |
+| get_in            | *no*          | (dict, keys)        |
+| put_in            | (path, valu   | (dict, keys, value) |
+| update_in         | (path, fn)    | (dict, keys, fn)    |
+| get_and_update_in | (path, fn)    | (dict, keys, fn)    |
+
+Simple example:
+
+```elixir
+nested = %{
+            buttercup: %{
+              actor: %{
+                first: "Robin",
+                last: "Wright"
+              },
+              role: "princess"
+            },
+            westley: %{
+              actor: %{
+                first: "Carey",
+                last: "Ewes"
+              },
+              role: "farm boy"
+            }
+}
+
+IO.inspect get_in(nested, [:buttercup])
+#=> %{actor: %{first: "Robin", last: "Wright"}, role: "princess"}
+
+IO.inspect get_in(nested, [:buttercup, :actor])
+#=> %{first: "Robin", last: "Wright"}
+
+IO.inspect get_in(nested, [:buttercup, :actor, :first])
+#=> "Robin"
+
+IO.inspect put_in(nested, [:westley, :actor, :last], "Elwes")
+#=> %{buttercup: %{actor: %{first: "Robin", last: "Wright"}, role: "princess"},
+#=> westley: %{actor: %{first: "Carey", last: "Elwes"}, role: "farm boy"}}
+```
+
+You can also do something nifty with `get_in` and `get_and_update_in`. If you
+pass a fn as a key, that fn is invoked to return the corresponding values.
+
+```elixir
+authors = [
+  %{name: "Jose", language: "Elixir"},
+  %{name: "Matz", language: "Ruby"},
+  %{name: "Larry", language: "Perl"}
+]
+
+languages_with_an_r = fn (:get, collection, next_fn) ->
+  for row <- collection do
+    if String.contains?(row.language, "r") do
+      next_fn.(row)
+    end
+  end
+end
+
+IO.inspect get_in(authors, [languages_with_an_r, :name])
+#=> ["Jose", nil, "Larry"]
+```
+
+## Sets
+
+The only implementation is the `MapSet`
+
+```elixir
+set1 = Enum.into 1..5, MapSet.new
+#=> MapSet<[1, 2, 3, 4, 5]>
+MapSet.member? set1, 3
+#=> true
+set2 = Enum.into 3..8, MapSet.new
+#=> MapSet<[3, 4, 5, 6, 7, 8]>
+MapSet.union set1, set2
+#=> MapSet<[7, 6, 4, 1, 8, 2, 3, 5]>
+MapSet.difference set1, set2
+#=> MapSet<[1, 2]>
+MapSet.difference set2, set1
+#=> MapSet<[6, 7, 8]>
+MapSet.intersection set1, set2
+#=> MapSet<[3, 4, 5]>
+```
+
+## With Great Power Comes Great Temptation
+
+Don't use these structs like you would expect to be able to use classes.
+
+Elixir is a functional language and mixing paradigms is not good.
+
