@@ -1,0 +1,34 @@
+---
+:title: Redis in Action
+:purchase: https://www.manning.com/books/redis-in-action
+:author: Josiah L. Carlson
+:homepage:
+:image: https://images.manning.com/255/340/resize/book/8/00f2522-76ce-4594-8564-541254e6d8f0/carlson.png
+:image_ext: png
+
+:sections:
+  -
+    :name: Getting Started
+    :chapters:
+    - Getting to Know Redis
+    - Anatomy of a Redis Web Application
+  -
+    :name: Core Concepts
+    :chapters:
+    - Commands in Redis
+    - Keeping Data Safe and Ensuring Performance
+    - Using Redis for Application Support
+    - Application Components in Redis
+    - Search-based Applications
+    - Building a Simple Social Network
+  -
+    :name: Next Steps
+    :chapters:
+    - Reducing Memory Usage
+    - Scaling Redis
+    - Scripting Redis with Lua
+  -
+    :name: Appendices
+    :chapters:
+    - Quick and Dirty Setup
+    - Other Resources and References
