@@ -45,3 +45,59 @@ redis-cli
 ```
 
 If you can't connect, type `help`.
+
+We'll use Redis to build the back-end for a URL shortenery, like tinyurl.com or
+bit.ly. Visiting the short URL redirects users to the longer mapped URL, saves
+the visitors from text messaging long strings, and also provides the short URL
+creator some stats like visitor counts.
+
+We can use the `SET` command to key a short code like `7wks` to a value like
+http://www.sevenweeks.org. `SET` always takes two params, a key and a value.
+Retrieving the value just needs `GET` and the key name.
+
+```sh
+SET 7wks http://www.sevenweeks.org
+OK
+GET 7wks
+"http://www.sevenweeks.org/"
+```
+
+To reduce traffic, we can also set multiple values with `MSET`, like any number
+of key-value pairs. Here we map Google to gog and Yahoo to yah.
+
+```sh
+MSET gog http://google.com yah http://yahoo.com
+OK
+MGET gog yah
+1) "http://google.com"
+2) "http://yahoo.com"
+```
+
+Although Redis stores stings, it recognizes integers and provides some somple
+ops for them. If we want to keep a running total of how many short keys are in
+our dataset, we can create a count and then increment it with the `INCR`
+command.
+
+```sh
+SET count 2
+OK
+INCR count
+(integer) 3
+GET count
+"3"
+```
+
+Although `GET` returns `count` as a string, `INCR` recognized it as an int and
+added one to it. Doing so on a non-int ends poorly.
+
+```sh
+SET bad_count "a"
+OK
+INCR bad_count
+(error) ERR value is not an integer or out of range
+```
+
+If the val can't be resolved to an int, Redis lets you know. There are also
+other increment and decrement commands [`INCRBY`, `DECR`, `DECRBY`].
+
+### Transactions
