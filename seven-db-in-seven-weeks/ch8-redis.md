@@ -127,3 +127,56 @@ queue. However, it will not revert the database; it just will not run the trans
 at all.
 
 ### Complex Datatypes
+
+Complex behavior is required for most programming and data storage problems.
+Storing lists, hashes, sets, and sorted sets natively helps explain Redis'
+popularity, and after exploring the complex ops you can enact on them, you are
+likely to agree.
+
+These collection datatypes can contain a huge number of values (up to 2^32
+elements or more than 4 billion) per key. That's more than enough for all
+Facebook accounts to live as a list under a single key.
+
+Redis commands follow a good pattern. `SET` commands begin with `S`, hashes with
+`H`, and sorted sets with `Z`. Lists commands start with an `L` for left or `R`
+for right, depending on the direction of the op, like `LPUSH` or `RPUSH`.
+
+#### Hash
+
+Hashes are like nested Redis objects that can take any number of key-value
+pairs. Let's use a hash to keep trach of users who sign up for our URL service.
+
+Hashes are nice because they help you avoid storing data with artificial key
+prefixes. The `:` is a matter of convention, with no deeper meaning in Redis.
+
+```sh
+MSET user:eric:name "Eric Redmond" user:eric:password s3cret
+OK
+MGET user:eric:name user:eric:password
+1) "Eric Redmond"
+2) "s3cret"
+```
+
+Instead of separate keys, we can create a hash that has its own key-value pairs.
+
+```sh
+HMSET user:eric name "Eric Redmond" password s3cret
+OK
+HVALS user:eric
+1) "Eric Redmond"
+2) "s3cret"
+HKEYS user:eric
+1) "name"
+2) "password"
+HGET user:eric password
+"s3cret"
+```
+
+Unlike document datastores, hashes in Redis cannot nest. Hashes can only store
+string values.
+
+More commands exist to delete hash fields (`HDEL`), increment an int field by
+some count (`HINCRBY`), or retrieve the number of fields in a hash (`HLEN`).
+
+#### List
+
