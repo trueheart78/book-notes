@@ -101,3 +101,29 @@ If the val can't be resolved to an int, Redis lets you know. There are also
 other increment and decrement commands [`INCRBY`, `DECR`, `DECRBY`].
 
 ### Transactions
+
+Redis' `MULTI` block atomic commands are similar to what Postgres and Neo4j
+offer.  Wrapping 1+ ops like `SET` and `INCR` in a single block will complete
+with either success or not at all. However, the ops will not ever be partial.
+
+Transactions begin with the `MULTI` command and execute with the `EXEC` command.
+
+```sh
+MULTI
+OK
+SET prag http://pragprog.com
+QUEUED
+INCR count
+QUEUED
+EXEC
+1) OK
+2) (integer) 2
+```
+
+When using `MULTI`, the commands are not executed until they've been queued up.
+
+You can stop a transaction with the `DISCARD` command, which will clear the
+queue. However, it will not revert the database; it just will not run the trans
+at all.
+
+### Complex Datatypes
