@@ -73,7 +73,7 @@ MGET gog yah
 2) "http://yahoo.com"
 ```
 
-Although Redis stores stings, it recognizes integers and provides some somple
+Although Redis stores stings, it recognizes integers and provides some simple
 ops for them. If we want to keep a running total of how many short keys are in
 our dataset, we can create a count and then increment it with the `INCR`
 command.
@@ -180,3 +180,54 @@ some count (`HINCRBY`), or retrieve the number of fields in a hash (`HLEN`).
 
 #### List
 
+Lists contain multiple ordered vals that can act both as queues and as stacks.
+They also have more sophisticated actions for inserting somewhere in the middle
+of a list, constraining list size, and moving vals between lists.
+
+Let's let our users keep a wishlist of URLs they would like to visit. To create
+a list of short-coded websites we'd like to visit, we set the key to
+`USERNAME:wishlist` and push any number of values to the right (end) of the
+list.
+
+```sh
+RPUSH eric:wishlist 7ks gog prag
+(integer) 3
+```
+
+Like most collection val insertions, the Redis command returns the number of
+vals pushed. You can get the list length annytime with `LLEN`.
+
+Using the list range command `LRANGE`, we can retrieve any part of the list by
+specifying the first and last postitions. Redis is zero-based, and a negative
+position means the number of steps from the end.
+
+```sh
+LRANGE eric:wishlist 0 -1
+1) "7wks"
+2) "gog"
+3) "prag"
+```
+
+`LREM` removes from the given key some matching vals. It also requires a number
+to know how many to remove. Setting the count to 0 removes them all.
+
+```sh
+LREM eric:wishlist 0 gog
+```
+
+Setting the count greater than 0 will remove only that number of matches, and
+setting it to a negative number but will remove from end-to-front (right side).
+
+To remove and retrieve each val in the order we added them (like a queue), we
+can pop them off the left (head) of the list.
+
+```sh
+LPOP eric:wishlist
+"7wks"
+```
+
+To act as a stack, after you `RPUSH` the values, you would `RPOP` from the end
+of the list. All these ops are performed in constant time.
+
+On the previous combination of commands, you can use `LPUSH` and `RPOP` to
+similar effect (a queue) or `LPUSH` and `LPOP` to be a stack.
