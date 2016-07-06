@@ -231,3 +231,30 @@ of the list. All these ops are performed in constant time.
 
 On the previous combination of commands, you can use `LPUSH` and `RPOP` to
 similar effect (a queue) or `LPUSH` and `LPOP` to be a stack.
+
+Suppose we wanted to remove vals from our wishlist and move them to another
+list of visited sites. To do this atomically, we might try wrapping pop and push
+actions within a multiblock.
+
+```ruby
+redis.muilt do
+  site = redis.rpop('eric:wishlist')
+  redis.lpush('eric:visited', site)
+end
+```
+
+Because the multi block queues requests, the above actually will not work. But
+Redis provides a single command for popping vals from the tail of one list and
+pushing to the head of another: `RPOPLPUSH`
+
+```sh
+RPOPLPUSH eric:wishlist eric:visisted
+"prag"
+```
+
+This is quite useful for queuing commands.
+
+Be aware the `RPOPLPUSH` is the only option, there are no other commands like
+`RPOPRPUSH`, or `LOPOLPUSH`, or `LPOPRPUSH` even. 
+
+##### Blocking Lists
