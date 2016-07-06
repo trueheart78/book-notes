@@ -237,7 +237,7 @@ list of visited sites. To do this atomically, we might try wrapping pop and push
 actions within a multiblock.
 
 ```ruby
-redis.muilt do
+redis.multi do
   site = redis.rpop('eric:wishlist')
   redis.lpush('eric:visited', site)
 end
