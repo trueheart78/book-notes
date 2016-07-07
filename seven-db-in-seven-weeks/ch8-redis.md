@@ -258,3 +258,37 @@ Be aware the `RPOPLPUSH` is the only option, there are no other commands like
 `RPOPRPUSH`, or `LOPOLPUSH`, or `LPOPRPUSH` even. 
 
 ##### Blocking Lists
+
+A simple messaging system where many clients can push comments and one client
+(the digester) pops messages from the queue would be great for a social
+activity. Redis provides a few blocking commands for this type of purpose.
+
+Open another `redis-cli` terminal that will be the digester. The command to
+block until a value exists is `BRPOP`. It also requires the key to pop a value
+from, as well as a timeout (in seconds).
+
+```sh
+BRPOP comments 300
+```
+
+In the first console, push a message to comments:
+
+```sh
+LPUSH comments "Prag is great!"
+```
+
+Going back to the digester, you'll see two lines returned: the key, and the
+value popped. You'll also see the length of time it spent blocking.
+
+```sh
+1) "comments"
+2) "Prag is great!"
+(50.22s)
+```
+
+There is also a blocking version of left pop, `BLPOP`, and right pop, left push
+`BRPOPLPUSH`.
+
+#### Set
+
+
