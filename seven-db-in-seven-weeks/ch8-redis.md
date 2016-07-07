@@ -291,4 +291,76 @@ There is also a blocking version of left pop, `BLPOP`, and right pop, left push
 
 #### Set
 
+Our URL shortener is coming along, but it would be nice to group common URLs in
+some way.
+
+Sets are unordered collections with no duiplicate values and are an excellent
+choice for performing ops between two+ key vals, like unions or intersections.
+
+```sh
+SADD news nytimes pragprog.com
+(integer) 2
+```
+
+Redis added two vals, and we can retrieve the full set (in no particular order)
+via `SMEMBERS`.
+
+```sh
+SMEMBERS news
+1) "pragprog.com"
+2) "nytimes.com"
+```
+
+Now for tech:
+
+```sh
+SADD tech pragprog.com apple.com
+(integer) 2
+```
+
+We can find the intersection of them using `SINTER`:
+
+```sh
+SINTER news tech
+1) "pragprog.com"
+```
+
+We can also find all news sites that are not tech sites using `SDIFF`:
+
+```sh
+SDIFF news tech
+1) "nytimes.com"
+```
+
+We can also union these, and dupes are dropped:
+
+```sh
+SUNION news tech
+1) "apple.com"
+2) "pragprog.com"
+3) "nytimes.com"
+```
+That set of vals can also be stored directly into a new set using `SUNIONSTORE`:
+
+```sh
+SUNIONSTORE websites news tech
+```
+
+This also provides a useful trick for cloning a single key's vals to another key
+like `SUNIONSTORE news_copy news`. There are similar commands for storing
+intersections (`SINTERSTORE`) and diffs (`SDIFFSTORE`).
+
+Just like `RPLOPLPUSH` moved vals from one list to another, `SMOVE` does the
+same for sets;
+
+And like `LLEN` finds the length of a list, `SCARD` (set cardinality) counts the
+set; it's just harder to remember.
+
+Since sets are not ordered, there are no left, right, or other positional
+commands. Popping a random val from a set just requires `SPOP key`, and removing
+vals is `SREM key value [value ...]`
+
+Unlike lists, there are no blocking commands for sets.
+
+#### Sorted Sets
 
