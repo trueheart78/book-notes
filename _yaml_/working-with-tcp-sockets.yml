@@ -1,0 +1,36 @@
+---
+:title: Working with TCP Sockets
+:purchase: http://www.jstorimer.com/products/working-with-tcp-sockets
+:author: Jesse Storimer
+:homepage: http://www.jstorimer.com/
+:image: https://imagery.pragprog.com/products/346/jstcp.jpg?1358526549
+:image_ext: jpg
+
+:chapters:
+  - Your First Socket
+  - Establishing Connections
+  - Server Lifecycle
+  - Client Lifecycle
+  - Exchanging Data
+  - Sockets Can Read
+  - Sockets Can Write
+  - Buffering
+  - Our First Client/Server
+  - Socket Options
+  - Non-Blocking IO
+  - Multiplexing Connections
+  - Nagle's Algorithm
+  - Framing Messages
+  - Timeouts
+  - DNS Lookups
+  - SSL Sockets
+  - Urgent Data
+  - Network Architecture Patterns
+  - Serial
+  - Process per Connection
+  - Thread per Connection
+  - Preforking
+  - Thread Pool
+  - Evented (Reactor)
+  - Hybrids
+  - Closing Thoughts

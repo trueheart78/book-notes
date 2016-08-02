@@ -4,6 +4,7 @@ Reading a lot, figured this was as good a place as any to make some notes :heart
 
 Books :books:
 
+1. [Working with TCP Sockets](working-with-tcp-sockets/README.md)
 1. [Programming Elixir 1.2](programming-elixir-1.2/README.md)
 1. [CoffeeScript](coffeescript/README.md) *finished ch 5 on jQuery/Backbone.js*
 1. [Working with Unix Processes](working-with-unix-processes/README.md) :heart:
