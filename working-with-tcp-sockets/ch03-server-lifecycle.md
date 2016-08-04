@@ -441,11 +441,11 @@ makes our development lives much easier.
 
 ## System Calls From This Chapter
 
-* Socket#bind -> bind(2)
-* Socket#listen -> listen(2)
-* Socket#accept -> accept(2)
-* Socket#local_address -> getsockname(2)
-* Socket#remote_address -> getpeername(2)
-* Socket#close -> close(2)
-* Socket#close_write -> shutdown(2)
-* Socket#shutdown -> shutdown(2)
+* `Socket#bind` -> bind(2)
+* `Socket#listen` -> listen(2)
+* `Socket#accept` -> accept(2)
+* `Socket#local_address` -> getsockname(2)
+* `Socket#remote_address` -> getpeername(2)
+* `Socket#close` -> close(2)
+* `Socket#close_write` -> shutdown(2)
+* `Socket#shutdown` -> shutdown(2)

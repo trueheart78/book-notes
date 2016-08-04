@@ -94,5 +94,5 @@ client = Socket.tcp 'google.com', 80
 
 ## System Calls From This Chapter
 
-* Socket#bind -> bind(2)
-* Socket#connect -> connect(2)
+* `Socket#bind` -> bind(2)
+* `Socket#connect` -> connect(2)
