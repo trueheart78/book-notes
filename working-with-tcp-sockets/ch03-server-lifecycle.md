@@ -124,3 +124,100 @@ Generally, you don't want to be refusing connections, so it is a good idea to
 set the max queue allowed size using `server.listen Socket::SOMAXCONN`.
 
 ## Servers Accept
+
+This is where we talk about handling an *incoming* connection. It does this with
+the `accept` method.
+
+```ruby
+require 'scoket'
+
+server = Socket.new :INET, :STREAM
+addr = Socket.pack_sockaddr_in 4481, '0.0.0.0'
+server.bind addr
+server.listen Socket::SOMAXCONN
+
+# accept a connection
+connection, _ = server.accept
+```
+
+You should notice that the code *does not return immediately*, as the `accept`
+method will block until a connection arrives. We can pass one via the command
+line.
+
+```sh
+echo ohai | nc localhost 4481
+```
+
+### Accept is Blocking
+
+The `accept` call is a blocking call, meaning that it will block the current
+thread indefinitely until it receives a new connection.
+
+Remember the listen queue we talked about in the last chapter? `accept` simply
+pops the next pending connection off of that queue. It waits for on to be pushed
+on if none are available.
+
+### Accept Returns an Array
+
+Notice that the above call assigns two values from one call to `accept`. The
+`accept` method actually returns an Array. The first element returned is the
+connection, and the second is an `Addrinfo` object, which represents the remote
+address of the client connection
+
+## Addrinfo
+
+`Addrinfo` is a ruby class that represents a host and port num. It wraps up an
+endpoint representation nicely, and you'll see it around.
+
+You can construct one of these using `Addrinfo.tcp 'localhost', 4481`. It has
+`#ip_address` and `#ip_port` methods. You can view the docs by running
+`ri Addrinfo` in the command line.
+
+Here's a closer look.
+
+```ruby
+require 'socket'
+
+# Create the server socket
+server = Socket.new :INET, :STREAM
+addr = Socket.pack_addrinfo_in 4481, '0.0.0.0'
+server.bind addr
+server.listen Socket::SOMAXCONN
+
+# Accept a new connection
+connection, _ = server.accept
+
+print 'Connection class: '
+p connection.class
+
+print 'Server fileno: '
+p server.fileno
+
+print 'Connection fileno: '
+p connection.fileno
+
+print 'Local address: '
+p connection.lcaol_address
+
+print 'Remote address: '
+p connection.remote_address
+```
+
+If you send another connection using `echo hello | nc localhost 4481`, you will
+see something akin to the following:
+
+```
+Connection class: Socket
+Server fileno: 5
+Connection fileno: 98
+Local address: #<Addrinfo: 127.0.0.1:4481 TCP>
+Remote address: #<Addrinfo: 127.0.0.1:58164 TCP>
+```
+
+This set of results tell us a ton about how TCP connections are handled.
+
+## Connection Class
+
+A connection is actually just an instance of `Socket`.
+
+
