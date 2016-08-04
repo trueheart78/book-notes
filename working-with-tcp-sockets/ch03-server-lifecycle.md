@@ -304,3 +304,148 @@ If you want to bump up your limit to the max, use
 `Process.setrlimit(Process.getrlimit(:NOFILE)[1])`
 
 ## Different Kinds of Closing
+
+Given that sockets allow two-communication (read/write) it's actually possible
+to close just one of those channels.
+
+```ruby
+require 'socket'
+
+# Create the server socket
+server = Socket.new :INET, :STREAM
+addr = Socket.pack_addrinfo_in 4481, '0.0.0.0'
+server.bind addr
+server.listen Socket::SOMAXCONN
+
+# After this, the conn may no longer write data, but may still receive
+connection.close_write
+
+# After this, the conn may no longer read or write any data
+connection.close_read
+```
+
+Closing the write stream will send an `EOF` to the client.
+
+The `close_write` and `close_read` methods make use of shutdown(2) under the
+hood, which is different that close(2) in that it causes a part of the conn
+to be fully shut down, even if there are copies of it lying around.
+
+### How Are There Copies of Connections?
+
+From `Socket#dup` to `Process.fork`, it can occur. And it is common.
+
+`close` will close the socket instance on which it is called.
+
+`shutdown` will fully shut down any communication on the current socket **and**
+other copies of it, disabling any communication happening on every instance. It
+does not, however, reclaim resources used by the socket. They still need to have
+`close` sent to them to complete the lifecycle.
+
+```ruby
+require 'socket'
+
+# Create the server socket
+server = Socket.new :INET, :STREAM
+addr = Socket.pack_addrinfo_in 4481, '0.0.0.0'
+server.bind addr
+server.listen Socket::SOMAXCONN
+
+# Create a copy of the connection
+copy = connection.dup
+
+# Shut down all communication to the connection
+connection.shutdown
+
+# Close the original connection. The copy will be closed when the GC collects it
+connection.close
+```
+
+## Ruby Wrappers
+
+Ruby can take care of a lot of the code we keep having to repeat. Compare
+the following method of creating a new TCP-based listener:
+
+```ruby
+require 'socket'
+
+server = TCPServer.new 4481
+```
+
+Much more succint! Keep in mind that this returns a `TCPServer` instance, not a
+`Socket` instance. The most notable difference is that `TCPServer#accept`
+returns only the conn, not the remote address.
+
+Also, note we didn't specify the size of the listen queue? Ruby defaults that to
+a size of 5. You can increase it by calling `TCPServer#listen` after the fact.
+
+You can also create TCP sockets to listen on both IPv4 and IPv6.
+
+```ruby
+require 'socket'
+
+servers = Socket.tcp_server_sockets 4481
+```
+
+#### Connection Handling
+
+Ruby doesn't need th `loop` construct, instead it works like this:
+
+```ruby
+require 'socket'
+
+server = TCPServer.new 4481
+
+# Enters an endless loop of accepting and handling connections
+Socket.accept_loop(server) do |connection|
+  # handle connection
+  connection.close
+end
+```
+
+Do note the the connections are not automatically closed at the end of each
+block.
+
+`Socket.accept_loop` has the added benefit that you can actually pass multiple
+listening sockets to it and it will accept connections on *any of the passed-in
+sockets.* This goes quite welll with `Socket.tcp_server_sockets`:
+
+```ruby
+require 'socket'
+
+servers = Socket.tcp_server_sockets 4481
+
+Socket.accept_loop(servers) do |connection|
+  # handle connection
+  connection.close
+end
+```
+
+We can pass in all the servers at once :heart:
+
+### Wrapping It All Into One
+
+Ruby makes it simple using `Socket.tcp_server_loop`, wrapping all the previous
+steps into one:
+
+```ruby
+require 'socket'
+
+Socket.tcp_server_loop(4481) do |connection|
+  # handle connection
+  connection.close
+end
+```
+
+This method is really just a wrapper around the code we wrote before it, but it
+makes our development lives much easier.
+
+## System Calls From This Chapter
+
+* Socket#bind -> bind(2)
+* Socket#listen -> listen(2)
+* Socket#accept -> accept(2)
+* Socket#local_address -> getsockname(2)
+* Socket#remote_address -> getpeername(2)
+* Socket#close -> close(2)
+* Socket#close_write -> shutdown(2)
+* Socket#shutdown -> shutdown(2)
