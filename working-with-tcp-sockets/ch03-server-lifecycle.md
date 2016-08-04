@@ -220,4 +220,87 @@ This set of results tell us a ton about how TCP connections are handled.
 
 A connection is actually just an instance of `Socket`.
 
+## File Descriptors
 
+We know that `accept` is returning an instance of `Socket`, but this conn has
+different file descriptor number (or `fileno`) than the server socket. The file
+descriptor number is the kernel's method for keeping track of open files in the
+current process.
+
+### Sockets are Files?
+
+Yes, in the land of Unix, everything is treated as a file (files, pipes,
+sockets, printers, etc.)
+
+This indicates that `accept` has returned a brand new `Socket` different from
+the server socket. This `Socket` instance represents the conn, which is very
+important. Each conn is represented by a new `Socket` so the server socket can
+remain untouched and continue to accept new conns.
+
+## Connection Addresses
+
+Our conn object knows about two addresses: the local and the remote. The remote
+address is the second return value from `accept`, but can also be accessed as
+`#remote_address` on the conn.
+
+The `local_address` of the conn refres to the endpoint on the local machine. The
+`remote_address` of the conn refers to the endpoint at the other end, whether it
+be on another host or not.
+
+Each TCP conn is defined by this unique grouping of local-host, local-port,
+remote-host, and remote-port. The combination of these four properties **must**
+be unique for each TCP connection.
+
+## The Accept Loop
+
+So `accept` returns one connection, and in our example, it exits immediately.
+You can setup a loop so that it does not exit immediately after the first conn
+is processed.
+
+```ruby
+require 'socket'
+
+# Create the server socket
+server = Socket.new :INET, :STREAM
+addr = Socket.pack_addrinfo_in 4481, '0.0.0.0'
+server.bind addr
+server.listen Socket::SOMAXCONN
+
+# Enter an endless loop of accepting and handling connections.
+loop do
+  connection, _ = server.accept
+  # handle connection
+  connection.close
+end
+```
+
+The above is a common way to write certain kinds of servers using Ruby. It's so
+common in fact that Ruby provides some syntactic sugar on top of it. We'll get
+to that later in this chapter.
+
+## Servers Close
+
+Once a server has accepted a conn and finished processing it, the last thing for
+it to do is to `close` that connection, rounding out the create-process-close
+lifecycle of a conn. You can see that in the above code example.
+
+### Closing on Exit
+
+Why is `close` needed? When your program exists, all open file descriptors (that
+includes sockets) will be closed for you. Closing them yourself is a good habit:
+
+1. Resource usage. Releasing resources tied to references no longer needed means
+   not depending on the garbage collector to clean up after everything.
+2. Open file limit. Every process is subject to a limit on the number of files
+   it can have. Keeping around unneeded connections will continue to bring your
+   process closer and closer to this open file limit, which may cause issues
+   later.
+
+To find out the number of allowed open files for the current process, use
+`Process.getrlimit :NOFILE`. The returned Array is the soft-limit (user setable)
+nad hard limit (system restricted), respectively.
+
+If you want to bump up your limit to the max, use
+`Process.setrlimit(Process.getrlimit(:NOFILE)[1])`
+
+## Different Kinds of Closing
