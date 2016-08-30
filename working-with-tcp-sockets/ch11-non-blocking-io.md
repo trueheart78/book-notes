@@ -80,4 +80,40 @@ exception from `read_nonblock`.
 
 ## Non-Blocking Writes
 
+Non-blocking writes have some very important differences from the `write` call we
+saw earlier. The most notable is that it is possible for `write_nonblock` to
+return a partial write, whereas `write` will always take care of writing all of
+the data that you send it.
+
+Let's see this behaviour with a throwaway server.
+
+```sh
+nc -l localhost 4481
+```
+
+Then we'll boot up this client that makes use of `write_nonblock`:
+
+```ruby
+require 'socket'
+
+client = TCPSocket.new 'localhost', 4481
+payload = 'Chunky Bacon' * 10_000
+
+written = client.write_nonblock payload
+written < payload.size
+# => true
+```
+
+When I run those two programs against each other, I routinely see `true` being
+printed out from the client-side. In other words, it is returning an int that is
+less than the full size of the payload data. The `write_nonblock` method returned
+because it entered a situation where it would block, so it didn't write anymore
+data and returned an int, letting us know how much was written. It is our
+responsibility to write the rest of the unsent data.
+
+The behaviour of `write_nonblock` is the same as the write(2) system call. It
+writes as much data as it can and returns the number of bytes written. This
+differs from Ruby's `write` method which may call write(2) several times to write
+all the data requested.
+
 
