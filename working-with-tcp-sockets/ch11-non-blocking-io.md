@@ -116,4 +116,96 @@ writes as much data as it can and returns the number of bytes written. This
 differs from Ruby's `write` method which may call write(2) several times to write
 all the data requested.
 
+So what should you do when one call couldn't write all of the requested data? Try
+again to write the missing postion, but not immediately with write(2). Use
+`IO.select` to be alerted when a socket is writable, meaning non-blocking retries.
 
+```ruby
+require 'socket'
+
+client = TCPSocket.new 'localhost', 4481
+payload = 'Chunky bacon' * 10_000
+
+begin
+  loop do
+    bytes = client.write_nonblock payload
+
+    break if bytes >= payload.size
+    payload.slice! 0, bytes
+    IO.select nil, [client]
+  end
+
+  rescue Errno::EAGAIN
+    IO.select nil, [client]
+    retry
+  end
+end
+```
+
+Here we make use of the fact that calling `IO.select` with an array of sockets as
+the second argument will block until one of the sockets becomes writable.
+
+The loop in the example deals properly with partial writes. When `write_nonblock`
+returns an int < the payload size, we slice that data from the payload and go
+around in the loop again _when the socket becomes writable again_.
+
+### When Would a Write Block?
+
+The underlying write(2) can block in two situations:
+
+1. The receiving end of the TCP connection has not yet acknowledged receipt of the
+   pending data, and we've sent as much data as is allowed.
+1. The receiving end of the TCP connection cannot yet handle more data.
+
+## Non-Blocking Accept
+
+There are non-blocking variants of other methods than `read` and `write`, but are
+not as commonly used.
+
+An `accept_nonblock` is quite similar to a regular `accept`. `accept` just pops a
+connection off the listen queue, so if that queue is empty, then it blocks. In
+this situation, `accept_nonblock` would raise an `Errno::EAGAIN` rather than
+blocking.
+
+```ruby
+require 'socket'
+
+server = TCPServer.new 4481
+
+loop do
+  begin
+    connection = server.accept_nonblock
+  rescue Errno::EAGAIN
+    # do other important work
+    retry
+  end
+end
+```
+
+## Non-Blocking Connect
+
+The `connect_nonblock` method behaves a lil differently. While the other methods
+_either_ complete their operation or raise an  exception, `connect_nonblock`
+leaves its operation in progress _and_ raises an exception.
+
+If `connect_nonblock` can't make an immediate connection to the remote host, then
+it will let the operation continue in the background and raises an
+`Errno::EINPROGRESS` to notify us that the operation is still in progress. The
+next chapter will expore this a bit more.
+
+```ruby
+require 'socket'
+
+socket = Socket.new :INET, :STREAM
+remote_addr = Socket.pack_sockaddr 80, 'google.com'
+
+begin
+  socket.connect_non_block remote_addr
+rescue Errno::EINPROGRESS
+  # operation is in progress
+rescue Errno::EALREADY
+  # A previous non-blocking connect is already in progress
+rescue Errno::ECONNREFUSED
+  # The remote host refused our connect
+end
+```
