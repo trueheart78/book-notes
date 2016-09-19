@@ -1,0 +1,14 @@
+---
+:title: The Ruby Closures Book
+:purchase: https://leanpub.com/therubyclosuresbook
+:author: Benjamin Tan Wei Hao
+:homepage: http://benjamintan.io/
+:image: https://s3.amazonaws.com/titlepages.leanpub.com/therubyclosuresbook/hero?1470672643
+:image_ext: png
+
+:chapters:
+  - Closing in on Closures
+  - Beautiful Blocks
+  - Proctology
+  - Cheap Counterfeiting
+  - Epilogue

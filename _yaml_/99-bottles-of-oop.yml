@@ -1,0 +1,15 @@
+---
+:title: 99 Bottles of OOP
+:purchase: http://www.sandimetz.com/99bottles
+:author: Sandi Metz and Katrina Owen
+:homepage: http://www.sandimetz.com/
+:image: https://static1.squarespace.com/static/537c0374e4b0f52ed92942e6/t/55be45b8e4b07e0f7544a464/1469023237823/?format=750w
+:image_ext: jpg
+
+:chapters:
+  - Rediscovering Simplicity
+  - Test Driving Shameless Green
+  - Unearthing Concepts
+  - Practicing Horizontal Refactoring
+  - Separating Responsibilities
+  - Replacing Conditionals with Objects
