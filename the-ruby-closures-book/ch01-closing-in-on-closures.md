@@ -175,7 +175,7 @@ is_odd = complement.call is_even
 undrinkable_age = complement.call drinkable_age
 ```
 
-The free variable is `pred` while the inner lambda is the closre.
+The free variable is `pred` while the inner lambda is the closure.
 
 ## First-Class Functions
 
