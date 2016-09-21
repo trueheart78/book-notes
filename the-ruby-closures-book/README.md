@@ -10,6 +10,8 @@ By the fantastic [Benjamin Tan Wei Hao](http://benjamintan.io/)
 
 ## Chapter Notes:
 
+> blocks, procs, and lambdas are Ruby's implementation of closures.
+
 - [Chapter 1. Closing in on Closures](ch01-closing-in-on-closures.md)
 - [Chapter 2. Beautiful Blocks](ch02-beautiful-blocks.md)
 - [Chapter 3. Proctology](ch03-proctology.md)
