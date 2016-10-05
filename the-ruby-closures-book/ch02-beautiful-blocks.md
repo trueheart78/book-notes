@@ -10,10 +10,9 @@ programming Ruby without involving them in some way.
 The `yield` keyword can be uncomfortable, especially if you have any Python
 background.
 
-You can, however, substitute `yeild(args)` with the `call_the_block_with(args)`
+You can, however, substitute `yield(args)` with the `call_the_block_with(args)`
 _mentally_. `yield` is a Ruby keyword that calls the block, passing in the
 exact same parameters to the block that you give it.
-
 
 ```ruby
 def method_that_expects_block_with_two_args
@@ -32,7 +31,6 @@ end
 
 The block params are under our control, and we can do what we like with them.
 
-
 ```ruby
 block_sample do |x, y|
   x**y # => 1000
@@ -41,7 +39,6 @@ end
 
 `yield` assumes you have a block supplied to the method. If you would like the
 block to be _optional_, then `block_given?` is your friend.
-
 
 ```ruby
 def method_that_expects_block_with_two_args
@@ -54,13 +51,11 @@ end
 `yield` has some subtleties to be aware of. First, `yield` is a _keyword_, not
 a method.
 
-
 ```ruby
 > method :puts # => #<Method: Object(Kernel)#puts>
 ```
 
 `yield`, however:
-
 
 ```ruby
 > method :yield
@@ -78,7 +73,6 @@ method? In _Argument passing_ and `return`.
 The `yield` keyword is more tolerant of missing and extra args. Missing args
 are set to `nil`, and extra args are silently discarded.
 
-
 ```ruby
 def yield_w_wrong_arity
   yield "Hi", "Reader!"
@@ -93,7 +87,6 @@ end
 
 With fewer args:
 
-
 ```ruby
 def yield_w_wrong_arity
   puts yield "Hi"
@@ -105,7 +98,6 @@ end
 `yield` acts kind of like parallel assignment, in that `nils` are assigned to
 missing args:
 
-
 ```ruby
 a, b = 1 # => 1
 b        # => nil
@@ -116,7 +108,6 @@ You will see more `yield` soon.
 ## Blocks for Enumeration
 
 Ruby enumeration is so nice :heart:
-
 
 ```ruby
 %w(look ma no for loops).each do |x|
@@ -131,7 +122,6 @@ these methods are _implemented_.
 
 An example of an enumerator is the `times` method:
 
-
 ```ruby
 3.times { puts "yo dog" }
 ```
@@ -143,7 +133,6 @@ Notice that the block takes in _no parameters_.
 We're going to implement `times` for ourselves. Aslo, we're going to forget,
 for now, that `each` doesn't exist.
 
-
 ```ruby
 class Fixnum
   def times
@@ -154,7 +143,6 @@ end
 The above makes any call to `times` empty.
 
 So, if we want to reimplement this without `each`, here's one way:
-
 
 ```ruby
 class Fixnum
@@ -176,7 +164,6 @@ is. Doing so, the above code will now yield the expected number of `times`.
 
 Let's implement the `each` method in the `Array` class. An example of usage:
 
-
 ```ruby
 %w(look ma no for loops).each do |x|
   puts x
@@ -195,7 +182,6 @@ loops
 
 Here, the block accepts _one_ arg. So, let's reopen `Array`:
 
-
 ```ruby
 class Array
   def each
@@ -204,7 +190,6 @@ end
 ```
 
 Basic and useless. So, let's track the iteration using the humble `while` loop:
-
 
 ```ruby
 class Array
@@ -218,11 +203,9 @@ class Array
 end
 ```
 
-
 ## Exercises
 
 1. Implementing map using each:
-
 
 ```ruby
 class Array
@@ -235,7 +218,6 @@ end
 ```
 
 1. Implementing `String#each_word`:
-
 
 ```ruby
 class String
@@ -274,7 +256,6 @@ If you think about it, we really just want to write to the file. Closing the
 resource can just be a bother.
 
 Here's how Ruby's elegance works:
-
 
 ```ruby
 File.open('War and Peace.txt', 'w') do |f|
@@ -426,6 +407,7 @@ class Router
   def match(route)
     puts route
   end
+end
 ```
 
 Now, the challenge is going from this:
@@ -478,4 +460,87 @@ end
 
 **Notice** that the `block` being sent through is actually `&block`. Why?
 
-1. 
+1. We need the `&block` because we need to explicitly tell Ruby that we are
+   _capturing a block_. Ruby internally converts the block into a Proc object.
+1. `instance_eval` expects a _block_, so we need to use `&block` to convert the
+   Proc into a block.
+   
+Although confusing, here's a good way to remember it:
+
+> Rule: Block -> Proc if `&block` is in a method argument
+> Rule: Proc -> Block if `&block` is in method body 
+
+Most DSLs that have this pattern use `instance_eval` one way or another.
+
+## Blocks are Closures
+
+Closures are a) a function b) whose body references some variable that is
+declared in a parent scope.
+
+Well, blocks act like anonymous functions. After all, blocks carry a bunch of
+code, to be called only when `yield`ed. A block also carries around the context
+in which it was defined.
+
+### Block Local Variables
+
+To declare a _block local variable_, you use a `;` to denote them:
+
+```ruby
+def chalkboard_gag(line, repetition)
+  repetition.times { |x; line| puts "#{x}: #{line}" }
+end
+```
+
+The above prints out the `x` indices, but not the `line` the method received.
+It prints out a the empty `line` declared inside the block.
+
+Block local variables are a way to ensure that the variables within a block do
+not override another _outer_ variable of the same name. Another example:
+
+```ruby
+x = 'outside block'
+1.times { x = 'inside block' }
+
+puts x # => 'inside block'
+```
+
+The outer `x` is modified by the block, because the block _closes ove_ the
+outer `x`, and therefore has a reference to it. To prevent it, but keep the
+same variable name, we would do this:
+
+```ruby
+x = 'outside block'
+1.times { |;x| x = 'inside block' }
+
+puts x # => 'outside block'
+```
+
+You could alsode just properly name your variables to avoid these collisions,
+but at least now you are aware of what can happen if you don't take the scope
+into account.
+
+### Block Variables Act Like Parallel Assignments
+
+What values do `a`, `b`, and `c` get assigned?
+
+```ruby
+a, *b, c = 1, 2, 3, 4, 5
+
+a # => 1
+b # => [2, 3, 4]
+c # => 5
+```
+
+It is the same story with block variables
+
+```ruby
+def block_vars_example
+  yield 1, 2, 3, 4, 5
+end
+
+block_vars_example do |a, *b, c|
+  p a # => 1
+  p b # => [2, 3, 4]
+  p c # => 5
+end
+```
