@@ -395,3 +395,87 @@ _Reader is unsure why `yield` is not used above, as well as why a block is
 being defined in the method definition._
 
 ## Creating DSLs With Blocks
+
+There is a slight variation to object instantiation. This minor change allows
+us to create domain specific languages, or DSLs, in Ruby.
+
+```ruby
+routes = Router.new do
+  match '/about' => 'home#about'
+  match '/users' => 'users#index'
+end
+```
+
+This setup routes incoming requests to a controller#action initialization, a la
+Rails.
+
+What we know:
+
+1. The initializer of the `Router` class takes a block that accepts a single
+   argument, the object itself.
+1. The `Router` class quite likely has an instance method called `match` that
+   takes a hash as an argument.
+
+
+```ruby
+class Router
+  def initialize
+    yield self
+  end
+
+  def match(route)
+    puts route
+  end
+```
+
+Now, the challenge is going from this:
+
+```ruby
+routes = Router.new do |r|
+  r.match '/about' => 'home#about'
+  r.match '/users' => 'users#index'
+end
+```
+
+to this:
+
+```ruby
+routes = Router.new do
+  match '/about' => 'home#about'
+  match '/users' => 'users#index'
+end
+```
+
+Enter `instance_eval`.
+
+### Using `instance_eval` to Change `self`
+
+When a method is called without a receiver (aka the object), it is assumed the
+receiver is `self`. However, a block is not defined within the object, so the
+receiver is _the main scope_.
+
+So we can get errors like:
+
+```ruby
+in `block in <main>': undefined method `match' for main:Object (NoMethodError)
+```
+
+In this case, Ruby is looking for the `match` method in the `main` scope.
+
+### `instance_eval` to the Rescue!
+
+To convince Ruby that the `self` in the call to `match` is the `Router` and not
+the `main` object, we use `instance_eval` to evaulate the code in the context
+of the instance. In other words, `instance_eval` changes `self` to point to the
+instance you tell it to.
+
+
+```ruby
+def initialize(&block)
+  instance_eval &block
+end
+```
+
+**Notice** that the `block` being sent through is actually `&block`. Why?
+
+1. 
