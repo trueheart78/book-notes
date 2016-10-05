@@ -251,3 +251,71 @@ end
 ```
 
 ## Managing Resources with Blocks
+
+Blocks are an excellent way to abstract pre and post processing. A wonderful
+example is how resource management works. Examples like opening and closing a
+file handler, a socket connection, db connection, etc.
+
+In other languages, you really ought not to forget to close your resource when
+you are done with it (were you brought up in a virtual barn?).
+
+```ruby
+f = File.open 'War and Peace.txt', 'w'
+f << 'this book is long'
+f << 'oh so long'
+f.close
+```
+
+If you skip out on `f.close`, the file remain open until the script terminates.
+This creates a _resource leak_. A daemon or a web app could eventually open
+more resources than the OS can handle, as the limit is finite.
+
+If you think about it, we really just want to write to the file. Closing the
+resource can just be a bother.
+
+Here's how Ruby's elegance works:
+
+
+```ruby
+File.open('War and Peace.txt', 'w') do |f|
+  f << 'this book is long'
+  f << 'oh so long'
+end
+```
+
+By passing in a block into `File.open`, Ruby takes care of closing the resource
+when you are done with the block. Oh yeah, and the file handle is nicely
+scoped _within_ the block.
+
+### Implementing `File.open`
+
+From the Ruby stdlib on `File.open`:
+
+> With no associated block, `File.open` is a synonym for `::new`. If the
+  optional code block is given, it will be passed the opened file as an
+  argument and the File object will automatically be closed when the block
+  terminates. The value of the block will be returned from `File.open`.
+
+The tells us _everything_ we need to re-implement `File.open`:
+
+```ruby
+class File
+  def self.open(name, mode, &block)
+    file = new name, mode
+    return file unless block_given?
+    yield file
+  ensure
+    file.close
+  end
+end
+```
+
+It's pretty frickin' elegant :heart: And don't overlook the `ensure` that makes
+this work even when exceptions are raised from _within_ the passed block.
+
+And because `yield` is the last line, the value of the block will be returned
+from `File.open`.
+
+
+
+
