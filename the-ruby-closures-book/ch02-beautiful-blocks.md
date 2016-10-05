@@ -316,6 +316,82 @@ this work even when exceptions are raised from _within_ the passed block.
 And because `yield` is the last line, the value of the block will be returned
 from `File.open`.
 
+## Making Object Initialization Beautiful
 
+Blocks provide a pretty way to initialize an object. You often see this when
+it looks like _applying configuration_ on an object. Spoilers: they usually
+mean the same thing.
 
+```ruby
+client = Twitter::REST::Client.new do |config|
+  config.consumer_key = 'CONSUMER_KEY'
+  config.consumer_secret = 'CONSUMER_SECRET'
+  config.access_token = 'ACCESS_TOKEN'
+  config.access_token_secret = 'ACCESS_SECRET'
+end
+```
 
+### Implementation
+
+Let's see what it would take to get the above code implemented.
+
+```ruby
+module Twitter
+  module REST
+    class Client
+    end
+  end
+end
+
+client = Twitter::REST::Client.new do |config|
+  config.consumer_key = 'CONSUMER_KEY'
+  config.consumer_secret = 'CONSUMER_SECRET'
+  config.access_token = 'ACCESS_TOKEN'
+  config.access_token_secret = 'ACCESS_SECRET'
+end
+```
+
+This code doesn't do anything, but it also _won't_ produce any errors. **Ruby
+ignores the block being passed in when it is not called within the method
+body**.
+
+To get it to do _something_, let's see what we know:
+
+1. it is being called from the _initializer_.
+1. it accepts a single argument, the `config` object.
+1. the config object has some setters.
+1. `config` and the instantiated object can be the same thing.
+
+```ruby
+module Twitter
+  module REST
+    class Client
+      attr_accessor :consumer_key, :consumer_secret
+                    :access_token, :access_token_secret
+
+      def initialize
+        yield self if block_given?
+      end
+    end
+  end
+end
+```
+
+Passing `self` into the `yield` block means that we can call instance methods
+from _within_ the block. You can then call the `attr_accessor` methods we
+defined. **Eureka!**
+
+What if we'd also to be able to initialize with a hash, and also call a block?
+First, we'd iterate through the has of options first, followed by calling the
+block:
+
+```ruby
+def initialize(options = {}, &block)
+  options.each { |k, v| send "#{k}=", v }
+  instance_eval(&block) if block_given?
+```
+
+_Reader is unsure why `yield` is not used above, as well as why a block is
+being defined in the method definition._
+
+## Creating DSLs With Blocks
