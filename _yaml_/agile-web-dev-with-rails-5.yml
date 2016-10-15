@@ -1,0 +1,44 @@
+---
+:title: Agile Web Development with Rails 5
+:purchase: https://pragprog.com/book/rails5/agile-web-development-with-rails-5
+:author: Sam Ruby, Dave Thomas, and DHH
+:homepage: https://pragprog.com/book/rails5/agile-web-development-with-rails-5
+:image: https://imagery.pragprog.com/products/457/rails5.jpg?1461337189
+:image_ext: jpg
+
+:sections:
+  - 
+    :name: Part I. Getting Started
+    :chapters:
+      - Installing Rails
+      - Instant Gratification
+      - The Architecture of Rails Applications
+      - Introduction to Ruby
+  - 
+    :name: Part II. Building an Application
+    :chapters:
+      - The Depot Application
+      - Task A. Creating the Application
+      - Task B. Validation and Unit Testing
+      - Task C. Catalog Display
+      - Task D. Cart Creation
+      - Task E. A Smarter Cart
+      - Task F. Add a Dash of Ajax
+      - Task G. Check Out!
+      - Task H. Sending Mail
+      - Task I. Logging In
+      - Task J. Internationalization
+      - Task K. Deployment and Production
+      - Depot Retrospective
+  -
+    :name: Part III. Rails in Depth
+    :chapters:
+    - Find Your Way Around Rails
+    - Active Record
+    - Action Dispatch and Action Controller
+    - Action View
+    - Migrations
+    - Nonbrowser Applications
+    - Rails' Dependencies
+    - Rails Plugins
+    - Where to Go from Here
