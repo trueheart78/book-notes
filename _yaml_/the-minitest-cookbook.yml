@@ -1,0 +1,31 @@
+---
+:title: The Minitest Cookbook
+:purchase: http://minitestcookbook.com
+:author: Chris Kottom
+:homepage: http://chriskottom.com/
+:image: http://chriskottom.com/images/minitest_cookbook_cover_form.jpg
+:image_ext: jpg
+
+:chapters:
+- Introduction
+- How Minitest Works
+- Add Minitest to a Ruby Project
+- Running Your Tests
+- Writing Tests and Specs
+- Configuring Pre-Test State
+- Comparing Things
+- Having Fun with Minitest::Pride & Friends
+- Using Mocks, Stubs and Test Fakes
+- Customizing Test Reports
+- Testing Mixin Behavior
+- Sharing Code Between Tests
+- Continuous Testing
+- Custom Assertions and Expectations
+- Developing Your Own Extensions
+- Adding Minitest to a Rails Project
+- Managing Test Data
+- Testing Rails Models
+- Testing Rails Controllers
+- Testing Rails Helpers
+- Testing Rails Background Jobs
+- Testing Your Rails Application End-to-End
