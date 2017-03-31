@@ -2,6 +2,8 @@
 
 # Chapter 2. PostgresSQL
 
+[Day 1][day-1] | [Day 2][day-2]
+
 The hammer of the db world. Set-theory-based system, implemented as 2D tables
 with rows and columns. A classic, boring db, strong as an ox, open source and
 free to use without any charge. No enterprise level costs here.
@@ -42,7 +44,8 @@ supports large data, and is used in projects like Skype, US FAA, and France's CN
 + pg_trgm
 + cube
 
-Creating a schema (aka db)
+Creating a schema / database. You can do this from outside of PG _if_ you have it
+installed.
 
 `createdb book`
 
@@ -50,10 +53,160 @@ Verify those extra packages are installed
 
 `psql book -c "SELECT '1'::cube;"`
 
+<a name='day-1'></a>
+
 ## Day 1: Relations, CRUD, and Joins
 
 Db runs on port `5432` - you can connect using the `psql` shell.
 
 `psql book`
 
+PG prompts with the name of the database, followed by a `#` if you are an admin,
+and a `$` if you are a regular user.
 
+There are two ways to get help in PG: `\h`, used to get details about a SQL command,
+and `\?`, to display a list of PG-focused commands.
+
+
+To get help on a specific SQL term, use `\h SELECT` or whichever command you are
+working with.
+
+Before diving too deep into the world ofs PG, it is good to make sure you understand
+SQL itself.
+
+### Starting with SQL
+
+Standard RDBMS.
+
+#### Working with Tables
+
+PG is a design-first datastore, where first the schema is designed, and then data
+is entered that conforms to said definition.
+
+```sql
+CREATE TABLE countries (
+  country_code char(2) PRIMARY KEY,
+  country_name text UNIQUE
+);
+```
+
+Data is then inserted in standard SQL fashion:
+
+```sql
+INSERT INTO countries (country_code, country_name)
+VALUES ('us', 'United States'), ('mx', 'Mexico'),
+       ('au', 'Australia'), ('de', 'Germany'),
+       ('gb', 'United Kingdom');
+```
+
+Now, where there is a `UNIQUE` constraint on the table, let's see how the next
+command fails:
+
+```sql
+INSERT INTO countries (country_code, country_name)
+VALUES ('uk', 'United Kingdom');
+```
+
+will get you the following error:
+
+```
+ERROR:  duplicate key value violates unique constraint "countries_country_name_key"
+DETAIL:  Key (country_name)=(United Kingdom) already exists.
+```
+
+PG follows the standard SQL commands like `DELETE`, `SELECT`, etc.
+
+##### Foreign Keys
+
+To make sure that any country code inserted into the database exists in our
+`countries` table, we will use that as a reference.
+
+```SQL
+CREATE TABLE cities (
+  name text NOT NULL,
+  postal_code varchar(9) CHECK (postal_code <> ''),
+  country_code char(2) REFERENCES countries,
+  PRIMARY KEY (country_code, postal_code)
+);
+```
+
+As a note, `text` can be a string of any length, `varchar` can be a string with
+a maximum length, and `char` must be a string of a specific length.
+
+Now try inserting a city that no country was entered for.
+
+```SQL
+INSERT INTO cities VALUES ('Toronto', 'M4C1B5', 'ca');
+```
+
+and you will get the following error:
+
+```
+ERROR:  insert or update on table "cities" violates foreign key constraint "cities_country_code_fkey"
+DETAIL:  Key (country_code)=(ca) is not present in table "countries".
+```
+
+Since `country_code REFERENCES countries`, the `country_code` *must* exist in the 
+`countries` table. This is called _maintaining referential integrity_. The
+`REFERENCES` keyword constrains fields to another table's primary key, and ensures
+our data is always correct. *Note:* `NULL` is a valid `country_code` because
+`NULL` represents the lack of a value. To disallow a `NULL country_code` in the
+`cities` table, you change the `country_code` creation line to one of the following:
+
+- `country_code char(2) REFERENCES countries NOT NULL`
+- `country_code char(2) REFERENCES countries MATCH FULL`
+
+So, with an existing country:
+
+```SQL
+INSERT INTO cities VALUES ('Portland', '87200', 'us');
+```
+
+You should see the following `INSERT 0 1`, indicating success.
+
+Let's correct the wrong postal code we assigned to Portland. It should really
+be 97205:
+
+```SQL
+UPDATE cities SET postal_code = '97205' WHERE name = 'Portland';
+```
+
+#### Joins: Inner, Outer, Left, Right
+
+Standard SQL joins.
+
+#### Indexes
+
+Standard SQL indexes.
+
+```SQL
+CREATE INDEX cities_name ON cities (name);
+```
+
+You can also use the `UNIQUE` keyword to create an index.
+
+For less-than/greater-than/equals-to matches, you can also define the index
+type, like a B-tree, as it can match on ranged queries. This will keep full
+table scans from happening on large datasets. 
+
+```SQL
+CREATE INDEX index_name ON table USING btree (column);
+```
+
+This type of index can be very helpful for dates, number comparisons, etc.
+
+Need to see all indexes in the current schema?
+
+`\di`
+
+You'll see the foreign key(s) you created in the displayed list. If you just
+need to see one, use `\di index_name` to see the details.
+
+To see info about a table you have created, you can use `\d cities`.
+
+<a name='day-2'></a>
+
+## Day 2: Advanced Queries, Code, and Rules
+
+[day-1]: #day-1
+[day-2]: #day-2
