@@ -306,6 +306,7 @@ search:
 SELECT count(title) FROM events WHERE title LIKE '%Day%';
 ```
 
+#### Min and Max
 
 To get the first start time and last end time of all events at the Crystal
 Ballroom, use `min` and `max`:
@@ -324,6 +325,66 @@ You should see something like the following:
 ---------------------+---------------------
  2017-09-17 19:00:00 | 2017-09-17 23:00:00 
 ```
+
+#### Grouping
+
+To find the number of events at certain venues, you could do:
+
+```SQL
+SELECT venue_id, count(*)
+FROM events
+GROUP BY venue_id;
+```
+
+```
+ venue_id | count
+----------+-------
+          |     3
+        1 |     1
+        3 |     1
+        2 |     2
+```
+
+It's a nice list, and we can even filter by the `count` function.
+With `GROUP BY`, you can use `HAVING` (it's basically a `WHERE` clause).
+
+For popular venues:
+
+```SQL
+SELECT venue_id
+FROM events
+GROUP BY venue_id
+HAVING count(*) >= 2 AND venue_id IS NOT NULL;
+```
+
+```
+ venue_id | count
+----------+-------
+        2 |     2
+```
+
+You can use `GROUP BY` without any aggregate functions.
+
+```SQL
+SELECT venue_id FROM events GROUP BY venue_id;
+```
+
+```
+ venue_id
+----------
+
+        1
+        3
+        2
+```
+
+This is quite common, so you can use `DISTINCT` to do this.
+
+```SQL
+SELECT DISTINCT venue_id FROM events;
+```
+
+### Window Functions
 
 
 [day-1]: #day-1
