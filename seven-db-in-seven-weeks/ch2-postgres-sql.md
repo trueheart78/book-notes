@@ -44,6 +44,18 @@ supports large data, and is used in projects like Skype, US FAA, and France's CN
 + pg_trgm
 + cube
 
+On OS X, the following commands were necessary:
+
+```
+psql book -c "CREATE EXTENSION tablefunc"
+psql book -c "CREATE EXTENSION dict_xsync" # did not work
+psql book -c "CREATE EXTENSION fuzzystrmatch"
+psql book -c "CREATE EXTENSION pg_trgm"
+psql book -c "CREATE EXTENSION cube"
+```
+
+## Creating a Schema
+
 Creating a schema / database. You can do this from outside of PG _if_ you have it
 installed.
 
@@ -175,6 +187,46 @@ UPDATE cities SET postal_code = '97205' WHERE name = 'Portland';
 
 Standard SQL joins.
 
+#### Venues Table
+
+```SQL
+CREATE TABLE venues (
+  venue_id SERIAL PRIMARY KEY,
+  name varchar(255),
+  street_address text,
+  type char(7) CHECK ( type in ('public','private') ) DEFAULT 'public',
+  postal_code varchar(9),
+  country_code char(2),
+  FOREIGN KEY (country_code, postal_code) REFERENCES cities (country_code, postal_code) MATCH FULL
+);
+
+-- add a record
+INSERT INTO venues (name, postal_code, country_code) VALUES ('Crystal Ballroom', '97205', 'us');
+
+-- add a record and get the generated venue_id
+INSERT INTO venues (name, postal_code, country_code) VALUES ('Voodoo Donuts', '97205', 'us') RETURNING venue_id;
+```
+
+#### Events Table
+
+```SQL
+CREATE TABLE events (
+  event_id SERIAL PRIMARY KEY,
+  title varchar(100) NOT NULL,
+  starts timestamp NOT NULL,
+  ends timestamp NOT NULL,
+  venue_id INTEGER,
+  FOREIGN KEY (venue_id) REFERENCES venues (venue_id)
+);
+
+--- seed some data
+INSERT INTO events (title, starts, ends, venue_id)
+VALUES
+('LARP Club', '2017-02-15 17:30:00', '2017-02-15 19:30:00', 2),
+('April Fools Day', '2017-04-01 00:00:00', '2017-04-01 23:59:59', null),
+('Christmas Day', '2017-12-25 00:00:00', '2017-12-25 23:59:59', null);
+```
+
 #### Indexes
 
 Standard SQL indexes.
@@ -207,6 +259,72 @@ To see info about a table you have created, you can use `\d cities`.
 <a name='day-2'></a>
 
 ## Day 2: Advanced Queries, Code, and Rules
+
+### Aggregate Functions
+
+You can do a sub-`SELECT` to grab the data that needs to be inserted.
+
+```SQL
+INSERT INTO events (title, starts, ends, venue_id)
+  VALUES ('Taylor Swift', '2017-09-17 19:00:00', '2017-09-17 23:00:00', (
+    SELECT venue_id
+    FROM venues
+    WHERE name = 'Crystal Ballroom'
+  )
+);
+```
+
+#### Insert More Data
+
+For some of the next items, we'll need some more data.
+
+```SQL
+INSERT INTO venues (name, type, postal_code, country_code)
+VALUES ('My Place', 'private', '97205', 'us');
+
+INSERT INTO events (title, starts, ends, venue_id)
+VALUES
+('Wedding', '2017-02-26 21:00:00', '2017-02-26 23:00:00', 2),
+('Dinner with Mom', '2017-02-26 18:00:00', '2017-02-26 20:30:00', 3),
+('Valentine''s Day', '2017-02-14 00:00:00', '2017-02-14 23:59:59', null);
+```
+
+#### Count
+
+```SQL
+-- basic count of all records
+SELECT count(*) FROM events;
+
+-- basic count of all records with a custom column name
+SELECT count(*) event_count FROM events;
+```
+
+To count all titles with the word `Day`, use the `%` for a wildcard `Like`
+search:
+
+```SQL
+SELECT count(title) FROM events WHERE title LIKE '%Day%';
+```
+
+
+To get the first start time and last end time of all events at the Crystal
+Ballroom, use `min` and `max`:
+
+```SQL
+SELECT min(starts), max(ends)
+FROM events INNER JOIN venues
+  ON events.venue_id = venues.venue_id
+WHERE venues.name = 'Crystal Ballroom';
+```
+
+You should see something like the following:
+
+```
+         min         |         max
+---------------------+---------------------
+ 2017-09-17 19:00:00 | 2017-09-17 23:00:00 
+```
+
 
 [day-1]: #day-1
 [day-2]: #day-2
