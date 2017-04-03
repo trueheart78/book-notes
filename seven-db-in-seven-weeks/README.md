@@ -8,6 +8,7 @@ more of a sporadic read-through than anything else.
 Notes:
 
 - [Chapter 2. PostgresSQL](ch2-postgres-sql.md)
+  - [SQL File](pg-books.sql)
 - [Chapter 8. Redis](ch8-redis.md)
 - [Chapter 9. Wrapping Up (and making them work together)](ch9-wrapping-them-up-together.md)
 

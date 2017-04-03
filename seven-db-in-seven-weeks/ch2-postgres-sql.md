@@ -2,7 +2,7 @@
 
 # Chapter 2. PostgresSQL
 
-[Day 1][day-1] | [Day 2][day-2]
+[Day 1][day-1] | [Day 2][day-2] | [SQL File][sql-file]
 
 The hammer of the db world. Set-theory-based system, implemented as 2D tables
 with rows and columns. A classic, boring db, strong as an ox, open source and
@@ -328,3 +328,4 @@ You should see something like the following:
 
 [day-1]: #day-1
 [day-2]: #day-2
+[sql-file]: pg-books.sql
