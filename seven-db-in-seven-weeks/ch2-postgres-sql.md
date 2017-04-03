@@ -31,7 +31,7 @@ Postgres95. Renamed in 1996 to PostgresSQL to denote it's new SQL support.
 
 ## Battle Hardened
 
-ALl the plugins you could want, transaction support, stored procedures, and
+All the plugins you could want, transaction support, stored procedures, and
 cross-platform. Unicode support, sequences, table inheritance, and subselects.
 One of the most ANSI SQL-compliant relational dbs on the market. Fast, reliable,
 supports large data, and is used in projects like Skype, US FAA, and France's CNAF.
