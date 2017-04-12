@@ -33,3 +33,26 @@ the abstractions until they absolutely insist upon being created**.
 This book is about finding the right abstraction.
 
 ## Simplifying Code
+
+The code you write should meet two often contradictory goals:
+
+1. It must remain concrete enough to be understood.
+1. It must be abstract enough to allow for change.
+
+Code that is 100% concrete might be expressed as a single long procedure full
+of `if` statements. Code that is 100% abstract might consist of many classes,
+each with one method containing a single line of code.
+
+The best solution lies not at either extreme, but somewhere in the middle.
+**There is a sweet spot that represents the perfect compromise between
+comprehension and changeability, and it's your job as a programmer to find it.**
+
+This section discusses four different solutions to the "99 Bottles of Beer" problem.
+They vary in complexity and thus illustrate different points concrete and abstract.
+
+So now, stop. Do the 99 Bottles exercise now. Then, when complete, come on back.
+
+_Link to 99 Bottles Repo (personal)_
+
+### Incomprehensibly Concise
+
