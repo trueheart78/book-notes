@@ -386,6 +386,82 @@ SELECT DISTINCT venue_id FROM events;
 
 ### Window Functions
 
+Aggregate quiers are a common SQL staple. _Window functions_, on the other
+hand, are not quite so common.
+
+Window functions are similar to `GROUP BY` queries in that they allow you to
+run aggregate functions across multiple rows, allowing you to use built-in
+aggregate functions without requiring every single field to be grouped to a
+single row.
+
+Try selecting the `title` column without grouping it:
+
+```SQL
+SELECT title, venue_id, count(*)
+FROM events
+GROUP BY venue_id;
+```
+
+```
+ERROR:  column "events.title" must appear in the GROUP BY clause or be used in an aggregate function
+```
+
+We are counting up the rows by `venue_id`, and in the case of `LARP Club` and `Wedding`,
+we have two titles for a single `venue_id`, thus causing uncertainity.
+
+Whereas a `GROUP BY` clause will return one record per matching group value,
+a window function can return a separate record for each row.
+
+```SQL
+SELECT title, count(*) OVER (PARTITION BY venue_id) FROM events;
+```
+
+```
+      title      | count
+-----------------+-------
+ Taylor Swift    |     1
+ LARP Club       |     2
+ Wedding         |     2
+ Dinner with Mom |     1
+ April Fools Day |     3
+ Christmas Day   |     3
+ Valentine's Day |     3
+```
+
+Think of `PARTITION BY` akin to `GROUP BY`, but rather than grouping
+the results outside of the `SELECT` attribute list, it returns grouped
+values as any other field. In SQL terms, it returns the results of an
+aggreate function `OVER` a `PARTITION` of the result set.
+
+#### Transactions
+
+All or nothing is how you want your groups of statements to run, so for that,
+transactions are what you should reach for.
+
+```SQL
+BEGIN TRANSACTION;
+  DELETE FROM events;
+ROLLBACK;
+SELECT * FROM events;
+```
+
+If you run the above, you'll not lose your events, due to the `ROLLBACK` statement.
+
+Why are transactions important? Anytime you are modifying data that should _never_
+be out of sync, they are quite helpful. Just imagine how they might log monetary
+transactions in a bank.
+
+```SQL
+BEGIN TRANSACTION;
+  UPDATE account SET total=total+5000.0 WHERE account_id = 1337;
+  UPDATE account SET total=total-5000.0 WHERE account_id = 7331;
+END
+```
+
+#### Store Procedures
+
+_pg 75_
+
 
 [day-1]: #day-1
 [day-2]: #day-2
