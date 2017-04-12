@@ -52,7 +52,7 @@ They vary in complexity and thus illustrate different points concrete and abstra
 
 So now, stop. Do the 99 Bottles exercise now. Then, when complete, come on back.
 
-_Link to 99 Bottles Repo (personal)_
+[Link to 99 Bottles Repo (personal)](https://gist.github.com/trueheart78/d39224ffd61a21021cd152b55d6560f8)
 
 ### Incomprehensibly Concise
 
