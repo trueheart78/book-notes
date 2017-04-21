@@ -1,0 +1,33 @@
+---
+:title: The Rails 5 Way
+:purchase: https://leanpub.com/tr5w
+:author: Obie Fernandez
+:homepage: https://leanpub.com/tr5w
+:image: https://s3.amazonaws.com/titlepages.leanpub.com/tr5w/hero?1484762197
+:image_ext: jpg
+
+:chapters:
+  - Introduction
+  - Rails Configuration and Environments
+  - Routing
+  - REST, Resources, and Rails
+  - Working with Controllers
+  - Working with Active Record
+  - Active Record Migrations
+  - Active Record Associations
+  - Validations
+  - Advanced Active Record
+  - Action View
+  - All About Helpers
+  - Haml
+  - Session Management
+  - Authentication and Authorization
+  - Security
+  - Action Mailer
+  - Caching and Performance
+  - Background Processing
+  - Ajax on Rails
+  - Asset Pipeline
+  - RSpec
+  - Active Model API Reference
+  - Rails Essentials
