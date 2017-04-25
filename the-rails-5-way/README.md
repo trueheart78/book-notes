@@ -8,6 +8,9 @@ By the wondrous [Obie Fernandez](https://leanpub.com/tr5w)
 
 - [Purchase The Rails 5 Way](https://leanpub.com/tr5w)
 
+> Rails is a user interface for web development which streamlines complex tasks.
+> - Foreward
+
 ## Chapter Notes:
 
 - [Chapter 1. Introduction](ch01-introduction.md)
