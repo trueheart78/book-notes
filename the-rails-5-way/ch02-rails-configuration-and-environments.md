@@ -2,13 +2,11 @@
 
 # Chapter 2. Rails Configuration and Environments
 
-*Notes forthcoming*
-
 > [Rails] gained a lot of its focus and appeal beause I didn't try to please
-  people who did not share my problems. Differentiating between production and
-  development was a very real problem for me, so I solved it the best way that
-  I knew how.
-  - David Heinemeier Hansson
+> people who did not share my problems. Differentiating between production and
+> development was a very real problem for me, so I solved it the best way that
+> I knew how.
+>  - David Heinemeier Hansson
 
 Rails apps have always been preconfigured with three standard modes of operation
 
@@ -158,6 +156,32 @@ gem 'nokogiri', path: '~/code/nokogiri'
 ```
 
 ### Installing Gems
+
+Every time you modify the `Gemfile`, or more specifically, if you introduce
+dependencies not yet installed, invoke the `install` command to ensure that all
+the dependencies in your `Gemfile` are available to your Rails app.
+
+The `install` command updates all dependencies name in your `Gemfile. to the
+latest versions that do not conflict with other dependencies. It is invoked
+automatically upon bootstrapping a new Rails app using the `rails new` command
+in your terminal.
+
+The first time you run `bundle install` no `Gemfile.lock` file exists yet. Bundler
+will start by fetching all remote sources, resolving dependencies and installing
+needed gems.
+
+Re-running `bundle install` without updating the `Gemfile` will cause Bundler to
+re-fetch all remote sources but use the dependencies specified in the `Gemfile.lock`
+instead of resolving dependencies again.
+
+The most common situation is that a `Gemfile.lock` does exist, and you have updated
+your `Gemfile` by adding or modifying a dependency. When running `bundle install`,
+the dependencies specified in the `Gemfile.lock` will be used for gems that did
+not change, but dependencies will be re-resolved for any gems that were updated.
+
+### Gem Locking
+
+*Notes forthcoming*
 
 
 [bundler]: https://bundler.io/
