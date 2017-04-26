@@ -6,28 +6,335 @@
 :image: https://s3.amazonaws.com/titlepages.leanpub.com/tr5w/hero?1484762197
 :image_ext: jpg
 
-:chapters:
-  - Introduction
-  - Rails Configuration and Environments
-  - Routing
-  - REST, Resources, and Rails
-  - Working with Controllers
-  - Working with Active Record
-  - Active Record Migrations
-  - Active Record Associations
-  - Validations
-  - Advanced Active Record
-  - Action View
-  - All About Helpers
-  - Haml
-  - Session Management
-  - Authentication and Authorization
-  - Security
-  - Action Mailer
-  - Caching and Performance
-  - Background Processing
-  - Ajax on Rails
-  - Asset Pipeline
-  - RSpec
-  - Active Model API Reference
-  - Rails Essentials
+:sections:
+  -
+    :name: Introduction
+    :chapters:
+    - Introduction
+    - About This Book
+    - David Heinemeier Hansson (aka DHH)
+    - Goals
+    - Prerequisites
+    - Required Technology
+    - Licenses, Attributions and Trademark Notice
+  -
+    :name: Rails Configuration and Environments
+    :chapters:
+    - Rails Configuration and Environments
+    - Bundler
+    - Startup Scripts
+    - Default Initializers
+    - Other Common Initializers
+    - Spring Application Preloader
+    - Development Mode
+    - Test Mode
+    - Production Mode
+    - Configuring a Database
+    - Configuring Application Secrets
+    - Logging
+  -
+    :name: Routing
+    :chapters:
+    - Routing
+    - The Two Purposes of Routing
+    - The routes.rb File
+    - Route Globbing
+    - Named Routes
+    - Scoping Routing Rules
+    - Listing Routes
+    - Conclusion
+  -
+    :name: REST, Resources, and Rails
+    :chapters:
+    - REST, Resources, and Rails
+    - REST in a Rather Small Nutshell
+    - Resources and Representations
+    - REST in Rails
+    - Routing and CRUD
+    - The Standard RESTful Controller Actions
+    - Singular Resource Routes
+    - Nested Resources
+    - Routing Concerns
+    - RESTful Route Customizations
+    - Controller-Only Resources
+    - Different Representations of Resources
+    - The RESTful Rails Action Set
+    - Conclusion
+  -
+    :name: Working with Controllers
+    :chapters:
+    - Working with Controllers
+    - Rack
+    - Action Dispatch - Where It All Begins
+    - Render unto View…
+    - Additional Layout Options
+    - Redirecting
+    - Controller/View Communication
+    - Action Callbacks
+    - Streaming
+    - Variants
+    - Conclusion
+  -
+    :name: Working with Active Record
+    :chapters:
+    - Working with Active Record
+    - The Basics
+    - Macro-Style Methods
+    - Defining Attributes
+    - CRUD - Creating, Reading, Updating, Deleting
+    - Database Locking
+    - Querying
+    - Ignoring Columns
+    - Connections to Multiple Databases in Different Models
+    - Using the Database Connection Directly
+    - Custom SQL Queries
+    - Other Configuration Options
+    - Conclusion
+  -
+    :name: Active Record Migrations
+    :chapters:
+    - Active Record Migrations
+    - Creating Migrations
+    - Defining Columns
+    - Transactions
+    - Data Migration
+    - Database Schema
+    - Database Seeding
+    - Database-Related Tasks
+    - Conclusion
+  -
+    :name: Active Record Associations
+    :chapters:
+    - Active Record Associations
+    - The Association Hierarchy
+    - One-to-Many Relationships
+    - Belongs to Associations
+    - Has Many Associations
+    - Many-to-Many Relationships
+    - One-to-One Relationships
+    - Working with Unsaved Objects and Associations
+    - Association Extensions
+    - The CollectionProxy Class
+    - Conclusion
+  -
+    :name: Validations
+    :chapters:
+    - Validations
+    - Finding Errors
+    - The Simple Declarative Validations
+    - Common Validation Options
+    - Conditional Validation
+    - Short-form Validation
+    - Custom Validation Techniques
+    - Skipping Validations
+    - Working with the Errors Hash
+    - Testing Validations with Shoulda
+    - Conclusion
+  -
+    :name: Advanced Active Record
+    :chapters:
+    - Advanced Active Record
+    - Scopes
+    - Callbacks
+    - Attributes API
+    - Serialized Attributes
+    - Enums
+    - Generating Secure Tokens
+    - Calculation Methods
+    - Batch Operations
+    - Single-Table Inheritance (STI)
+    - Abstract Base Model Classes
+    - Polymorphic has_many Relationships
+    - Foreign-key Constraints
+    - Modules for Reusing Common Behavior
+    - Value Objects
+    - Non-Persisted Models
+    - Modifying Active Record Classes at Runtime
+    - PostgreSQL
+    - Conclusion
+  -
+    :name: Action View
+    :chapters:
+    - Action View
+    - Layouts and Templates
+    - Partials
+    - Conclusion
+  -
+    :name: All About Helpers
+    :chapters:
+    - All About Helpers
+    - ActiveModelHelper
+    - AssetTagHelper
+    - AssetUrlHelper
+    - AtomFeedHelper
+    - CacheHelper
+    - CaptureHelper
+    - ControllerHelper
+    - CsrfHelper
+    - DateHelper
+    - DebugHelper
+    - FormHelper
+    - FormOptionsHelper
+    - FormTagHelper
+    - JavaScriptHelper
+    - NumberHelper
+    - OutputSafetyHelper
+    - RecordTagHelper
+    - RenderingHelper
+    - SanitizeHelper
+    - TagHelper
+    - TextHelper
+    - TranslationHelper and the I18n API
+    - UrlHelper
+    - Writing Your Own View Helpers
+    - Wrapping and Generalizing Partials
+    - Conclusion
+  -
+    :name: Haml
+    :chapters:
+    - Haml
+    - Getting Started
+    - The Basics
+    - Doctype
+    - Comments
+    - Evaluating Ruby Code
+    - Helpers
+    - Filters
+    - Haml and Content
+    - Configuration Options
+    - Conclusion
+  -
+    :name: Session Management
+    :chapters:
+    - Session Management
+    - What to Store in the Session
+    - Storage Mechanisms
+    - Cookies
+    - Conclusion
+  -
+    :name: Authentication and Authorization
+    :chapters:
+    - Authentication and Authorization
+    - Warden
+    - Devise
+    - has_secure_password
+    - Pundit
+    - Conclusion
+  -
+    :name: Security
+    :chapters:
+    - Security
+    - Password Management
+    - Log Masking
+    - SSL (Secure Sockets Layer)
+    - Model Mass-assignment Attributes Protection
+    - SQL Injection
+    - Cross-Site Scripting (XSS)
+    - XSRF (Cross-Site Request Forgery)
+    - Session Fixation Attacks
+    - Keeping Secrets
+    - Conclusion
+  -
+    :name: Action Mailer
+    :chapters:
+    - Action Mailer
+    - Mailer Models
+    - Previews
+    - Receiving Emails
+    - Testing Email Content
+    - Sending via API
+    - Configuration
+    - Conclusion
+  -
+    :name: Caching and Performance
+    :chapters:
+    - Caching and Performance
+    - View Caching
+    - Data Caching
+    - Control of Web Caching
+    - ETags
+    - Conclusion
+  -
+    :name: Background Processing
+    :chapters:
+    - Background Processing
+    - Active Job
+    - Queueing Backends
+    - Rails Runner
+    - Conclusion
+  -
+    :name: Ajax on Rails
+    :chapters:
+    - Ajax on Rails
+    - Unobtrusive JavaScript
+    - Ajax and JSON
+    - Ajax and HTML
+    - JSONP Requests
+    - Turbolinks
+    - Conclusion
+  -
+    :name: Asset Pipeline
+    :chapters:
+    - Asset Pipeline
+    - Introduction to Asset Management
+    - Organization. Where does everything go?
+    - Manifest files
+    - Custom format handlers
+    - Post-Processing
+    - Helpers
+    - Fingerprinting
+    - Serving the files
+    - Rake Tasks
+    - Webpack
+    - Conclusion
+  -
+    :name: RSpec
+    :chapters:
+    - RSpec
+    - Introduction
+    - Behavior-Driven Development
+    - Basic Syntax and API
+    - Implicit Subject
+    - Custom Expectation Matchers
+    - Shared Behaviors
+    - Shared Context
+    - Mocks and Stubs
+    - Running Specs
+    - Factory Girl
+    - RSpec & Rails
+    - Feature Specs with Capybara
+    - RSpec Tools
+    - Conclusion
+  -
+    :name: Active Model API Reference
+    :chapters:
+    - Active Model API Reference
+    - AttributeAssignment
+    - AttributeMethods
+    - Callbacks
+    - Conversion
+    - Dirty
+    - Errors
+    - ForbiddenAttributesError
+    - Lint::Tests
+    - MissingAttributeError
+    - Model
+    - Name
+    - Naming
+    - SecurePassword
+    - Serialization
+    - Serializers::JSON
+    - Translation
+    - Type
+    - ValidationError
+    - Validations
+    - Validator
+  -
+    :name: Rails Essentials
+    :chapters:
+    - Rails Essentials
+    - Debugging
+    - Admin Frameworks
+    - Must-Have Gems
+    - Ruby Toolbox
+    - Environmental Concerns
