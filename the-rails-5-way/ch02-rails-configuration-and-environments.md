@@ -25,7 +25,7 @@ it checks `RACK_ENV`, and if neither is found, it defaults to `development`.
 
 ## Bundler
 
-[Bundler][bundler] is not Rails specific, but is the preferred way to manage
+[Bundler][bundler-web] is not Rails specific, but is the preferred way to manage
 your app's Rubygem dependencies.
 
 One of the most important things that Bundler does is dependency resolution
@@ -181,9 +181,82 @@ not change, but dependencies will be re-resolved for any gems that were updated.
 
 ### Gem Locking
 
-*Notes forthcoming*
+Every time you run `bundle install` or `bundle update`, Bundler calculates the
+dependency tree for your app and stores the results in a file named `Gemfile.lock`.
 
+Once a lock file is created, Bundler will only load specific versions of gems that
+you were using at the time the `Gemfile` was locked. The idea is that you _lock_
+your configuration down to using versions of dependencies that you know will work
+well with your app.
 
-[bundler]: https://bundler.io/
+**Note:** The `Gemfile.lock` file should always be checked into version control,
+to make sure that every machine is running the exact same versions of gems.
+
+### Packaging Gems
+
+You can package up all your gems in the `vendor/cache` directory of your Rails
+app.
+
+```
+bundle package
+```
+
+Running `bundle install --local` in an app with packaged gems will use the gems
+in the package and skip connecting to rubygems.org or any other gem sources. You
+can use this to avoid external dependencies at deploy time or if you depend on
+private gems that are not available in a public repo.
+
+**Note:** Non-Rails scripts must be executed with `bundle exec` in order to get
+a properly initialized RubyGems environment.
+
+### Bin Stubs
+
+Bootstrapping a new app will result in the creation of binstubs for Rails
+executables, located in the `bin` folder. A _binstub_ is a script containing
+an executable that runs in the context of the bundle. This means that one does
+not have to prefix `bundle exec` each time a Rails-specific executable is invoked.
+Binstubs are first class citizens of your project and should be added into your
+version control system just like any other source code file.
+
+By default, the following stubs are available on every new Rails project:
+
++ bin/bundle
++ bin/rails
++ bin/rake
++ bin/setup
++ bin/spring
++ bin/update
+
+To add a _binstub_ of a commonly used executable in your bundle, invoke
+`bundle binstubs [gemname]`.
+
+```
+bundle binstubs guard
+```
+
+This creates a binstub for `guard` in the `bin` folder.
+
+```ruby
+#!/usr/bin/env ruby
+
+require 'pathname'
+ENV['BUNDLE_GEMFILE'] ||= File.expand_path("../../Gemfile",
+  Pathname.new(__FILE__).realpath)
+
+require 'rubygems'
+require 'bundler/setup'
+
+load Gem.bin_path('guard', 'guard')
+```
+
+Using binstubs, scripts can be executed directly from the `bin` directory.
+
+```
+bin/guard
+```
+
+## Startup Scripts
+
+[bundler-web]: https://bundler.io/
 [bundler-how]: http://yehudakatz.com/2010/04/21/named-gem-environments-and-bundler/
 [rubygems]: https://rubygems.org
