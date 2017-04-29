@@ -35,5 +35,13 @@ actually require them. This is referred to as a "lazy-loading" setup. See
 
 ## config/application.rb
 
+Now we get into the meat of configuration. This script loads the Ruby on Rails
+gems and gems for the specified `Rails.env` and configures the app. Changing
+these items require a server restart to take effect.
+
+```ruby
+require_relative 'boot'
+```
+
 
 [development-mode]: ch14-development-mode.md
