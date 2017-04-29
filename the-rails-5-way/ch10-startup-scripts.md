@@ -43,5 +43,43 @@ these items require a server restart to take effect.
 require_relative 'boot'
 ```
 
+Note that the boot script is generated as part of your Rails app, but you don't
+usually need to edit it.
+
+Next, the Rails gems are loaded.
+
+```ruby
+require 'rails/all'
+```
+
+By replacing this line you can easily cherry-pick only the components needed
+by your app:
+
+```ruby
+# To pick the frameworks you want, remove 'require "rails/all"'
+# and list only the framework railties that you want:
+#
+# require "active_model/railtie"
+# require "active_record/railtie"
+# require "action_controller/railtie"
+# require "action_mailer/railtie"
+# require "action_view/railtie"
+# require "sprockets/railtie"
+# require "rails/test_unit/railtie"
+```
+
+The main config of our app follows, which gets it own module and class:
+
+```ruby
+module TimeAndExpenses
+  class Application < Rails::Application
+      # Settings in config/environments/* take precedence over those
+      # specified here. Application configuration should go into files
+      # in config/initializers
+      # -- all .rb files in that directory are automatically loaded.
+```
+
+**Note:** The creation of a module specifically for your app lays a foundation
+for running multiple Rails apps in the same executable Ruby process.
 
 [development-mode]: ch14-development-mode.md
