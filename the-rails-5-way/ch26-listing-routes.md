@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch25-scoping-routing-rules.md'>&lt;&lt; Scoping Routing Rules</a></div>
-<div style='float: right'><a href='ch27-conclusion.md'>Conclusion &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Scoping Routing Rules](ch25-scoping-routing-rules.md) | [README](README.md) | [Conclusion &gt;&gt;](ch27-conclusion.md)
 
 # Chapter 26. Listing Routes
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch25-scoping-routing-rules.md'>&lt;&lt; Scoping Routing Rules</a></div>
-<div style='float: right'><a href='ch27-conclusion.md'>Conclusion &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Scoping Routing Rules](ch25-scoping-routing-rules.md) | [README](README.md) | [Conclusion &gt;&gt;](ch27-conclusion.md)

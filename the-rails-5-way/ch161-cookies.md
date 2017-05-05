@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch160-storage-mechanisms.md'>&lt;&lt; Storage Mechanisms</a></div>
-<div style='float: right'><a href='ch162-conclusion.md'>Conclusion &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Storage Mechanisms](ch160-storage-mechanisms.md) | [README](README.md) | [Conclusion &gt;&gt;](ch162-conclusion.md)
 
 # Chapter 161. Cookies
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch160-storage-mechanisms.md'>&lt;&lt; Storage Mechanisms</a></div>
-<div style='float: right'><a href='ch162-conclusion.md'>Conclusion &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Storage Mechanisms](ch160-storage-mechanisms.md) | [README](README.md) | [Conclusion &gt;&gt;](ch162-conclusion.md)

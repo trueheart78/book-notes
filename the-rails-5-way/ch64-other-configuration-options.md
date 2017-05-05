@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch63-custom-sql-queries.md'>&lt;&lt; Custom SQL Queries</a></div>
-<div style='float: right'><a href='ch65-conclusion.md'>Conclusion &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Custom SQL Queries](ch63-custom-sql-queries.md) | [README](README.md) | [Conclusion &gt;&gt;](ch65-conclusion.md)
 
 # Chapter 64. Other Configuration Options
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch63-custom-sql-queries.md'>&lt;&lt; Custom SQL Queries</a></div>
-<div style='float: right'><a href='ch65-conclusion.md'>Conclusion &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Custom SQL Queries](ch63-custom-sql-queries.md) | [README](README.md) | [Conclusion &gt;&gt;](ch65-conclusion.md)

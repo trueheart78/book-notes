@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch135-numberhelper.md'>&lt;&lt; NumberHelper</a></div>
-<div style='float: right'><a href='ch137-recordtaghelper.md'>RecordTagHelper &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; NumberHelper](ch135-numberhelper.md) | [README](README.md) | [RecordTagHelper &gt;&gt;](ch137-recordtaghelper.md)
 
 # Chapter 136. OutputSafetyHelper
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch135-numberhelper.md'>&lt;&lt; NumberHelper</a></div>
-<div style='float: right'><a href='ch137-recordtaghelper.md'>RecordTagHelper &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; NumberHelper](ch135-numberhelper.md) | [README](README.md) | [RecordTagHelper &gt;&gt;](ch137-recordtaghelper.md)

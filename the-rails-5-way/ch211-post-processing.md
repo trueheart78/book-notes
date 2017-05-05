@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch210-custom-format-handlers.md'>&lt;&lt; Custom format handlers</a></div>
-<div style='float: right'><a href='ch212-helpers.md'>Helpers &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Custom format handlers](ch210-custom-format-handlers.md) | [README](README.md) | [Helpers &gt;&gt;](ch212-helpers.md)
 
 # Chapter 211. Post-Processing
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch210-custom-format-handlers.md'>&lt;&lt; Custom format handlers</a></div>
-<div style='float: right'><a href='ch212-helpers.md'>Helpers &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Custom format handlers](ch210-custom-format-handlers.md) | [README](README.md) | [Helpers &gt;&gt;](ch212-helpers.md)

@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch40-the-restful-rails-action-set.md'>&lt;&lt; The RESTful Rails Action Set</a></div>
-<div style='float: right'><a href='ch42-working-with-controllers.md'>Working with Controllers &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; The RESTful Rails Action Set](ch40-the-restful-rails-action-set.md) | [README](README.md) | [Working with Controllers &gt;&gt;](ch42-working-with-controllers.md)
 
 # Chapter 41. Conclusion
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch40-the-restful-rails-action-set.md'>&lt;&lt; The RESTful Rails Action Set</a></div>
-<div style='float: right'><a href='ch42-working-with-controllers.md'>Working with Controllers &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; The RESTful Rails Action Set](ch40-the-restful-rails-action-set.md) | [README](README.md) | [Working with Controllers &gt;&gt;](ch42-working-with-controllers.md)

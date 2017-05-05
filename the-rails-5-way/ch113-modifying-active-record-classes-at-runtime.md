@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch112-non-persisted-models.md'>&lt;&lt; Non-Persisted Models</a></div>
-<div style='float: right'><a href='ch114-postgresql.md'>PostgreSQL &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Non-Persisted Models](ch112-non-persisted-models.md) | [README](README.md) | [PostgreSQL &gt;&gt;](ch114-postgresql.md)
 
 # Chapter 113. Modifying Active Record Classes at Runtime
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch112-non-persisted-models.md'>&lt;&lt; Non-Persisted Models</a></div>
-<div style='float: right'><a href='ch114-postgresql.md'>PostgreSQL &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Non-Persisted Models](ch112-non-persisted-models.md) | [README](README.md) | [PostgreSQL &gt;&gt;](ch114-postgresql.md)

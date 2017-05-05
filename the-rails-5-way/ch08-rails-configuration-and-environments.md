@@ -1,9 +1,4 @@
-<div>
-<div style='float: left'><a href='ch07-licenses-attributions-and-trademark-notice.md'>&lt;&lt; Licenses, Attributions and Trademark Notice</a></div>
-<div style='float: right'><a href='ch09-bundler.md'>Bundler &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Licenses, Attributions and Trademark Notice](ch07-licenses-attributions-and-trademark-notice.md) | [README](README.md) | [Bundler &gt;&gt;](ch09-bundler.md)
 
 # Chapter 8. Rails Configuration and Environments
 
@@ -28,9 +23,4 @@ The env variable of `RAILS_ENV` holds which environment you are currently in.
 It corresponds to an env definition in the `config/environments` folder. Next
 it checks `RACK_ENV`, and if neither is found, it defaults to `development`.
 
-<div>
-<div style='float: left'><a href='ch07-licenses-attributions-and-trademark-notice.md'>&lt;&lt; Licenses, Attributions and Trademark Notice</a></div>
-<div style='float: right'><a href='ch09-bundler.md'>Bundler &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Licenses, Attributions and Trademark Notice](ch07-licenses-attributions-and-trademark-notice.md) | [README](README.md) | [Bundler &gt;&gt;](ch09-bundler.md)

@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch237-conversion.md'>&lt;&lt; Conversion</a></div>
-<div style='float: right'><a href='ch239-errors.md'>Errors &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Conversion](ch237-conversion.md) | [README](README.md) | [Errors &gt;&gt;](ch239-errors.md)
 
 # Chapter 238. Dirty
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch237-conversion.md'>&lt;&lt; Conversion</a></div>
-<div style='float: right'><a href='ch239-errors.md'>Errors &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Conversion](ch237-conversion.md) | [README](README.md) | [Errors &gt;&gt;](ch239-errors.md)

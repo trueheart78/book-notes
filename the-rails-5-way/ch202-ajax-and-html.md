@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch201-ajax-and-json.md'>&lt;&lt; Ajax and JSON</a></div>
-<div style='float: right'><a href='ch203-jsonp-requests.md'>JSONP Requests &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Ajax and JSON](ch201-ajax-and-json.md) | [README](README.md) | [JSONP Requests &gt;&gt;](ch203-jsonp-requests.md)
 
 # Chapter 202. Ajax and HTML
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch201-ajax-and-json.md'>&lt;&lt; Ajax and JSON</a></div>
-<div style='float: right'><a href='ch203-jsonp-requests.md'>JSONP Requests &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Ajax and JSON](ch201-ajax-and-json.md) | [README](README.md) | [JSONP Requests &gt;&gt;](ch203-jsonp-requests.md)

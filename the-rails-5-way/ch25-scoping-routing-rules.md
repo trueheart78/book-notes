@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch24-named-routes.md'>&lt;&lt; Named Routes</a></div>
-<div style='float: right'><a href='ch26-listing-routes.md'>Listing Routes &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Named Routes](ch24-named-routes.md) | [README](README.md) | [Listing Routes &gt;&gt;](ch26-listing-routes.md)
 
 # Chapter 25. Scoping Routing Rules
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch24-named-routes.md'>&lt;&lt; Named Routes</a></div>
-<div style='float: right'><a href='ch26-listing-routes.md'>Listing Routes &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Named Routes](ch24-named-routes.md) | [README](README.md) | [Listing Routes &gt;&gt;](ch26-listing-routes.md)

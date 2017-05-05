@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch186-configuration.md'>&lt;&lt; Configuration</a></div>
-<div style='float: right'><a href='ch188-caching-and-performance.md'>Caching and Performance &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Configuration](ch186-configuration.md) | [README](README.md) | [Caching and Performance &gt;&gt;](ch188-caching-and-performance.md)
 
 # Chapter 187. Conclusion
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch186-configuration.md'>&lt;&lt; Configuration</a></div>
-<div style='float: right'><a href='ch188-caching-and-performance.md'>Caching and Performance &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Configuration](ch186-configuration.md) | [README](README.md) | [Caching and Performance &gt;&gt;](ch188-caching-and-performance.md)

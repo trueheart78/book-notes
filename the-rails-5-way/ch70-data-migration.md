@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch69-transactions.md'>&lt;&lt; Transactions</a></div>
-<div style='float: right'><a href='ch71-database-schema.md'>Database Schema &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Transactions](ch69-transactions.md) | [README](README.md) | [Database Schema &gt;&gt;](ch71-database-schema.md)
 
 # Chapter 70. Data Migration
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch69-transactions.md'>&lt;&lt; Transactions</a></div>
-<div style='float: right'><a href='ch71-database-schema.md'>Database Schema &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Transactions](ch69-transactions.md) | [README](README.md) | [Database Schema &gt;&gt;](ch71-database-schema.md)

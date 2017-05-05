@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch167-pundit.md'>&lt;&lt; Pundit</a></div>
-<div style='float: right'><a href='ch169-security.md'>Security &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Pundit](ch167-pundit.md) | [README](README.md) | [Security &gt;&gt;](ch169-security.md)
 
 # Chapter 168. Conclusion
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch167-pundit.md'>&lt;&lt; Pundit</a></div>
-<div style='float: right'><a href='ch169-security.md'>Security &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Pundit](ch167-pundit.md) | [README](README.md) | [Security &gt;&gt;](ch169-security.md)

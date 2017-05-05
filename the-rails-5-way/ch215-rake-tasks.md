@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch214-serving-the-files.md'>&lt;&lt; Serving the files</a></div>
-<div style='float: right'><a href='ch216-webpack.md'>Webpack &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Serving the files](ch214-serving-the-files.md) | [README](README.md) | [Webpack &gt;&gt;](ch216-webpack.md)
 
 # Chapter 215. Rake Tasks
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch214-serving-the-files.md'>&lt;&lt; Serving the files</a></div>
-<div style='float: right'><a href='ch216-webpack.md'>Webpack &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Serving the files](ch214-serving-the-files.md) | [README](README.md) | [Webpack &gt;&gt;](ch216-webpack.md)

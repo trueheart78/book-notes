@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch234-attributeassignment.md'>&lt;&lt; AttributeAssignment</a></div>
-<div style='float: right'><a href='ch236-callbacks.md'>Callbacks &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; AttributeAssignment](ch234-attributeassignment.md) | [README](README.md) | [Callbacks &gt;&gt;](ch236-callbacks.md)
 
 # Chapter 235. AttributeMethods
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch234-attributeassignment.md'>&lt;&lt; AttributeAssignment</a></div>
-<div style='float: right'><a href='ch236-callbacks.md'>Callbacks &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; AttributeAssignment](ch234-attributeassignment.md) | [README](README.md) | [Callbacks &gt;&gt;](ch236-callbacks.md)

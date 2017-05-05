@@ -1,9 +1,4 @@
-<div>
-<div style='float: left'><a href='ch09-bundler.md'>&lt;&lt; Bundler</a></div>
-<div style='float: right'><a href='ch11-default-initializers.md'>Default Initializers &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Bundler](ch09-bundler.md) | [README](README.md) | [Default Initializers &gt;&gt;](ch11-default-initializers.md)
 
 # Chapter 10. Startup Scripts
 
@@ -87,12 +82,6 @@ module TimeAndExpenses
 **Note:** The creation of a module specifically for your app lays a foundation
 for running multiple Rails apps in the same executable Ruby process.
 
-<div>
-<div style='float: left'><a href='ch09-bundler.md'>&lt;&lt; Bundler</a></div>
-<div style='float: right'><a href='ch11-default-initializers.md'>Default Initializers &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Bundler](ch09-bundler.md) | [README](README.md) | [Default Initializers &gt;&gt;](ch11-default-initializers.md)
 
 [development-mode]: ch14-development-mode.md
-

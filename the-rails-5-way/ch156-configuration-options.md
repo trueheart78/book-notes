@@ -1,17 +1,7 @@
-<div>
-<div style='float: left'><a href='ch155-haml-and-content.md'>&lt;&lt; Haml and Content</a></div>
-<div style='float: right'><a href='ch157-conclusion.md'>Conclusion &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Haml and Content](ch155-haml-and-content.md) | [README](README.md) | [Conclusion &gt;&gt;](ch157-conclusion.md)
 
 # Chapter 156. Configuration Options
 
 *Notes forthcoming*
 
-<div>
-<div style='float: left'><a href='ch155-haml-and-content.md'>&lt;&lt; Haml and Content</a></div>
-<div style='float: right'><a href='ch157-conclusion.md'>Conclusion &gt;&gt;</a></div>
-<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
-<div style="clear: both"></div>
-</div>
+[&lt;&lt; Haml and Content](ch155-haml-and-content.md) | [README](README.md) | [Conclusion &gt;&gt;](ch157-conclusion.md)
