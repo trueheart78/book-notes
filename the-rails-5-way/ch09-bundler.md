@@ -1,4 +1,9 @@
-[&lt;&lt; Back to the README](README.md)
+<div>
+<div style='float: left'><a href='ch08-rails-configuration-and-environments.md'>&lt;&lt; Rails Configuration and Environments</a></div>
+<div style='float: right'><a href='ch10-startup-scripts.md'>Startup Scripts &gt;&gt;</a></div>
+<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
+<div style="clear: both"></div>
+</div>
 
 # Chapter 9. Bundler
 
@@ -231,6 +236,13 @@ Using binstubs, scripts can be executed directly from the `bin` directory.
 ```
 bin/guard
 ```
+
+<div>
+<div style='float: left'><a href='ch08-rails-configuration-and-environments.md'>&lt;&lt; Rails Configuration and Environments</a></div>
+<div style='float: right'><a href='ch10-startup-scripts.md'>Startup Scripts &gt;&gt;</a></div>
+<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
+<div style="clear: both"></div>
+</div>
 
 [bundler-web]: https://bundler.io/
 [bundler-how]: http://yehudakatz.com/2010/04/21/named-gem-environments-and-bundler/

@@ -1,4 +1,9 @@
-[&lt;&lt; Back to the README](README.md)
+<div>
+<div style='float: left'><a href='ch10-startup-scripts.md'>&lt;&lt; Startup Scripts</a></div>
+<div style='float: right'><a href='ch12-other-common-initializers.md'>Other Common Initializers &gt;&gt;</a></div>
+<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
+<div style="clear: both"></div>
+</div>
 
 # Chapter 11. Default Initializers
 
@@ -191,7 +196,15 @@ nest the `params` hash under the key "article".
 {"title": "The Rails 5 Way", "article" => {"title": "The Rails 5 Way"}}
 ```
 
+<div>
+<div style='float: left'><a href='ch10-startup-scripts.md'>&lt;&lt; Startup Scripts</a></div>
+<div style='float: right'><a href='ch12-other-common-initializers.md'>Other Common Initializers &gt;&gt;</a></div>
+<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
+<div style="clear: both"></div>
+</div>
+
 [action-view]: ch116-action-view.md
 [assetpipe]: ch206-asset-pipeline.md
 [as-inflections]: https://github.com/rails/rails/blob/master/activesupport/lib/active_support/inflections.rb
 [as-inflection-tests]: https://github.com/rails/rails/blob/master/activesupport/test/inflector_test_cases.rb
+

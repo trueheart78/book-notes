@@ -1,4 +1,9 @@
-[&lt;&lt; Back to the README](README.md)
+<div>
+<div style='float: left'><a href='ch11-default-initializers.md'>&lt;&lt; Default Initializers</a></div>
+<div style='float: right'><a href='ch13-spring-application-preloader.md'>Spring Application Preloader &gt;&gt;</a></div>
+<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
+<div style="clear: both"></div>
+</div>
 
 # Chapter 12. Other Common Initializers
 
@@ -34,4 +39,12 @@ config.i18n.load_path += Dir[Rails.root.join('config','sprechen','*.{rb,yml}')]
 
 ## Generator Default Settings
 
+<div>
+<div style='float: left'><a href='ch11-default-initializers.md'>&lt;&lt; Default Initializers</a></div>
+<div style='float: right'><a href='ch13-spring-application-preloader.md'>Spring Application Preloader &gt;&gt;</a></div>
+<div style='float: inline-auto;text-align:center'><a href='README.md'>README</a></div>
+<div style="clear: both"></div>
+</div>
+
 [all-about-helpers]: ch120-all-about-helpers.md
+
