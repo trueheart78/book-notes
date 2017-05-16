@@ -2,7 +2,6 @@
 
 # Chapter 2. Hello, Elm!
 
-*Notes forthcoming*
 ## Installing Project Dependencies
 
 To make sure the relevant node-based items are installed:
