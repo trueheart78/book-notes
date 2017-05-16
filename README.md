@@ -6,8 +6,12 @@ Books :books:
 
 ## Currently Studying
 
-1. [99 Bottles of OOP](99-bottles-of-oop/README.md)
+1. [Building Web Apps with Elm (course)](building-web-apps-with-elm-course/README.md)
 1. [The Rails 5 Way](the-rails-5-way/README.md)
+
+## Up Next
+
+1. [99 Bottles of OOP](99-bottles-of-oop/README.md)
 
 ## Coming Back To
 

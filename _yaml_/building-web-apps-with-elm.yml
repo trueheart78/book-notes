@@ -1,0 +1,31 @@
+---
+:title: Building Web Apps with Elm (course)
+:purchase: https://pragmaticstudio.com/courses/elm
+:author: Mike and Nicole
+:homepage: https://pragmaticstudio.com/courses/elm
+:image: https://pragmaticstudio.com/assets/courses/elm/elm-large-dcc159b829c8ac702ae4da83152f770e.png
+:image_ext: png
+
+:chapters:
+- Introduction
+- Hello, Elm!
+- Compiling and Running
+- Calling Functions
+- Defining Functions
+- Rendering HTML
+- Not Your Father's Type System
+- Currying for the Curious
+- Modeling Application State with Records
+- Type Aliases
+- Mapping Over HTML Lists
+- Updating the Model via Messages
+- The Elm Architecture At Work
+- Summing Points
+- Intro to Effects and Commands
+- Fetching Data from an API
+- Decoding JSON
+- Failures, Maybe?
+- Posting JSON to an API
+- Reacting to Input Fields
+- Organizing Code
+- Designing Around Concepts
