@@ -105,6 +105,14 @@ data that is going to be needed for rendering from the database. In Rails, it is
 accomplished by controller code that queries the model for needed data and maes
 that data available to the view.
 
+Database access during rendering is usually considered a bad practice. It violates
+proper separation of concerns and is a maintainability nightmare.
+
+However, there are plenty of opportunities for implicit database access during
+view rendering to creep into your codebase, encapsulated by the model, and perhaps
+triggered by lazy loading of associations. Fragment caching is one place where
+that rule can be broken.
+
 
 
 
