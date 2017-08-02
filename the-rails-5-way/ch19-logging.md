@@ -8,6 +8,12 @@ Most programming contexts in Rails (models, controllers, view templates) have a
 
 **Need a `logger`? `Rails.logger` references a logger that you can use anywhere.**
 
+```ruby
+Rails.logger.warn 'do not want!'
+Rails.logger.debug 'interesting variable value'
+Rails.logger.info 'in your logger, giving your info'
+```
+
 It's _really_ easy to create a new `Logger` in Ruby. See the following example.
 
 ```ruby
@@ -112,8 +118,5 @@ However, there are plenty of opportunities for implicit database access during
 view rendering to creep into your codebase, encapsulated by the model, and perhaps
 triggered by lazy loading of associations. Fragment caching is one place where
 that rule can be broken.
-
-
-
 
 [&lt;&lt; Configuring Application Secrets](ch18-configuring-application-secrets.md) | [README](README.md) | [Routing &gt;&gt;](ch20-routing.md)
