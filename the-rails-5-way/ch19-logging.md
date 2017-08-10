@@ -101,7 +101,7 @@ differing only in the primary key.
 Too many N+1 queries can bog a system down, so they're worth being aware of,
 especially if over a network to a database, introducing latency as well.
 
-N+! select issues are not the end of the world. A lot of times, all it takes is
+N+1 select issues are not the end of the world. A lot of times, all it takes is
 proper use of the `includes` method on a particular query to alleviate the problem.
 
 **Separation of Concerns:** A well-designed MVC app follows certain protocols
@@ -119,4 +119,16 @@ view rendering to creep into your codebase, encapsulated by the model, and perha
 triggered by lazy loading of associations. Fragment caching is one place where
 that rule can be broken.
 
+**Using Alternate Logging Schemes:** It's easy! Just assign a class compatible
+with Ruby's Logger to one of the various `logger` class vars, like
+`ActiveRecord::Base.logger`. During a console session, assign a new `Logger`
+instance pointing to `STDOUT` to `ActiveRecord::Base.logger` in order to see the
+SQL being generated right in your console. [Jamis Buck has a a writeup about this][watching-ar].
+
+### `Rails::Subscriber.colorize_logging`
+
+
+
 [&lt;&lt; Configuring Application Secrets](ch18-configuring-application-secrets.md) | [README](README.md) | [Routing &gt;&gt;](ch20-routing.md)
+
+[watching-ar]: http://weblog.jamisbuck.org/2007/1/31/more-on-watching-activerecord
