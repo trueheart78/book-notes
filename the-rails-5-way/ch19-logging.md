@@ -127,7 +127,13 @@ SQL being generated right in your console. [Jamis Buck has a a writeup about thi
 
 ### `Rails::Subscriber.colorize_logging`
 
+This tells Rails whether to use ANSI codes to colorize the logging statements or
+not. COlors make it easier to read the logs, but may complicate matters if you use
+something like syslog. It defaults to `true`. Change to `false` if you don't want
+the ANSI color codes.
 
+**Wilson says:** Using `less -R`, you can output the _raw_ control characters to
+the  screen.
 
 [&lt;&lt; Configuring Application Secrets](ch18-configuring-application-secrets.md) | [README](README.md) | [Routing &gt;&gt;](ch20-routing.md)
 
