@@ -25,6 +25,7 @@ Books :books:
 
 ## Archive
 
+1. [Writing Ruby Scripts That Respect Pipelines (Blog)](writing-ruby-scripts-that-respect-pipelines-blog/README.md)
 1. [Working with TCP Sockets](working-with-tcp-sockets/README.md) _Left off at Chapter 14_
 1. [CoffeeScript](coffeescript/README.md) _finished ch 5 on jQuery/Backbone.js_
 1. [Working with Unix Processes](working-with-unix-processes/README.md) :heart:
