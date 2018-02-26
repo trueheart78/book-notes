@@ -2,7 +2,7 @@
 
 # Writing Ruby Scripts That Respect Pipelines (Blog)
 
-By the awe-inspiring [Jesse Storimer](https://www.jstorimer.com/blogs/workingwithcode/7766125-writing-ruby-scripts-that-respect-pipelines)
+By the awe-inspiring [Jesse Storimer](http://www.jstorimer.com/)
 
 ## Links:
 
