@@ -55,7 +55,7 @@ CloudHash::Server.new(4481).start
 ```ruby
 require 'socket'
 
-module CLoudHash
+module CloudHash
   class Client
     class << self
       attr_accessor :host, :port
