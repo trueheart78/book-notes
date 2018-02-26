@@ -8,7 +8,7 @@ A NoSQL solution that uses a network layer on top of a Ruby hash. It's called:
 `CloudHash`.
 
 ```ruby
-require 'socket
+require 'socket'
 
 module CloudHash
   class Server
