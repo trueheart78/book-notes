@@ -100,7 +100,7 @@ Here's the relevant changes:
   $stdout.puts output_line
 ```
 
-Now we can ipe out without worrying about color codes, and get some nice plain text.
+Now we can pipe out without worrying about color codes, and get some nice plain text.
 
 ### Piping In
 
