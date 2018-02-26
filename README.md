@@ -20,13 +20,13 @@ Books :books:
 
 ## Meaning to Start
 
-1. [Writing Ruby Scripts That Respect Pipelines (Blog)](writing-ruby-scripts-that-respect-pipelines-blog/README.md)
 1. [Build Awesome Command-Line Applications in Ruby 2](build-awesome-command-line-applications-in-ruby-2/README.md)
 1. [Agile Web Development with Rails 5](agile-web-development-with-rails-5/README.md) 
 1. [The Minitest Cookbook](the-minitest-cookbook/README.md)
 
 ## Archive
 
+1. [Writing Ruby Scripts That Respect Pipelines (Blog)](writing-ruby-scripts-that-respect-pipelines-blog/README.md)
 1. [Working with TCP Sockets](working-with-tcp-sockets/README.md) _Left off at Chapter 14_
 1. [CoffeeScript](coffeescript/README.md) _finished ch 5 on jQuery/Backbone.js_
 1. [Working with Unix Processes](working-with-unix-processes/README.md) :heart:
