@@ -1,0 +1,69 @@
+---
+:title: Get Programming with Go
+:purchase: https://www.manning.com/books/get-programming-with-go
+:author: Nathan Youngman & Roger Peppe
+:homepage: https://nathany.com/
+:image: https://images.manning.com/720/960/resize/book/b/53cf82c-5954-4c8d-b631-5086eac879c7/Youngman_GetProg-go_hiresmeap.png
+:image_ext: png
+
+:sections:
+  -
+    :name: Unit 0. Getting Started
+    :chapters:
+    - Get Ready, Get Set, Go
+  -
+    :name: Unit 1. Imperative Programming
+    :chapters:
+    - A Glorified Calculator
+    - Loops and Branches
+    - Variable Scope
+    - Ticket to Mars Capstone
+  -
+    :name: Unit 2. Types
+    :chapters:
+    - Real Numbers
+    - Whole Numbers
+    - Big Numbers
+    - Multilingual Text
+    - Converting Between Types
+    - The Vigenère Cipher Capstone
+  -
+    :name: Unit 3. Building Blocks
+    :chapters:
+    - Functions
+    - Methods
+    - First-Class Functions
+    - Temperature Tables Capstone
+  -
+    :name: Unit 4. Collections
+    :chapters:
+    - Arrayed in Splendor
+    - Slices are Windows Into Arrays
+    - A Bigger Slice
+    - The Ever Versatile Map
+    - A Slice of Life Capstone
+  -
+    :name: Unit 5. State and Behavior
+    :chapters:
+    - A Little Structure
+    - Go's Got No Class
+    - Composition and Forwarding
+    - Interfaces
+    - Martian Animal Sanctuary Capstone
+  -
+    :name: Down the Gopher Hole
+    :chapters:
+    - Pointers
+    - Much Ado About Nil
+    - To Err is Human
+    - Sudoku Rules Capstone
+  -
+    :name: Unit 7. Concurrent Programming
+    :chapters:
+    - Goroutines and Concurrency
+    - Concurrent State
+    - Life on Mars Capstone
+  -
+    :name: Where to Go From Here
+    :chapters:
+    - Where to Go From Here
