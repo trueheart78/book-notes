@@ -1,7 +1,11 @@
-[&lt;&lt; Real Numbers](ch06-real-numbers.md) | [README](README.md) | [Big Numbers &gt;&gt;](ch08-big-numbers.md)
+[⬅ Real Numbers][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Big Numbers ➡][upcoming-chapter]
 
 # Chapter 7. Whole Numbers
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Real Numbers](ch06-real-numbers.md) | [README](README.md) | [Big Numbers &gt;&gt;](ch08-big-numbers.md)
+[⬅ Real Numbers][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Big Numbers ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch06-real-numbers.md
+[upcoming-chapter]: ch08-big-numbers.md

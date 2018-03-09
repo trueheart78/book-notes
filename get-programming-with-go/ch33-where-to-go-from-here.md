@@ -1,7 +1,10 @@
-[&lt;&lt; Life on Mars Capstone](ch32-life-on-mars-capstone.md) | [README](README.md) | [ &gt;&gt;]()
+[⬅ Capstone: Life on Mars][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]
 
 # Chapter 33. Where to Go From Here
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Life on Mars Capstone](ch32-life-on-mars-capstone.md) | [README](README.md) | [ &gt;&gt;]()
+[⬅ Capstone: Life on Mars][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]
+
+[readme]: README.md
+[previous-chapter]: ch32-capstone-life-on-mars.md

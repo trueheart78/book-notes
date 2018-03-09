@@ -1,7 +1,11 @@
-[&lt;&lt; A Slice of Life Capstone](ch20-a-slice-of-life-capstone.md) | [README](README.md) | [Go's Got No Class &gt;&gt;](ch22-gos-got-no-class.md)
+[⬅ Capstone: A Slice of Life][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Go's Got No Class ➡][upcoming-chapter]
 
 # Chapter 21. A Little Structure
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; A Slice of Life Capstone](ch20-a-slice-of-life-capstone.md) | [README](README.md) | [Go's Got No Class &gt;&gt;](ch22-gos-got-no-class.md)
+[⬅ Capstone: A Slice of Life][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Go's Got No Class ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch20-capstone-a-slice-of-life.md
+[upcoming-chapter]: ch22-gos-got-no-class.md

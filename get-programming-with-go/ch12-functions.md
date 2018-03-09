@@ -1,7 +1,11 @@
-[&lt;&lt; The Vigenère Cipher Capstone](ch11-the-vigen-re-cipher-capstone.md) | [README](README.md) | [Methods &gt;&gt;](ch13-methods.md)
+[⬅ Capstone: The Vigenère Cipher][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Methods ➡][upcoming-chapter]
 
 # Chapter 12. Functions
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; The Vigenère Cipher Capstone](ch11-the-vigen-re-cipher-capstone.md) | [README](README.md) | [Methods &gt;&gt;](ch13-methods.md)
+[⬅ Capstone: The Vigenère Cipher][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Methods ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch11-capstone-the-vigen-re-cipher.md
+[upcoming-chapter]: ch13-methods.md

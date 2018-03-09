@@ -1,7 +1,11 @@
-[&lt;&lt; Much Ado About Nil](ch27-much-ado-about-nil.md) | [README](README.md) | [Sudoku Rules Capstone &gt;&gt;](ch29-sudoku-rules-capstone.md)
+[⬅ Much Ado About Nil][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Capstone: Sudoku Rules ➡][upcoming-chapter]
 
 # Chapter 28. To Err is Human
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Much Ado About Nil](ch27-much-ado-about-nil.md) | [README](README.md) | [Sudoku Rules Capstone &gt;&gt;](ch29-sudoku-rules-capstone.md)
+[⬅ Much Ado About Nil][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Capstone: Sudoku Rules ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch27-much-ado-about-nil.md
+[upcoming-chapter]: ch29-capstone-sudoku-rules.md

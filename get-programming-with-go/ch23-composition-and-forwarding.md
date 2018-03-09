@@ -1,7 +1,11 @@
-[&lt;&lt; Go's Got No Class](ch22-gos-got-no-class.md) | [README](README.md) | [Interfaces &gt;&gt;](ch24-interfaces.md)
+[⬅ Go's Got No Class][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Interfaces ➡][upcoming-chapter]
 
 # Chapter 23. Composition and Forwarding
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Go's Got No Class](ch22-gos-got-no-class.md) | [README](README.md) | [Interfaces &gt;&gt;](ch24-interfaces.md)
+[⬅ Go's Got No Class][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Interfaces ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch22-gos-got-no-class.md
+[upcoming-chapter]: ch24-interfaces.md

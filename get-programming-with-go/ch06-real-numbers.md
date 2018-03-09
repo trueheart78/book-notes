@@ -1,7 +1,11 @@
-[&lt;&lt; Ticket to Mars Capstone](ch05-ticket-to-mars-capstone.md) | [README](README.md) | [Whole Numbers &gt;&gt;](ch07-whole-numbers.md)
+[⬅ Capstone: Ticket to Mars][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Whole Numbers ➡][upcoming-chapter]
 
 # Chapter 6. Real Numbers
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Ticket to Mars Capstone](ch05-ticket-to-mars-capstone.md) | [README](README.md) | [Whole Numbers &gt;&gt;](ch07-whole-numbers.md)
+[⬅ Capstone: Ticket to Mars][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Whole Numbers ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch05-capstone-ticket-to-mars.md
+[upcoming-chapter]: ch07-whole-numbers.md

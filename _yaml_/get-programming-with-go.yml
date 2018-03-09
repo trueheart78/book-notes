@@ -8,61 +8,61 @@
 
 :sections:
   -
-    :name: Unit 0. Getting Started
+    :name: Getting Started
     :chapters:
     - Get Ready, Get Set, Go
   -
-    :name: Unit 1. Imperative Programming
+    :name: Imperative Programming
     :chapters:
     - A Glorified Calculator
     - Loops and Branches
     - Variable Scope
-    - Ticket to Mars Capstone
+    - 'Capstone: Ticket to Mars'
   -
-    :name: Unit 2. Types
+    :name: Types
     :chapters:
     - Real Numbers
     - Whole Numbers
     - Big Numbers
     - Multilingual Text
     - Converting Between Types
-    - The Vigenère Cipher Capstone
+    - 'Capstone: The Vigenère Cipher'
   -
-    :name: Unit 3. Building Blocks
+    :name: Building Blocks
     :chapters:
     - Functions
     - Methods
     - First-Class Functions
-    - Temperature Tables Capstone
+    - 'Capstone: Temperature Tables'
   -
-    :name: Unit 4. Collections
+    :name: Collections
     :chapters:
     - Arrayed in Splendor
     - Slices are Windows Into Arrays
     - A Bigger Slice
     - The Ever Versatile Map
-    - A Slice of Life Capstone
+    - 'Capstone: A Slice of Life'
   -
-    :name: Unit 5. State and Behavior
+    :name: State and Behavior
     :chapters:
     - A Little Structure
     - Go's Got No Class
     - Composition and Forwarding
     - Interfaces
-    - Martian Animal Sanctuary Capstone
+    - 'Capstone: Martian Animal Sanctuary'
   -
     :name: Down the Gopher Hole
     :chapters:
     - Pointers
     - Much Ado About Nil
     - To Err is Human
-    - Sudoku Rules Capstone
+    - 'Capstone: Sudoku Rules'
   -
-    :name: Unit 7. Concurrent Programming
+    :name: Concurrent Programming
     :chapters:
     - Goroutines and Concurrency
     - Concurrent State
-    - Life on Mars Capstone
+    - 'Capstone: Life on Mars'
   -
     :name: Where to Go From Here
     :chapters:

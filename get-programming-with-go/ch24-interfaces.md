@@ -1,7 +1,11 @@
-[&lt;&lt; Composition and Forwarding](ch23-composition-and-forwarding.md) | [README](README.md) | [Martian Animal Sanctuary Capstone &gt;&gt;](ch25-martian-animal-sanctuary-capstone.md)
+[⬅ Composition and Forwarding][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Capstone: Martian Animal Sanctuary ➡][upcoming-chapter]
 
 # Chapter 24. Interfaces
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Composition and Forwarding](ch23-composition-and-forwarding.md) | [README](README.md) | [Martian Animal Sanctuary Capstone &gt;&gt;](ch25-martian-animal-sanctuary-capstone.md)
+[⬅ Composition and Forwarding][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Capstone: Martian Animal Sanctuary ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch23-composition-and-forwarding.md
+[upcoming-chapter]: ch25-capstone-martian-animal-sanctuary.md

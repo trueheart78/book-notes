@@ -1,7 +1,11 @@
-[&lt;&lt; Pointers](ch26-pointers.md) | [README](README.md) | [To Err is Human &gt;&gt;](ch28-to-err-is-human.md)
+[⬅ Pointers][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[To Err is Human ➡][upcoming-chapter]
 
 # Chapter 27. Much Ado About Nil
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Pointers](ch26-pointers.md) | [README](README.md) | [To Err is Human &gt;&gt;](ch28-to-err-is-human.md)
+[⬅ Pointers][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[To Err is Human ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch26-pointers.md
+[upcoming-chapter]: ch28-to-err-is-human.md

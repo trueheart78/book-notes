@@ -1,7 +1,11 @@
-[&lt;&lt; Functions](ch12-functions.md) | [README](README.md) | [First-Class Functions &gt;&gt;](ch14-first-class-functions.md)
+[⬅ Functions][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[First-Class Functions ➡][upcoming-chapter]
 
 # Chapter 13. Methods
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Functions](ch12-functions.md) | [README](README.md) | [First-Class Functions &gt;&gt;](ch14-first-class-functions.md)
+[⬅ Functions][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[First-Class Functions ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch12-functions.md
+[upcoming-chapter]: ch14-first-class-functions.md

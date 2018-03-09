@@ -1,7 +1,11 @@
-[&lt;&lt; Slices are Windows Into Arrays](ch17-slices-are-windows-into-arrays.md) | [README](README.md) | [The Ever Versatile Map &gt;&gt;](ch19-the-ever-versatile-map.md)
+[⬅ Slices are Windows Into Arrays][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[The Ever Versatile Map ➡][upcoming-chapter]
 
 # Chapter 18. A Bigger Slice
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Slices are Windows Into Arrays](ch17-slices-are-windows-into-arrays.md) | [README](README.md) | [The Ever Versatile Map &gt;&gt;](ch19-the-ever-versatile-map.md)
+[⬅ Slices are Windows Into Arrays][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[The Ever Versatile Map ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch17-slices-are-windows-into-arrays.md
+[upcoming-chapter]: ch19-the-ever-versatile-map.md

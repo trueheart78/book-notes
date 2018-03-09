@@ -1,7 +1,11 @@
-[&lt;&lt; Methods](ch13-methods.md) | [README](README.md) | [Temperature Tables Capstone &gt;&gt;](ch15-temperature-tables-capstone.md)
+[⬅ Methods][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Capstone: Temperature Tables ➡][upcoming-chapter]
 
 # Chapter 14. First-Class Functions
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Methods](ch13-methods.md) | [README](README.md) | [Temperature Tables Capstone &gt;&gt;](ch15-temperature-tables-capstone.md)
+[⬅ Methods][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Capstone: Temperature Tables ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch13-methods.md
+[upcoming-chapter]: ch15-capstone-temperature-tables.md

@@ -1,7 +1,11 @@
-[&lt;&lt; Whole Numbers](ch07-whole-numbers.md) | [README](README.md) | [Multilingual Text &gt;&gt;](ch09-multilingual-text.md)
+[⬅ Whole Numbers][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Multilingual Text ➡][upcoming-chapter]
 
 # Chapter 8. Big Numbers
 
-*Notes forthcoming*
+_Notes_
 
-[&lt;&lt; Whole Numbers](ch07-whole-numbers.md) | [README](README.md) | [Multilingual Text &gt;&gt;](ch09-multilingual-text.md)
+[⬅ Whole Numbers][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Multilingual Text ➡][upcoming-chapter]
+
+[readme]: README.md
+[previous-chapter]: ch07-whole-numbers.md
+[upcoming-chapter]: ch09-multilingual-text.md
