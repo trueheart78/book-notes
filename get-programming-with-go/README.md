@@ -1,8 +1,8 @@
-[&lt;&lt; Back to project home](../README.md)
+[🔙 🏡](../README.md)
 
 # Get Programming with Go
 
-By the astonishing [Nathan Youngman & Roger Peppe](https://nathany.com/)
+By the incredible [Nathan Youngman & Roger Peppe](https://nathany.com/)
 
 ## Links:
 
