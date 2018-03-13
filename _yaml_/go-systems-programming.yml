@@ -1,0 +1,21 @@
+---
+:title: Go Systems Programming
+:purchase: https://www.packtpub.com/networking-and-servers/go-systems-programming
+:author: Mihalis Tsoukalos
+:homepage: http://www.mtsoukalos.eu/
+:image: https://dz13w8afd47il.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/B05904.png
+:image_ext: png
+
+:chapters:
+  - Getting Started with Go and Unix Systems Programming
+  - Writing Programs in Go
+  - Advanced Go Features
+  - Go Packages, Algorithms, and Data Structures
+  - Files and Directories
+  - File Input and Output
+  - Working with System Files
+  - Processes and Signals
+  - Goroutines - Basic Features
+  - Goroutines - Advanced Features
+  - Writing Web Applications in Go
+  - Network Programming
