@@ -2,7 +2,7 @@
 
 # Chapter 11. Capstone: The Vigenère Cipher
 
-_Notes_
+_Skipped, but may come back_
 
 [🔙 Converting Between Types][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Functions 🔜][upcoming-chapter]
 

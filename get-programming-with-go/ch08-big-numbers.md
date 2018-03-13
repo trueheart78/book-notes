@@ -2,7 +2,7 @@
 
 # Chapter 8. Big Numbers
 
-_Notes_
+_Skipped, but may come back_
 
 [🔙 Whole Numbers][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Multilingual Text 🔜][upcoming-chapter]
 

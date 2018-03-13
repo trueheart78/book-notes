@@ -2,7 +2,7 @@
 
 # Chapter 9. Multilingual Text
 
-_Notes_
+_Skipped, but may come back_
 
 [🔙 Big Numbers][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Converting Between Types 🔜][upcoming-chapter]
 

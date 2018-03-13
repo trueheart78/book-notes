@@ -2,7 +2,7 @@
 
 # Chapter 7. Whole Numbers
 
-_Notes_
+_Skipped, but may come back_
 
 [🔙 Real Numbers][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Big Numbers 🔜][upcoming-chapter]
 

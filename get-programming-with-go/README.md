@@ -18,12 +18,12 @@ By the incredible [Nathan Youngman & Roger Peppe](https://nathany.com/)
     - [Chapter 4. Variable Scope](ch04-variable-scope.md)
     - [Chapter 5. Capstone: Ticket to Mars](ch05-capstone-ticket-to-mars.md)
 03. **Types**
-    - [Chapter 6. Real Numbers](ch06-real-numbers.md)
-    - [Chapter 7. Whole Numbers](ch07-whole-numbers.md)
-    - [Chapter 8. Big Numbers](ch08-big-numbers.md)
-    - [Chapter 9. Multilingual Text](ch09-multilingual-text.md)
+    - [Chapter 6. Real Numbers](ch06-real-numbers.md) _Partially skipped_
+    - [Chapter 7. Whole Numbers](ch07-whole-numbers.md) _Skipped_
+    - [Chapter 8. Big Numbers](ch08-big-numbers.md) _Skipped_
+    - [Chapter 9. Multilingual Text](ch09-multilingual-text.md) _Skipped_
     - [Chapter 10. Converting Between Types](ch10-converting-between-types.md)
-    - [Chapter 11. Capstone: The Vigenère Cipher](ch11-capstone-the-vigen-re-cipher.md)
+    - [Chapter 11. Capstone: The Vigenère Cipher](ch11-capstone-the-vigen-re-cipher.md) _Skipped_
 04. **Building Blocks**
     - [Chapter 12. Functions](ch12-functions.md)
     - [Chapter 13. Methods](ch13-methods.md)
