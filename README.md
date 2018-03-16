@@ -19,18 +19,18 @@ Books 📚
 
 ### Ruby
 
-1. [The Ruby Closures Book](the-ruby-closures-book/README.md) _partially complete_
+1. [The Ruby Closures Book](the-ruby-closures-book/README.md) 📖
 1. [99 Bottles of OOP](99-bottles-of-oop/README.md)
 1. [Build Awesome Command-Line Applications in Ruby 2](build-awesome-command-line-applications-in-ruby-2/README.md)
 1. [Agile Web Development with Rails 5](agile-web-development-with-rails-5/README.md) 
 
 ### Elixir
 
-1. [Programming Elixir 1.2](programming-elixir-1.2/README.md) _partially complete_
+1. [Programming Elixir 1.2](programming-elixir-1.2/README.md) 📖
 
 ### Elm
 
-1. [Building Web Apps with Elm (course)](building-web-apps-with-elm-course/README.md) _partially complete_
+1. [Building Web Apps with Elm (course)](building-web-apps-with-elm-course/README.md) 📖
 
 ### Minitest
 
