@@ -1,0 +1,41 @@
+---
+:title: Go - Building 7 Real-World Projects
+:purchase: https://www.packtpub.com/application-development/go-building-7-real-world-projects
+:author: Ben Tranter, Rostislav Dzinko, Mat Ryer
+:homepage: https://www.packtpub.com/application-development/go-building-7-real-world-projects
+:image: https://dz13w8afd47il.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/bookretailers/C07905_MockupCover.jpg
+:image_ext: jpg
+
+:sections:
+  -
+    :name: General
+    :chapters:
+    - Intro to the Go Programming Language
+    - Creating a Simple Website
+    - Building a Content Management System Dashboard
+    - Capturing Web Analytics
+    - Building a User Login/Authentication System
+    - Exposing Data through a REST API
+    - Writing a Real-Time Chat Server
+    - Deploying Your Application - Automatically
+    - Advanced Debugging and Testing
+    - Command-Line Tools to Find Domain Names
+    - Building Distributed Systems and Working with Flexible Data
+    - Exposting Data nd Functionality through a RESTful Data Web Services API
+    - Random Recommendations Web Service
+    - Filesystem Backup
+  -
+    :name: Building a Q&A Application for Google App Engine
+    :chapters:
+    - The Google App Engine SDK for Go
+    - Google Cloud Datastore
+    - Entities and Data Access
+    - Google App Engine Users
+    - Querying in Google Cloud Datastore
+    - Votes
+    - Casting a Vote
+    - Exposting Data Operations over HTTP
+    - Running Apps with Multiple Modules
+    - Deploying Apps with Multiple Modules
+    - Summary
+    - Capstone Project

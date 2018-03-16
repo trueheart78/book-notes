@@ -13,6 +13,7 @@ Books :books:
 ## Up Next
 
 1. [Go Systems Programming](go-systems-programming/README.md)
+1. [Go - Building 7 Real-World Projects](go-building-7-real-world-projects/README.md)
 1. [99 Bottles of OOP](99-bottles-of-oop/README.md)
 
 ## Coming Back To
