@@ -2,7 +2,7 @@
 
 # Chapter 12. Functions
 
-_Notes_
+_Skipped_
 
 [🔙 Capstone: The Vigenère Cipher][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Methods 🔜][upcoming-chapter]
 
