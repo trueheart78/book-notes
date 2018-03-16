@@ -1,0 +1,18 @@
+---
+:title: Distributed Computing with Go
+:purchase: https://www.packtpub.com/application-development/distributed-computing-go
+:author: V.N. Nikhil Anurag
+:homepage: https://twitter.com/nikhilnulkar
+:image: https://d255esdrn735hr.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/B06191.png
+:image_ext: png
+
+:chapters:
+  - Development Environment for Go
+  - Understanding Goroutines
+  - Channels and Messages
+  - The RESTful Web
+  - Introducing Goophr
+  - Goophr Concierge
+  - Goophr Librarian
+  - Deploying Goophr
+  - Foundations of Web Scale Architecture
