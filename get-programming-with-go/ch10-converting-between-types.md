@@ -93,7 +93,7 @@ To convert a `rune` or `byte` to a `string`, you can use the same type conversio
 syntax as numeric conversions.
 
 ```go
-ar pi rune = 960
+var pi rune = 960
 var alpha rune = 940
 var omega rune = 969
 var bang byte = 33
