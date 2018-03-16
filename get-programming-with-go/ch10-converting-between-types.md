@@ -89,8 +89,33 @@ if bh < math.MinInt16 || bh > math.MaxInt16 {
 
 ## String Conversions
 
-_Continuing from here_.
+To convert a `rune` or `byte` to a `string`, you can use the same type conversion
+syntax as numeric conversions.
 
+```go
+ar pi rune = 960
+var alpha rune = 940
+var omega rune = 969
+var bang byte = 33
+
+fmt.Print(string(pi), string(alpha), string(omega), string(bang))
+
+// πάω!
+```
+
+Converting a numeric code point to a string works the same way with any integer
+type. `rune` and `byte` are aliases for `int32` and `uint8`, after all.
+
+Use the `strconv.Itoa` function to handle this.
+
+💡 Tip: `Itoa` is short for "integer to ASCII"`
+
+You can also use `Sprintf`, which returns a string but still uses conversions
+like `Printf`.
+
+## Converting Boolean Values
+
+_Skipped_
 
 [🔙 Multilingual Text][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Capstone: The Vigenère Cipher 🔜][upcoming-chapter]
 
