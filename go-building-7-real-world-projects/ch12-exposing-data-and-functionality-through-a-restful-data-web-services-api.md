@@ -1,6 +1,6 @@
 [🔙 Building Distributed Systems and Working with Flexible Data][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Random Recommendations Web Service 🔜][upcoming-chapter]
 
-# Chapter 12. Exposting Data nd Functionality through a RESTful Data Web Services API
+# Chapter 12. Exposing Data and Functionality through a RESTful Data Web Services API
 
 _Notes_
 

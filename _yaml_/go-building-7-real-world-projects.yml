@@ -8,7 +8,7 @@
 
 :sections:
   -
-    :name: General
+    :name: "Module 1 - CMS"
     :chapters:
     - Intro to the Go Programming Language
     - Creating a Simple Website
@@ -17,15 +17,33 @@
     - Building a User Login/Authentication System
     - Exposing Data through a REST API
     - Writing a Real-Time Chat Server
+  -
+    :name: "Module 2 - Deployment and Testing"
+    :chapters:
     - Deploying Your Application - Automatically
     - Advanced Debugging and Testing
+  -
+    :name: "Module 3 - Finding Domain Names"
+    :chapters:
     - Command-Line Tools to Find Domain Names
+  -
+    :name: "Module 4 - Building Distributed Systems"
+    :chapters:
     - Building Distributed Systems and Working with Flexible Data
-    - Exposting Data nd Functionality through a RESTful Data Web Services API
+  -
+    :name: "Module 5 - Exposing Data and Functionality"
+    :chapters:
+    - Exposing Data and Functionality through a RESTful Data Web Services API
+  -
+    :name: "Module 6 - Random Recommendations Web Service"
+    :chapters:
     - Random Recommendations Web Service
+  -
+    :name: "Module 7 - Filesystem Backup"
+    :chapters:
     - Filesystem Backup
   -
-    :name: Building a Q&A Application for Google App Engine
+    :name: "Module 8 - Q&A Application"
     :chapters:
     - The Google App Engine SDK for Go
     - Google Cloud Datastore
