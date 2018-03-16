@@ -2,11 +2,14 @@
 
 Reading a lot, figured this was as good a place as any to make some notes ❤️
 
-Books 📚
+### Legend 
+
+* 📖 = in progress
+* ❤️ = loved it
 
 ## Currently Studying
 
-1. [Get Programming with Go](get-programming-with-go/README.md)
+1. [Get Programming with Go](get-programming-with-go/README.md) ❤️
 1. [The Rails 5 Way](the-rails-5-way/README.md)
 
 ## Book Pile
@@ -30,7 +33,7 @@ Books 📚
 
 ### Elm
 
-1. [Building Web Apps with Elm (course)](building-web-apps-with-elm-course/README.md) 📖
+1. [Building Web Apps with Elm (🎥 course)](building-web-apps-with-elm-course/README.md) 📖
 
 ### Minitest
 
