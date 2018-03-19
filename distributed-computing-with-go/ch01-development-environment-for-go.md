@@ -318,7 +318,7 @@ func TestMixedVariadicToSlice(t *testing.T) {
 }
 ```
 
-Running these tests are as simple as running `go test -v`
+Running these tests are as simple as running `go test -v` (the `-v` is for _verbose_).
 
 ```
 go test -v ./{variadic_test.go,variadic.go}
@@ -326,10 +326,179 @@ go test -v ./{variadic_test.go,variadic.go}
 
 ### `addInt.go`
 
+These tests provide a good way to run multiple tests within a single function.
+
+```go
+// addInt.go 
+ 
+package main 
+ 
+func addInt(numbers ...int) int { 
+    sum := 0 
+    for _, num := range numbers { 
+        sum += num 
+    } 
+    return sum 
+}
+```
+
+One style of testing, known as Table-driven development, defines a table of all the required data to
+run a test, iterates over the "rows" of the table and runs tests against them.
+
+Let's look at the tests we will be testing against no arguments and variadic arguments:
+
+```go
+// addInt_test.go 
+ 
+package main 
+ 
+import ( 
+    "testing" 
+) 
+ 
+func TestAddInt(t *testing.T) { 
+    testCases := []struct { 
+        Name     string 
+        Values   []int 
+        Expected int 
+    }{ 
+        {"addInt() -> 0", []int{}, 0}, 
+        {"addInt([]int{10, 20, 100}) -> 130", []int{10, 20, 100}, 130}, 
+    } 
+ 
+    for _, tc := range testCases { 
+        t.Run(tc.Name, func(t *testing.T) { 
+            sum := addInt(tc.Values...) 
+            if sum != tc.Expected { 
+                t.Errorf("%d != %d", sum, tc.Expected) 
+            } else { 
+                t.Logf("%d == %d", sum, tc.Expected) 
+            } 
+        }) 
+    } 
+}  
+```
+
+Running the tests, we see each of the rows in the `testCases` table, which we ran, treated as
+separate tests.
+
+```
+$ go test -v ./{addInt.go,addInt_test.go}                           
+=== RUN   TestAddInt                       
+=== RUN   TestAddInt/addInt()_->_0         
+=== RUN   TestAddInt/addInt([]int{10,_20,_100})_->_130                                
+--- PASS: TestAddInt (0.00s)               
+    --- PASS: TestAddInt/addInt()_->_0 (0.00s)                                        
+        addInt_test.go:23: 0 == 0          
+    --- PASS: TestAddInt/addInt([]int{10,_20,_100})_->_130 (0.00s)                    
+        addInt_test.go:23: 130 == 130      
+PASS                                       
+ok      command-line-arguments  0.001s
+```
+
 ### `nil_test.go`
 
+We can also create tests that are not specific to any particular source file, just that it has
+the `[text]_test.go` naming format. The following test file will cover some useful extras
+that might be quite useful when writing tests.
 
+* `httptest.NewServer`: Imagine the case where we have to test our code against a server that sends
+back some data. Starting and coordinating a full blown server to access some data is hard. The `http.
+NewServer` solves this issue for us.
+* `t.Helper`: If we use the same logic to pass or fail a lot of `testCases`, it would make sense to
+segregate this logic into a separate function. However, this would skew the test run call stack. 
+We can see this by commenting `t.Helper()` in the tests and rerunning `go test`.
 
+We can also format our cl output to print pretty results. You'll see tick marks for passed cases
+and cross marks for failed cases.
+
+The test will run a test server, make `GET` requests on it, and then test the expected output:
+
+```go
+// nil_test.go 
+ 
+package main 
+ 
+import ( 
+    "fmt" 
+    "io/ioutil" 
+    "net/http" 
+    "net/http/httptest" 
+    "testing" 
+) 
+ 
+const passMark = "\u2713" 
+const failMark = "\u2717" 
+ 
+func assertResponseEqual(t *testing.T, expected string, actual string) { 
+    t.Helper() // comment this line to see tests fail due to 'if expected != actual' 
+    if expected != actual { 
+        t.Errorf("%s != %s %s", expected, actual, failMark) 
+    } else { 
+        t.Logf("%s == %s %s", expected, actual, passMark) 
+    } 
+} 
+ 
+func TestServer(t *testing.T) { 
+    testServer := httptest.NewServer( 
+        http.HandlerFunc( 
+            func(w http.ResponseWriter, r *http.Request) { 
+                path := r.RequestURI 
+                if path == "/1" { 
+                    w.Write([]byte("Got 1.")) 
+                } else { 
+                    w.Write([]byte("Got None.")) 
+                } 
+            })) 
+    defer testServer.Close() 
+ 
+    for _, testCase := range []struct { 
+        Name     string 
+        Path     string 
+        Expected string 
+    }{ 
+        {"Request correct URL", "/1", "Got 1."},
+{"Request incorrect URL", "/12345", "Got None."}, 
+    } { 
+        t.Run(testCase.Name, func(t *testing.T) { 
+            res, err := http.Get(testServer.URL + testCase.Path) 
+            if err != nil { 
+                t.Fatal(err) 
+            } 
+ 
+            actual, err := ioutil.ReadAll(res.Body) 
+            res.Body.Close() 
+            if err != nil { 
+                t.Fatal(err) 
+            } 
+            assertResponseEqual(t, testCase.Expected, fmt.Sprintf("%s", actual)) 
+        }) 
+    } 
+    t.Run("Fail for no reason", func(t *testing.T) {
+        assertResponseEqual(t, "+", "-")
+    })
+}
+```
+
+Running the tests, you should see a singular failure with a tick mark.
+
+```
+$ go test -v ./nil_test.go                                          
+=== RUN   TestServer                       
+=== RUN   TestServer/Request_correct_URL   
+=== RUN   TestServer/Request_incorrect_URL 
+=== RUN   TestServer/Fail_for_no_reason    
+--- FAIL: TestServer (0.00s)               
+  --- PASS: TestServer/Request_correct_URL (0.00s)                                  
+        nil_test.go:55: Got 1. == Got 1.  
+  --- PASS: TestServer/Request_incorrect_URL (0.00s)                                
+        nil_test.go:55: Got None. == Got None. 
+  --- FAIL: TestServer/Fail_for_no_reason (0.00s)   
+      nil_test.go:59: + != - 
+ FAIL
+ exit status 1
+ FAIL command-line-arguments 0.003s
+```
 
 [🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Understanding Goroutines 🔜][upcoming-chapter]
 
