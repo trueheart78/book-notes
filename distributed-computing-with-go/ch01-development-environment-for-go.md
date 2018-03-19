@@ -223,5 +223,5 @@ You'll see more concepts as we go through these.
 [readme]: README.md
 [upcoming-chapter]: ch02-understanding-goroutines.md
 [dep]: https://github.com/golang/dep
-[docker-arch]: ch01-docker-arch.png
+[docker-arch]: images/ch01-docker-arch.png
 [docker-community]: https://www.docker.com/community-edition
