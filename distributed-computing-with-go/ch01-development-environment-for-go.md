@@ -191,11 +191,11 @@ Step 5/5 : ENTRYPOINT /go/bin/hello
  ---> e0bbfb1fe52b 
 Successfully built e0bbfb1fe52b 
  
-$ # Let's now try to run the docker image. 
+# Let's now try to run the docker image. 
 $ docker run hello-uncle
 Bob is your uncle. 
  
-$ # We can also change the environment variables on the fly. 
+# We can also change the environment variables on the fly. 
 $ docker run  -e NAME=Sam hello-uncle
 Sam is your uncle.
 ```
@@ -217,6 +217,119 @@ We'll look at a handful of files and their tests:
 * `nil_test.go`, with no source file for this test.
 
 You'll see more concepts as we go through these.
+
+### `variadic.go`
+
+A variadic function is a function that can accept any number of arguments during a function call.
+
+Given that Go is a statically typed language, the only limitation imposed by the type system on a
+variadic function is that all arguments passed in should be of the same data type. However, it doesn't
+limit you from passing other variable types. The arguments are received by the function as a slice of
+elements if arguments are passed, else `nil`, when none are passed.
+
+Here's the code:
+
+```go
+// variadic.go 
+ 
+package main 
+ 
+func simpleVariadicToSlice(numbers ...int) []int { 
+   return numbers 
+} 
+ 
+func mixedVariadicToSlice(name string, numbers ...int) (string, []int) { 
+   return name, numbers 
+} 
+ 
+// Does not work. 
+// func badVariadic(name ...string, numbers ...int) {}
+```
+
+Notice the `...` prefix before the data type to define a fn as a variadic fn. Note that we can have
+only one variadic param per fn and it has to be _the last param_. We can this error if we uncomment
+the line for `badVariadic` and attempt to test the code.
+
+### `variadic_test.go`
+
+We would like to test the two valid functions, `simpleVariadicToSlice` and `mixedVariadicToSlice`,
+for various rules defined in the previous section. Here's the brief overview of what we'll be testing:
+
+* `simpleVariadicToSlice`: this is for no arguments, three arguments, and also to look at how to pass
+a slice to a variadic fn.
+* `mixedVariadicToSlice`: This is to accept a simple argument and a variadic argument.
+
+Here's the test code:
+
+```go
+// variadic_test.go 
+package main 
+ 
+import "testing" 
+ 
+func TestSimpleVariadicToSlice(t *testing.T) { 
+    // Test for no arguments 
+    if val := simpleVariadicToSlice(); val != nil { 
+        t.Error("value should be nil", nil) 
+    } else { 
+        t.Log("simpleVariadicToSlice() -> nil") 
+    } 
+ 
+    // Test for random set of values 
+    vals := simpleVariadicToSlice(1, 2, 3) 
+    expected := []int{1, 2, 3} 
+    isErr := false 
+    for i := 0; i < 3; i++ { 
+        if vals[i] != expected[i] { 
+            isErr = true 
+            break 
+        } 
+    } 
+    if isErr { 
+        t.Error("value should be []int{1, 2, 3}", vals) 
+    } else { 
+        t.Log("simpleVariadicToSlice(1, 2, 3) -> []int{1, 2, 3}") 
+    } 
+ 
+    // Test for a slice 
+    vals = simpleVariadicToSlice(expected...) 
+    isErr = false 
+    for i := 0; i < 3; i++ { 
+        if vals[i] != expected[i] { 
+            isErr = true 
+            break 
+        } 
+    } 
+    if isErr { 
+        t.Error("value should be []int{1, 2, 3}", vals) 
+    } else { 
+        t.Log("simpleVariadicToSlice([]int{1, 2, 3}...) -> []int{1, 2, 3}") 
+    } 
+} 
+ 
+func TestMixedVariadicToSlice(t *testing.T) { 
+    // Test for simple argument & no variadic arguments 
+    name, numbers := mixedVariadicToSlice("Bob") 
+    if name == "Bob" && numbers == nil { 
+        t.Log("Recieved as expected: Bob, <nil slice>") 
+    } else { 
+        t.Errorf("Received unexpected values: %s, %s", name, numbers) 
+    }
+}
+```
+
+Running these tests are as simple as running `go test -v`
+
+```
+go test -v ./{variadic_test.go,variadic.go}
+```
+
+### `addInt.go`
+
+### `nil_test.go`
+
+
+
 
 [🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Understanding Goroutines 🔜][upcoming-chapter]
 
