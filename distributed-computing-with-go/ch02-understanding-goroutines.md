@@ -8,9 +8,7 @@ in many different programming languages.
 ## Concurrency and Parallelism
 
 Standard definitions can be found on the [Concurrency is not Parallelism][go-blog] Go blog post,
-or watch the talk:
-
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/cN_DpYBzKso?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+or [watch the talk][go-youtube]:
 
 * **Concurrency**: _Concurrency is about dealing with lots of things at once._
 * **Parallelism**: _Parallelism is about doing lots of things at once._
@@ -326,4 +324,5 @@ Now that we have a good idea on what concurrency is and how to write concurrent 
 [previous-chapter]: ch01-development-environment-for-go.md
 [upcoming-chapter]: ch03-channels-and-messages.md
 [go-blog]: https://blog.golang.org/concurrency-is-not-parallelism
+[go-youtube]: https://www.youtube.com/watch?v=cN_DpYBzKso
 [concurrency-vs-parallelism]: images/ch02-concurrency-vs-parallelism.png
