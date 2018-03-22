@@ -302,21 +302,341 @@ Now that we have a good idea on what concurrency is and how to write concurrent 
 
 ### Parallelism
 
+Imagine you have to write a few emails, and they are going to be a bit of a job. So, you decide to
+listen to music while writing them. The listening to music is "in parallel" to writing the emails.
+
+Let's write a program to simulate this scenario.
+
+```go
+package main
+
+import (
+  "fmt"
+  "sync"
+  "time"
+)
+
+func printTime(msg string) {
+  fmt.Println(msg, time.Now().Format("15:04:05"))
+}
+
+// Task that will be done over time
+func writeMail1(wg *sync.WaitGroup) {
+  printTime("Done writing mail #1.")
+  wg.Done()
+}
+func writeMail2(wg *sync.WaitGroup) {
+  printTime("Done writing mail #2.")
+  wg.Done()
+}
+func writeMail3(wg *sync.WaitGroup) {
+  printTime("Done writing mail #3.")
+  wg.Done()
+}
+
+// Task done in parallel
+func listenForever() {
+  for {
+    printTime("Listening...")
+  }
+}
+
+func main() {
+  var waitGroup sync.WaitGroup
+  waitGroup.Add(3)
+
+  go listenForever()
+
+  // Give some time for listenForever to start
+  time.Sleep(time.Nanosecond * 10)
+
+  // Let's start writing the mails
+  go writeMail1(&waitGroup)
+  go writeMail2(&waitGroup)
+  go writeMail3(&waitGroup)
+
+  waitGroup.Wait()
+}
+```
+
+Your program might output the following:
+
+```
+Done writing mail #3. 14:49:01
+Listening... 14:49:01
+Listening... 14:49:01
+Done writing mail #1. 14:49:01
+Listening... 14:49:01
+Listening... 14:49:01
+Listening... 14:49:01
+Listening... 14:49:01
+Done writing mail #2. 14:49:01
+```
+
+The numbers represent the time in terms of `Hours:Minutes:Seconds`, and (as can be seen), they
+are being executed in _parallel_. You might think the code in the tasks concurrecny from earlier
+looks a lot like this example, but the `listenForever` has an infinite loop. If you ran the above
+without goroutines, we'd never stop listening.
+
+So, that's the gist of how Go is allowing us to write concurrent programs.
+
 ## Go's Runtime Scheduler
+
+The Go program, along with the runtime, is managed and executed on multiple OS threads. The
+runtime uses a scheduler strategy known as **M:N**, which will schedule _M_ number of goroutines
+on _N_ number of OS threads. This allows context switching to be fast, and also enables the use
+of multiple cores of the CPU for parallel computing.
+
+From the Go scheduler's perspective, there are three primary entities.
+
+1. Goroutine (G)
+1. OS thread or machine (M)
+1. Context or processor (P)
 
 ### Goroutine
 
+This is the logical unit of execution that contains the actual instructions for our programs and
+functions to run. It also contains other important information regarding the goroutine, like the
+stack memory, wich machine (M) it is running on, and which Go function called it.
+
+Here are some of the elements in the goroutine sturct that might be worth knowing:
+
+
+```go
+// Denoted as G in runtime 
+type g struct { 
+    stack         stack // offset known to runtime/cgo 
+    m               *m    // current m; offset known to arm liblink 
+    goid           int64 
+    waitsince   int64   // approx time when the g become blocked 
+    waitreason string  // if status==Gwaiting 
+    gopc          uintptr // pc of go statement that created this goroutine 
+    startpc       uintptr // pc of goroutine function 
+    timer         *timer  // cached timer for time.Sleep 
+ 
+    // ... 
+}
+```
+
+An interesting bit is that when our Go program starts, a goroutine called _main goroutine_ is
+launched first, and it takes care of setting up the runtime space prior to executing the program.
+Things like max stack size, garbage collection on/off, and so on.
+
 ### OS Thread or Machine
+
+Initially, the OS threads or machines are created by and managed by the OS. Later on, the
+scheduler can request more OS threads or machines to be created or destroyed. It is the actual
+resource upon which a goroutine will be executed. It also maintains info about the _main
+goroutine_, the G currently being run on it, **thread local storage (tls)**, and so on:
+
+```go
+// Denoted as M in runtime 
+type m struct { 
+    g0               *g         // goroutine with scheduling stack 
+    tls               [6]uintptr // thread-local storage (for x86 extern register) 
+    curg            *g         // current running goroutine 
+    p                 puintptr   // attached p for executing go code (nil if not executing go code) 
+    id                 int32 
+    createstack [32]uintptr // stack that created this thread. 
+    spinning      bool        // m is out of work and is actively looking for work 
+ 
+    // ... 
+}
+```
 
 ### Context or Processor
 
+We have a global scheduler which takes care of bringing up new M, registering G, and handling
+system calls. However, it does not handle the actual goroutine execution. This is done by an
+entity called **Processor**, whcih has its own internal scheduler and a queue called runqueue
+(`runq` in code), consisting of goroutines that will be executed in the current context. It also
+handles the switching between various goroutines and so on:
+
+```go
+// Denoted as P in runtime code 
+type p struct { 
+    id     int32 
+    m     muintptr // back-link to associated m (nil if idle) 
+    runq [256]guintptr 
+ 
+    //... 
+}
+```
+
+ⓘ From Go 1.5 and on, a Go runtime can have a max number of `GOMAXPROCS` Ps running at any given
+point in the programs lifetime. Of course, we can change this number by either setting the
+`GOMAXPROCS` env variable or by calling the `GOMAXPROCS()` function.
+
 ### Scheduling with G, M, and P
+
+By the time the program is ready to start executing, the runtime has machines and processors set
+up. The runtime would request the OS to start an ample number of (M)achines, `GOMAXPROCS` number
+of (P)rocessors to execute (G)oroutines. _It is important to understand that M is the actual unit
+of execution and G is the logical unit of execution._ They do require P to actually execute G
+against the M.
+
+Here's the components for the scenario:
+
+* We have a set of M ready to run: M1...Mn.
+* We have two Ps: P1 and P2 with runqueues - `runq1` and `runq2` respectively.
+* We have 20 Goroutines, G1...G20, which we want to execute as part of the program.
+
+Given that we have 2 Ps, the global scheduler would _ideally_ distribute the G between the two P
+equally. Assume that P1 is assigned to work on G1...G10 and puts them into its runqueue, and
+similarly P2 puts G11...G20 in its runqueue. Next, P1's scheduler pops a G from its runqueue to
+run, G1, picks an M to run it on, M1, and similarly P2 runs G11 on M2.
+
+A P's internal scheduler is also responsible for switching out the current G with the next one it
+wants to execute. If all goes well, the scheduler will switch the current G for one of three
+possible reasons:
+
+1. Time slice for current execution is over: a P will use **schedtick** (incremented every time
+the scheduler is called) to keep track of how long the current G has been executing, and, once
+a certain time limit is reach, the G will be put back in the `runq` and the next G is picked up
+for execution.
+1. Done with execution: When the G is done executing all of its instructions. It will not be put
+back in the `runq`.
+1. Waiting on system call: In some cases, the G might need to make a system call, and as a result,
+the G will be blocked. Given that we have limited P, it doesn't make sense to block. In Go, the P
+is note required to wait on the system call; instead it can leave the waiting M and G combo,
+and they will be picked up by the global scheduler after the system call. Then the P can pick
+another M from the available ones, and another G from the `runq`, and start executing it.
+
+### Scheduler Strategy: Work-Stealing
+
+Let's say that P1 has 10 G and P2 has 10 G, but P1 completes long before P2. With the help of the
+work-stealing strategy, P1 starts checking with other Ps and, if there are Gs in their `runq`, it
+will "steal" half of them and start executing them. This ensures that we are maximizing the CPU
+usage for our program.
+
+If the P realizes it can't steal any more tasks, it will idle for a while expecting new G and, if
+none are created, the P is killed.
+
+Also, a P will only ever steal half of the target P's `runq`, no more, no less.
 
 ## Gotchas When Using Goroutines
 
+Now that we know a fair bit about the scheduler and how it works with goroutines, let's raise
+awareness of some potential pitfalls.
+
 ### Single Goroutine Halting the Complete Program
 
+We know that G run across many P and M, so what happens when one of the threads has a panic?
+Let's simulate that with the following code, where we have a lot of similar G, whose sole purpose
+us to take a number and divide it by iteself after subtractiong 10 from the denominator. It will
+work great _unless_ the number is `10`.
+
+```go
+package main 
+ 
+import ( 
+    "fmt" 
+    "sync" 
+) 
+ 
+func simpleFunc(index int, wg *sync.WaitGroup) { 
+    // This line should fail with Divide By Zero when index = 10 
+    fmt.Println("Attempting x/(x-10) where x = ", index, " answer is : ", index/(index-10)) 
+    wg.Done() 
+} 
+ 
+func main() { 
+    var wg sync.WaitGroup 
+    wg.Add(40) 
+    for i := 0; i < 40; i += 1 { 
+        go func(j int) { 
+            simpleFunc(j, &wg) 
+        }(i) 
+    } 
+ 
+    wg.Wait() 
+}
+```
+
+You'll see something akin to the following:
+
+```
+Attempting x/(x-10) where x =  39  answer is :  1
+Attempting x/(x-10) where x =  20  answer is :  2...
+Attempting x/(x-10) where x =  37  answer is :  1
+Attempting x/(x-10) where x =  11  answer is :  11
+panic: runtime error: integer divide by zerogoroutine 15 [running]:main.simpleFunc(0xa, 0xc42000e280)        
+...exit status 2
+```
+
+So, essentially, a lot of G were put in the `runq`, and everything went swell until the G with 
+`index` of `10` was executed, and it raised a panic that was not handled by the function. Thus
+resulting in the entire programming being halted, with an exit status of `2`.
+
+That's not very graceful, so we should get that sorted out. Go has a function named `recover`
+that will assist.
+
+```go
+package main 
+ 
+import ( 
+    "fmt" 
+    "sync" 
+) 
+ 
+func simpleFunc(index int, wg *sync.WaitGroup) { 
+    // functions with defer keyword are executed at the end of the function 
+    // regardless of whether the function was executed successfully or not. 
+    defer func() { 
+        if r := recover(); r != nil { 
+            fmt.Println("Recovered from", r) 
+        } 
+    }() 
+ 
+    // We have changed the order of when wg.Done is called because 
+    // we should call upon wg.Done even if the following line fails. 
+    // Whether a defer function exists or not is dependent on whether it is registered 
+    // before or after the failing line of code. 
+    defer wg.Done() 
+    // This line should fail with Divide By Zero when index = 10 
+    fmt.Println("Attempting x/(x-10) where x = ", index, " answer is : ", index/(index-10)) 
+} 
+ 
+func main() { 
+    var wg sync.WaitGroup 
+    wg.Add(40) 
+    for i := 0; i < 40; i += 1 { 
+        go func(j int) { 
+            simpleFunc(j, &wg) 
+        }(i) 
+    } 
+ 
+    wg.Wait() 
+}
+```
+
+Output will be akin to:
+
+```
+Attempting x/(x-10) where x =  11  answer is :  11
+Recovered from runtime error: integer divide by zero
+Attempting x/(x-10) where x =  33  answer is :  1
+Attempting x/(x-10) where x =  34  answer is :  1
+```
+
 ### Goroutines Are Not Predictable
+
+Consider the code from the _Parallelism_ section earlier on.  Here's a reminder:
+
+```
+Done writing mail #3. 19:32:57
+Listening... 19:32:57
+Listening... 19:32:57
+Done writing mail #1. 19:32:57
+Listening... 19:32:57
+Listening... 19:32:57
+Done writing mail #2. 19:32:57
+```
+
+If we changed `GOMAXPROCS` to 1 or the system has low hardware capabilities, it is possible that
+it may lead to the G printing `Listening...` to run forever. In reality, the Go compiler should
+detect this case, but it would be better to plan the code so we don't have to rely on Go's 
+scheduler.
 
 [🔙 Development Environment for Go][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Channels and Messages 🔜][upcoming-chapter]
 
