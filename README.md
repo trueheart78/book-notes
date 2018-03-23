@@ -9,7 +9,7 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 ## Currently Studying
 
-1. [Get Programming with Go](get-programming-with-go/README.md) ❤️
+1. [Distributed Computing with Go](distributed-computing-with-go/README.md) ❤️
 1. [The Rails 5 Way](the-rails-5-way/README.md)
 
 ## Book Pile
@@ -17,7 +17,6 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 ### Go
 
 1. [Go Systems Programming](go-systems-programming/README.md)
-1. [Distributed Computing with Go](distributed-computing-with-go/README.md)
 1. [Go - Building 7 Real-World Projects](go-building-7-real-world-projects/README.md)
 
 ### Ruby
@@ -41,6 +40,7 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 ## Archive
 
+1. [Get Programming with Go](get-programming-with-go/README.md) _got far enough and jumped to distributed computing with go_
 1. [Writing Ruby Scripts That Respect Pipelines (Blog)](writing-ruby-scripts-that-respect-pipelines-blog/README.md)
 1. [Working with TCP Sockets](working-with-tcp-sockets/README.md) _left off at Chapter 14_
 1. [CoffeeScript](coffeescript/README.md) _finished ch 5 on jQuery/Backbone.js_
