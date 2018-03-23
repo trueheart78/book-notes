@@ -972,20 +972,29 @@ Received data from ch1
 ```
 
 You'll notice that there is a flaw: it leaks the G's handling, `select`. The comment mentions it, 
-but let's undertstand why. This happens when we have a G that is running but we cannot directly
-readch it. Even if a G's reference isn't store, the GC wont grab it. Therefore, we need a
-mechanism to stop and return from such Gs. We can achieve our desires by creating a channel
-specifically for returning from the G.
+but let's understand why.
+
+First: what? What's a goroutine leak? Notice that nothing is being sent through so it blocks, 
+never exiting. We're inside an infinite loop, why are we exiting the program? _That's_ the leak. 
+
+This happens when we have a G that is running but we cannot directly reach it. Even if a G's 
+reference isn't stored, the GC wont grab it. Therefore, we need a mechanism to stop and return 
+from such Gs. We can achieve our desires by creating a channel specifically for returning from 
+the G.
 
 Let's uncomment the lines at the bottom of `main` and run it again:
 
 ```
 1
-2
-3
 Received data from ch1
+2
 ch2 msg
+3
+exiting...
 ```
+
+Now it's hitting the exit case properly, and exiting in the correct manner, since we were able to
+send an event on the `done` channel, and mark the `completed` channel as `true`.
 
 [🔙 Understanding Goroutines][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[The RESTful Web 🔜][upcoming-chapter]
 
