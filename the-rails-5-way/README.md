@@ -1,6 +1,6 @@
 [&lt;&lt; Back to project home](../README.md)
 
-# The Rails 5 Way
+# The Rails 5 Way (2017)
 
 By the fascinating [Obie Fernandez](https://leanpub.com/tr5w)
 
