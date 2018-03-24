@@ -16,18 +16,17 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 ### Go
 
-1. [Go - Building 7 Real-World Projects](go-building-7-real-world-projects/README.md)
-
 ### Importing Soon 💥
-1. Go Programming Blueprints
-1. Go Design Patterns
-1. Go: Design Patterns for Real-World Projects
-1. Security with Go
-1. Go Standard Library Cookbook
-1. Learning Functional Programming in Go
-1. Network Programming with Go 🎥 (3 hours)
-1. Go Standard Library Solutions 🎥 (3.25 hours)
-1. Mastering Go Programming 🎥 (20 hours)
+
+1. Go Programming Blueprints (2016)
+1. Go Design Patterns (2017)
+1. Go: Design Patterns for Real-World Projects (2017)
+1. Security with Go (2018)
+1. Go Standard Library Cookbook (2018)
+1. Learning Functional Programming in Go (2017)
+1. Network Programming with Go (2018) 🎥 (3 hours)
+1. Go Standard Library Solutions (2017) 🎥 (3.25 hours)
+1. Mastering Go Programming (2017) 🎥 (20 hours)
 
 #### Pre-Ordered 💸
 
@@ -59,7 +58,8 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 ## Archive
 
-1. [Distributed Computing with Go](distributed-computing-with-go/README.md) ❤️ _got through chapter 4, moving onto systems programming with go_.
+1. [Distributed Computing with Go (2018)](distributed-computing-with-go/README.md) ❤️ _got through chapter 4, moving onto systems programming with go_.
+
 1. [Get Programming with Go](get-programming-with-go/README.md) _got far enough and jumped to distributed computing with go_
 1. [Writing Ruby Scripts That Respect Pipelines (Blog)](writing-ruby-scripts-that-respect-pipelines-blog/README.md)
 1. [Working with TCP Sockets](working-with-tcp-sockets/README.md) _left off at Chapter 14_

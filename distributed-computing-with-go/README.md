@@ -1,6 +1,6 @@
 [🔙 🏡](../README.md)
 
-# Distributed Computing with Go
+# Distributed Computing with Go (2018)
 
 By the terrific [V.N. Nikhil Anurag](https://twitter.com/nikhilnulkar)
 
