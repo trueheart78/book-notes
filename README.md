@@ -16,7 +16,7 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 ### Go
 
-### Importing Soon 💥
+#### Importing Soon 💥
 
 1. Go Programming Blueprints (2016)
 1. Go Design Patterns (2017)
