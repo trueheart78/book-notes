@@ -496,7 +496,9 @@ func (s point2D) yaxis() int {
   return s.Y
 }
 
-// call the xaxis() and yaxis() method on the passed in coordinates
+// call the xaxis() and yaxis() method on the passed in coordinates interface
+// notice this is not a coordinate (singular) or point2D type, it is the interface
+// defined further above
 func findCoordinates(a coordinates) {
   fmt.Println("X:", a.xaxis(), "Y:", a.yaxis())
 }
@@ -544,9 +546,70 @@ simpler, so don't feel like you need to avoid them.
 
 ## Creating Random Numbers
 
+Go uses the [`math/rand` package][pkg/math/rand] for generating random numbers. **It needs a seed
+to start producing random numbers**, and the seed is used for initializing the entire process, and
+is _extremely important_, because if you always start with the same seed, you'll always get the
+same sequence of "random" numbers.
+
+
+```go
+package main
+
+import (
+  "fmt"
+  "math/rand"
+  "os"
+  "strconv"
+  "time"
+)
+
+// generate a random integer between the min and max
+func random(min, max int) int {
+  return rand.Intn(max-min) + min
+}
+
+func main() {
+  MIN := 0
+  MAX := 0
+  TOTAL := 0
+  // we need more than 3 arguments, the 0 being the binary
+  if len(os.Args) > 3 {
+    MIN, _ = strconv.Atoi(os.Args[1])
+    MAX, _ = strconv.Atoi(os.Args[2])
+    TOTAL, _ = strconv.Atoi(os.Args[3])
+  } else {
+    // prints "Usage: [binary] MIN MAX TOTAL
+    fmt.Println("Usage:", os.Args[0], "MIN MAX TOTAL")
+    os.Exit(-1)
+  }
+
+  // use the epoch as the seed
+  rand.Seed(time.Now().Unix())
+
+  // createe TOTAL random numbers and print them out
+  for i := 0; i < TOTAL; i++ {
+    myrand := random(MIN, MAX)
+    fmt.Print(myrand, " ")
+  }
+  fmt.Println()
+}
+```
+
+Let's request 5 random numbers between 1 and 10:
+
+```
+$ go run random.go 1 10 5
+5 6 4 6 8
+```
+
+Now, if you want more secure random number generation, check out the
+[`crypto/rand` package][pkg/crypto/rand].
+
 [🔙 Getting Started with Go and Unix Systems Programming][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Advanced Go Features 🔜][upcoming-chapter]
 
 [readme]: README.md
 [previous-chapter]: ch01-getting-started-with-go-and-unix-systems-programming.md
 [upcoming-chapter]: ch03-advanced-go-features.md
 [pkg/fmt]: https://golang.org/pkg/fmt/
+[pkg/math/rand]: https://golang.org/pkg/math/rand/
+[pkg/crypto/rand]: https://golang.org/pkg/crypto/rand/
