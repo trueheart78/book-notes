@@ -659,9 +659,99 @@ You should never need this feature, but if you do, you can start by visiting the
 
 ### Unsafe Code
 
+Unsafe code is code that bypasses the type safety and memory security of Go and requires the use of
+the [`unsafe` pkg][pkg/unsafe]. You should never need to use unsafe code, but if you ever need to,
+it's likely to do with pointers.
+
+💡 Using unsafe code can be dangerous for your programs, so only use it when it is absolutely 
+necessary. If you are not completely sure that you need it, then do not use it.
+
+Now for `unsafe.go`:
+
+```go
+package main
+
+import (
+  "fmt"
+  "unsafe"
+)
+
+func main() {
+  var value int64 = 5
+
+  // define p1 as an int64 pointer value
+  var p1 = &value
+  // use the unsafe lib to reference p1 as a different type than
+  // it was defined as
+  var p2 = (*int32)(unsafe.Pointer(p1))
+
+  // they are both happy with 5
+  fmt.Println("*p1: ", *p1)
+  fmt.Println("*p2: ", *p2)
+  // change the pointer to be an int64
+  *p1 = 312121321321213212
+
+  // it is stored fine when referenced as an int64
+  fmt.Println(value)
+  // this reference in an int32 type outputs 606940444 which is totes incorrect due to the data type
+  // this is the unsafe pointer operation and you can see why since the variable is an unexpected value
+  fmt.Println("*p2: ", *p2)
+
+  //change the pointer to be referenceable by an int32
+  *p1 = 31212132
+
+  // now they both output the same value
+  fmt.Println(value)
+  fmt.Println("*p2: ", *p2)
+}
+```
+
+Run this program and you'll see this:
+
+```
+*p1:  5
+*p2:  5
+312121321321213212
+*p2:  606940444
+31212132
+*p2:  31212132
+```
+
+You can see the completely unexpected `606940444` value output being limited because of the `int32` type. Also notice you don't get a warning or error mesage.
+
 ## Comparing Go to Other Programming Languages
 
+Go isn't perfect. I know, right!? Just stop reading right now and go back to your life before Go.
+It must be pointless, right? Well, No. Here's some solid comparable languages:
+
+* **C:** C is the most popular programming language for system software because Unix is written in
+C. It has some critical drawbacks, like the fact that C pointers can lead to strange bugs and
+memory leaks. It also has no GC. C also tends to require a lot more code for a given task than
+many other modern system programming languages. Also, C has no regard for modern paradigms, like
+object-oriented and functional programming.
+* **C++:** If you think you should use C++, consider using C instead. C++ vs Go excels in that C++
+can be used as if it were C. Neither C or C++ have good support for concurrent programming.
+* **Rust:** Rust is a new systems programming language that tries to avoid unpleasant bugs caused
+by unsafe code. Rust is still growing and syntax may still be changing, but that's likely coming
+to a halt soon. If Go isn't doing it for you, consider Rust.
+* **Swift:** In its current status, Swift is more suitable for developing systems software for
+macOS systems. Soon, it will be more popular on Linux machines, so keep an eye on it.
+* **Python:** Python is a scripting language, so it doesn't compile. This means more complexity
+for cross-system support.
+* **Perl:** Similar to Python, but they both have a plethora of modules that will make life much
+easier, if needed.
+
+IMO, Go is a modern, portable, mature, and safe programming language for writing systems software.
+Try Go, and if it sticks, great. If you want to try something else, Rust and Swift are worth
+learning. If you need to write reliable concurrent programs, Go excels here and should be your
+first choice.
+
+💡 _If you cannot choose between Go and Rust, then just try C. Learning the basics of systems 
+programming is more important than the programming language you select._
+
 ## Analysing Software
+
+_Skipped for now._
 
 ### `strace`
 
@@ -669,7 +759,69 @@ You should never need this feature, but if you do, you can start by visiting the
 
 ## Unreachable Code
 
+Unreachable code is code that can never be executed and is a logical kind of error. The compiler
+cannot catch these errors, so you should learn the `got tool vet` command to assist.
+
+```go
+package main
+
+import (
+  "fmt"
+  )
+
+func x() int {
+
+    return -1
+      fmt.Println("Exiting x()")
+        return -1
+}
+
+func y() int {
+    return -1
+      fmt.Println("Exiting y()")
+        return -1
+}
+
+func main() {
+    fmt.Println(x())
+      fmt.Println("Exiting program...")
+}
+```
+
+Running the above code gives you:
+
+```
+-1
+Exiting program...
+```
+
+Notice that certain code is never reached. Try the `go tool vet` command now:
+
+```
+$ go tool vet unreachable.go
+unreachable.go:10: unreachable code
+unreachable.go:16: unreachable code
+```
+
+You can also see that`go tool vet` detects unreachable code even if the surrounding fn is not
+being executed at all, like `y()`.
+
 ## Avoiding Common Mistakes ⚠️
+
+Here's some tips for avoiding common mistakes:
+
+* If you have an error in a fn, log it or return it; Don't do both unless necessary.
+* Interfaces define behavior, not data and data structures.
+* Use the `io.Reader` and `io.Writer` interfaces because they make your code more extensible.
+* Make sure you pass a pointer to a var to a fn only when needed.
+* Error vars are not `strings`, they are `error` types.
+
+Programming advice in general:
+
+* Test your code and fns in small and autonomous programs to make sure they behave expectedly.
+* If you don't know a feature, test it before using it the first time.
+* **Don't test systems software on production machines.**
+* Deploys should always be during low load times and come with solid backup plans incase of failure.
 
 [🔙 Writing Programs in Go][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Go Packages, Algorithms, and Data Structures 🔜][upcoming-chapter]
 
@@ -682,6 +834,7 @@ You should never need this feature, but if you do, you can start by visiting the
 [pkg/log/syslog]: https://golang.org/pkg/log/syslog/
 [pkg/regexp]: https://golang.org/pkg/regexp
 [pkg/reflect]: https://golang.org/pkg/reflect
+[pkg/unsafe]: https://golang.org/pkg/unsafe
 [maps]: ch02-writing-programs-in-go.md#maps
 [structures]: ch02-writing-programs-in-go.md#structures
 [cgo]: https://golang.org/cmd/cgo/
