@@ -331,7 +331,11 @@ Arrays are strict, Slices are dynamic arrays, Maps are like hashes/dictionaries.
 
 ### Maps
 
-Think hashes or dictionaries.
+Think hashes or dictionaries. To create one, use the `make(map[type of key]type of value)` syntax.
+
+```go
+lookupTable := make(map[string]string)
+```
 
 To validate if a key exists, check the second return element when referencing the key:
 
