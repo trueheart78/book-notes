@@ -323,7 +323,6 @@ func main() {
 }
 ```
 
-
 Here, the call to `os.Stat()` tells whether the file we are looking for exists or not. When it does,
 the `mode.IsRegular()` fn checks if its a regular file. Then, we perform a test to find out if the
 file found was executable: if it isn't, it won't get printed. So the `if mode&0111 != 0` statement
@@ -355,6 +354,60 @@ $ go run which.go -a ls
 ```
 
 #### Printing the Permission Bits
+
+With the help of the `ls(1)` command, you can find out the permissions of a file:
+
+```
+$ ls -l /bin/ls
+-rwxr-xr-x  1 root  wheel  38624 Mar 23 01:57 /bin/ls
+```
+
+here, we'll look at how to print those permissions using Go in the `permissions.go` file.
+
+```go
+package main
+
+import (
+  "fmt"
+  "os"
+)
+
+func main() {
+  arguments := os.Args
+  if len(arguments) == 1 {
+    fmt.Println("Please provide an argument!")
+    os.Exit(1)
+  }
+
+  file := arguments[1]
+
+  info, err := os.Stat(file)
+  if err != nil {
+    fmt.Println("Error:", err)
+    os.Exit(1)
+  }
+  mode := info.Mode()
+  fmt.Print(file, ": ", mode, "\n")
+}
+```
+
+Once again, most of the code is for dealing with the cl-args and making sure that one exists.
+Using `os.Stat()` does most of the work, so you can use the `FileInfo` struct that describes the
+file or dir that was examined. Using `FileInfo.Mode()`, you can get the permy bits.
+
+Example:
+
+```
+$ go run permissions.go /bin/ls
+/bin/ls: -rwxr-xr-x
+
+$ go run permissions.go /usr
+/usr: drwxr-xr-x
+
+$ go run permissions.go /us
+Error: stat /us: no such file or directory
+exit status 1
+```
 
 ## Dealing with Files
 
