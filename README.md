@@ -11,6 +11,7 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 1. [Go Systems Programming (2017)](go-systems-programming/README.md)
 1. [The Rails 5 Way (2017)](the-rails-5-way/README.md)
+1. [Modern Vim (2018)](modern-vim/README.md)
 
 ## Book Pile
 

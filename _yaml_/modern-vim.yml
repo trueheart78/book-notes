@@ -1,0 +1,20 @@
+---
+:title: Modern Vim
+:released: May, 2018
+:purchase: https://pragprog.com/book/modvim/modern-vim
+:author: Drew Neil
+:homepage: https://pragprog.com/book/modvim/modern-vim
+:image: https://imagery.pragprog.com/products/538/modvim_xlargecover.jpg?1509119416
+:image_ext: jpg
+
+:chapters:
+  - Get Modern Vim
+  - Installing Plugins
+  - Opening Files
+  - Working with the Quickfix List
+  - Neovim's Built-In Terminal Emulator
+  - Sessions
+  - Configuring Vim
+
+:appendices:
+  - What's Next for Modern Vim
