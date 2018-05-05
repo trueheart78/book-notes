@@ -362,7 +362,7 @@ $ ls -l /bin/ls
 -rwxr-xr-x  1 root  wheel  38624 Mar 23 01:57 /bin/ls
 ```
 
-here, we'll look at how to print those permissions using Go in the `permissions.go` file.
+Here, we'll look at how to print those permissions using Go in the `permissions.go` file.
 
 ```go
 package main
@@ -411,7 +411,59 @@ exit status 1
 
 ## Dealing with Files
 
+All data is stored in files so working with them is totes important.
+
 ### Deleting a File
+
+Most languages have an `unlink` method, but that only becomes normal once you have learned about it.
+Go does it differently, using `os.Remove()`.
+
+💡 _When testing programs that delete files and dirs be super duper extra carefu!_
+
+The `rm.go` file is a Go implementation of the `rm(1)` tool that illustrates how you can delete files
+in Go. Maybe consider support for the `-f` and -`R` flags (force and recursive).
+
+
+```go
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	arguments := os.Args
+	if len(arguments) == 1 {
+		fmt.Println("Please provide an argument!")
+		os.Exit(1)
+	}
+
+	file := arguments[1]
+	err := os.Remove(file)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+}
+```
+
+If `rm.go` is run without problems, it will create no output. So, try passing in a dir that doesn't
+exist, both when you don't have perms to delete it, as well as when it's not empty.
+
+```
+$ go run rm.go 123
+remove 123: no such file or directory
+
+$ ls -l /tmp/AlTest1.err
+-rw-r--r--  1 root  wheel  1278 Apr 17 20:13 /tmp/AlTest1.err
+
+$ go run rm.go /tmp/AlTest1.err
+remove /tmp/AlTest1.err: permission denied
+
+$ go run rm.go test
+remove test: directory not empty
+```
 
 ### Renaming and Moving Files
 
