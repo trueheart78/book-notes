@@ -1,6 +1,6 @@
 [&lt;&lt; Back to the README](README.md)
 
-# Chapter 9. An Aside - What Are Types?
+# Chapter 8. An Aside -- What Are Types?
 
 Lists and maps were talked about as types.
 
