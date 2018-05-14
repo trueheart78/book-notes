@@ -1,0 +1,51 @@
+---
+:title: Programming Elixir 1.6
+:released: 2018
+:purchase: https://pragprog.com/book/elixir16/programming-elixir-1-6
+:author: Dave Thomas
+:homepage: https://pragprog.com/book/elixir16/programming-elixir-1-6
+:image: https://imagery.pragprog.com/products/557/elixir16_xlargebeta.jpg?1514678702
+:image_ext: jpg
+
+:sections:
+  -
+    :name: 
+    :chapters:
+    - Take the Red Pill
+  -
+    :name: "Part I. Conventional Programming"
+    :chapters:
+    - Pattern Matching
+    - Immutability
+    - Elixir Basics
+    - Anonymous Functions
+    - Modules and Named Functions
+    - Maps, Keyword Lists, Sets, and Structs
+    - "An Aside -- What Are Types?"
+    - Processing Collections - Enum and Stream
+    - Strings and Binaries
+    - Control Flow
+    - Organizing a Project
+    - Tooling
+  -
+    :name: "Part II. Concurrent Programming"
+    :chapters:
+    - Working with Multiple Processes
+    - "Nodes - The to Distributing Services"
+    - "OTP: Servers"
+    - "OTP: Supervisors"
+    - A More Complex Example
+    - "OTP: Applications"
+    - Tasks and Agents
+  -
+    :name: "Part III. More Advanced Elixir"
+    :chapters:
+    - Macros and Code Evaluation
+    - "Linking Modules: Behavio(u)rs and Use"
+    - "Protocols -- Polymorphic Functions"
+    - More Cool Stuff
+  -
+    :name: Appendices
+    :chapters:
+      - "Exceptions: Raise and Try, Catch, and Throw"
+      - "Type Specifications and Type Checking"
