@@ -60,7 +60,6 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 ## Archive
 
 1. [Distributed Computing with Go (2018)](distributed-computing-with-go/README.md) ❤️ _got through chapter 4, moving onto systems programming with go_.
-
 1. [Get Programming with Go](get-programming-with-go/README.md) _got far enough and jumped to distributed computing with go_
 1. [Writing Ruby Scripts That Respect Pipelines (Blog)](writing-ruby-scripts-that-respect-pipelines-blog/README.md)
 1. [Working with TCP Sockets](working-with-tcp-sockets/README.md) _left off at Chapter 14_
