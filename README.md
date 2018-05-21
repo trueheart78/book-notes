@@ -17,26 +17,20 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 ### Go
 
+#### Imported
+
+1. [Mastering Go (2018)](mastering-go/README.md)
+
 #### Importing Soon 💥
 
 1. Go Programming Blueprints (2016)
 1. Go Design Patterns (2017)
-1. Go: Design Patterns for Real-World Projects (2017)
 1. Security with Go (2018)
 1. Go Standard Library Cookbook (2018)
 1. Learning Functional Programming in Go (2017)
 1. Network Programming with Go (2018) 🎥 (3 hours)
 1. Go Standard Library Solutions (2017) 🎥 (3.25 hours)
 1. Mastering Go Programming (2017) 🎥 (20 hours)
-
-#### Pre-Ordered 💸
-
-1. Go Web Development Cookbook
-   * Available in April!
-1. Mastering Go
-   * Available in June!
-1. Go Network Programming Cookbook
-   * Available in October!
 
 ### Ruby
 

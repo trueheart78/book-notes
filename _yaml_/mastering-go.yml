@@ -1,0 +1,22 @@
+---
+:title: Mastering Go
+:released: 2018
+:purchase: https://www.packtpub.com/networking-and-servers/mastering-go
+:author: Mihalis Tsoukalos
+:homepage: http://www.mtsoukalos.eu/
+:image: https://d255esdrn735hr.cloudfront.net/sites/default/files/imagecache/ppv4_main_book_cover/B09235_cover.png
+:image_ext: jpg
+
+:chapters:
+- Go and the Operating System
+- Understanding Go Internals
+- Working with Basic Go Data Types
+- Enhancing Go Code with Data Structures
+- What You Might Not Know About Go Packages
+- Reflection and Interfaces for All Seasons
+- Telling a Unix System What to Do
+- "Go Concurrency - Goroutines, Channels, and Pipelines"
+- "Go Concurrency - Advanced Topics"
+- Code Testing, Optimization, and Profiling
+- The Foundations of Network Programming in Go
+- "Network Programming- Building Servers and Clients"
