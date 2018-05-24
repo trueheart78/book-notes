@@ -1,0 +1,33 @@
+---
+:title: "Programming Phoenix 1.4"
+:released: 2018
+:purchase: https://pragprog.com/book/phoenix14/programming-phoenix-1-4
+:author: Chris McCord, Bruce Tate, and José Valim
+:homepage: https://pragprog.com/book/phoenix14/programming-phoenix-1-4
+:image: https://imagery.pragprog.com/products/514/phoenix14.jpg?1520520956
+:image_ext: jpg
+
+:sections:
+  -
+    :name:
+    :chapters:
+    - Introducing Phoenix
+  -
+    :name: "Part I. Building with Functional MVC"
+    :chapters:
+    - The Lay of the Land
+    - Controllers
+    - Ecto and Changesets
+    - Authenticating Users
+    - Generators and Relationships
+    - Ecto Queries and Constraints
+    - Testing MVC
+  -
+    :name: "Part II. Writing Interactive and Maintainable Applications"
+    :chapters:
+    - Watching Videos
+    - Using Channels
+    - OTP
+    - Observer and Umbrellas
+    - Testing Channels and OTP
+    - "What's Next?"

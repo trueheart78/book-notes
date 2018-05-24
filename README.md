@@ -42,6 +42,7 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 ### Elixir
 
 1. [Programming Elixir 1.6 (2018)](programming-elixir-1.6/README.md) 📖
+1. [Programming Phoenix 1.4 (2018)](programming-phoenix-1.4/README.md)
 
 ### Elm
 
