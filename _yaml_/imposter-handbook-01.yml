@@ -1,0 +1,214 @@
+---
+:title: The Imposter's Handbook
+:year: 2016
+:purchase: https://bigmachine.io/products/the-imposters-handbook/
+:author: Rob Conery
+:homepage: https://rob.conery.io/
+:image: https://bigmachine.io/wp-content/uploads/2018/05/imposter_slide.jpg
+:image_ext: jpg
+
+:sections:
+  -
+    :name: Preface
+    :chapters:
+    - On Being Wrong
+  -
+    :name: Computation
+    :chapters:
+    - "Nature's Strange Programs"
+    - Overlapping Emergences
+    - What is Computation?
+    - The Future of Computation
+  -
+    :name: Complexity
+    :chapters:
+    - Simple Solutions and P Time
+    - "Hard Problems (EXP)"
+    - "All Solvable Problems (R)"
+    - Infinitely Complex Problems Beyond R
+    - "Determinism, Nondeterminism, and Magical Guesses"
+    - "Does P=NP?"
+    - Reductions and NP
+    - "NP-Complete and Decisions"
+    - "Classic NP-Complete Problems"
+    - Aproxumations and Laziness
+    - In The Real World
+  -
+    :name: Lambda Calculus
+    :chapters:
+    - The Basics
+    - Some Rules
+    - Anatomy
+    - Function Application
+    - Bound and Free Variables
+    - Substitution and Reduction
+    - Applying Multiple Variables
+    - Order of Operations
+    - Church Encoding
+    - Booleans
+    - Numbers
+    - Combinators
+    - Summary
+  -
+    :name: Machinery
+    :chapters:
+    - Probability and The Theory of Forms
+    - Markov Chains
+    - Finite State Machines
+    - Pushdown Machine
+    - Turing's Machine
+    - The Von Neumann Machine
+    - The Automatic Computing Engine
+    - ENIAC and EDVAC
+    - Von Neumann Architecture
+  -
+    :name: Big O
+    :chapters:
+    - "A Super Simple First Step: O(1)"
+    - "Iterations and Order(n)"
+    - "The Not So Good Approach: O(n^2)"
+    - "Refining To Order(log n)"
+    - Quick Logarithm Review
+    - "Rethinking O(n^2) with O(n log n)"
+    - A Quick Break for Math Geeks
+    - Thinking in Big-O
+    - "Space Complexity vs. Time Complexity"
+
+  -
+    :name: Data Structures
+    :chapters:
+    - Arrays
+    - Stack
+    - Queue
+    - Linked List
+    - Hash Table
+    - Dictionary
+    - Trees
+    - Binary Tree
+    - Heap
+    - Binary Search Tree
+    - Digital Tree (or Trie)
+    - Graphs
+    - So What?
+  -
+    :name: "Algorithms: Simple"
+    :chapters:
+    - Bubble Sort
+    - Merge Sort
+    - Quicksort
+    - Selection Sort
+    - Heap Sort
+    - Binary Search
+    - Graph Traversal
+    - Depth First Search
+    - Breadth First Search
+  -
+    :name: "Algorithms: Advanced"
+    :chapters:
+    - Dynamic Programming
+    - Origins
+    - Fibonacci
+    - Greedy Algorithms
+    - Bellman Ford
+    - Djikstra
+  -
+    :name: Compilation
+    :chapters:
+    - How a Compiler Works
+    - Lexical Analysis
+    - Parsing
+    - Semantic Analysis
+    - Lexical Scoping
+    - Optimization
+    - Code Gen
+    - LLVM
+    - GCC
+    - Garbage Collection
+    - Tracing
+    - Reference Counting
+    - Compile-time
+  -
+    :name: Software Design Patterns
+    :chapters:
+    - Constructor
+    - Factory
+    - Builder
+    - Method Chaining
+    - Singleton
+    - Adapter
+    - Bridge
+    - Composite
+    - Decorator
+    - Facade
+    - Flyweight
+    - Command
+    - Mediator
+    - Observer
+    - State
+    - Strategy
+    - "In The Real World..."
+  -
+    :name: Software Design Principles
+    :chapters:
+    - Coupling and Cohesion
+    - Separation of Concerns
+    - YAGNI and DRY
+    - Tell, Don't Ask
+    - "Law of Demeter (or: Principle of Least Knowledge)"
+    - Dependency Injection
+    - Interface-based Programming
+    - Inversion of Control
+  -
+    :name: Functional Programming
+    :chapters:
+    - Immutability
+    - Formalizing Data with Structs
+    - Tramsforming Data
+    - "A Real Example: A Shopping Cart"
+    - Side Effects and Purity
+    - Currying
+    - A Very Brief Discussion About Functors and Monads
+  -
+    :name: Databases
+    :chapters:
+    - "First Normal Form (1NF): Atomic Values"
+    - "Second Norma Form (2NF): Columnds Depend on a Single Primary Key"
+    - "Third Normal Form (3NF): Non-Keys Describe the Key and Nothing Else"
+    - "In The Real World: The Normalization Process"
+    - "More Real World: Is This Schema Correct?"
+    - OLAP and OLTP
+    - Extraction, Transformation, and Loading (ETL)
+    - Data Marts and Warehouses
+    - Analyzing a Data Mart
+    - Using an OLAP Cube
+    - Distributed Database Systems
+    - A Shift in Thinking
+    - CAP Theorem
+    - "An Alternative to ACID: BASE"
+    - Sharding
+    - Replication
+    - Big Data
+    - What is Big Data?
+    - In The Real World
+  -
+    :name: Testing
+    :chapters:
+    - The Nuts and Bolts of TDD
+    - Just Start
+    - The Happy Path
+    - The Sad Path
+    - BDD
+    - Features, Scenarios, Expectations
+    - Given, When, Then
+  -
+    :name: Essential Unix
+    :chapters:
+    - Shell Scripts
+    - A Simple Shell Script
+    - Make
+    - Using Make to Build Your Web App
+    - CRON
+  -
+    :name: Final Thoughts
+    :chapters:
+    - Final Thoughts
