@@ -1,0 +1,152 @@
+---
+:title: The Go Programming Language
+:year: 2015
+:purchase: http://www.informit.com/store/go-programming-language-9780134190440
+:author: Alan A. A. Donovan and Brian W. Kernighan
+:homepage: http://www.gopl.io/
+:image: http://www.gopl.io/cover.png
+:image_ext: png
+
+:sections:
+  -
+    :name: Tutorial
+    :chapters:
+    - Hello, World
+    - Command-Line Arguments
+    - Finding Duplicate Lines
+    - Animated GIFs
+    - Fetching a URL
+    - Fetching URLs Concurrently
+    - A Web Server
+    - Loose Ends
+  -
+    :name: Program Structure
+    :chapters:
+    - Names
+    - Declarations
+    - Variables
+    - Assignments
+    - Type Declarations
+    - Packagesand Files
+    - Scope
+  -
+    :name: Basic Data Types
+    :chapters:
+    - Integers
+    - Floating-Point Numbers
+    - Complex Numbers
+    - Booleans
+    - Strings
+    - Constants
+  -
+    :name: Composite Data Types
+    :chapters:
+    - Arrays
+    - Slices
+    - Maps
+    - Structs
+    - JSON
+    - Text and HTML Templates
+  -
+    :name: Functions
+    :chapters:
+    - Function Declarations
+    - Recursion
+    - Multiple Return Values
+    - Errors
+    - Function Values
+    - Anonymous Functions
+    - Variadic Functions
+    - Deferred Function Calls
+    - Panic
+    - Recover
+  -
+    :name: Methods
+    :chapters:
+    - Method Declarations
+    - Methods with a Pointer Receiver
+    - Composing Types by Struct Embedding
+    - Method Values and Expressions
+    - "Example: Bit Vector Type"
+    - Encapsulation
+  -
+    :name: Interfaces
+    :chapters:
+    - Interfaces as Contracts
+    - Interface Types
+    - Interface Satisfaction
+    - Parsing Flags with flag Value
+    - Interface Values
+    - Sorting with sort.Interface
+    - The http.Handler Interface
+    - The error Interface
+    - "Example: Expression Evaluator"
+    - Type Assertions
+    - Discriminating Errors with Type Assertions
+    - Querying Behaviors with Interface Type Assertions
+    - Type Switches
+    - "Example: Token-Based XML Decoding"
+    - A Few Wordsof Advice
+  -
+    :name: Goroutines and Channels
+    :chapters:
+    - Goroutines
+    - "Example: Concurrent Clock Server"
+    - "Example: Concurrent Echo Server"
+    - Channels
+    - Looping in Parallel
+    - "Example: Concurrent Web Crawler"
+    - Multiplexing with select
+    - "Example: Concurrent Directory Traversal"
+    - Cancellation
+    - "Example: Chat Server"
+  -
+    :name: Concurrency with Shared Variables
+    :chapters:
+    - Race Conditions
+    - "Mutual Exclusion: sync.Mutex"
+    - "Read/Write Mutexes: sync.RWMutex"
+    - Memory Synchronization
+    - "Lazy Initialization: sync.Once"
+    - The Race Detector
+    - "Example: Concurrent Non-Blocking Cache"
+    - Goroutinesand Threads
+  -
+    :name: Packages and the Go Tool
+    :chapters:
+    - Introduction
+    - Import Paths
+    - The Package Declaration
+    - Import Declarations
+    - Blank Imports
+    - Packages and Naming
+    - The Go Tool
+  -
+    :name: Testing
+    :chapters:
+    - The go test Tool
+    - Test Functions
+    - Coverage
+    - Benchmark Functions
+    - Profiling
+    - Example Functions
+  -
+    :name: Reflection
+    :chapters:
+    - "Why Reflection?"
+    - reflect.Type and reflect.Value
+    - "Display, a Recursive Value Printer"
+    - "Example: Encoding S-Expressions"
+    - Setting VariableswithreflectValue
+    - "Example: Decoding S-Expressions"
+    - Accessing Struct Field Tags
+    - Displaying the Methods of a Type
+    - A Word of Caution
+  -
+    :name: Low-Level Programming
+    :chapters:
+    - unsafe.Sizeof, Alignof, and Offsetof
+    - unsafe.Pointer
+    - "Example: Deep Equivalence"
+    - Calling C Code with cgo
+    - Another Word of Caution
