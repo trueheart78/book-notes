@@ -27,7 +27,7 @@
     - Variables
     - Assignments
     - Type Declarations
-    - Packagesand Files
+    - Packages and Files
     - Scope
   -
     :name: Basic Data Types
@@ -86,7 +86,7 @@
     - Querying Behaviors with Interface Type Assertions
     - Type Switches
     - "Example: Token-Based XML Decoding"
-    - A Few Wordsof Advice
+    - A Few Words of Advice
   -
     :name: Goroutines and Channels
     :chapters:
@@ -137,7 +137,7 @@
     - reflect.Type and reflect.Value
     - "Display, a Recursive Value Printer"
     - "Example: Encoding S-Expressions"
-    - Setting VariableswithreflectValue
+    - Setting Variables with reflectValue
     - "Example: Decoding S-Expressions"
     - Accessing Struct Field Tags
     - Displaying the Methods of a Type

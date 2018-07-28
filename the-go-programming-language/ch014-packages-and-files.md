@@ -1,6 +1,6 @@
 [🔙 Type Declarations][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Scope 🔜][upcoming-chapter]
 
-# Chapter 14. Packagesand Files
+# Chapter 14. Packages and Files
 
 _Notes_
 

@@ -2,7 +2,7 @@
 
 # The Go Programming Language (2015)
 
-By the rattling [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/)
+By the fantastic [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/)
 
 ## Links:
 
@@ -25,7 +25,7 @@ By the rattling [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/)
     - [Chapter 11. Variables](ch011-variables.md)
     - [Chapter 12. Assignments](ch012-assignments.md)
     - [Chapter 13. Type Declarations](ch013-type-declarations.md)
-    - [Chapter 14. Packagesand Files](ch014-packagesand-files.md)
+    - [Chapter 14. Packages and Files](ch014-packages-and-files.md)
     - [Chapter 15. Scope](ch015-scope.md)
 03. **Basic Data Types**
     - [Chapter 16. Integers](ch016-integers.md)
@@ -74,7 +74,7 @@ By the rattling [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/)
     - [Chapter 55. Querying Behaviors with Interface Type Assertions](ch055-querying-behaviors-with-interface-type-assertions.md)
     - [Chapter 56. Type Switches](ch056-type-switches.md)
     - [Chapter 57. Example: Token-Based XML Decoding](ch057-example-token-based-xml-decoding.md)
-    - [Chapter 58. A Few Wordsof Advice](ch058-a-few-wordsof-advice.md)
+    - [Chapter 58. A Few Words of Advice](ch058-a-few-words-of-advice.md)
 08. **Goroutines and Channels**
     - [Chapter 59. Goroutines](ch059-goroutines.md)
     - [Chapter 60. Example: Concurrent Clock Server](ch060-example-concurrent-clock-server.md)
@@ -115,7 +115,7 @@ By the rattling [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/)
     - [Chapter 91. reflect.Type and reflect.Value](ch091-reflect.type-and-reflect.value.md)
     - [Chapter 92. Display, a Recursive Value Printer](ch092-display-a-recursive-value-printer.md)
     - [Chapter 93. Example: Encoding S-Expressions](ch093-example-encoding-s-expressions.md)
-    - [Chapter 94. Setting VariableswithreflectValue](ch094-setting-variableswithreflectvalue.md)
+    - [Chapter 94. Setting Variables with reflectValue](ch094-setting-variables-with-reflectvalue.md)
     - [Chapter 95. Example: Decoding S-Expressions](ch095-example-decoding-s-expressions.md)
     - [Chapter 96. Accessing Struct Field Tags](ch096-accessing-struct-field-tags.md)
     - [Chapter 97. Displaying the Methods of a Type](ch097-displaying-the-methods-of-a-type.md)

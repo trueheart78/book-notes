@@ -1,6 +1,6 @@
 [🔙 Example: Token-Based XML Decoding][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Goroutines 🔜][upcoming-chapter]
 
-# Chapter 58. A Few Wordsof Advice
+# Chapter 58. A Few Words of Advice
 
 _Notes_
 
