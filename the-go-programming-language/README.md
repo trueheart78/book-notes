@@ -6,22 +6,23 @@ By the fantastic [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/
 
 ## Links:
 
+- [Source code (GitHub)](https://github.com/adonovan/gopl.io/)
 - [Purchase The Go Programming Language](http://www.informit.com/store/go-programming-language-9780134190440)
 
 ## Chapter Notes:
 
 01. **Tutorial**
-    - [Chapter 1. Hello, World](ch001-hello-world.md)
-    - [Chapter 2. Command-Line Arguments](ch002-command-line-arguments.md)
-    - [Chapter 3. Finding Duplicate Lines](ch003-finding-duplicate-lines.md)
-    - [Chapter 4. Animated GIFs](ch004-animated-gifs.md)
-    - [Chapter 5. Fetching a URL](ch005-fetching-a-url.md)
-    - [Chapter 6. Fetching URLs Concurrently](ch006-fetching-urls-concurrently.md)
-    - [Chapter 7. A Web Server](ch007-a-web-server.md)
+    - Chapter 1. Hello, World
+    - Chapter 2. Command-Line Arguments
+    - Chapter 3. Finding Duplicate Lines
+    - Chapter 4. Animated GIFs
+    - Chapter 5. Fetching a URL
+    - Chapter 6. Fetching URLs Concurrently
+    - Chapter 7. A Web Server
     - [Chapter 8. Loose Ends](ch008-loose-ends.md)
 02. **Program Structure**
-    - [Chapter 9. Names](ch009-names.md)
-    - [Chapter 10. Declarations](ch010-declarations.md)
+    - Chapter 9. Names
+    - Chapter 10. Declarations
     - [Chapter 11. Variables](ch011-variables.md)
     - [Chapter 12. Assignments](ch012-assignments.md)
     - [Chapter 13. Type Declarations](ch013-type-declarations.md)
