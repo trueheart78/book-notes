@@ -9,12 +9,12 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 ## Currently Studying
 
-1. [The Go Programming Language (2015)](the-go-programming-language/README.md)
+1. [The Go Programming Language (2015)](the-go-programming-language/README.md) 📖
    - Recently became a huge fan of Brian Kernighan 💖
-1. [Go Systems Programming (2017)](go-systems-programming/README.md)
-1. [The Rails 5 Way (2017)](the-rails-5-way/README.md)
-1. [Modern Vim (2018)](modern-vim/README.md)
-1. [The Imposter's Handbook (2016)](the-imposter-s-handbook/README.md)
+1. [Go Systems Programming (2017)](go-systems-programming/README.md) 📖
+1. [The Rails 5 Way (2017)](the-rails-5-way/README.md) 📖
+1. [Modern Vim (2018)](modern-vim/README.md) 📖
+1. [The Imposter's Handbook (2016)](the-imposter-s-handbook/README.md) 📖
 
 ## Book Pile
 
@@ -29,7 +29,6 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 1. Go Programming Blueprints (2016)
 1. Go Design Patterns (2017)
 1. Security with Go (2018)
-1. Go Standard Library Cookbook (2018)
 1. Learning Functional Programming in Go (2017)
 1. Network Programming with Go (2018) 🎥 (3 hours)
 1. Go Standard Library Solutions (2017) 🎥 (3.25 hours)
