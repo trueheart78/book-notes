@@ -9,7 +9,7 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 ## Currently Studying
 
-1. [The Go Programming Language (2015)](the-go-programming-language/README.md) 📖
+1. [Go Programming Language (2015)](go-programming-language/README.md) 📖
    - Recently became a huge fan of Brian Kernighan 💖
 1. [Go Systems Programming (2017)](go-systems-programming/README.md) 📖
 1. [The Rails 5 Way (2017)](the-rails-5-way/README.md) 📖
