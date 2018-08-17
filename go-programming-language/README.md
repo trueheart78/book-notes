@@ -23,7 +23,7 @@ By the fantastic [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/
 02. **Program Structure**
     - Chapter 9. Names
     - Chapter 10. Declarations
-    - [Chapter 11. Variables](ch011-variables.md)
+    - [Chapter 11. Variables](ch011-variables.md) ✓
     - [Chapter 12. Assignments](ch012-assignments.md)
     - [Chapter 13. Type Declarations](ch013-type-declarations.md)
     - [Chapter 14. Packages and Files](ch014-packages-and-files.md)
@@ -61,10 +61,10 @@ By the fantastic [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/
     - [Chapter 42. Example: Bit Vector Type](ch042-example-bit-vector-type.md)
     - [Chapter 43. Encapsulation](ch043-encapsulation.md)
 07. **Interfaces**
-    - [Chapter 44. Interfaces as Contracts](ch044-interfaces-as-contracts.md)
-    - [Chapter 45. Interface Types](ch045-interface-types.md)
-    - [Chapter 46. Interface Satisfaction](ch046-interface-satisfaction.md)
-    - [Chapter 47. Parsing Flags with flag Value](ch047-parsing-flags-with-flag-value.md)
+    - [Chapter 44. Interfaces as Contracts](ch044-interfaces-as-contracts.md) ✓
+    - [Chapter 45. Interface Types](ch045-interface-types.md) ✓
+    - [Chapter 46. Interface Satisfaction](ch046-interface-satisfaction.md) ✓
+    - [Chapter 47. Parsing Flags with flag Value](ch047-parsing-flags-with-flag-value.md) ✓
     - [Chapter 48. Interface Values](ch048-interface-values.md)
     - [Chapter 49. Sorting with sort.Interface](ch049-sorting-with-sort.interface.md)
     - [Chapter 50. The http.Handler Interface](ch050-the-http.handler-interface.md)
@@ -77,9 +77,9 @@ By the fantastic [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/
     - [Chapter 57. Example: Token-Based XML Decoding](ch057-example-token-based-xml-decoding.md)
     - [Chapter 58. A Few Words of Advice](ch058-a-few-words-of-advice.md)
 08. **Goroutines and Channels**
-    - [Chapter 59. Goroutines](ch059-goroutines.md)
-    - [Chapter 60. Example: Concurrent Clock Server](ch060-example-concurrent-clock-server.md)
-    - [Chapter 61. Example: Concurrent Echo Server](ch061-example-concurrent-echo-server.md)
+    - [Chapter 59. Goroutines](ch059-goroutines.md) ✓
+    - [Chapter 60. Example: Concurrent Clock Server](ch060-example-concurrent-clock-server.md) ✓
+    - [Chapter 61. Example: Concurrent Echo Server](ch061-example-concurrent-echo-server.md) ✓
     - [Chapter 62. Channels](ch062-channels.md)
     - [Chapter 63. Looping in Parallel](ch063-looping-in-parallel.md)
     - [Chapter 64. Example: Concurrent Web Crawler](ch064-example-concurrent-web-crawler.md)
