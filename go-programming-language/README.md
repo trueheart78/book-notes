@@ -80,7 +80,7 @@ By the fantastic [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/
     - [Chapter 59. Goroutines](ch059-goroutines.md) ✓
     - [Chapter 60. Example: Concurrent Clock Server](ch060-example-concurrent-clock-server.md) ✓
     - [Chapter 61. Example: Concurrent Echo Server](ch061-example-concurrent-echo-server.md) ✓
-    - [Chapter 62. Channels](ch062-channels.md)
+    - [Chapter 62. Channels](ch062-channels.md) ✓
     - [Chapter 63. Looping in Parallel](ch063-looping-in-parallel.md)
     - [Chapter 64. Example: Concurrent Web Crawler](ch064-example-concurrent-web-crawler.md)
     - [Chapter 65. Multiplexing with select](ch065-multiplexing-with-select.md)
