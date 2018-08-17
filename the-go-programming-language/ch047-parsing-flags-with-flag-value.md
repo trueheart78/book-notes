@@ -128,7 +128,7 @@ Usage of ./tempflag:
 $ ./tempflag -help
 Usage of ./tempflag:
   -temp value
-        the temperature (default 20°C)<Paste>
+        the temperature (default 20°C)
 ```
 
 ## Exercises
