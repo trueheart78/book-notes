@@ -19,7 +19,7 @@ By the fantastic [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/
     - Chapter 5. Fetching a URL
     - Chapter 6. Fetching URLs Concurrently
     - Chapter 7. A Web Server
-    - [Chapter 8. Loose Ends](ch008-loose-ends.md)
+    - [Chapter 8. Loose Ends](ch008-loose-ends.md) ✓
 02. **Program Structure**
     - Chapter 9. Names
     - Chapter 10. Declarations
