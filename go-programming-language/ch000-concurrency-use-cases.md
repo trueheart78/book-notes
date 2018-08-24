@@ -20,6 +20,25 @@ however, safe concurrency is readily available. Therefore, instead of finding yo
 loops with data in slices/maps, you can use a C (bC or uC) with the help of `sync.WaitGroup` to get 
 similar work done.
 
+## Programs Too Parallel
+
+Some programs can be too parallel, meaning that they cause issues when allowed to run unchecked and
+unlimited. Something like a web crawler can exhaust open file ops which in turn can cause TCP sockets
+to be unable to create new connections. In these cases, you have to judge _how_ to limit things.
+
+An arbitrary number can be determined, or you potentially have access to resources to verify the
+limit (like an ENV var, or maybe a resource check). Regardless, you have to use something to do this,
+and a _counting semphore_ can be helpful. It's basically a bC that is sent to prior to any I/O and
+then received from directly after said I/O.
+
+```go
+var tokens = make(chan struct{}, 20)
+
+tokens <- struct{}{} // acquire a token
+list, err := links.Extract(url)
+<-tokens // release the token
+```
+
 ## Notes from [Channels](ch062-channels.md)
 
 The choice between uC and bC, and a bC's capacity, may both affect the correctness of an app. uC
