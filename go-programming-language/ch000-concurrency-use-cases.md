@@ -6,11 +6,19 @@ makes sense.
 * If an earlier stage of an assembly line is consistently faster than a following stage, a buffer is
 going to be full more often.
 * If a later stage of an assembly line is consistently faster than an earlier stage, the buffer is
-most likely going to be empty and provide little benefit.
+most likely going to be empty and will provide little benefit.
 * If not all elements of a C will be used, a bC is the better option. A uC will cause a G leak bug.
-  * Consider checking the speed of known mirrors and returning just the first response.
+  * Consider how checking the speed of known mirrors and returning just the first response works.
 * uC's are designed around synchronization between Gs, and less about handling a buffer.
   * Sending on a uC immediately calls any G receiving on the uC.
+
+## Coming From Nested Loops
+
+In many languages, implementing safe concurrency can be problematic. In these languages, it is not
+uncommon to use nested loops with some arrays/hashes/maps to get some work done. When we get to Go,
+however, safe concurrency is readily available. Therefore, instead of finding yourself using nested
+loops with data in slices/maps, you can use a C (bC or uC) with the help of `sync.WaitGroup` to get 
+similar work done.
 
 ## Notes from [Channels](ch062-channels.md)
 
