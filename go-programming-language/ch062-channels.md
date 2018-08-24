@@ -363,10 +363,10 @@ responses on a C from which no G will ever receive. This is a _goroutine leak_, 
 bug. Unlike garbage vars, leaked Gs are not automatically collected, so it is important to make sure
 that Gs terminate themselves when they are no longer needed.
 
-The choice between uC and bC, and a bC's capacity, may bother affect the correctness of an app. uC
+The choice between uC and bC, and a bC's capacity, may both affect the correctness of an app. uC
 gives strong sync guarantees because every send op is sync'd with its corresponding receive; with bCs
 these are decoupled. Also, on a bC the upper bound is known, it's not unusual to create a bC of that
-size and perform all the sends before the firt val is received. Failure to allocate proper capacity
+size and perform all the sends before the first val is received. Failure to allocate proper capacity
 would cause a deadlock.
 
 C buffering may also affect performance. Imagine three cooks in a cake shop, each with a different

@@ -9,6 +9,10 @@ By the fantastic [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/
 - [Source code (GitHub)](https://github.com/adonovan/gopl.io/)
 - [Purchase The Go Programming Language](http://www.informit.com/store/go-programming-language-9780134190440)
 
+## Notable Notes
+
+- [Concurrency Use Cases](ch000-concurrency-use-cases.md) ✓
+
 ## Chapter Notes:
 
 01. **Tutorial**
