@@ -44,7 +44,6 @@ list, err := links.Extract(url)
 
 ## Multiplexing with `select`
 
-_tbd_
 Sometimes, you are listening on multiple Cs, and having cases (especially default cases) can
 provide assistance in fine-tuning how you want your G to run. Blocking, non-blocking. You've now 
 got options.
