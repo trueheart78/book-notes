@@ -88,7 +88,7 @@ By the fantastic [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/
     - [Chapter 63. Looping in Parallel](ch063-looping-in-parallel.md) ✓
     - [Chapter 64. Example: Concurrent Web Crawler](ch064-example-concurrent-web-crawler.md) ✓
     - [Chapter 65. Multiplexing with select](ch065-multiplexing-with-select.md) ✓
-    - [Chapter 66. Example: Concurrent Directory Traversal](ch066-example-concurrent-directory-traversal.md)
+    - [Chapter 66. Example: Concurrent Directory Traversal](ch066-example-concurrent-directory-traversal.md) ✓
     - [Chapter 67. Cancellation](ch067-cancellation.md)
     - [Chapter 68. Example: Chat Server](ch068-example-chat-server.md)
 09. **Concurrency with Shared Variables**
