@@ -20,7 +20,10 @@ however, safe concurrency is readily available. Therefore, instead of finding yo
 loops with data in slices/maps, you can use a C (bC or uC) with the help of `sync.WaitGroup` to get 
 similar work done.
 
-## Programs Too Parallel
+## Programs Too Parallel & Counting Semaphores
+
+Remember that parallelism can exhaust OS resources, and using a _counting semaphore_ (read: bC) to
+limit the number of active Gs can solve many a problem.
 
 Some programs can be too parallel, meaning that they cause issues when allowed to run unchecked and
 unlimited. Something like a web crawler can exhaust open file ops which in turn can cause TCP sockets
@@ -38,6 +41,10 @@ tokens <- struct{}{} // acquire a token
 list, err := links.Extract(url)
 <-tokens // release the token
 ```
+
+## Multiplexing with `select`
+
+_tbd_
 
 ## Notes from [Channels](ch062-channels.md)
 
