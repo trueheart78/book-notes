@@ -45,6 +45,15 @@ list, err := links.Extract(url)
 ## Multiplexing with `select`
 
 _tbd_
+Sometimes, you are listening on multiple Cs, and having cases (especially default cases) can
+provide assistance in fine-tuning how you want your G to run. Blocking, non-blocking. You've now 
+got options.
+
+## Cancellation with Channels
+
+Tying in the ability to cancel long-running apps can be very helpful. This is where using a closed
+C to notify Gs that may still have things to do makes sense. It can check the C using a `select`
+(or by calling a polling fn like `cancelled()`) and know whether it should return early or not.
 
 ## Notes from [Channels](ch062-channels.md)
 
