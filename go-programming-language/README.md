@@ -99,7 +99,7 @@ By the fantastic [Alan A. A. Donovan and Brian W. Kernighan](http://www.gopl.io/
     - [Chapter 73. Lazy Initialization: sync.Once](ch073-lazy-initialization-sync.once.md)
     - [Chapter 74. The Race Detector](ch074-the-race-detector.md)
     - [Chapter 75. Example: Concurrent Non-Blocking Cache](ch075-example-concurrent-non-blocking-cache.md)
-    - [Chapter 76. Goroutinesand Threads](ch076-goroutinesand-threads.md)
+    - [Chapter 76. Goroutines and Threads](ch076-goroutines-and-threads.md)
 9. **Packages and the Go Tool**
     - [Chapter 77. Introduction](ch077-introduction.md)
     - [Chapter 78. Import Paths](ch078-import-paths.md)
