@@ -82,3 +82,5 @@ third. To solve this, hiring another cook to help the second, performing the sam
 independly. This is analogous to creating another G communicating over the same Cs.
 
 Look at [the ch8 cake code][cake-shop] to see a simulation of this cake shop.
+
+[cake-shop]: https://github.com/adonovan/gopl.io/tree/master/ch8/cake
