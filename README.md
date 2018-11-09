@@ -15,6 +15,7 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 1. [The Rails 5 Way (2017)](the-rails-5-way/README.md) 📖
 1. [Modern Vim (2018)](modern-vim/README.md) 📖
 1. [The Imposter's Handbook (2016)](the-imposter-s-handbook/README.md) 📖
+1. [Continuous Delivery (2011)](continuous-delivery/README.md)
 
 ## Book Pile
 

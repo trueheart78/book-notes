@@ -1,0 +1,34 @@
+---
+:title: Continuous Delivery
+:year: 2011
+:purchase: http://www.informit.com/store/continuous-delivery-reliable-software-releases-through-9780321601919
+:author: Jez Humble and David Farley
+:homepage: http://www.informit.com/store/continuous-delivery-reliable-software-releases-through-9780321601919
+:image: http://www.informit.com/ShowCover.aspx?isbn=0321601912
+:image_ext: jpg
+
+:sections:
+  -
+    :name: "Foundations"
+    :chapters:
+    - "The Problem of Delivering Software"
+    - "Configuration Management"
+    - "Continuous Integration"
+    - "Implementing a Testing Strategy"
+  -
+    :name: "The Deployment Pipeline"
+    :chapters:
+    - "Anatomy of the Deployment Pipeline"
+    - "Build and Deployment Scripting"
+    - "The Commit Stage"
+    - "Automated Acceptance Testing"
+    - "Testing Nonfunctional Requirements"
+    - "Deploying and Releasing Applications"
+  -
+    :name: "The Delivery Ecosystem"
+    :chapters:
+    - "Managing Infrastructure and Environments"
+    - "Managing Data"
+    - "Managing Components and Dependencies"
+    - "Advanced Version Control"
+    - "Managing Continuous Delivery"
