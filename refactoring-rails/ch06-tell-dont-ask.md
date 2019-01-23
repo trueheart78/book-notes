@@ -7,5 +7,5 @@ _Notes_
 [🔙 Slow Tests][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Testing Best Practices 🔜][upcoming-chapter]
 
 [readme]: README.md
-[previous-chapter]: ch005-slow-tests.md
-[upcoming-chapter]: ch007-testing-best-practices.md
+[previous-chapter]: ch05-slow-tests.md
+[upcoming-chapter]: ch07-testing-best-practices.md

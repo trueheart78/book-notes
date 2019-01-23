@@ -48,5 +48,5 @@ Pick the one that fits better. Your goal is decomplection.
 [🔙 Use REST][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Form Objects 🔜][upcoming-chapter]
 
 [readme]: README.md
-[previous-chapter]: ch001-use-rest.md
-[upcoming-chapter]: ch003-form-objects.md
+[previous-chapter]: ch01-use-rest.md
+[upcoming-chapter]: ch03-form-objects.md

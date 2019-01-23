@@ -7,5 +7,5 @@ _Notes_
 [🔙 Tell, Don't Ask][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Grab Bag 🔜][upcoming-chapter]
 
 [readme]: README.md
-[previous-chapter]: ch006-tell-dont-ask.md
-[upcoming-chapter]: ch008-grab-bag.md
+[previous-chapter]: ch06-tell-dont-ask.md
+[upcoming-chapter]: ch08-grab-bag.md

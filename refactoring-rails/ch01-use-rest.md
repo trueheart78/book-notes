@@ -57,4 +57,4 @@ Also note, our new `Refund` class? Totally not an `ActiveRecord` model.
 [🏡][readme]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Callbacks 🔜][upcoming-chapter]
 
 [readme]: README.md
-[upcoming-chapter]: ch002-callbacks.md
+[upcoming-chapter]: ch02-callbacks.md

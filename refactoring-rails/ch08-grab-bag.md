@@ -7,4 +7,4 @@ _Notes_
 [🔙 Testing Best Practices][previous-chapter]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[🏡][readme]
 
 [readme]: README.md
-[previous-chapter]: ch007-testing-best-practices.md
+[previous-chapter]: ch07-testing-best-practices.md
