@@ -1,0 +1,18 @@
+---
+:title: Refactoring Rails
+:year: 2017
+:purchase: https://www.refactoringrails.io/
+:author: Ben Orenstein
+:homepage: http://www.benorenstein.com/
+:image: https://static-2.gumroad.com/res/gumroad/8882693464459/asset_previews/be60584085a931c6e19626c4d04e7df2/retina/social.jpg
+:image_ext: jpg
+
+:chapters:
+- Use REST
+- Callbacks
+- Form Objects
+- Page Objects
+- Slow Tests
+- "Tell, Don't Ask"
+- Testing Best Practices
+- Grab Bag
