@@ -142,7 +142,7 @@ This code would be easier to understand if it did not place that burden on you. 
 hidden inside the verse string should be dispersed into _methods_, and `verse` should fill itself
 with values by sending _messages_.
 
-See [Terminology: Method versus Message[method vs message] for a breakdown in usage.
+See [Terminology: Method versus Message][method vs message] for a breakdown in usage.
 
 Creating a method requires identifying the code you'd like to extract and decidint on a method
 name. This requiers naming the concept, and names are hard. In the above case, it's very hard. The
