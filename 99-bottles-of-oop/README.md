@@ -17,4 +17,6 @@ By the grand [Sandi Metz and Katrina Owen](http://www.sandimetz.com/)
 - [Chapter 5. Separating Responsibilities](ch05-separating-responsibilities.md)
 - [Chapter 6. Replacing Conditionals with Objects](ch06-replacing-conditionals-with-objects.md)
 
+- [Method Versus Message](method-vs-message.md)
+
 ![book cover](cover.jpg)
