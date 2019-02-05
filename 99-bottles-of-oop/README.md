@@ -19,4 +19,8 @@ By the grand [Sandi Metz and Katrina Owen](http://www.sandimetz.com/)
 
 - [Method Versus Message](method-vs-message.md)
 
+- [My GitHub Code][my github code]
+
 ![book cover](cover.jpg)
+
+[my github code]: https://github.com/trueheart78/99-bottles-of-oop

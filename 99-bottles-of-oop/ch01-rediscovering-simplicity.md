@@ -52,7 +52,7 @@ They vary in complexity and thus illustrate different points concrete and abstra
 
 So now, stop. Do the 99 Bottles exercise now. Then, when complete, come on back.
 
-[Link to 99 Bottles Repo (personal)](https://gist.github.com/trueheart78/d39224ffd61a21021cd152b55d6560f8)
+[Link to 99 Bottles Repo (personal)][my github code]
 
 ### Incomprehensibly Concise
 
@@ -153,5 +153,5 @@ isolated and name any single concept.
 When you first write a piece of code, you obviously know what it does. 
 
 
-
 [method vs message]: method-vs-message.md
+[my github code]: https://github.com/trueheart78/99-bottles-of-oop
