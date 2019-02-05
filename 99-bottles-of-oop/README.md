@@ -17,10 +17,16 @@ By the grand [Sandi Metz and Katrina Owen](http://www.sandimetz.com/)
 - [Chapter 5. Separating Responsibilities](ch05-separating-responsibilities.md)
 - [Chapter 6. Replacing Conditionals with Objects](ch06-replacing-conditionals-with-objects.md)
 
+## Extras
+
 - [Method Versus Message](method-vs-message.md)
+- [Errata][errata]
+
+## Code
 
 - [My GitHub Code][my github code]
 
 ![book cover](cover.jpg)
 
 [my github code]: https://github.com/trueheart78/99-bottles-of-oop
+[errata]: https://www.sandimetz.com/99bottles/errata
