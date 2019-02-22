@@ -299,7 +299,20 @@ arg. Regardless, executing the lambda returns a string that contains the lyrics 
 song.
 
 You can be forgiven if you suspect this is unduly complicated. It is. However, it's curious that
-despite this complexity, [Listing 1.2: Speculatively General][listing 1.2] does a much better job than [Listing 1.1: Incomprehensibly Concise][listing 1.1] of answering the domain questions.
+despite this complexity, [Listing 1.2: Speculatively General][listing 1.2] does a much better job 
+than [Listing 1.1: Incomprehensibly Concise][listing 1.1] of answering the domain questions.
+
+1. How many verse variants are there?
+   - There are 4
+2. Which verses are most alike? In what way?
+   - Verses 3-99 are most alike, evidenced by the fact that those are all produced by the `Default`
+     variant.
+3. Which verses are most different? In what way?
+   - Verses 0, 1 and 2 are, but it's not obvious. 
+4. What is the rule to determine which verse should be sung next?
+   - Buried deep within the `NoMore` lambda is a hard-coded "99", which might cause one to infer
+     that verse 99 follows verse 0.
+
 
 
 [method vs message]: method-vs-message.md
