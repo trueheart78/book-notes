@@ -150,8 +150,159 @@ code not only contains many hidden concepts, but those are mixed, conflated, as 
 individual naturaes are obscured. Combining many ideas into a small section of code makes it hard to
 isolated and name any single concept.
 
-When you first write a piece of code, you obviously know what it does. 
+When you first write a piece of code, you obviously know what it does. Therefore, during initial dev
+the price you pay for poor names is quite low. However, code is read many more times than it is ever
+written, and the ultimate cost is often very high and paid for by someone else. Writing code is
+likewriting a book, your efforts are for _other_ readers. Yes, good names can be very hard, but
+the effort is worth it if you want your work to survive. Code clarity is built upon names.
+
+Problems with consistency, duplication and naming conspire to make the code in 
+[Listing 1.1: Incomprehensibly Concise][listing 1.1] costly.
+
+The above opinion is certainly unsupported. The best way to judge code would be to compare its value
+to its cost, but that can be hard to gather good data on. Judgements about code are therefore
+reduced to individual opinion, and humans are not always in accord. [Judging Code](#judging-code)
+will assist (later in this chapter), suggesting ways to acquire empirical data about the _goodness_
+of code.
+
+Independent of all judgement about how well a bit of code is arranged, code is also charged with
+doing what it's supposed to do _now_ as well as being easy to alter that it can do more _later_.
+While it's difficult to get exact figures for value and cost, asking the following questions will
+provide insight into the potential expense of a bit of code:
+
+1. How difficult was it to write?
+2. How hard is it to understand?
+3. How expensive will it be to change?
+
+Notice the first question is a reflection, and the third a prediction. While those might not always
+apply, the second is a present concern. The very act of looking at a piece of code declares that you
+wish to understand it _at this moment_.
+
+Code is easy to understand when it reflects the problem it's solving, and thus openly exposes that
+problem's domain. If [Listing 1.1: Incomprehensibly Concise][listing 1.1] openly exposed the "99
+Bottles" domain, a brief glance at the code would answer these questions:
+
+1. How many verse variants are there?
+2. Which verses are most alike? In what way?
+3. Which verses are most different, and in what way?
+4. What is the rule to determine which verse comes next?
+
+These questions reflect core concepts of the problem, yet none of their answers are apparent in
+this solution. The number of variants, the difference between the variants, and the algorithm for
+looping are distressingly obscure. The code does note reflect its domain, and therefore you can
+infer it was difficult to write and will be a challenge to change. If you had to characterize the
+goal of the writer of [Listing 1.1: Incomprehensibly Concise][listing 1.1], you may suggest their
+highest priority was brevity. Brevity may be the soul of wit, but it quickly becomes tedious in 
+code.
+
+### Speculatively General
+
+The next solution errs in a different direction. It does many things well but can't resist
+indulging in unnecessary complexity.
+
+#### Listing 1.2: Speculatively General
+
+```ruby
+class Bottles
+  NoMore = lambda do |verse|
+    "No more bottles of beer on the wall, " +
+    "no more bottles of beer.\n" +
+    "Go to the store and buy some more, " +
+    "99 bottles of beer on the wall.\n"
+  end
+
+  LastOne = lambda do |verse|
+    "1 bottle of beer on the wall, " +
+    "1 bottle of beer.\n" +
+    "Take it down and pass it around, " +
+    "no more bottles of beer on the wall.\n"
+  end
+
+  Penultimate = lambda do |verse|
+    "2 bottles of beer on the wall, " +
+    "2 bottles of beer.\n" +
+    "Take one down and pass it around, " +
+    "1 bottle of beer on the wall.\n"
+  end
+
+  Default = lambda do |verse|
+    "#{verse.number} bottles of beer on the wall, " +
+    "#{verse.number} bottles of beer.\n" +
+    "Take one down and pass it around, " +
+    "#{verse.number - 1} bottles of beer on the wall.\n"
+  end
+
+  def song
+    verses(99, 0)
+  end
+
+  def verses(finish, start)
+    (finish).downto(start).map {|verse_number|
+      verse(verse_number) }.join("\n")
+  end
+
+  def verse(number)
+    verse_for(number).text
+  end
+
+  def verse_for(number)
+    case number
+    when 0 then Verse.new(number, &NoMore)
+    when 1 then Verse.new(number, &LastOne)
+    when 2 then Verse.new(number, &Penultimate)
+    else        Verse.new(number, &Default)
+    end
+  end
+end
+
+class Verse
+  attr_reader :number
+  def initialize(number, &lyrics)
+    @number = number
+    @lyrics = lyrics
+  end
+
+  def text
+    @lyrics.call self
+  end
+end
+```
+
+If you find this code unclear, you're not alone. It's confusing enough to warrant an explanation but
+the explanation naturally reflects the code, it's confusing as well. Don't worry if the following
+paragraphs also muddy the water. The goal is help you appreciate the complexity rather than
+understand the details.
+
+The code above defines four lambdas and saves them as constants (`NoMore`, `LastOne`, `Penultimate`,
+and `Default`). Notice that they each take an argument `verse` but only `Default` actually refers to
+it. The code then defines the `song` and `verses` methods. Then comes the `verse` method, which
+passes the current verse number to `verse_for` and sends `text` to the result. This is the line of
+code that returns the correct string for a verse of the song.
+
+Things get more interesting in `verse_for`, but let's look ahead to the `Verse` class. `Verse`
+instances are initialized with two args, `number` and `&lyrics`, and they respond to two messages,
+`number` and `text`. The `number` method simply returns the verse number that was passed during
+initialization. The `text` method is more complicated; it sends `call` to `lyrics`, passing `self`
+as an arg.
+
+If you now return to `verse_for`, you can see that when instances of `Verse` are created, the
+`number` arg is a verse number and the `&lyrics` arg is one of the lambdas. The `verse_for` method
+gets invoked for every verse of the song, and therefore, you will have one hundred instances of
+`Verse` that will be created, each containing a verse number and the lambda that corresponds to that
+number.
+
+To summarize, sending `verse(number)` to an instance of `Bottles` invokes `verse_for(number)`, which
+uses the value of `number` to select the correct lambda on which to create an instance of `Verse`.
+The `verse` method then sends `text` to the returned `Verse`, which in turn sends `call` to the
+lambda, passing `self` as an arg. This invokes the lambda, which may or may not actually use the
+arg. Regardless, executing the lambda returns a string that contains the lyrics for one verse of the
+song.
+
+You can be forgiven if you suspect this is unduly complicated. It is. However, it's curious that
+despite this complexity, [Listing 1.2: Speculatively General][listing 1.2] does a much better job than [Listing 1.1: Incomprehensibly Concise][listing 1.1] of answering the domain questions.
 
 
 [method vs message]: method-vs-message.md
 [my github code]: https://github.com/trueheart78/99-bottles-of-oop
+[listing 1.1]: #listing-11-incomprehensibly-concise
+[listing 1.2]: #listing-12-speculatively-general
