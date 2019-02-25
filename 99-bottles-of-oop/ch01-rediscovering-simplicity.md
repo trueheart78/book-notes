@@ -313,6 +313,68 @@ than [Listing 1.1: Incomprehensibly Concise][listing 1.1] of answering the domai
    - Buried deep within the `NoMore` lambda is a hard-coded "99", which might cause one to infer
      that verse 99 follows verse 0.
 
+This solution's answers to the first three questions above are quite an imporovement over those of
+[Listing 1.1: Incomprehensibly Concise][listing 1.1]. Not everything is perfect, as we look at the
+value/cost questions:
+
+1. How difficult was it to write?
+   - There's far more code here than is needed to pass the tests. This unnecessary code took time to
+     write.
+2. How hard is it to understand?
+   - The many levels of indirection are confusing. Their existence implieces necessity, but you
+     could study this code for a long time with discerning why they are needed.
+3. How expensive will it be to change?
+   - The mere fact that indirection exists suggests that it's important. You may feel compelled to
+     understand its purpose before making changes.
+
+As you can see, this solution does a good job of exposing core concepts, but a bad job of being
+worth the cost. This good job/bad job divide reflects a fundamental fissure in the code.
+
+Aside from the `song` and `verses` methods, the code does two basic things. It defines a template
+for each kind of verse, and it chooses the appropriate template for a specific verse number and
+renders that verse's lyrics.
+
+Notice that the verse template contains all the info needed to answer the domain questions. There
+are four templates and therefore, there must be four verse variants. The `Default` template
+handles 3 through 99, so these verses are clearly most alike. VErses 0, 1, and 2 have their own
+special templates, so each must be unique. The four templates are straightforward, which makes
+answering the domain questions easy.
+
+However, it's not the templates that are costly, it's the code that chooses a template and renders
+the lyrics for a verse. This choosing/rending code is overly complicated, and while complexity is
+not forbidden, it _is_ required to pay its own way. Here, however, it does not.
+
+Insteaed of 1) defining a lambda to hold a template, 2) creating a new object to hold the lambda,
+and 3) invoking the lambda with `self` as an argument, the code could merely have put each of the
+four templates into a method then used the case statements to invoke the correct one. Neither the
+lambdas nor the `Verse` class are needed, and the route between them is a series of pointless jumps
+through needless hoops.
+
+Given the obvious superiority of this alternative implementation, how on earth did the _"calling a
+lambda"_ variant come about? At this remove, it's difficult to be certain of the motivation, but the
+code gives the impression that its author feared that the logic for selecting or invokling a
+template would someday need to change, and so added levels of indirecation in a misguided attempt to
+protect against that day.
+
+They did not succeed. Relative to the alternative, [Listing 1.2: Speculatively General][listing 1.2]
+is harder to understand without being easier to change. The additional complexity does not pay off.
+The auther may have acted with the best of intentions, but somewhere along the way, their commitment
+to the plan overcame good sense.
+
+Programmers tend to love clever code. It's like a neat card trick that uses sleight of hand and
+misdirection to make magic. Writing it, or suddenly understanding it, supplies a little burst of
+appreciative pleasure. However, this pleasure distracts the eye and seduces the mind, and allows
+cleverness to worm its way into inappropriate places.
+
+You must resist being clever for its own sake. If you are capable of conceiving and implementing a
+solution complex as [Listing 1.2: Speculatively General][listing 1.2], it is incumbent upon you to
+accep the _harder_ task and write simpler code.
+
+Neither [Listing 1.2: Speculatively General][listing 1.2] nor [Listing 1.1: Incomprehensibly
+Concise][listing 1.1] is the best solution for "99 Bottles". Perhaps, as was true for porridge, the
+third solution will be _just right_.
+
+
 
 
 [method vs message]: method-vs-message.md
