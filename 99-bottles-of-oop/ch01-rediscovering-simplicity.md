@@ -498,8 +498,79 @@ Green, Refactor_ style of writing code. The various strings that make up the son
 -- it looks as though these strings were refactored into separate methods at the first sign of
 duplication.
 
+The code is DRY, and DRYing out code _should_ reduce costs. DRY promises that if you put a chunk of
+code into a method and then invoke that method instead of duplicating the code, you will save money
+later if the behavior of that chunk changes. Do be aware: DRYing code is note free. It adds
+indirection, and layers of indirection make the _details_ of what is happening harder to understand.
+DRY makes sense when it reduces the cost of change more than it increases the cost of understanding
+the code.
+
+The Don't Repeate Yourself principle, like all principles, is true. However, despite the fact that
+the code above is DRY, there are many ways in which it's expensive to change.
+
+One of the many possible examples is the `beer` method, which returns the string `"beer"`, which
+occurs nowhere else in the code. Wanna drink "Kool-Aid" instead? Just change that method to return
+that drink instead of "beer". But looking at it post-change, it looks... funny:
+
+```ruby
+def beer
+  "Kool-Aid"
+end
+```
+
+Or ponder some of the other method names.
+
+```ruby
+def bottles_of_beer
+def buy_new_beer
+def drink_beer
+def last_beer?
+```
+
+In light of the "Kool-Aid" change, these names are terribly confusing. The method names no longer
+make sense where they are defined, and they are totally misleading in places where they are used.
+To fix this, you need to change the inner-method, as well as _every method name_ that includes the
+word "beer", and then to every sender of one of those messages.
+
+This small change in requirements forces a change in many places, which is exactly the problem DRY
+promises to avoid. The fault here lies not with the DRY principle, but with the method names.
+
+When you choose `beer` as the name of a method that returns the string `"beer"`, you've named the
+method after what it does now. Unfortunately, when you name a method after its current
+implementation, you can never change that internal implementation without ruining the method name.
+
+You should name methods not after what they do, but after what they mean, what they represent in the
+context of your domain. If you were to ask your customer what "beer" _is_ in the context of the "99
+Bottles" song, they would not answer "Beer is the _beer_," they would say something like "Beer is
+_the thing you drink_" or "Beer is the _beverage_."
+
+"beer" and "Kool-Aid" are kinds of beverages, and that word is one level of abstraction higher than
+"beer". Naming the method at this slightly higher level of abstraction isolates the code from
+changes in the implementation details. If you choose `beverage` for the method name, going from:
 
 
+```ruby
+def beverage
+  "beer"
+end
+```
+
+to:
+
+
+```ruby
+def beverage
+  "Kool-Aid"
+end
+```
+
+Makes perfect sense.
+
+[Listing 1.3: Concretely Abstract][listing 1.3] contains many small methods, and the strings that
+make up the song are completely DRY. THese two things exert a force for good that should result in
+code that's easy to change. However, in _Concretely Abstract_, this force is overcome by the high
+cost of dealing with methods that are named at the wrong level of abstraction. These method names
+raise the cost of change.
 
 [method vs message]: method-vs-message.md
 [my github code]: https://github.com/trueheart78/99-bottles-of-oop
