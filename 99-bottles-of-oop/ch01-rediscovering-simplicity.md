@@ -374,6 +374,130 @@ Neither [Listing 1.2: Speculatively General][listing 1.2] nor [Listing 1.1: Inco
 Concise][listing 1.1] is the best solution for "99 Bottles". Perhaps, as was true for porridge, the
 third solution will be _just right_.
 
+### Concretely Abstract
+
+Let's attempt to name the concepts in the domain.
+
+#### Listing 1.3: Concretely Abstract
+
+```ruby
+class Bottles
+  def song
+    verses(99, 0)
+  end
+
+  def verses(bottles_at_start, bottles_at_end)
+    bottles_at_start.downto(bottles_at_end).map do |bottles|
+      verse(bottles)
+    end.join("\n")
+  end
+
+  def verse(bottles)
+    Round.new(bottles).to_s
+  end
+end
+
+class Round
+  attr_reader :bottles
+  def initialize(bottles)
+    @bottles = bottles
+  end
+
+  def to_s
+    challenge + response
+  end
+
+  def challenge
+    bottles_of_beer.capitalize + " " + on_wall + ", " +
+    bottles_of_beer + ".\n"
+  end
+
+  def response
+    go_to_the_store_or_take_one_down + ", " +
+    bottles_of_beer + " " + on_wall + ".\n"
+  end
+
+  def bottles_of_beer
+    "#{anglicized_bottle_count} #{pluralized_bottle_form} of #{beer}"
+  end
+
+  def beer
+    "beer"
+  end
+
+  def on_wall
+    "on the wall"
+  end
+
+  def pluralized_bottle_form
+    last_beer? ? "bottle" : "bottles"
+  end
+
+  def anglicized_bottle_count
+    all_out? ? "no more" : bottles.to_s
+  end
+
+  def go_to_the_store_or_take_one_down
+    if all_out?
+      @bottles = 99
+      buy_new_beer
+    else
+      lyrics = drink_beer
+      @bottles -= 1
+      lyrics
+    end
+  end
+
+  def buy_new_beer
+    "Go to the store and buy some more"
+  end
+
+  def drink_beer
+    "Take #{it_or_one} down and pass it around"
+  end
+
+  def it_or_one
+    last_beer? ? "it" : "one"
+  end
+
+  def all_out?
+    bottles.zero?
+  end
+
+  def last_beer?
+    bottles == 1
+  end
+end
+```
+
+This solution is characterized by having many small methods. Often, that's a good thing, but in this
+case, it's gone horribly wrong. Let's see how this solution does on the domain questions:
+
+1. How many verse variants are there?
+   - It's almost impossible to tell.
+2. Which verses are most alike? In what way?
+   - Ditto.
+3. Which verses are different? In what way?
+   - Ditto.
+4. What is the rule to determine which verse should be sung next?
+   - Ditto.
+
+It fares no better on the value/cost questions.
+
+1. How difficult was it to write?
+   - Difficult. It took a lot of thought and time.
+2. How hard is it to understand?
+   - The individual methods are easy to understand, but despite this, its tough to get a sense of
+     the entire sone. The parts don't seem to add up to the whole.
+3. How expensive will it be to change?
+   - While changing the code inside any single method is cheap, it's difficult to tell how it
+     cascades.
+
+It's obvious the author of this code was committed ti doing the right thing, following the _Red,
+Green, Refactor_ style of writing code. The various strings that make up the song are never repeated
+-- it looks as though these strings were refactored into separate methods at the first sign of
+duplication.
+
 
 
 
@@ -381,3 +505,4 @@ third solution will be _just right_.
 [my github code]: https://github.com/trueheart78/99-bottles-of-oop
 [listing 1.1]: #listing-11-incomprehensibly-concise
 [listing 1.2]: #listing-12-speculatively-general
+[listing 1.3]: #listing-13-concretely-abstract
