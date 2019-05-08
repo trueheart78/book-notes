@@ -11,6 +11,8 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 1. [Total Control (2015)](total-control/README.md) 🏍
 1. [A Twist of the Wrist II (2013)](a-twist-of-the-wrist-ii/README.md) 🏍
+1. [Proficient Motorcycling - The Ultimate Guide to Riding Well
+   (2013)](proficient-motorcycling---the-ultimate-guide-to-riding-well/README.md) 🏍
 1. [Refactoring Rails (2017)](refactoring-rails/README.md) 🎥 
 1. [Go Programming Language (2015)](go-programming-language/README.md) 📖
    - Recently became a huge fan of Brian Kernighan 💖
