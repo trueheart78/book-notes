@@ -6,7 +6,7 @@ By the terrific [Keith Code](https://superbikeschool.com/)
 
 ## Links:
 
-- [Purchase A Twist of the Wrist II](https://superbikeschool.com/shop/)
+- [Purchase A Twist of the Wrist II](https://superbikeschool.com/product/a-twist-of-the-wrist-vol-2/)
 
 ## Chapter Notes:
 
