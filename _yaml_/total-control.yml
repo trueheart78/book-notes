@@ -1,0 +1,46 @@
+---
+:title: Total Control
+:year: 2015
+:purchase: https://www.amazon.com/Total-Control-Performance-Street-Techniques/dp/0760343446
+:author: Lee Parks
+:homepage: https://www.totalcontroltraining.net/
+:image: https://cdn10.bigcommerce.com/s-cll2t3r/products/78/images/273/TCSE_Cover__97509.1413413318.1280.1280.jpg?c=2
+:image_ext: jpg
+
+:sections:
+  -
+    :name: Chassis Dynamics
+    :chapters:
+    - Traction
+    - Steering
+    - Suspension
+  -
+    :name: Mental Dynamics
+    :chapters:
+    - Fear
+    - Concentration
+    - Right Attitude
+  -
+    :name: Body Dynamics
+    :chapters:
+    - Vision
+    - Line Selection
+    - Throttle Control
+    - Shifting
+    - Braking
+    - Body Positioning
+    - Low-Speed Turns
+    - Riding Two-Up
+  -
+    :name: Machine Setup
+    :chapters:
+    - Suspension Setup
+    - Chassis Tuning
+    - Ergonomics
+    - Aerodynamics
+  -
+    :name: Rider Setup
+    :chapters:
+    - Fitness
+    - Riding Gear
+    - Epilogue
