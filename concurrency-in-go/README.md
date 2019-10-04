@@ -18,4 +18,4 @@ By the terrific [Katherine Cox-Buday](https://katherine.cox-buday.com/)
 - [Chapter 6. Goroutines and the Go Runtime](ch06-goroutines-and-the-go-runtime.md)
 - [Chapter 7. Appendix](ch07-appendix.md)
 
-![book cover](book-cover.png)
+![book cover](book-cover.jpg)
