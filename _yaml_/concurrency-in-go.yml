@@ -1,0 +1,17 @@
+---
+:title: Concurrency in Go
+:year: 2017
+:purchase: https://www.amazon.com/Concurrency-Go-Tools-Techniques-Developers-dp-1491941197/dp/1491941197/
+:author: Katherine Cox-Buday
+:homepage: https://katherine.cox-buday.com/
+:image: false
+:image_ext: png
+
+:chapters:
+- "An Introduction to Concurrency"
+- "Modeling Your Code: Communicating Sequential Processes"
+- "Go's Concurrency Building Blocks"
+- "Concurrency Patterns in Go"
+- "Concurrency at Scale"
+- "Goroutines and the Go Runtime"
+- "Appendix"

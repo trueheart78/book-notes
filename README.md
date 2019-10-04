@@ -9,6 +9,7 @@ Reading a lot, figured this was as good a place as any to make some notes ❤️
 
 ## Currently Studying
 
+1. [Concurrency in Go (2017)](concurrency-in-go/README.md) 📖
 1. [Total Control (2015)](total-control/README.md) 🏍
 1. [A Twist of the Wrist II (2013)](a-twist-of-the-wrist-ii/README.md) 🏍
 1. [Proficient Motorcycling - The Ultimate Guide to Riding Well
