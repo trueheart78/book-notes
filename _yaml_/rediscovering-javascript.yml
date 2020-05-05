@@ -1,0 +1,34 @@
+---
+:title: Rediscovering JavaScript
+:year: 2018
+:purchase: https://pragprog.com/book/ves6/rediscovering-javascript
+:author: Venkat Subramaniam
+:homepage: https://pragprog.com/book/ves6/rediscovering-javascript
+:image: https://imagery.pragprog.com/products/529/ves6.jpg?1519061034
+:image_ext: jpg
+
+:sections:
+  -
+    :name: The Safe Alternatives
+    :chapters:
+    - JavaScript Gotchas
+    - Variables and Constants
+    - Working with Function Arguments
+  -
+    :name: Nice Additions
+    :chapters:
+    - Iterators and Symbols
+    - Arrow Functions and Functional Style
+    - Literals and Destructing
+  -
+    :name: OO and Modular Code
+    :chapters:
+    - Working with Classes
+    - Using Inheritance
+    - Using Modules
+  -
+    :name: Going Meta
+    :chapters:
+    - Keeping Your Promises
+    - Exploring Metaprogramming
+    - Deep Dive into Metaprogramming
